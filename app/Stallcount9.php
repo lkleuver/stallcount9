@@ -4,6 +4,8 @@ require_once(dirname(__FILE__) . '/lib/SC9/Doctrine.php');
 
 class Stallcount9 {
 	
+	/* static constants	 */
+	const DB_MYSQL = "mysql";
 	
 	
 	public function Stallcount9($settings) {

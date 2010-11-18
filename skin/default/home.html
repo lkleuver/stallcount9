@@ -1,0 +1,120 @@
+{% extends "index.html" %}
+ 
+{% block title %}Index{% endblock %}
+{% block js %}<script type="text/javascript" src="/js/register.js"></script> {% endblock %}
+
+{% block content %}
+  
+	<div id="seasonal">
+		<div id="register" class="registration">
+		  	<img class="logo" src="/img/rumnfriends/rumnfriends_logo.gif" width="320" height=96" alt="rum n friends" title="rum n friends" border="0" />
+		  	<h2>Thanks for a great Cityleague!</h2>
+		  	<p>
+		  		Thank you all for contributing to a fun and sportive city league.
+		  		Check back here in the spring for the next edition.
+		  	</p>
+		  	
+		  	<p>
+				Haven't you completed the Cityleague registration as a non-NFB member?
+				<a href="nfb.php">click here.</a>
+			</p>
+		  	
+		  	<div style="display: none;">
+		  	<h2>Register now</h2>
+		  	<p>
+		  		Come play ultimate frisbee and join us for 4 evenings of fun! 
+		  	</p>
+		  	
+		  	<form name="formregister" id="formregister">
+		  		<ul class="formlist">
+		  			<li>
+		  				<label for="formRegisterName">Name</label>
+		  				<input type="text" name="name" id="formRegisterName" />
+		  			</li>
+		  			<li>
+		  				<label for="formRegisterEmail">E-mail</label>
+		  				<input type="text" name="email" id="formRegisterEmail" />
+		  			</li>
+		  			<li class="formsubmit">
+		  				<a href="#" id="formRegisterSubmit" class="abutton buttonsubmit">SIGN UP</a>
+		  			</li>
+		  		</ul>  
+		  	</form>
+		  	
+		  	</div>
+		  	
+		  	<div id="formregisterfinish" class="hidden">
+		  		<h3>Registration complete</h3>
+		  		<p>
+		  			Thanks for signing up for the City League: The Friends 'n Rum edition.
+		  			You will get a confirmation E-mail shortly containing more information.
+		  		</p>
+		  		<p>
+					If you have any question, don't hestitate to contact us.
+				</p>
+				<p>
+					Yves & Les<br />
+					<a href="mailto:yvesandles@comeplay.nl">yvesandles@comeplay.nl</a><br />
+					06-14189776
+				</p>
+				<p>
+					Do you have someone that might join you? <strong>Forward this website to your friend</strong>
+		  		</p>
+		  		
+		  		
+		  	</div>
+		  	
+		</div>
+	
+	  
+	  
+	  
+	  
+		 <div id="information" class="info">
+		 	<h2>Important information</h2>
+		 	
+		 	<ul class="infolist">
+		 		<li><strong>Dates:</strong> Four Fridays  <em>24 sep</em>, <em>1 okt</em>, <em>8 okt</em>, <em>15 okt</em></li>
+		 		<li><strong>Time:</strong> <em>19:00</em> - <em>22:00</em></li>
+		 		<li><strong>Location:</strong> <a href="http://maps.google.com/maps?q=52.340547,4.929605&num=1&t=k&sll=52.373801,4.890935&sspn=0.10906,0.256119&ie=UTF8&ll=52.340547,4.929669&spn=0.003238,0.008234&z=18&iwloc=A" target="_blank">Sportpark Drieburg</a> (near Amstelstation)</li>
+		 		<li><strong>Bring:</strong> <em>Your outdoor sports clothes</em> and <em>€10,-</em></li>
+		 		<li><strong>Meet:</strong> <em>Great people</em>, <em>have fun</em> and <em>get in shape.</em></li>
+		 		<li><strong>Contact:</strong> <a href="mailto:yvesandles@comeplay.nl">yvesandles@comeplay.nl</a> | <em>06-14189776</em> </li>
+		 	</ul>
+		 	<br />
+		 	
+		 	<h4>Spread the word</h4>
+		 	<p>
+		 		Download the <a href="/downloads/comeplay_poster.pdf" target="_blank">poster</a>
+		 	</p>
+		 	
+		 </div>
+	  
+	  
+	</div>
+
+
+	<div id="solid">
+		
+		  
+		  <div id="whatisultimate">
+		  	<h2>What is ultimate</h2>
+		  	<p>
+			  	Ultimate Frisbee is an awesome teamsport . Each team has 7 players that play on a soccer field.<br />
+			  	The goal is to get the frisbee disc to the end zone (just like American Football/Rugby). You can't run with the disc, so the other 6 players on the team have to run and get open to receive the disc.
+			</p>
+			<p>
+				But the real cool thing about ultimate is that you meet great people, there's no referee and you get in shape. Watch the video to learn more.
+			</p>
+		  </div>
+		  
+		  
+		  <div id="videos">
+		  	<h2>Videos</h2>
+				<object width="480" height="385"><param name="movie" value="http://www.youtube.com/v/guReXGAc73c?fs=1&amp;hl=en_US"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/guReXGAc73c?fs=1&amp;hl=en_US" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"></embed></object>
+		  </div>
+	</div>
+  
+  
+  
+{% endblock %}
