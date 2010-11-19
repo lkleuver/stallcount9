@@ -9,18 +9,22 @@ class Stallcount9 {
 	
 	/* static variables */
 	public static $path;
+	public static $settings;
 	public static $output;
 	
 	
-	public function Stallcount9($settings) {
+	public function Stallcount9($config) {
 		//path to root of stallcount9 app
 		Stallcount9::$path = dirname(__FILE__)."/";
 		
 		//set class autoloader
 		$this->registerAutoloader();
 		
+		//parse settings (Settings is temporary, should use Container -> dependency injection)
+		Stallcount9::$settings = new SC9_Settings($config);
+		
 		//output controller
-		Stallcount9::$output = new SC9_Output_TwigOutput(Stallcount9::$path.'../skin/'.$settings["skin"], Stallcount9::$path.'data/output/cache');
+		Stallcount9::$output = new SC9_Output_TwigOutput(Stallcount9::$path.'../skin/'.Stallcount9::$settings->skin, Stallcount9::$path.'data/output/cache');
 	}
 	
 	public function handleRequests($req) {
