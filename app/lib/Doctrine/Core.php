@@ -1109,6 +1109,7 @@ class Doctrine_Core
      */
     public static function autoload($className)
     {
+    	
         if (strpos($className, 'sfYaml') === 0) {
             require dirname(__FILE__) . '/Parser/sfYaml/' . $className . '.php';
 
@@ -1120,7 +1121,7 @@ class Doctrine_Core
         }
 
         $class = self::getPath() . DIRECTORY_SEPARATOR . str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
-
+        
         if (file_exists($class)) {
             require $class;
 

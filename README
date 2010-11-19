@@ -1,0 +1,6 @@
+Temporary instructions for installing
+Most things in this document should be done by an install scripts
+
+FOLDER CREATION
+./app/data/output
+./app/data/output/cache   (make writable for php on unix/linux/mac systems

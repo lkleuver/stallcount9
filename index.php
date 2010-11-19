@@ -9,6 +9,7 @@ $_s["database"]["password"]	= "bla";
 $_s["database"]["host"]		= "127.0.0.1";
 $_s["database"]["name"]		= "stallcount9";
 
-
+$_s["skin"] = "default";
 
 $sc9 = new Stallcount9($_s);
+$sc9->handleRequests($_REQUEST);
