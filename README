@@ -1,7 +1,7 @@
 ::: INSTALLING
 
 	Temporary instructions for installing
-	Most things in this document should be done by an install scripts
+	Most things in this document should be done by install scripts
 	
 	FOLDER CREATION
 	./app/data/output
@@ -31,4 +31,11 @@
 	class name:  SC9_Controller_Home
 	class file:  lib/SC9/Controller/Home.php
 	
-
+	ADDING MODELS
+	edit the ./app/build/schema/base.yml file to add your model info.
+	next run (from commandline)  php ./generate.php
+	This will create (or update) your models in ./app/lib/SC9/Model
+	These files are generated but can be committed.
+	
+	more info at: http://www.doctrine-project.org/projects/orm/1.2/docs/manual/yaml-schema-files/en
+	and for yaml, keep in mind, don't use TAB's but use 2 spaces: http://en.wikipedia.org/wiki/Yaml

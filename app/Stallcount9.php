@@ -30,6 +30,7 @@ class Stallcount9 {
 	public function handleRequests($req) {
 		$n = isset($req["n"]) ? $req["n"] : "";
 		
+		//temp, will work by automatically picking controller and calling action
 		$controller = new SC9_Controller_Home();
 		$controller->indexAction($req);
 	}

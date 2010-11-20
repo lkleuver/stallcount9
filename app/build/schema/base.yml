@@ -1,0 +1,15 @@
+---
+
+User:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    username:
+      type: string(255)
+    password:
+      type: string(255)
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
