@@ -27,6 +27,11 @@ class Stallcount9 {
 		Stallcount9::$output = new SC9_Output_TwigOutput(Stallcount9::$path.'../skin/'.Stallcount9::$settings->skin, Stallcount9::$path.'data/output/cache');
 	}
 	
+	/**
+	 * 
+	 * Handle HTTP requests
+	 * @param Array $req request object ($_REQUEST usually)
+	 */
 	public function handleRequests($req) {
 		$n = isset($req["n"]) ? $req["n"] : "";
 		
@@ -39,7 +44,7 @@ class Stallcount9 {
 	
 	
 	/** 
-	 * Register the autoloader, default using the Doctrine autoload function
+	 * Register autoloaders used by stallcount9
 	 */
 	public function registerAutoloader() {
 		ini_set('unserialize_callback_func', 'spl_autoload_call');
@@ -47,11 +52,30 @@ class Stallcount9 {
 		spl_autoload_register(array('Stallcount9', 'autoload'));
 	}
 	
+	
+	/**
+	 * 
+	 * Autoloading function
+	 * @param String $class name of class being autoloaded
+	 */
     static public function autoload($class) {
 		$file = Stallcount9::$path.'lib/'.str_replace('_', '/', $class).'.php';
         if (file_exists($file)) {
             require $file;
+            return;
         }
+        
+        //loading models
+ 		if (0 !== strpos($class, 'Base')) {
+			if(file_exists($file = Stallcount9::$path.'lib/SC9/Model/'.$class.'.php')) {
+				require $file;
+ 			}
+		}else{
+			if(file_exists($file = Stallcount9::$path.'lib/SC9/Model/generated/'.$class.'.php')) {
+				require $file;
+ 			}			
+		}
+		
     }
 	
 	
