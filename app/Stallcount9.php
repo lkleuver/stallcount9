@@ -29,15 +29,31 @@ class Stallcount9 {
 	
 	/**
 	 * 
-	 * Handle HTTP requests
+	 * Handle HTTP requests matching controller and action automatically
 	 * @param Array $req request object ($_REQUEST usually)
 	 */
 	public function handleRequests($req) {
 		$n = isset($req["n"]) ? $req["n"] : "";
 		
-		//temp, will work by automatically picking controller and calling action
-		$controller = new SC9_Controller_Home();
-		$controller->indexAction($req);
+		$xpl = explode("/", $n);
+		$section 	= count($xpl) > 1 ? strtolower($xpl[1]) : "home";
+		$action 	= count($xpl) > 2 ? strtolower($xpl[2]) : "index";		
+		
+		$class 	= "SC9_Controller_".ucfirst($section);
+		$method	= $action."Action"; 
+		
+		if(class_exists($class)) {
+			$controller = new $class;
+			if(method_exists($controller, $method)) {
+				$controller->{$method}($req);	
+			}else{
+				$controller->indexAction($req);
+			}
+		}else{
+			//handle error (temp: neat error page)
+			echo "Error: section not found";
+			exit;
+		}
 	}
 	
 	
