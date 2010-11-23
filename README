@@ -31,6 +31,7 @@
 	class name:  SC9_Controller_Home
 	class file:  lib/SC9/Controller/Home.php
 	
+	
 	ADDING MODELS
 	edit the ./app/build/schema/base.yml file to add your model info.
 	next run (from commandline)  php ./generate.php
@@ -39,3 +40,15 @@
 	
 	more info at: http://www.doctrine-project.org/projects/orm/1.2/docs/manual/yaml-schema-files/en
 	and for yaml, keep in mind, don't use TAB's but use 2 spaces: http://en.wikipedia.org/wiki/Yaml
+	
+	FIXTURES
+	fixtures are prefilled sets of data, more info later.
+	
+	ADDING SITE SECTIONS
+	urls are automatically mapped to corresponding controllers located in 
+	./app/lib/SC9/Controller/
+	The url index.php?n=/contact/nfb will load the class SC9_Controller_Contact (file: Contact.php)
+	and call the method "nfbAction($req)"
+	
+	Convention: each section controller should use the similar named folder in skin/default
+	for its templates.
