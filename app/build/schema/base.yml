@@ -13,3 +13,89 @@ User:
   options:
     collate: utf8_unicode_ci
     charset: utf8
+    
+    
+Tournament:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    title:
+      type: string(255)
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+
+    
+Division:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    title:
+      type: string(255)
+    tournament_id:
+      type: integer(4)
+  relations:
+    Tournament:
+      foreignAlias: Divisions
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    
+
+Stage:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    title: 
+      type: string(255)
+    division_id:
+      type: integer(4)
+  relations:
+    Division:
+      foreignAlias: Stages
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    
+    
+PoolType:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    title:
+      type: string(255)
+    description:
+      type: string(255)
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+      
+
+Pool:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    title: 
+      type: string(255)
+    pooltype_id:
+      type: integer(4)
+    stage_id:
+      type: integer(4)
+  relations:
+    Stage:
+      foreignAlias: Pools
+    PoolType:
+      foreignType: one
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
