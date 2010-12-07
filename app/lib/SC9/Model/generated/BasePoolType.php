@@ -8,6 +8,7 @@
  * @property integer $id
  * @property string $title
  * @property string $description
+ * @property Pool $Pool
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -41,6 +42,8 @@ abstract class BasePoolType extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('Pool', array(
+             'local' => 'id',
+             'foreign' => 'pool_type_id'));
     }
 }

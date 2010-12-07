@@ -7,9 +7,10 @@
  * 
  * @property integer $id
  * @property string $title
- * @property integer $pooltype_id
+ * @property integer $pool_type_id
  * @property integer $stage_id
  * @property Stage $Stage
+ * @property PoolType $PoolType
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -31,7 +32,7 @@ abstract class BasePool extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('pooltype_id', 'integer', 4, array(
+        $this->hasColumn('pool_type_id', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));
@@ -49,6 +50,10 @@ abstract class BasePool extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Stage', array(
              'local' => 'stage_id',
+             'foreign' => 'id'));
+
+        $this->hasOne('PoolType', array(
+             'local' => 'pool_type_id',
              'foreign' => 'id'));
     }
 }

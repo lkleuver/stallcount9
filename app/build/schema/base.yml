@@ -64,6 +64,29 @@ Stage:
     charset: utf8
     
     
+Pool:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    title:
+      type: string(255)
+    pool_type_id:
+      type: integer(4)
+    stage_id:
+      type: integer(4)
+  relations:
+    Stage:
+      foreignAlias: Pools
+    PoolType:
+      foreignType: one
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    
+    
+    
 PoolType:
   columns:
     id:
@@ -78,22 +101,3 @@ PoolType:
     collate: utf8_unicode_ci
     charset: utf8
       
-
-Pool:
-  columns:
-    id:
-      type: integer(4)
-      primary: true
-      autoincrement: true
-    title: 
-      type: string(255)
-    pooltype_id:
-      type: integer(4)
-    stage_id:
-      type: integer(4)
-  relations:
-    Stage:
-      foreignAlias: Pools
-  options:
-    collate: utf8_unicode_ci
-    charset: utf8
