@@ -10,7 +10,6 @@
  * @property integer $pooltype_id
  * @property integer $stage_id
  * @property Stage $Stage
- * @property PoolType $PoolType
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -50,10 +49,6 @@ abstract class BasePool extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Stage', array(
              'local' => 'stage_id',
-             'foreign' => 'id'));
-
-        $this->hasOne('PoolType', array(
-             'local' => 'pool_type_id',
              'foreign' => 'id'));
     }
 }

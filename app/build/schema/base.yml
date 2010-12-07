@@ -94,8 +94,6 @@ Pool:
   relations:
     Stage:
       foreignAlias: Pools
-    PoolType:
-      foreignType: one
   options:
     collate: utf8_unicode_ci
     charset: utf8
