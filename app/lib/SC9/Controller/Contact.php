@@ -3,8 +3,8 @@
 
 class SC9_Controller_Contact extends SC9_Controller_Core {
 	
-	public function __construct() {
-		parent::__construct();
+	public function __construct($output) {
+		parent::__construct($output);
 	}
 	
 	

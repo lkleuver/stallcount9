@@ -1,12 +1,22 @@
 {% extends "index.html" %}
  
-{% block title %}Index{% endblock %}
+{% block title %}Stallcount9 - home{% endblock %}
 
 {% block content %}
-	<h1>Home test</h1>
+	<h1>Stallcount9 tournament management</h1>
   
-  	<p>
-  		<a href="?n=/contact/nfb">contact the nfb</a>
-  	</p>
+  	<h2>Active tournaments</h2>
+	<ul>
+		<li><a href="?n=/tournament/detail/1">Windmill Windup 2011</a></li>
+	</ul> 	
+	<br />
+  	<a class="button" href="?n=/tournament/create"><span>New tournament</span></a>
+  	<br /><br />
+  	<h2>Closed tournaments</h2>
+  	<ul>
+  		<li><a href="?n=/tournament/detail/2">Windmill Windup 2010</a></li>
+  		<li><a href="?n=/tournament/detail/3">Windmill Windup 2010</a></li>
+  	</ul>
+
   
 {% endblock %}

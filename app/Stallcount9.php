@@ -10,7 +10,8 @@ class Stallcount9 {
 	/* static variables */
 	public static $path;
 	public static $settings;
-	public static $output;
+
+	public $output;
 	
 	
 	public function Stallcount9($config) {
@@ -24,7 +25,7 @@ class Stallcount9 {
 		Stallcount9::$settings = new SC9_Settings($config);
 		
 		//output controller
-		Stallcount9::$output = new SC9_Output_TwigOutput(Stallcount9::$path.'../skin/'.Stallcount9::$settings->skin, Stallcount9::$path.'data/output/cache');
+		$this->output = new SC9_Output_TwigOutput(Stallcount9::$path.'../skin/'.Stallcount9::$settings->skin, Stallcount9::$path.'data/output/cache');
 	}
 	
 	/**
@@ -36,14 +37,19 @@ class Stallcount9 {
 		$n = isset($req["n"]) ? $req["n"] : "";
 		
 		$xpl = explode("/", $n);
-		$section 	= count($xpl) > 1 ? strtolower($xpl[1]) : "home";
-		$action 	= count($xpl) > 2 ? strtolower($xpl[2]) : "index";		
+		$xpl = explode("/", $n);
+		if(count($xpl) > 0) {
+			array_shift($xpl); //drop the prepending slash
+		}
+		$section 	= count($xpl) > 0 ? strtolower(array_shift($xpl)) : "home";
+		$action 	= count($xpl) > 0 ? strtolower(array_Shift($xpl)) : "index";	
+		
 		
 		$class 	= "SC9_Controller_".ucfirst($section);
 		$method	= $action."Action"; 
 		
 		if(class_exists($class)) {
-			$controller = new $class;
+			$controller = new $class($this->output);
 			if(method_exists($controller, $method)) {
 				$controller->{$method}($req);	
 			}else{

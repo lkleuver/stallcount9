@@ -3,11 +3,11 @@ class SC9_Controller_Core {
 	
 	public $output;
 	
-	public function __construct() {
-		$this->output = Stallcount9::$output;
+	public function __construct($output) {
+		$this->output = $output;
 	}
 	
-	public function indexAction($req) {
+	public function indexAction($req, $params = null) {
 		
 	}
 	

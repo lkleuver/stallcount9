@@ -1,0 +1,202 @@
+	body, html {
+		
+	}
+
+	body {
+		
+	}
+	
+	
+	.hidden, .data { display: none;}
+	
+	
+	
+	
+/* GLOBAL :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+	a.action {
+		background: transparent url("img/bullet1.png") no-repeat right 4px;
+		padding-right: 8px;
+	}
+	
+	div.infotext {
+		width: 432px;
+	}
+	
+	div.box {
+		width: 368px;
+		height: 128px;
+		padding: 32px 32px 0 32px;
+		background: transparent url("img/box.png") no-repeat left top;
+	}
+	
+	div.profilebox div.usericon {
+		margin-right: 16px;
+		float: left;
+	}
+	
+	div.profilebox div.profileinformation {
+		width: 274px;
+		float: left;
+	}
+	
+	
+	div.usericon {
+		width: 64px;
+		height: 64px;
+		overflow: hidden;
+	}
+
+	
+	div.menubar {
+		padding: 0 0 12px 0;
+	}
+
+	
+	
+	
+	/* buttons */
+	
+	a.button {
+		display: block;
+		padding-left: 8px;
+		background: transparent url("img/greenbutton.png") no-repeat left -32px;
+		width: 112px;
+		cursor: pointer;
+	}
+	a.button span{
+		display: block;
+		height: 23px;
+		background: transparent url("img/greenbutton.png") no-repeat right top;
+		text-align: center;
+		padding: 9px 8px 0 0;
+		color: #fff;
+	}
+	
+	a.button:hover {		background-position: left -96px;	}
+	a.button:hover span{	background-position: right -64px;	}
+	
+	
+	a.greybutton {		background-image: url("img/greybutton.png");	}
+	a.greybutton span { background-image: url("img/greybutton.png");	}
+
+	a.disabledbutton {		background-image: url("img/disabledbutton.png");	cursor: wait;}
+	a.disabledbutton span { background-image: url("img/disabledbutton.png");	}
+	
+	
+/* FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
+
+	
+	
+	ul.formlist { }
+	
+	ul.formlist li {
+		margin-bottom: 8px;
+		overflow: hidden;
+		background-color: #fff;
+		padding: 16px;
+		
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+	
+	ul.formlist li.formerror {			border: 1px solid red;	}
+	ul.formlist li.formerror label {	color: red;	}
+	ul.formlist li.formerror label.secondary { color: #005086;}
+	
+	ul.formlist li.action {
+		background-color: transparent;
+		padding: 8px 0 0 0;
+	}
+	
+	ul.formlist li.loading {
+		background-position: center right;
+	}
+	
+	ul.formlist li.action a.button, div.formactions a.button {
+		float: left;
+		margin-right: 8px;
+	}
+	
+	ul.formlist li.footnotes {
+		padding: 8px 0 0 0;
+		background: none;
+	}
+	
+	ul.formlist li label {
+		float: left;
+		padding-top: 2px;
+		width: 160px;
+	}
+	
+	ul.formlist li input {
+		width: 232px;
+		padding: 0 3px 0 3px;
+		border: 0;
+		height: 22px;
+		float: left;
+		background: #eff5f6 url("img/inputbg.png") no-repeat left top;
+	}
+	
+	ul.formlist li div.group {
+		float: left;
+		width: 232px;
+	}
+	ul.formlist li input.formradio {
+		width: auto;
+		float: none;
+	}
+	
+	ul.formlist li label.checkboxlabel {
+		cursor: pointer;
+		width: auto;
+		padding: 6px 0 0 16px;
+	}
+	
+	ul.formlist li label.secondary {
+		width: auto;
+		padding: 2px 8px 0 8px;
+		float: left;
+	}
+	
+	ul.formlist li input.shorttext {
+		width: 60px;
+		background: #eff5f6 url("img/inputbg_small.png") no-repeat left top;
+	}
+	
+	div.wwwpreview {
+
+	}
+	
+	
+	div.formfield {
+		margin: 0 0 16px 0;
+	}
+	
+	
+	textarea {
+		width: 256px;
+		height: 64px;
+	}
+	
+	div.formerror {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1000;
+		width:216px;
+		overflow: hidden;
+		background-color: #d3e3ec;
+		padding: 16px;
+		
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+	
+	div.formerror p {
+		padding: 0;
+		margin: 0;
+	}
+	

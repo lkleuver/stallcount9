@@ -1,0 +1,100 @@
+	
+	
+	body {
+		font-family: arial, helvetica;
+		font-size: 12px;
+	}
+	
+	
+	h1 {
+		font-weight: bold;
+		font-size: 32px;
+		color: #005086;		
+		margin: 0 0 16px 0;	
+	}
+	
+	h2, h3 {
+		font-weight: bold;
+		font-size: 20px;
+		margin: 0 0 16px 0;
+		color: #005086;	
+	}
+	
+	h3 {
+		font-size: 16px;
+		line-height: 20px;
+	}
+	
+	p {
+		margin: 0 0 16px 0;
+		color: #005086;
+		line-height: 18px;
+	}
+	
+	i {
+		font-style: italic;
+	}
+	
+	label {
+		line-height: 16px;
+	}
+	
+	
+	h1 a, h2 a, h3 a{
+		text-decoration: none;
+		color: inherit;
+	}
+	
+	
+	h2 em {
+		color: #69afc4;
+	}
+	
+	h4 {
+		color: #005086;
+	}
+	
+	a {
+		color: #69afc4;
+		font-weight: bold;
+		text-decoration: none;
+	}
+	
+	a:hover {
+		color: #005086;
+	}
+	
+	
+	strong {
+		color: #3588d5;
+		font-weight: bold;
+	}
+	
+	
+/* FRIEND RANKING */
+	div.friendentry h4 {
+		font-weight: normal;
+		color: #005086;
+	} 
+
+	div.friendentry span {
+		font-weight: normal;
+		color: #fff;
+	}
+	
+	
+/* FORMS */
+
+	ul.formlist li label {
+		font-weight: bold;
+		color: #005086;
+	}
+	
+	
+	ul.formlist li.footnotes {
+		color: #69afc4;
+		font-style: italic;
+		font-size: 10px;
+	}
+	
+	
