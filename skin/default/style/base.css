@@ -84,11 +84,24 @@
 	a.disabledbutton span { background-image: url("img/disabledbutton.png");	}
 	
 	
+	ul.itemlist { margin-bottom: 16px;}
+	ul.itemlist li {
+		margin-bottom: 4px;
+		overflow: hidden;
+		background-color: #fff;
+		padding: 8px;
+		
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+	}
+	
+	
 /* FORMS :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */
 
 	
 	
-	ul.formlist { }
+	ul.formlist { margin-bottom: 16px;}
 	
 	ul.formlist li {
 		margin-bottom: 8px;
@@ -133,10 +146,10 @@
 	ul.formlist li input {
 		width: 232px;
 		padding: 0 3px 0 3px;
-		border: 0;
+		border: 1px solid #9caab2;
 		height: 22px;
 		float: left;
-		background: #eff5f6 url("img/inputbg.png") no-repeat left top;
+		background: #eff5f6;
 	}
 	
 	ul.formlist li div.group {
@@ -199,4 +212,17 @@
 		padding: 0;
 		margin: 0;
 	}
+	
+	
+/* temp prototype styles **/
+
+div.division {
+	width: 480px;
+	background: #eaf7fa;
+	padding: 16px;
+	margin-bottom: 32px;	
+}
+	
+	
+a.action { color: red;}
 	

@@ -33,27 +33,26 @@ class Stallcount9 {
 	 * Handle HTTP requests matching controller and action automatically
 	 * @param Array $req request object ($_REQUEST usually)
 	 */
-	public function handleRequests($req) {
-		$n = isset($req["n"]) ? $req["n"] : "";
+	public function handleRequests() {
+		$n = isset($_GET["n"]) ? $_GET["n"] : "";
 		
-		$xpl = explode("/", $n);
 		$xpl = explode("/", $n);
 		if(count($xpl) > 0) {
 			array_shift($xpl); //drop the prepending slash
 		}
-		$section 	= count($xpl) > 0 ? strtolower(array_shift($xpl)) : "home";
-		$action 	= count($xpl) > 0 ? strtolower(array_Shift($xpl)) : "index";	
+		$section 	= count($xpl) > 0 ? array_shift($xpl) : "home";
+		$action 	= count($xpl) > 0 ? array_Shift($xpl) : "index";	
 		
 		
 		$class 	= "SC9_Controller_".ucfirst($section);
 		$method	= $action."Action"; 
 		
 		if(class_exists($class)) {
-			$controller = new $class($this->output);
+			$controller = new $class($this->output, $xpl);
 			if(method_exists($controller, $method)) {
-				$controller->{$method}($req);	
+				$controller->{$method}();	
 			}else{
-				$controller->indexAction($req);
+				$controller->indexAction();
 			}
 		}else{
 			//handle error (temp: neat error page)

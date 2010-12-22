@@ -1,9 +1,32 @@
 {% extends "index.html" %}
  
-{% block title %}Stallcount9 - Windmill Windup 2010{% endblock %}
+{% block title %}Windmill Windup 2011{% endblock %}
 
 {% block content %}
-	<h1>Windmill windup detail</h1>
+	<h1>Windmill windup 2011 detail</h1>
+  	
+  	<h2>Divisions</h2>
+  	<div class="division">
+  		<h2><a class="action"href="?n=/division/detail/1">Open division</a></h2>
+  		<p>Stage: 2 Round: 4</p>
+  		<p>Current schedule info here</p>
+  		<p>Current standings here</p>
+  		
+  		<a class="action" href="?n=/division/detail/1">detail</a> <a class="action" href="?n=/division/registration/close">close registration</a>
+  	</div>
+  	
+  	
+  	<div class="division">
+  		<h2><a class="action" href="?n=/division/detail/1">Womens division</a></h2>
+  		<p>Stage: 2 Round: 4</p>
+  		<p>Current schedule info here</p>
+  		<p>Current standings here</p>
+
+  		<a class="action" href="?n=/division/detail/1">detail</a>  <em>registration closed</em> <a class="action" href="?n=/division/registration/open">open</a>
+  	</div>
   
+  
+  <a class="button" href="?n=division/create"><span>+ Add division</span></a>
+    
   
 {% endblock %}
