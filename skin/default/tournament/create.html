@@ -5,25 +5,13 @@
 {% block content %}
 	<h1>Create new tournament</h1>
   
-  	<ul class="formlist">
-  		<li>
-  			<label>Tournament name</label>
-  			<input type="text" name="tournamentName" value="Windmill Windup 2011" />
-  		</li>
-  		<li>
-  			<label>Starting date</label>
-  			<input type="text" name="startDate" />
-  		</li>
-  		<li>
-  			<label>End date</label>
-  			<input type="text" name="endDate" />
-  		</li>
+  
+  	<form method="post" action="/?n=/tournament/create" name="form-tournament-create">
+  		{% include "tournament/form.html" %}
   		
-  		<li class="formaction">
-  			<a class="button" href="?n=/tournament/detail/1"><span>Next step</span></a>
-  		</li>
-  	</ul>
-  	
+  		
+		<button name="tournamentsubmit" value="1">Next step</button>
+  	</form>
   
   
   

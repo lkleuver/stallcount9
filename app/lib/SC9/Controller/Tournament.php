@@ -17,7 +17,20 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	}
 	
 	public function createAction() {
+		$tournament = new Tournament();
+		
+		if($this->post("tournamentsubmit") != "") {
+			$tournament->title 		= $this->post("tournamentName");
+			$tournament->startDate 	= strtotime($this->post("startDate"));
+			$tournament->endDate 	= strtotime($this->post("endDate"));
+			$tournament->state 		= Tournament::STATE_OPEN;
+			$tournament->save();
+			
+			$this->relocate("/tournament/detail/".$tournament->id);
+		}
+		
+		
 		$template = $this->output->loadTemplate('tournament/create.html');
-		$template->display(array());
+		$template->display(array("tournament" => $tournament));
 	}
 }

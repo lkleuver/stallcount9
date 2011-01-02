@@ -10,7 +10,11 @@
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Tournament extends BaseTournament
-{
+class Tournament extends BaseTournament {
+	
+	const STATE_OPEN = 1;
+	const STATE_ACTIVE = 2;
+	const STATE_CLOSED = 3; 
+	
 
 }

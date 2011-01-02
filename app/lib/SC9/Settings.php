@@ -12,8 +12,8 @@ class SC9_Settings {
 		
 	public $database = array(
 		'type' => 'mysql', 
-		'user' => 'root', 
-		'password' => '', 
+		'user' => 'chris', 
+		'password' => 'bla', 
 		'name' => 'stallcount9', 
 		'host' => '127.0.0.1'
 	);

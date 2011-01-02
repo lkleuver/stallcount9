@@ -7,6 +7,9 @@
  * 
  * @property integer $id
  * @property string $title
+ * @property integer $state
+ * @property integer $startDate
+ * @property integer $endDate
  * @property Doctrine_Collection $Divisions
  * 
  * @package    ##PACKAGE##
@@ -28,6 +31,18 @@ abstract class BaseTournament extends Doctrine_Record
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
+             ));
+        $this->hasColumn('state', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('startDate', 'integer', 10, array(
+             'type' => 'integer',
+             'length' => '10',
+             ));
+        $this->hasColumn('endDate', 'integer', 10, array(
+             'type' => 'integer',
+             'length' => '10',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');
