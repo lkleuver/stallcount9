@@ -45,10 +45,9 @@ class Stallcount9 {
 	public function handleRequests() {
 		$n = isset($_GET["n"]) ? $_GET["n"] : "";
 		
-		$xpl = explode("/", $n);
-		if(count($xpl) > 0) {
-			array_shift($xpl); //drop the prepending slash
-		}
+		
+		$xpl = explode("/", trim($n,"/")); // make array and drop prepending or trailing slashes
+
 		$section 	= count($xpl) > 0 ? array_shift($xpl) : "home";
 		$action 	= count($xpl) > 0 ? array_Shift($xpl) : "index";	
 		
