@@ -8,7 +8,7 @@ class SC9_Controller_Contact extends SC9_Controller_Core {
 	}
 	
 	
-	public function nfbAction($req) {
+	public function nfbAction() {
 		$template = $this->output->loadTemplate('contact/nfb.html');
 		$template->display(array("test" => "bla"));
 	}
