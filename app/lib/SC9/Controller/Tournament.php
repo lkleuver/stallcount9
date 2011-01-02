@@ -33,4 +33,10 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		$template = $this->output->loadTemplate('tournament/create.html');
 		$template->display(array("tournament" => $tournament));
 	}
+	
+	public function removeAction() {
+		$tournament = Doctrine_Core::getTable("Tournament")->find($this->tournamentId);
+		$tournament->delete();
+		$this->relocate("/home/index");
+	}
 }

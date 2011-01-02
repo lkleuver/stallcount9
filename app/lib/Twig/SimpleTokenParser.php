@@ -65,7 +65,8 @@ abstract class Twig_SimpleTokenParser extends Twig_TokenParser
     {
         return new Twig_Node_Expression_Filter(
             $node,
-            new Twig_Node(array(new Twig_Node_Expression_Constant('raw', $line), new Twig_Node())),
+            new Twig_Node_Expression_Constant('raw', $line),
+            new Twig_Node(),
             $line
         );
     }
@@ -108,8 +109,11 @@ abstract class Twig_SimpleTokenParser extends Twig_TokenParser
                 }
                 $grammar->addGrammar(new $class($match[1]));
                 $cursor += strlen($match[0]);
-            } elseif (preg_match('/(\w+|,)/A', $str, $match, null, $cursor)) {
-                $grammar->addGrammar(new Twig_Grammar_Constant($match[1]));
+            } elseif (preg_match('/\w+/A', $str, $match, null, $cursor)) {
+                $grammar->addGrammar(new Twig_Grammar_Constant($match[0]));
+                $cursor += strlen($match[0]);
+            } elseif (preg_match('/,/A', $str, $match, null, $cursor)) {
+                $grammar->addGrammar(new Twig_Grammar_Constant($match[0], Twig_Token::PUNCTUATION_TYPE));
                 $cursor += strlen($match[0]);
             } elseif (preg_match('/\[/A', $str, $match, null, $cursor)) {
                 $cursor += strlen($match[0]);

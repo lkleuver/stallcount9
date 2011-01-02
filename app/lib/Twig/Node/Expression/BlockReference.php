@@ -11,16 +11,16 @@
  */
 
 /**
- * Represents a parent node.
+ * Represents a block call node.
  *
  * @package    twig
  * @author     Fabien Potencier <fabien.potencier@symfony-project.com>
  */
-class Twig_Node_Parent extends Twig_Node
+class Twig_Node_Expression_BlockReference extends Twig_Node_Expression
 {
-    public function __construct($name, $lineno, $tag = null)
+    public function __construct(Twig_NodeInterface $name, $lineno, $tag = null)
     {
-        parent::__construct(array(), array('name' => $name), $lineno, $tag);
+        parent::__construct(array('name' => $name), array(), $lineno, $tag);
     }
 
     /**
@@ -28,13 +28,12 @@ class Twig_Node_Parent extends Twig_Node
      *
      * @param Twig_Compiler A Twig_Compiler instance
      */
-    public function compile($compiler)
+    public function compile(Twig_Compiler $compiler)
     {
         $compiler
-            ->addDebugInfo($this)
-            ->write("\$this->getParentBlock(")
-            ->string($this->getAttribute('name'))
-            ->raw(", \$context, \$blocks);\n")
+            ->raw("\$this->renderBlock(")
+            ->subcompile($this->getNode('name'))
+            ->raw(", \$context, \$blocks)")
         ;
     }
 }

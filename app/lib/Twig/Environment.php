@@ -9,13 +9,18 @@
  * file that was distributed with this source code.
  */
 
+/**
+ * Stores the Twig configuration.
+ *
+ * @package twig
+ * @author  Fabien Potencier <fabien.potencier@symfony-project.com>
+ */
 class Twig_Environment
 {
-    const VERSION = '0.9.9-DEV';
+    const VERSION = '1.0.0-BETA1';
 
     protected $charset;
     protected $loader;
-    protected $trimBlocks;
     protected $debug;
     protected $autoReload;
     protected $cache;
@@ -28,9 +33,14 @@ class Twig_Environment
     protected $visitors;
     protected $filters;
     protected $tests;
+    protected $functions;
+    protected $globals;
     protected $runtimeInitialized;
     protected $loadedTemplates;
     protected $strictVariables;
+    protected $unaryOperators;
+    protected $binaryOperators;
+    protected $templateClassPrefix = '__TwigTemplate_';
 
     /**
      * Constructor.
@@ -40,9 +50,6 @@ class Twig_Environment
      *  * debug: When set to `true`, the generated templates have a __toString()
      *           method that you can use to display the generated nodes (default to
      *           false).
-     *
-     *  * trim_blocks: Mimicks the behavior of PHP by removing the newline that
-     *                 follows instructions if present (default to false).
      *
      *  * charset: The charset used by the templates (default to utf-8).
      *
@@ -59,31 +66,44 @@ class Twig_Environment
      *  * strict_variables: Whether to ignore invalid variables in templates
      *                      (default to false).
      *
+     *  * autoescape: Whether to enable auto-escaping (default to true);
+     *
+     *  * optimizations: A flag that indicates which optimizations to apply
+     *                   (default to -1 which means that all optimizations are enabled;
+     *                   set it to 0 to disable)
+     *
      * @param Twig_LoaderInterface   $loader  A Twig_LoaderInterface instance
      * @param array                  $options An array of options
-     * @param Twig_LexerInterface    $lexer   A Twig_LexerInterface instance
-     * @param Twig_ParserInterface   $parser  A Twig_ParserInterface instance
-     * @param Twig_CompilerInterface $compiler A Twig_CompilerInterface instance
      */
-    public function __construct(Twig_LoaderInterface $loader = null, $options = array(), Twig_LexerInterface $lexer = null, Twig_ParserInterface $parser = null, Twig_CompilerInterface $compiler = null)
+    public function __construct(Twig_LoaderInterface $loader = null, $options = array())
     {
         if (null !== $loader) {
             $this->setLoader($loader);
         }
 
-        $this->setLexer(null !== $lexer ? $lexer : new Twig_Lexer());
-        $this->setParser(null !== $parser ? $parser : new Twig_Parser());
-        $this->setCompiler(null !== $compiler ? $compiler : new Twig_Compiler());
+        $options = array_merge(array(
+            'debug'               => false,
+            'charset'             => 'UTF-8',
+            'base_template_class' => 'Twig_Template',
+            'strict_variables'    => false,
+            'autoescape'          => true,
+            'cache'               => false,
+            'auto_reload'         => null,
+            'optimizations'       => -1,
+        ), $options);
 
-        $this->debug              = isset($options['debug']) ? (bool) $options['debug'] : false;
-        $this->trimBlocks         = isset($options['trim_blocks']) ? (bool) $options['trim_blocks'] : false;
-        $this->charset            = isset($options['charset']) ? $options['charset'] : 'UTF-8';
-        $this->baseTemplateClass  = isset($options['base_template_class']) ? $options['base_template_class'] : 'Twig_Template';
-        $this->autoReload         = isset($options['auto_reload']) ? (bool) $options['auto_reload'] : $this->debug;
-        $this->extensions         = array('core' => new Twig_Extension_Core());
-        $this->strictVariables    = isset($options['strict_variables']) ? (bool) $options['strict_variables'] : false;
+        $this->debug              = (bool) $options['debug'];
+        $this->charset            = $options['charset'];
+        $this->baseTemplateClass  = $options['base_template_class'];
+        $this->autoReload         = null === $options['auto_reload'] ? $this->debug : (bool) $options['auto_reload'];
+        $this->extensions         = array(
+            'core'      => new Twig_Extension_Core(),
+            'escaper'   => new Twig_Extension_Escaper((bool) $options['autoescape']),
+            'optimizer' => new Twig_Extension_Optimizer($options['optimizations']),
+        );
+        $this->strictVariables    = (bool) $options['strict_variables'];
         $this->runtimeInitialized = false;
-        if (isset($options['cache']) && $options['cache']) {
+        if ($options['cache']) {
             $this->setCache($options['cache']);
         }
     }
@@ -157,16 +177,6 @@ class Twig_Environment
         return $this->getCache() ? $this->getCache().'/'.$this->getTemplateClass($name).'.php' : false;
     }
 
-    public function getTrimBlocks()
-    {
-        return $this->trimBlocks;
-    }
-
-    public function setTrimBlocks($bool)
-    {
-        $this->trimBlocks = (bool) $bool;
-    }
-
     /**
      * Gets the template class associated with the given string.
      *
@@ -176,7 +186,7 @@ class Twig_Environment
      */
     public function getTemplateClass($name)
     {
-        return '__TwigTemplate_'.md5($this->loader->getCacheKey($name));
+        return $this->templateClassPrefix.md5($this->loader->getCacheKey($name));
     }
 
     /**
@@ -218,31 +228,51 @@ class Twig_Environment
         $this->loadedTemplates = array();
     }
 
+    /**
+     * Clears the template cache files on the filesystem.
+     */
+    public function clearCacheFiles()
+    {
+        if ($this->cache) {
+            foreach(new DirectoryIterator($this->cache) as $fileInfo) {
+                if (0 === strpos($fileInfo->getFilename(), $this->templateClassPrefix)) {
+                    @unlink($fileInfo->getPathname());
+                }
+            }
+        }
+    }
+
     public function getLexer()
     {
+        if (null === $this->lexer) {
+            $this->lexer = new Twig_Lexer($this);
+        }
+
         return $this->lexer;
     }
 
     public function setLexer(Twig_LexerInterface $lexer)
     {
         $this->lexer = $lexer;
-        $lexer->setEnvironment($this);
     }
 
-    public function tokenize($source, $name)
+    public function tokenize($source, $name = null)
     {
         return $this->getLexer()->tokenize($source, $name);
     }
 
     public function getParser()
     {
+        if (null === $this->parser) {
+            $this->parser = new Twig_Parser($this);
+        }
+
         return $this->parser;
     }
 
     public function setParser(Twig_ParserInterface $parser)
     {
         $this->parser = $parser;
-        $parser->setEnvironment($this);
     }
 
     public function parse(Twig_TokenStream $tokens)
@@ -252,13 +282,16 @@ class Twig_Environment
 
     public function getCompiler()
     {
+        if (null === $this->compiler) {
+            $this->compiler = new Twig_Compiler($this);
+        }
+
         return $this->compiler;
     }
 
     public function setCompiler(Twig_CompilerInterface $compiler)
     {
         $this->compiler = $compiler;
-        $compiler->setEnvironment($this);
     }
 
     public function compile(Twig_NodeInterface $node)
@@ -266,7 +299,7 @@ class Twig_Environment
         return $this->getCompiler()->compile($node)->getSource();
     }
 
-    public function compileSource($source, $name)
+    public function compileSource($source, $name = null)
     {
         return $this->compile($this->parse($this->tokenize($source, $name)));
     }
@@ -427,6 +460,102 @@ class Twig_Environment
         }
 
         return $this->tests;
+    }
+
+    public function addFunction($name, Twig_Function $function)
+    {
+        if (null === $this->functions) {
+            $this->loadFunctions();
+        }
+        $this->functions[$name] = $function;
+    }
+
+    /**
+     * Get a function by name
+     *
+     * Subclasses may override getFunction($name) and load functions differently;
+     * so no list of functions is available.
+     *
+     * @param string $name function name
+     * @return Twig_Function|null A Twig_Function instance or null if the function does not exists
+     */
+    public function getFunction($name)
+    {
+        if (null === $this->functions) {
+            $this->loadFunctions();
+        }
+
+        if (isset($this->functions[$name])) {
+            return $this->functions[$name];
+        }
+
+        return null;
+    }
+
+    protected function loadFunctions() {
+        $this->functions = array();
+        foreach ($this->getExtensions() as $extension) {
+            $this->functions = array_merge($this->functions, $extension->getFunctions());
+        }
+    }
+
+    public function addGlobal($name, $value)
+    {
+        if (null === $this->globals) {
+            $this->getGlobals();
+        }
+
+        $this->globals[$name] = $value;
+    }
+
+    public function getGlobals()
+    {
+        if (null === $this->globals) {
+            $this->globals = array();
+            foreach ($this->getExtensions() as $extension) {
+                $this->globals = array_merge($this->globals, $extension->getGlobals());
+            }
+        }
+
+        return $this->globals;
+    }
+
+    public function getUnaryOperators()
+    {
+        if (null === $this->unaryOperators) {
+            $this->initOperators();
+        }
+
+        return $this->unaryOperators;
+    }
+
+    public function getBinaryOperators()
+    {
+        if (null === $this->binaryOperators) {
+            $this->initOperators();
+        }
+
+        return $this->binaryOperators;
+    }
+
+    protected function initOperators()
+    {
+        $this->unaryOperators = array();
+        $this->binaryOperators = array();
+        foreach ($this->getExtensions() as $extension) {
+            $operators = $extension->getOperators();
+
+            if (!$operators) {
+                continue;
+            }
+
+            if (2 !== count($operators)) {
+                throw new InvalidArgumentException(sprintf('"%s::getOperators()" does not return a valid operators array.', get_class($extension)));
+            }
+
+            $this->unaryOperators = array_merge($this->unaryOperators, $operators[0]);
+            $this->binaryOperators = array_merge($this->binaryOperators, $operators[1]);
+        }
     }
 
     protected function writeCacheFile($file, $content)

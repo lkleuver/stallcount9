@@ -9,7 +9,7 @@
 	<ul>
 		{% for tournament in tournamentList %}
 			{% if tournament.state == 1 %}
-				<li><a href="?n=/tournament/detail/{{ tournament.id }}">{{ tournament.title }}</a></li>
+				<li><a href="?n=/tournament/detail/{{tournament.id}}">{{ tournament.title }}</a> <a class="action" href="?n=/tournament/remove/{{tournament.id}}">remove</a></li>
 			{% endif %}
 		{% endfor %}
 	</ul> 	

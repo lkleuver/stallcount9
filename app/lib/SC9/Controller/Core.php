@@ -15,7 +15,7 @@ class SC9_Controller_Core {
 
 	
 	public function relocate($path) {
-		header("location:/stallcount9/?n=".$path);  // FIXME Chris: I need to include some path here...
+		header("location: index.php?n=".$path);
 		exit;
 	}
 		
