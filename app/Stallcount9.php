@@ -10,9 +10,13 @@ class Stallcount9 {
 	/* static variables */
 	public static $path;
 	public static $settings;
-
-	public $output;
 	
+	//twig
+	private $output;
+	
+	//doctirne
+	private $manager;
+	private $conn;
 	
 	public function Stallcount9($config) {
 		//path to root of stallcount9 app
@@ -26,6 +30,11 @@ class Stallcount9 {
 		
 		//output controller
 		$this->output = new SC9_Output_TwigOutput(Stallcount9::$path.'../skin/'.Stallcount9::$settings->skin, Stallcount9::$path.'data/output/cache');
+		
+		$this->manager = Doctrine_Manager::getInstance();
+
+		$connStr = sprintf('%s://%s:%s@%s/%s', Stallcount9::$settings->database['type'], Stallcount9::$settings->database['user'], Stallcount9::$settings->database['password'], Stallcount9::$settings->database['host'], Stallcount9::$settings->database['name']);
+		$this->conn = Doctrine_Manager::connection($connStr);
 	}
 	
 	/**

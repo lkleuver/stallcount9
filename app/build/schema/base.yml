@@ -23,6 +23,12 @@ Tournament:
       autoincrement: true
     title:
       type: string(255)
+    state:
+      type: integer(4)
+    startDate:
+      type: integer(10)
+    endDate:
+      type: integer(10)
   options:
     collate: utf8_unicode_ci
     charset: utf8

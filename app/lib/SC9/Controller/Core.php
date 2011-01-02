@@ -14,8 +14,11 @@ class SC9_Controller_Core {
 	}
 
 	
-	
-	
+	public function relocate($path) {
+		header("location: /?n=".$path);
+		exit;
+	}
+		
 	public function get($key, $default = "") {
 		return isset($_GET[$key]) ? $_GET[$key] : $default;
 	}
