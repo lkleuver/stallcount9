@@ -46,12 +46,13 @@ class Stallcount9 {
 		$n = isset($_GET["n"]) ? $_GET["n"] : "";
 		
 		
+		
 		$xpl = explode("/", trim($n,"/")); // make array and drop prepending or trailing slashes
-
-		$section 	= count($xpl) > 0 ? array_shift($xpl) : "home";
+		
+		$section 	= count($xpl) > 0 && $xpl[0] != "" ? array_shift($xpl) : "home";
 		$action 	= count($xpl) > 0 ? array_Shift($xpl) : "index";	
 		
-		
+				
 		$class 	= "SC9_Controller_".ucfirst($section);
 		$method	= $action."Action"; 
 		

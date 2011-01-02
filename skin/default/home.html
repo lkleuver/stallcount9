@@ -7,7 +7,11 @@
   	
   	<h2>Open tournaments</h2>
 	<ul>
-		<li><a href="?n=/tournament/detail/1">Windmill Windup 2011</a></li>
+		{% for tournament in tournamentList %}
+			{% if tournament.state == 1 %}
+				<li><a href="?n=/tournament/detail/{{ tournament.id }}">{{ tournament.title }}</a></li>
+			{% endif %}
+		{% endfor %}
 	</ul> 	
 
 
@@ -15,14 +19,22 @@
   	<h2>Active tournaments</h2>
 	
 	<ul>
-		<li><a href="?n=/tournament/detail/1">Windmill Windup 2011</a></li>
+		{% for tournament in tournamentList %}
+			{% if tournament.state == 2 %}
+				<li><a href="?n=/tournament/detail/{{ tournament.id }}">{{ tournament.title }}</a></li>
+			{% endif %}
+		{% endfor %}
 	</ul> 	
 	
 
 
 	<h2>Closed tournaments</h2>
   	<ul>
-  		<li><a href="?n=/tournament/detail/2">Windmill Windup 2010</a></li>
+		{% for tournament in tournamentList %}
+			{% if tournament.state == 3 %}
+				<li><a href="?n=/tournament/detail/{{ tournament.id }}">{{ tournament.title }}</a></li>
+			{% endif %}
+		{% endfor %}
   	</ul>
 	
   	<a class="button" href="?n=/tournament/create"><span>New tournament</span></a>
