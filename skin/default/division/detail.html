@@ -3,24 +3,22 @@
 {% block title %}Stallcount9 - Open Division{% endblock %}
 
 {% block content %}
-	<h1>Open division</h1>
+	<h1>{{division.Tournament.title}} {{division.title}}</h1>
 	<h2>Stages</h2>
-	<p>drag/drop for order of stages</p>
+	
+	
 	<ul class="itemlist">
-		<li><a href="?n=/stage/detail/1">Swissdraw</a> <a class="action" href="#">remove</a></li>
-		<li>
-			<a href="?n=/stage/detail/2">Playoffs</a> <a class="action" href="#">remove</a>
-		
-		</li>
+		{% for stage in division.Stages %}
+			<li><a href="?n=/stage/detail/{{stage.id}}">{{stage.title}}</a> <a class="action" href="?n=/stage/remove/{{stage.id}}">delete</a></li>
+		{% endfor %}
 	</ul>
-	<a class="action" href="?n=/stage/create&divisionId=1">+ Add stage</a>
+	<a class="action" href="?n=/stage/create&divisionId={{division.id}}">+ Add stage</a>
 	
 	<br /><br />
 	
 	<h2>Teams</h2>
   	<ul class="itemlist">
-  		<li><a href="?n=/team/detail/1">Crunching Tigers</a> <a class="action" href="#">remove</a></li>
-  		<li><a href="?n=/team/detail/1">Cambo Cakes</a> <a class="action" href="#">remove</a></li>
+  		<li>!! team structure not in place yet </li>
   		<li><a href="?n=/team/detail/1">Rusty Bikes</a> <a class="action" href="#">remove</a></li>
  	</ul>
   		

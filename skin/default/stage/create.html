@@ -3,35 +3,16 @@
 {% block title %}New stage for Open Division{% endblock %}
 
 {% block content %}
-	<h1>New stage for Open Division</h1>
+	<h1>New stage for {{division.title}}</h1>
   
-  	<ul class="formlist">
-  		<li>
-  			<label>Stage name</label>
-  			<input type="text" name="tournamentName" value="Swissdraw" />
-  		</li>
-  		<li>
-  			<label>Rounds</label>
-  			<input type="text" name="startDate" />
-  		</li>
-  		<li>
-  			<label>Matchmaking</label>
-  			<select>
-  				<option value="1">Swiss draw</option>
-  				<option value="2">What goes here</option>
-  			</select>
-  		</li>
+  	
+  	<form method="post" action="?n=stage/create/" name="form-stage-create">
+  		{% include "stage/form.html" %}
   		
-		<li>
-			<label>Teams per pool</label>
-			<input type="text" name="teamsPerPool" /> (leave empty for one big pool )
-		</li>
-		
-		
-  		<li class="formaction">
-  			<a class="button" href="?n=/division/detail/1"><span>Create</span></a>
-  		</li>
-  	</ul>
+  		
+		<button name="stageSubmit" value="1">add</button>
+  	</form>
+  
   	
   
   

@@ -12,10 +12,20 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
+		$q = Doctrine_Query::create()
+			    ->from('Tournament t')
+			    ->leftJoin('t.Divisions d')
+			    ->where('t.id = ?', $this->tournamentId);
+		$tournament = $q->fetchOne();
+
+		
+		
 		$template = $this->output->loadTemplate('tournament/detail.html');
-		$template->display(array());
+		$template->display(array("tournament" => $tournament));
 	}
 	
+	
+
 	public function createAction() {
 		$tournament = new Tournament();
 		

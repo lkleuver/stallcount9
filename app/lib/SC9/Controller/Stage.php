@@ -20,10 +20,28 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 
 
 	public function createAction() {
-		$divisionId = $this->get("divisionId");
+		$division = Doctrine_Core::getTable("Division")->find($this->request("divisionId"));
+		$stage = new Stage(); 
+		
+		
+		if($this->post("stageSubmit") != "") {
+			$stage->title = $this->post("stageTitle");
+			$stage->link('Division', array($division->id));
+			$stage->save();
+			
+			$this->relocate("/division/detail/".$division->id);
+		}
 		
 		$template = $this->output->loadTemplate('stage/create.html');
-		$template->display(array());
+		$template->display(array("division" => $division, "stage" => $stage));
+	}
+	
+	
+	public function removeAction() {
+		$stage = Doctrine_Core::getTable("Stage")->find($this->stageId);
+		$divisionId = $stage->Division->id; //needed? to lazy to check if delete also empties the object
+		$stage->delete();
+		$this->relocate("/division/detail/".$divisionId);
 	}
 	
 	
