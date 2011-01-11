@@ -11,6 +11,8 @@
  * @property integer $stage_id
  * @property Stage $Stage
  * @property PoolType $PoolType
+ * @property Doctrine_Collection $Teams
+ * @property Doctrine_Collection $Rounds
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -22,23 +24,23 @@ abstract class BasePool extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('pool');
-        $this->hasColumn('id', 'integer', 4, array(
+        $this->hasColumn('id', 'integer', 8, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '4',
+             'length' => '8',
              ));
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('pool_type_id', 'integer', 4, array(
+        $this->hasColumn('pool_type_id', 'integer', 8, array(
              'type' => 'integer',
-             'length' => '4',
+             'length' => '8',
              ));
-        $this->hasColumn('stage_id', 'integer', 4, array(
+        $this->hasColumn('stage_id', 'integer', 8, array(
              'type' => 'integer',
-             'length' => '4',
+             'length' => '8',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');
@@ -55,5 +57,13 @@ abstract class BasePool extends Doctrine_Record
         $this->hasOne('PoolType', array(
              'local' => 'pool_type_id',
              'foreign' => 'id'));
+
+        $this->hasMany('Team as Teams', array(
+             'local' => 'id',
+             'foreign' => 'pool_id'));
+
+        $this->hasMany('Round as Rounds', array(
+             'local' => 'id',
+             'foreign' => 'pool_id'));
     }
 }

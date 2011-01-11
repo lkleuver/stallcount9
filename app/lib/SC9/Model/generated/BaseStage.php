@@ -21,19 +21,19 @@ abstract class BaseStage extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('stage');
-        $this->hasColumn('id', 'integer', 4, array(
+        $this->hasColumn('id', 'integer', 8, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '4',
+             'length' => '8',
              ));
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('division_id', 'integer', 4, array(
+        $this->hasColumn('division_id', 'integer', 8, array(
              'type' => 'integer',
-             'length' => '4',
+             'length' => '8',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');

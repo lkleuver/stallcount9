@@ -11,6 +11,7 @@
  * @property integer $startDate
  * @property integer $endDate
  * @property Doctrine_Collection $Divisions
+ * @property Doctrine_Collection $Teams
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -22,11 +23,11 @@ abstract class BaseTournament extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('tournament');
-        $this->hasColumn('id', 'integer', 4, array(
+        $this->hasColumn('id', 'integer', 8, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '4',
+             'length' => '8',
              ));
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
@@ -53,6 +54,10 @@ abstract class BaseTournament extends Doctrine_Record
     {
         parent::setUp();
         $this->hasMany('Division as Divisions', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('Team as Teams', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
     }
