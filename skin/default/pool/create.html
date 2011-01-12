@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+ 
+{% block title %}New Pool foor {{stage.title}}{% endblock %}
+
+{% block content %}
+	<h1>New Pool for {{stage.title}}</h1>
+  
+  	
+  	<form method="post" action="?n=/pool/create" name="form-pool-create">
+  		{% include "pool/form.html" %}
+  		
+  		
+		<button name="poolSubmit" value="1">add</button>
+  	</form>
+  
+  	
+  
+  
+  
+{% endblock %}

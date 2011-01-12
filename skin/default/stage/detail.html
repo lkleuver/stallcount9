@@ -3,24 +3,21 @@
 {% block title %}Open Division - Swissdraw{% endblock %}
 
 {% block content %}
-	<h1>Open Division - Swissdraw</h1>
+	<h1>{{stage.Division.title}} - {{stage.title}}</h1>
 	
-	<p>
-		Editable or just viewable information about a stage
-	</p>
 	
-	<p>
-		Current round information
-		<a href="#">Finish round</a>
-	</p>
+	<h2>Pools</h2>
 	
-	<p>
-		Complete schedule
-	</p>
+	<ul class="itemlist">
+		{% for pool in stage.Pools %}
+			<li><a href="?n=/pool/detail/{{pool.id}}">{{pool.title}}</a> <a class="action" href="?n=/pool/edit/{{pool.id}}">edit</a> <a class="action" href="?n=/pool/remove/{{pool.id}}">delete</a></li>
+		{% endfor %}
+	</ul>
+	<a class="action" href="?n=/pool/create&stageId={{stage.id}}">+ Add pool</a>
 	
 	
 	<p>
-		<a href="?n=/division/detail/1">back to division</a>
+		<a href="?n=/division/detail/{{stage.Division.id}}">back to division</a>
 	</p>
   
 {% endblock %}

@@ -22,7 +22,6 @@ class Stallcount9 {
 		//path to root of stallcount9 app
 		Stallcount9::$path = dirname(__FILE__)."/";
 		
-		//set class autoloader
 		$this->registerAutoloader();
 		
 		//parse settings (Settings is temporary, should use Container -> dependency injection)

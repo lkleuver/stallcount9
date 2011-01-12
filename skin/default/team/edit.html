@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+ 
+{% block title %}Edit Team {{team.name}} for {{division.title}}{% endblock %}
+
+{% block content %}
+	<h1>Edit Team {{team.name}} for {{division.title}}</h1>
+  
+  	
+  	<form method="post" action="?n=/team/edit/{{team.id}}" name="form-team-edit">
+  		{% include "team/form.html" %}
+
+		<button name="teamSubmit" value="1">update</button>
+  	</form>
+  
+  	
+  
+  
+  
+{% endblock %}

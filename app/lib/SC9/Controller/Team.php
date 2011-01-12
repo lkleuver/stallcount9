@@ -18,12 +18,46 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 		$template->display(array());
 	}
 	
-
-	public function addToDivision() {
-		$divisionId = $this->get("divisionId");
+	public function createAction() {
+		$division = Doctrine_Core::getTable("Division")->find($this->request("divisionId"));
+		$team = new Team();
 		
-		$template = $this->output->loadTemplate('team/addToDivision.html');
-		$template->display(array());
+		$this->handleFormSubmit($team);		
+
+		
+		$template = $this->output->loadTemplate('team/create.html');
+		$template->display(array("division" => $division, "team" => $team));
+	}
+	
+	
+	public function editAction() {
+		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
+		
+		$this->handleFormSubmit($team);		
+
+		
+		$template = $this->output->loadTemplate('team/edit.html');
+		$template->display(array("division" => $team->Division, "team" => $team));
+	}
+	
+	
+	private function handleFormSubmit($team) {
+		if($this->post("teamSubmit") != "") {
+			$team->name = $this->post("teamName");
+			$team->link('Division', array($this->post("divisionId")));
+			$team->save();
+
+			$this->relocate("/division/detail/".$this->post("divisionId"));
+		}
+	}
+	
+	
+	
+	public function removeAction() {
+		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
+		$divisionId = $team->Division->id; //needed? to lazy to check if delete also empties the object
+		$team->delete();
+		$this->relocate("/division/detail/".$divisionId);
 	}
 	
 }

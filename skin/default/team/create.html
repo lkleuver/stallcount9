@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+ 
+{% block title %}New Team foor {{division.title}}{% endblock %}
+
+{% block content %}
+	<h1>New Team for {{division.title}}</h1>
+  
+  	
+  	<form method="post" action="?n=/team/create" name="form-team-create">
+  		{% include "team/form.html" %}
+  		
+  		
+		<button name="teamSubmit" value="1">add</button>
+  	</form>
+  
+  	
+  
+  
+  
+{% endblock %}

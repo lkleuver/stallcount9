@@ -18,10 +18,11 @@
 	
 	<h2>Teams</h2>
   	<ul class="itemlist">
-  		<li>!! team structure not in place yet </li>
-  		<li><a href="?n=/team/detail/1">Rusty Bikes</a> <a class="action" href="#">remove</a></li>
+		{% for team in division.Teams %}
+			<li><a href="?n=/team/detail/{{team.id}}">{{team.name}}</a> <a class="action" href="?n=/team/edit/{{team.id}}">edit</a> <a class="action" href="?n=/team/remove/{{team.id}}">delete</a></li>
+		{% endfor %}
  	</ul>
   		
- 	<a class="action" href="?n=/team/addToDivision/1">+ Add team</a> 
+ 	<a class="action" href="?n=/team/create&divisionId={{division.id}}">+ Add team</a> 
   
 {% endblock %}

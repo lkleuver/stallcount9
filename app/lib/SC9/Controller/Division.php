@@ -16,6 +16,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 			    ->from('Division d')
 			    ->leftJoin('d.Stages s')
 			    ->leftJoin('d.Tournament t')
+			    ->leftJoin('d.Teams tms')
 			    ->where('d.id = ?', $this->divisionId);
 		$division = $q->fetchOne();
 		

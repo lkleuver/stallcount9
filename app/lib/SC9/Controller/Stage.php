@@ -13,8 +13,16 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
+		//$division = Doctrine_Core::getTable("Division")->find($this->divisionId);
+		$q = Doctrine_Query::create()
+			    ->from('Stage s')
+			    ->leftJoin('s.Division d')
+			    ->leftJoin('s.Pools p')
+			    ->where('s.id = ?', $this->stageId);
+		$stage = $q->fetchOne();
+		
 		$template = $this->output->loadTemplate('stage/detail.html');
-		$template->display(array());
+		$template->display(array("stage" => $stage));
 	}
 	
 
