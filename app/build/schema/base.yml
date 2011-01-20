@@ -69,45 +69,6 @@ Stage:
     collate: utf8_unicode_ci
     charset: utf8
     
-    
-Pool:
-  columns:
-    id:
-      type: integer(8)
-      primary: true
-      autoincrement: true
-    title:
-      type: string(255)
-    pool_type_id:
-      type: integer(8)
-    stage_id:
-      type: integer(8)
-  relations:
-    Stage:
-      foreignAlias: Pools
-    PoolType:
-      foreignType: one
-  options:
-    collate: utf8_unicode_ci
-    charset: utf8
-    
-    
-    
-PoolType:
-  columns:
-    id:
-      type: integer(8)
-      primary: true
-      autoincrement: true
-    title:
-      type: string(255)
-    description:
-      type: string(255)
-  options:
-    collate: utf8_unicode_ci
-    charset: utf8
-
-
 Team:
   columns:
     id:
@@ -134,6 +95,64 @@ Team:
   options:
     collate: utf8_unicode_ci
     charset: utf8
+  attributes:
+    export: all
+    validate: true
+  
+Pool:
+  columns:
+    id:
+      type: integer(8)
+      primary: true
+      autoincrement: true
+    title:
+      type: string(255)
+    pool_type_id:
+      type: integer(8)
+    stage_id:
+      type: integer(8)
+  relations:
+    Stage:
+      foreignAlias: Pools
+    PoolType:
+      foreignType: one
+    Teams:
+      foreignAlias: Pools
+      class: Team
+      refClass: PoolTeam
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    
+PoolTeam:
+  columns:
+    pool_id:
+      type: integer(8)
+      primary: true
+    team_id:
+      type: integer(8)
+      primary: true
+  relations:
+    Pool:
+      foreignAlias: PoolTeams
+    Team:
+      foreignAlias: PoolTeams
+    
+PoolType:
+  columns:
+    id:
+      type: integer(8)
+      primary: true
+      autoincrement: true
+    title:
+      type: string(255)
+    description:
+      type: string(255)
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+
+
 
 Field:
   columns:
@@ -206,3 +225,5 @@ PoolMatch:
   options:
     collate: utf8_unicode_ci
     charset: utf8
+
+    

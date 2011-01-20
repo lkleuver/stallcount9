@@ -14,6 +14,8 @@
  * @property Tournament $Tournament
  * @property Division $Division
  * @property Pool $Pool
+ * @property Doctrine_Collection $Pools
+ * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $HomeMatches
  * @property Doctrine_Collection $AwayMatches
  * 
@@ -54,6 +56,10 @@ abstract class BaseTeam extends Doctrine_Record
              'length' => '8',
              ));
 
+
+        $this->setAttribute(Doctrine_Core::ATTR_EXPORT, Doctrine_Core::EXPORT_ALL);
+        $this->setAttribute(Doctrine_Core::ATTR_VALIDATE, true);
+
         $this->option('collate', 'utf8_unicode_ci');
         $this->option('charset', 'utf8');
     }
@@ -72,6 +78,15 @@ abstract class BaseTeam extends Doctrine_Record
         $this->hasOne('Pool', array(
              'local' => 'pool_id',
              'foreign' => 'id'));
+
+        $this->hasMany('Pool as Pools', array(
+             'refClass' => 'PoolTeam',
+             'local' => 'team_id',
+             'foreign' => 'pool_id'));
+
+        $this->hasMany('PoolTeam as PoolTeams', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
 
         $this->hasMany('PoolMatch as HomeMatches', array(
              'local' => 'id',

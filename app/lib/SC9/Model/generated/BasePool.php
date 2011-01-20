@@ -12,6 +12,7 @@
  * @property Stage $Stage
  * @property PoolType $PoolType
  * @property Doctrine_Collection $Teams
+ * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $Rounds
  * 
  * @package    ##PACKAGE##
@@ -59,6 +60,11 @@ abstract class BasePool extends Doctrine_Record
              'foreign' => 'id'));
 
         $this->hasMany('Team as Teams', array(
+             'refClass' => 'PoolTeam',
+             'local' => 'pool_id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('PoolTeam as PoolTeams', array(
              'local' => 'id',
              'foreign' => 'pool_id'));
 
