@@ -54,10 +54,10 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	
 	
 	public function removeAction() {
-		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
-		$divisionId = $team->Division->id; //needed? to lazy to check if delete also empties the object
-		$team->delete();
-		$this->relocate("/division/detail/".$divisionId);
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$stageId = $pool->Stage->id; //needed? to lazy to check if delete also empties the object
+		$pool->delete();
+		$this->relocate("/stage/detail/".$stageId);
 	}
 	
 }
