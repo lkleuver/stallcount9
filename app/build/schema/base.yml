@@ -83,14 +83,10 @@ Team:
       type: integer(8)
     division_id:
       type: integer(8)
-    pool_id:
-      type: integer(8)
   relations:
     Tournament:
       foreignAlias: Teams
     Division:
-      foreignAlias: Teams
-    Pool:
       foreignAlias: Teams
   options:
     collate: utf8_unicode_ci

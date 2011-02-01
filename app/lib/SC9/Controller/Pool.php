@@ -13,9 +13,24 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
+		$q = Doctrine_Query::create()
+			    ->from('Pool p')
+			    ->leftJoin('p.Stage s')
+			    ->leftJoin('p.Teams t')
+			    ->where('p.id = ?', $this->poolId);
+		$pool = $q->fetchOne();
+		
+		
+		//(temporary) fetch teams which don't have a pool yet for this stage
+		$q = Doctrine_Query::create()
+				->from('Team t')
+				->leftJoin("t.PoolTeam pt")
+				->where('t.division_id = ? AND pt.pool_id is null', $pool->Stage->Division->id);
+		$teams = $q->execute();
+		
 		
 		$template = $this->output->loadTemplate('pool/detail.html');
-		$template->display(array());
+		$template->display(array("pool" => $pool, "teams" => $teams));
 	}
 	
 	public function createAction() {
@@ -38,6 +53,25 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		
 		$template = $this->output->loadTemplate('pool/edit.html');
 		$template->display(array("stage" => $pool->Stage, "pool" => $pool));
+	}
+	
+	
+	public function addteamAction() {
+		$teamId = $this->request("teamId");
+		$poolTeam = new PoolTeam();
+		$poolTeam->team_id = $teamId;
+		$poolTeam->pool_id = $this->poolId;
+		$poolTeam->save();
+		
+		$this->relocate("/pool/detail/".$this->poolId);
+	}
+	
+	public function removeteamAction() {
+		$teamId = $this->request("teamId");
+		$pool = Doctrine_Core::getTable('Pool')->find($this->poolId);
+		$pool->unlink('Teams', array($teamId));
+		$pool->save();
+		$this->relocate("/pool/detail/".$this->poolId);
 	}
 	
 	

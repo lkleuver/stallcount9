@@ -1,13 +1,31 @@
 {% extends "index.html" %}
  
-{% block title %}Pool details{% endblock %}
+{% block title %}Pool{% endblock %}
 
 {% block content %}
+	<h1>{{pool.Stage.title}} - {{pool.title}}</h1>
+	
+	
+	<h2>Teams</h2>
+	
+	<ul class="itemlist">
+		{% for team in pool.Teams %}
+			<li>{{team.name}} <a href="?n=/pool/removeteam/{{pool.id}}&teamId={{team.id}}">remove</a></li>
+		{% endfor %}
+	</ul>
+	
+
+	<h2>Add teams (temp)</h2>
+	<p>will work drag drop from the stage screen, this will run script manually</p>
+	<ul class="itemlist">
+		{% for team in teams %}
+			<li>{{team.name}} <a href="?n=/pool/addteam/{{pool.id}}&teamId={{team.id}}">add</a></li>
+		{% endfor %}
+	</ul>
+	
 	
 	<p>
-	pool details temp
+		<a href="?n=/stage/detail/{{pool.Stage.id}}">back to stage</a>
 	</p>
-
-  
   
 {% endblock %}
