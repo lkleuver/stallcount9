@@ -7,6 +7,8 @@
  * 
  * @property integer $id
  * @property string $title
+ * @property integer $tournament_id
+ * @property Tournament $Tournament
  * @property Doctrine_Collection $Matches
  * 
  * @package    ##PACKAGE##
@@ -29,6 +31,10 @@ abstract class BaseField extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
+        $this->hasColumn('tournament_id', 'integer', 8, array(
+             'type' => 'integer',
+             'length' => '8',
+             ));
 
         $this->option('collate', 'utf8_unicode_ci');
         $this->option('charset', 'utf8');
@@ -37,6 +43,10 @@ abstract class BaseField extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Tournament', array(
+             'local' => 'tournament_id',
+             'foreign' => 'id'));
+
         $this->hasMany('PoolMatch as Matches', array(
              'local' => 'id',
              'foreign' => 'field_id'));

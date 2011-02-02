@@ -61,7 +61,7 @@ class Doctrine_Data_Export extends Doctrine_Data
     {
         $models = Doctrine_Core::getLoadedModels();
         $specifiedModels = $this->getModels();
-
+        
         $data = array();
 
 		    // for situation when the $models array is empty, but the $specifiedModels array isn't

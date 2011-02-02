@@ -16,7 +16,7 @@ $manager = Doctrine_Manager::getInstance();
 $connStr = sprintf('%s://%s:%s@%s/%s', $config['database']['type'], $config['database']['user'], $config['database']['password'], $config['database']['host'], $config['database']['name']);
 $conn = Doctrine_Manager::connection($connStr);
 
-
+$modelsPath = '../lib/SC9/Model';
 
 function autoload($class) {
 	if(file_exists($file = '../lib/SC9/Model/generated/'.$class.'.php')) {

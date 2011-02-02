@@ -10,10 +10,8 @@
  * @property string $notes
  * @property integer $tournament_id
  * @property integer $division_id
- * @property integer $pool_id
  * @property Tournament $Tournament
  * @property Division $Division
- * @property Pool $Pool
  * @property Doctrine_Collection $Pools
  * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $HomeMatches
@@ -51,10 +49,6 @@ abstract class BaseTeam extends Doctrine_Record
              'type' => 'integer',
              'length' => '8',
              ));
-        $this->hasColumn('pool_id', 'integer', 8, array(
-             'type' => 'integer',
-             'length' => '8',
-             ));
 
 
         $this->setAttribute(Doctrine_Core::ATTR_EXPORT, Doctrine_Core::EXPORT_ALL);
@@ -73,10 +67,6 @@ abstract class BaseTeam extends Doctrine_Record
 
         $this->hasOne('Division', array(
              'local' => 'division_id',
-             'foreign' => 'id'));
-
-        $this->hasOne('Pool', array(
-             'local' => 'pool_id',
              'foreign' => 'id'));
 
         $this->hasMany('Pool as Pools', array(

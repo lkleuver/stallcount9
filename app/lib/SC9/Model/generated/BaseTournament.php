@@ -12,6 +12,7 @@
  * @property integer $endDate
  * @property Doctrine_Collection $Divisions
  * @property Doctrine_Collection $Teams
+ * @property Doctrine_Collection $Fields
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -58,6 +59,10 @@ abstract class BaseTournament extends Doctrine_Record
              'foreign' => 'tournament_id'));
 
         $this->hasMany('Team as Teams', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('Field as Fields', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
     }

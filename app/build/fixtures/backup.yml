@@ -1,0 +1,36 @@
+Division:
+  Division_1:
+    title: test
+  Division_2:
+    title: 'open division'
+    Tournament: Tournament_1
+Pool:
+  Pool_1:
+    title: 'Pool A'
+    Stage: Stage_1
+PoolTeam:
+  PoolTeam_1_1:
+    Pool: Pool_1
+    Team: Team_1
+  PoolTeam_1_2:
+    Pool: Pool_1
+    Team: Team_2
+Stage:
+  Stage_1:
+    title: 'swissdraw stage'
+    Division: Division_2
+Team:
+  Team_1:
+    name: 'team 1'
+    notes: null
+    Division: Division_2
+  Team_2:
+    name: 'team 2'
+    notes: null
+    Division: Division_2
+Tournament:
+  Tournament_1:
+    title: windmill
+    state: '1'
+    startDate: '1312754400'
+    endDate: '1313013600'

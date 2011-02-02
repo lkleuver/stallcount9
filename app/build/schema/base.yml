@@ -158,6 +158,11 @@ Field:
       autoincrement: true
     title:
       type: string(255)
+    tournament_id:
+      type: integer(8)
+  relations:
+    Tournament:
+      foreignAlias: Fields
   options:
     collate: utf8_unicode_ci
     charset: utf8
