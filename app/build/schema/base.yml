@@ -83,6 +83,8 @@ Team:
       type: integer(8)
     division_id:
       type: integer(8)
+    seed:
+      type: integer(4);
   relations:
     Tournament:
       foreignAlias: Teams
@@ -128,6 +130,9 @@ PoolTeam:
     team_id:
       type: integer(8)
       primary: true
+    rank:
+      type: integer(4)
+    
   relations:
     Pool:
       foreignAlias: PoolTeams
@@ -167,7 +172,7 @@ Field:
     collate: utf8_unicode_ci
     charset: utf8
 
-
+#matchlength overriding pool template
 Round:
   columns:
     id:
@@ -176,7 +181,7 @@ Round:
       autoincrement: true
     pool_id:
       type: integer(8)
-    startTime:
+    matchLength:
       type: integer(10)
   relations:
     Pool:
@@ -185,22 +190,26 @@ Round:
     collate: utf8_unicode_ci
     charset: utf8
 
-
-PoolMatch:
+#match per round
+Match:
   columns:
     id:
       type: integer(8)
       primary: true
       autoincrement: true
+    round_id:
+      type: integer(8)
     scheduledTime:
       type: integer(10)
     field_id:
       type: integer(8)
+    matchName:
+      type: string(255)
+    matchRank:
+      type: integer(4)
     home_team_id:
       type: integer(8)
     away_team_id:
-      type: integer(8)
-    round_id:
       type: integer(8)
     homeScore:
       type: integer(4)

@@ -13,6 +13,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
+		Doctrine_Core::debug(true);
 		$q = Doctrine_Query::create()
 			    ->from('Pool p')
 			    ->leftJoin('p.Stage s')
@@ -21,13 +22,13 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$pool = $q->fetchOne();
 		
 		
+		
 		//(temporary) fetch teams which don't have a pool yet for this stage
 		$q = Doctrine_Query::create()
 				->from('Team t')
 				->leftJoin("t.PoolTeam pt")
 				->where('t.division_id = ? AND pt.pool_id is null', $pool->Stage->Division->id);
 		$teams = $q->execute();
-		
 		
 		$template = $this->output->loadTemplate('pool/detail.html');
 		$template->display(array("pool" => $pool, "teams" => $teams));
