@@ -7,7 +7,7 @@
  * 
  * @property integer $id
  * @property integer $pool_id
- * @property integer $startTime
+ * @property integer $matchLength
  * @property Pool $Pool
  * @property Doctrine_Collection $Matches
  * 
@@ -21,19 +21,19 @@ abstract class BaseRound extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('round');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '8',
+             'length' => '4',
              ));
-        $this->hasColumn('pool_id', 'integer', 8, array(
+        $this->hasColumn('pool_id', 'integer', 4, array(
              'type' => 'integer',
-             'length' => '8',
+             'length' => '4',
              ));
-        $this->hasColumn('startTime', 'integer', 10, array(
+        $this->hasColumn('matchLength', 'integer', 4, array(
              'type' => 'integer',
-             'length' => '10',
+             'length' => '4',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');
@@ -47,7 +47,7 @@ abstract class BaseRound extends Doctrine_Record
              'local' => 'pool_id',
              'foreign' => 'id'));
 
-        $this->hasMany('PoolMatch as Matches', array(
+        $this->hasMany('RoundMatch as Matches', array(
              'local' => 'id',
              'foreign' => 'round_id'));
     }

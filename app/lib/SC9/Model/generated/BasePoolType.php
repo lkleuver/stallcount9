@@ -8,7 +8,7 @@
  * @property integer $id
  * @property string $title
  * @property string $description
- * @property Pool $Pool
+ * @property PoolTemplate $PoolTemplate
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -20,11 +20,11 @@ abstract class BasePoolType extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('pool_type');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '8',
+             'length' => '4',
              ));
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
@@ -42,7 +42,7 @@ abstract class BasePoolType extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Pool', array(
+        $this->hasOne('PoolTemplate', array(
              'local' => 'id',
              'foreign' => 'pool_type_id'));
     }

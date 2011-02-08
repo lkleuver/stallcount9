@@ -22,19 +22,19 @@ abstract class BaseDivision extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('division');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '8',
+             'length' => '4',
              ));
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('tournament_id', 'integer', 8, array(
+        $this->hasColumn('tournament_id', 'integer', 4, array(
              'type' => 'integer',
-             'length' => '8',
+             'length' => '4',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');

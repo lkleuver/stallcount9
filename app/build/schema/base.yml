@@ -3,7 +3,7 @@
 User:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     username:
@@ -18,7 +18,7 @@ User:
 Tournament:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     title:
@@ -37,13 +37,13 @@ Tournament:
 Division:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     title:
       type: string(255)
     tournament_id:
-      type: integer(8)
+      type: integer(4)
   relations:
     Tournament:
       foreignAlias: Divisions
@@ -55,13 +55,13 @@ Division:
 Stage:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     title: 
       type: string(255)
     division_id:
-      type: integer(8)
+      type: integer(4)
   relations:
     Division:
       foreignAlias: Stages
@@ -72,7 +72,7 @@ Stage:
 Team:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     name:
@@ -80,11 +80,11 @@ Team:
     notes:
       type: string(255)
     tournament_id:
-      type: integer(8)
+      type: integer(4)
     division_id:
-      type: integer(8)
+      type: integer(4)
     seed:
-      type: integer(4);
+      type: integer(4)
   relations:
     Tournament:
       foreignAlias: Teams
@@ -96,24 +96,46 @@ Team:
   attributes:
     export: all
     validate: true
-  
-Pool:
+ 
+PoolTemplate:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     title:
       type: string(255)
     pool_type_id:
-      type: integer(8)
-    stage_id:
-      type: integer(8)
+      type: integer(4)
+    numberOfRounds:
+      type: integer(4)
+    matchLength:
+      type: integer(4)
   relations:
+    PoolType:
+      foreignType: one    
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    
+    
+Pool:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    title:
+      type: string(255)
+    pool_template_id:
+      type: integer(4)
+    stage_id:
+      type: integer(4)
+  relations:
+    PoolTemplate:
+      foreignType: one
     Stage:
       foreignAlias: Pools
-    PoolType:
-      foreignType: one
     Teams:
       foreignAlias: Pools
       class: Team
@@ -125,10 +147,10 @@ Pool:
 PoolTeam:
   columns:
     pool_id:
-      type: integer(8)
+      type: integer(4)
       primary: true
     team_id:
-      type: integer(8)
+      type: integer(4)
       primary: true
     rank:
       type: integer(4)
@@ -142,7 +164,7 @@ PoolTeam:
 PoolType:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     title:
@@ -158,13 +180,13 @@ PoolType:
 Field:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     title:
       type: string(255)
     tournament_id:
-      type: integer(8)
+      type: integer(4)
   relations:
     Tournament:
       foreignAlias: Fields
@@ -176,13 +198,13 @@ Field:
 Round:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     pool_id:
-      type: integer(8)
+      type: integer(4)
     matchLength:
-      type: integer(10)
+      type: integer(4)
   relations:
     Pool:
       foreignAlias: Rounds
@@ -191,26 +213,26 @@ Round:
     charset: utf8
 
 #match per round
-Match:
+RoundMatch:
   columns:
     id:
-      type: integer(8)
+      type: integer(4)
       primary: true
       autoincrement: true
     round_id:
-      type: integer(8)
+      type: integer(4)
     scheduledTime:
       type: integer(10)
     field_id:
-      type: integer(8)
+      type: integer(4)
     matchName:
       type: string(255)
     matchRank:
       type: integer(4)
     home_team_id:
-      type: integer(8)
+      type: integer(4)
     away_team_id:
-      type: integer(8)
+      type: integer(4)
     homeScore:
       type: integer(4)
     awayScore:

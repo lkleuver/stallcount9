@@ -24,11 +24,11 @@ abstract class BaseTournament extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('tournament');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '8',
+             'length' => '4',
              ));
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',

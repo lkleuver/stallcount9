@@ -10,7 +10,16 @@
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Team extends BaseTeam
-{
+class Team extends BaseTeam {
+	
+	
+	public static function getTeamsWithoutPoolForDivision($divisionId) {
+		$q = Doctrine_Query::create()
+				->from('Team t')
+				->leftJoin("t.PoolTeam pt")
+				->where('t.division_id = ? AND pt.pool_id is null', $divisionId);
+		$teams = $q->execute();
+		return $teams;
+	}
 
 }

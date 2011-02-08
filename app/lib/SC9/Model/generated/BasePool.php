@@ -7,10 +7,10 @@
  * 
  * @property integer $id
  * @property string $title
- * @property integer $pool_type_id
+ * @property integer $pool_template_id
  * @property integer $stage_id
+ * @property PoolTemplate $PoolTemplate
  * @property Stage $Stage
- * @property PoolType $PoolType
  * @property Doctrine_Collection $Teams
  * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $Rounds
@@ -25,23 +25,23 @@ abstract class BasePool extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('pool');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '8',
+             'length' => '4',
              ));
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('pool_type_id', 'integer', 8, array(
+        $this->hasColumn('pool_template_id', 'integer', 4, array(
              'type' => 'integer',
-             'length' => '8',
+             'length' => '4',
              ));
-        $this->hasColumn('stage_id', 'integer', 8, array(
+        $this->hasColumn('stage_id', 'integer', 4, array(
              'type' => 'integer',
-             'length' => '8',
+             'length' => '4',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');
@@ -51,12 +51,12 @@ abstract class BasePool extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Stage', array(
-             'local' => 'stage_id',
+        $this->hasOne('PoolTemplate', array(
+             'local' => 'pool_template_id',
              'foreign' => 'id'));
 
-        $this->hasOne('PoolType', array(
-             'local' => 'pool_type_id',
+        $this->hasOne('Stage', array(
+             'local' => 'stage_id',
              'foreign' => 'id'));
 
         $this->hasMany('Team as Teams', array(

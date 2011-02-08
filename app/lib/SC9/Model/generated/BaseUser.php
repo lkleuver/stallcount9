@@ -19,11 +19,11 @@ abstract class BaseUser extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('user');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '8',
+             'length' => '4',
              ));
         $this->hasColumn('username', 'string', 255, array(
              'type' => 'string',

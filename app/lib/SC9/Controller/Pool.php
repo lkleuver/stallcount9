@@ -13,36 +13,23 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
-		Doctrine_Core::debug(true);
-		$q = Doctrine_Query::create()
-			    ->from('Pool p')
-			    ->leftJoin('p.Stage s')
-			    ->leftJoin('p.Teams t')
-			    ->where('p.id = ?', $this->poolId);
-		$pool = $q->fetchOne();
-		
-		
-		
-		//(temporary) fetch teams which don't have a pool yet for this stage
-		$q = Doctrine_Query::create()
-				->from('Team t')
-				->leftJoin("t.PoolTeam pt")
-				->where('t.division_id = ? AND pt.pool_id is null', $pool->Stage->Division->id);
-		$teams = $q->execute();
+
+		$pool = Pool::getById($this->poolId);
+		$teams = Team::getTeamsWithoutPoolForStage($pool->Stage->Division->id);
 		
 		$template = $this->output->loadTemplate('pool/detail.html');
 		$template->display(array("pool" => $pool, "teams" => $teams));
 	}
 	
 	public function createAction() {
-		$stage = Doctrine_Core::getTable("Stage")->find($this->request("stageId"));
+		$stage = Stage::getById($this->request("stageId"));
 		$pool = new Pool();
 		
 		$this->handleFormSubmit($pool);		
 
-		
+		$poolTemplates = PoolTemplate::getList();
 		$template = $this->output->loadTemplate('pool/create.html');
-		$template->display(array("stage" => $stage, "pool" => $pool));
+		$template->display(array("stage" => $stage, "pool" => $pool, "poolTemplates" => $poolTemplates));
 	}
 	
 	

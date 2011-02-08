@@ -12,9 +12,21 @@ PoolTeam:
   PoolTeam_1_1:
     Pool: Pool_1
     Team: Team_1
+    rank: null
   PoolTeam_1_2:
     Pool: Pool_1
     Team: Team_2
+    rank: null
+PoolTemplate:
+  PoolTemplate_1:
+    title: Swissdraw1
+    PoolType: PoolType_1
+    numberOfRounds: '8'
+    matchLength: '50'
+PoolType:
+  PoolType_1:
+    title: Swissdraw
+    description: 'Swissdraw matchmaking according to victory points'
 Stage:
   Stage_1:
     title: 'swissdraw stage'
@@ -24,10 +36,12 @@ Team:
     name: 'team 1'
     notes: null
     Division: Division_2
+    seed: null
   Team_2:
     name: 'team 2'
     notes: null
     Division: Division_2
+    seed: null
 Tournament:
   Tournament_1:
     title: windmill

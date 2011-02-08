@@ -4,5 +4,13 @@
   			<label>Pool title</label>
   			<input type="text" name="poolTitle" value="{{ pool.title }}" />
   		</li>
-
+		<li>
+  			<label>Pool Template</label>
+  			<select name="poolTemplate">
+  				{% for tmpl in poolTemplates %}
+  					<option value="{{tmpl.id}}">{{tmpl.title}}</option>
+  				{% endfor %}
+  			</select>
+  			
+  		</li>
   	</ul>

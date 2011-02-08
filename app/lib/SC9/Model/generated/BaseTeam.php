@@ -10,6 +10,7 @@
  * @property string $notes
  * @property integer $tournament_id
  * @property integer $division_id
+ * @property integer $seed
  * @property Tournament $Tournament
  * @property Division $Division
  * @property Doctrine_Collection $Pools
@@ -27,11 +28,11 @@ abstract class BaseTeam extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('team');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'autoincrement' => true,
-             'length' => '8',
+             'length' => '4',
              ));
         $this->hasColumn('name', 'string', 255, array(
              'type' => 'string',
@@ -41,13 +42,17 @@ abstract class BaseTeam extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('tournament_id', 'integer', 8, array(
+        $this->hasColumn('tournament_id', 'integer', 4, array(
              'type' => 'integer',
-             'length' => '8',
+             'length' => '4',
              ));
-        $this->hasColumn('division_id', 'integer', 8, array(
+        $this->hasColumn('division_id', 'integer', 4, array(
              'type' => 'integer',
-             'length' => '8',
+             'length' => '4',
+             ));
+        $this->hasColumn('seed', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
              ));
 
 
@@ -78,11 +83,11 @@ abstract class BaseTeam extends Doctrine_Record
              'local' => 'id',
              'foreign' => 'team_id'));
 
-        $this->hasMany('PoolMatch as HomeMatches', array(
+        $this->hasMany('RoundMatch as HomeMatches', array(
              'local' => 'id',
              'foreign' => 'home_team_id'));
 
-        $this->hasMany('PoolMatch as AwayMatches', array(
+        $this->hasMany('RoundMatch as AwayMatches', array(
              'local' => 'id',
              'foreign' => 'away_team_id'));
     }

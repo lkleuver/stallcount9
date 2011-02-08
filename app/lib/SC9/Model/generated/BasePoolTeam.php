@@ -7,6 +7,7 @@
  * 
  * @property integer $pool_id
  * @property integer $team_id
+ * @property integer $rank
  * @property Pool $Pool
  * @property Team $Team
  * 
@@ -20,15 +21,19 @@ abstract class BasePoolTeam extends Doctrine_Record
     public function setTableDefinition()
     {
         $this->setTableName('pool_team');
-        $this->hasColumn('pool_id', 'integer', 8, array(
+        $this->hasColumn('pool_id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
-             'length' => '8',
+             'length' => '4',
              ));
-        $this->hasColumn('team_id', 'integer', 8, array(
+        $this->hasColumn('team_id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
-             'length' => '8',
+             'length' => '4',
+             ));
+        $this->hasColumn('rank', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
              ));
     }
 

@@ -14,4 +14,14 @@ class Pool extends BasePool {
 
 	
 	
+	public static function getPoolById($id) {
+		$q = Doctrine_Query::create()
+			    ->from('Pool p')
+			    ->leftJoin('p.Stage s')
+			    ->leftJoin('p.Teams t')
+			    ->where('p.id = ?', $id);
+		$pool = $q->fetchOne();
+		return $pool;
+	}
+	
 }
