@@ -17,4 +17,15 @@ class Tournament extends BaseTournament {
 	const STATE_CLOSED = 3; 
 	
 
+	
+	
+	public static function getById($id) {
+		$q = Doctrine_Query::create()
+			    ->from('Tournament t')
+			    ->leftJoin('t.Divisions d')
+			    ->where('t.id = ?', $id);
+		$tournament = $q->fetchOne();
+		return $tournament;
+	}
+
 }

@@ -19,7 +19,7 @@ class SC9_Output_TwigOutput { //implements SC9_Output_iOutput {
 		));
 		
 		
-		//$this->twig->addFunction('path', new Twig_Function_Function('SC9_Output_TwigOutput::path'));
+		$this->twig->addFilter('sc9', new Twig_Filter_Function('SC9_Output_TwigOutput::path'));
 	}
 	
 	

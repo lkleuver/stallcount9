@@ -62,6 +62,10 @@ Stage:
       type: string(255)
     division_id:
       type: integer(4)
+    rank:
+      type: integer(4)
+    locked:
+      type: boolean
   relations:
     Division:
       foreignAlias: Stages
@@ -97,7 +101,7 @@ Team:
     export: all
     validate: true
  
-PoolTemplate:
+PoolRuleset:
   columns:
     id:
       type: integer(4)
@@ -110,6 +114,8 @@ PoolTemplate:
     numberOfRounds:
       type: integer(4)
     matchLength:
+      type: integer(4)
+    qualificationCutoff:
       type: integer(4)
   relations:
     PoolType:
@@ -127,12 +133,14 @@ Pool:
       autoincrement: true
     title:
       type: string(255)
-    pool_template_id:
+    pool_ruleset_id:
       type: integer(4)
     stage_id:
       type: integer(4)
+    rank:
+      type: integer(4)
   relations:
-    PoolTemplate:
+    PoolRuleset:
       foreignType: one
     Stage:
       foreignAlias: Pools
@@ -154,7 +162,6 @@ PoolTeam:
       primary: true
     rank:
       type: integer(4)
-    
   relations:
     Pool:
       foreignAlias: PoolTeams

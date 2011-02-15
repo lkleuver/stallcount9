@@ -7,9 +7,10 @@
  * 
  * @property integer $id
  * @property string $title
- * @property integer $pool_template_id
+ * @property integer $pool_ruleset_id
  * @property integer $stage_id
- * @property PoolTemplate $PoolTemplate
+ * @property integer $rank
+ * @property PoolRuleset $PoolRuleset
  * @property Stage $Stage
  * @property Doctrine_Collection $Teams
  * @property Doctrine_Collection $PoolTeams
@@ -35,11 +36,15 @@ abstract class BasePool extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('pool_template_id', 'integer', 4, array(
+        $this->hasColumn('pool_ruleset_id', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));
         $this->hasColumn('stage_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('rank', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));
@@ -51,8 +56,8 @@ abstract class BasePool extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('PoolTemplate', array(
-             'local' => 'pool_template_id',
+        $this->hasOne('PoolRuleset', array(
+             'local' => 'pool_ruleset_id',
              'foreign' => 'id'));
 
         $this->hasOne('Stage', array(

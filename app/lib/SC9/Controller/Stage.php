@@ -13,13 +13,7 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
-		//$division = Doctrine_Core::getTable("Division")->find($this->divisionId);
-		$q = Doctrine_Query::create()
-			    ->from('Stage s')
-			    ->leftJoin('s.Division d')
-			    ->leftJoin('s.Pools p')
-			    ->where('s.id = ?', $this->stageId);
-		$stage = $q->fetchOne();
+		$stage = Stage::getById($this->stageId);
 		
 		$template = $this->output->loadTemplate('stage/detail.html');
 		$template->display(array("stage" => $stage));
@@ -28,13 +22,13 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 
 
 	public function createAction() {
-		$division = Doctrine_Core::getTable("Division")->find($this->request("divisionId"));
+		$division = Division::getById($this->request("divisionId"));
 		$stage = new Stage(); 
-		
 		
 		if($this->post("stageSubmit") != "") {
 			$stage->title = $this->post("stageTitle");
 			$stage->link('Division', array($division->id));
+			$stage->rank = $division->getNextRank();			
 			$stage->save();
 			
 			$this->relocate("/division/detail/".$division->id);

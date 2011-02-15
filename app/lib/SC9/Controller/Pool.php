@@ -15,7 +15,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	public function detailAction() {
 
 		$pool = Pool::getById($this->poolId);
-		$teams = Team::getTeamsWithoutPoolForStage($pool->Stage->Division->id);
+		$teams = Team::getTeamsWithoutPoolForDivision($pool->Stage->Division->id);
 		
 		$template = $this->output->loadTemplate('pool/detail.html');
 		$template->display(array("pool" => $pool, "teams" => $teams));

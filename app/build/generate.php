@@ -14,3 +14,4 @@ Doctrine_Core::dropDatabases();
 Doctrine_Core::createDatabases();
 Doctrine_Core::generateModelsFromYaml('schema/base.yml', $modelsPath, $options);
 Doctrine_Core::createTablesFromModels($modelsPath);
+Doctrine_Core::loadData('fixtures/core.yml');

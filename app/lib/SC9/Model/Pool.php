@@ -14,7 +14,7 @@ class Pool extends BasePool {
 
 	
 	
-	public static function getPoolById($id) {
+	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('Pool p')
 			    ->leftJoin('p.Stage s')

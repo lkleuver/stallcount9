@@ -12,14 +12,8 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
-		$q = Doctrine_Query::create()
-			    ->from('Tournament t')
-			    ->leftJoin('t.Divisions d')
-			    ->where('t.id = ?', $this->tournamentId);
-		$tournament = $q->fetchOne();
+		$tournament = Tournament::getById($this->tournamentId);
 
-		
-		
 		$template = $this->output->loadTemplate('tournament/detail.html');
 		$template->display(array("tournament" => $tournament));
 	}
@@ -35,6 +29,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 			$tournament->endDate 	= strtotime($this->post("endDate"));
 			$tournament->state 		= Tournament::STATE_OPEN;
 			$tournament->save();
+			
 			
 			$this->relocate("/tournament/detail/".$tournament->id);
 		}

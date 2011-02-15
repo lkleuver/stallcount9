@@ -13,7 +13,13 @@
 class Stage extends BaseStage{
 
 	public static function getById($id) {
-		return Doctrine_Core::getTable("Stage")->find($id);
+		$q = Doctrine_Query::create()
+			    ->from('Stage s')
+			    ->leftJoin('s.Division d')
+			    ->leftJoin('s.Pools p')
+			    ->where('s.id = ?', $id);
+		$stage = $q->fetchOne();
+		return $stage;
 	}
 	
 }

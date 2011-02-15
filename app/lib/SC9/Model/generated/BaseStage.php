@@ -8,6 +8,7 @@
  * @property integer $id
  * @property string $title
  * @property integer $division_id
+ * @property integer $rank
  * @property Division $Division
  * @property Doctrine_Collection $Pools
  * 
@@ -32,6 +33,10 @@ abstract class BaseStage extends Doctrine_Record
              'length' => '255',
              ));
         $this->hasColumn('division_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('rank', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));
