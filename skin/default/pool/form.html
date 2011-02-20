@@ -5,10 +5,10 @@
   			<input type="text" name="poolTitle" value="{{ pool.title }}" />
   		</li>
 		<li>
-  			<label>Pool Template</label>
-  			<select name="poolTemplate">
-  				{% for tmpl in poolTemplates %}
-  					<option value="{{tmpl.id}}">{{tmpl.title}}</option>
+  			<label>Pool Ruleset</label>
+  			<select name="poolRulesetId">
+  				{% for rs in poolRulesets %}
+  					<option value="{{rs.id}}">{{rs.title}}</option>
   				{% endfor %}
   			</select>
   			

@@ -12,12 +12,38 @@
  */
 class Pool extends BasePool {
 
+	private $_strategy; //type: SC9_Strategy_Interface
 	
+	
+	public function schedule($teamCount) {
+		
+	}
+	
+	public function getTeamCount() {
+		return count($this->Teams);
+	}
+	
+	/**
+	 * 
+	 * returns the number of teams that will qualify
+	 */
+	public function getQualifiedTeamCount() {
+		//return $this->getStrategy()->
+	}
+	
+	public function getStrategy(){
+		if($this->_strategy == null) {
+			$this->_strategy = SC9_Factory_Strategy::createStrategy($this->PoolRuleset);
+		}
+		return $this->_strategy;
+	}
 	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('Pool p')
 			    ->leftJoin('p.Stage s')
+			    ->leftJoin('p.PoolRuleset rs')
+			    ->leftJoin('rs.PoolStrategy ps')
 			    ->leftJoin('p.Teams t')
 			    ->where('p.id = ?', $id);
 		$pool = $q->fetchOne();

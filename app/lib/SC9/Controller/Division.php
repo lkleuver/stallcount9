@@ -9,6 +9,15 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$this->divisionId = count($params) > 0 ? $params[0] : "";
 	}
 	
+
+	public function scheduleAction() {
+		$division = Division::getById($this->divisionId);
+		$division->schedule();
+		$this->relocate("/division/".$this->divisionId);
+	}
+	
+	
+	
 	
 	public function detailAction() {
 		$division = Division::getById($this->divisionId);

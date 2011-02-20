@@ -1,13 +1,38 @@
 Division:
   Division_1:
-    title: test
-  Division_2:
-    title: 'open division'
+    title: 'Open Division'
     Tournament: Tournament_1
 Pool:
   Pool_1:
-    title: 'Pool A'
+    title: 'Registration seeding'
+    PoolRuleset: PoolRuleset_1
     Stage: Stage_1
+    rank: '1'
+  Pool_2:
+    title: 'Swissdraw pool'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_2
+    rank: null
+PoolRuleset:
+  PoolRuleset_1:
+    title: Manual
+    PoolStrategy: PoolStrategy_1
+    numberOfRounds: '0'
+    matchLength: '0'
+    qualificationCutoff: '0'
+  PoolRuleset_2:
+    title: 'Swissdraw default'
+    PoolStrategy: PoolStrategy_2
+    numberOfRounds: '4'
+    matchLength: '50'
+    qualificationCutoff: '0'
+PoolStrategy:
+  PoolStrategy_1:
+    title: ManualRanking
+    description: 'manually rank pool'
+  PoolStrategy_2:
+    title: Swissdraw
+    description: 'Swissdraw matchmaking according to victory points'
 PoolTeam:
   PoolTeam_1_1:
     Pool: Pool_1
@@ -17,34 +42,45 @@ PoolTeam:
     Pool: Pool_1
     Team: Team_2
     rank: null
-PoolTemplate:
-  PoolTemplate_1:
-    title: Swissdraw1
-    PoolType: PoolType_1
-    numberOfRounds: '8'
-    matchLength: '50'
-PoolType:
-  PoolType_1:
-    title: Swissdraw
-    description: 'Swissdraw matchmaking according to victory points'
+  PoolTeam_1_3:
+    Pool: Pool_1
+    Team: Team_3
+    rank: null
+  PoolTeam_1_4:
+    Pool: Pool_1
+    Team: Team_4
+    rank: null
 Stage:
   Stage_1:
-    title: 'swissdraw stage'
-    Division: Division_2
+    title: 'Registration stage'
+    Division: Division_1
+    rank: '1'
+    locked: null
+  Stage_2:
+    title: 'Swissdraw stage'
+    Division: Division_1
+    rank: '2'
+    locked: null
 Team:
   Team_1:
-    name: 'team 1'
+    name: Team1
     notes: null
-    Division: Division_2
-    seed: null
+    Division: Division_1
   Team_2:
-    name: 'team 2'
+    name: Team2
     notes: null
-    Division: Division_2
-    seed: null
+    Division: Division_1
+  Team_3:
+    name: Team3
+    notes: null
+    Division: Division_1
+  Team_4:
+    name: Team4
+    notes: null
+    Division: Division_1
 Tournament:
   Tournament_1:
-    title: windmill
+    title: Windmill
     state: '1'
     startDate: '1312754400'
     endDate: '1313013600'

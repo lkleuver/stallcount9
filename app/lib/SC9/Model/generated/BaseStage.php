@@ -9,6 +9,7 @@
  * @property string $title
  * @property integer $division_id
  * @property integer $rank
+ * @property boolean $locked
  * @property Division $Division
  * @property Doctrine_Collection $Pools
  * 
@@ -39,6 +40,9 @@ abstract class BaseStage extends Doctrine_Record
         $this->hasColumn('rank', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
+             ));
+        $this->hasColumn('locked', 'boolean', null, array(
+             'type' => 'boolean',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');

@@ -27,9 +27,9 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		
 		$this->handleFormSubmit($pool);		
 
-		$poolTemplates = PoolTemplate::getList();
+		$poolRulesets = PoolRuleset::getList();
 		$template = $this->output->loadTemplate('pool/create.html');
-		$template->display(array("stage" => $stage, "pool" => $pool, "poolTemplates" => $poolTemplates));
+		$template->display(array("stage" => $stage, "pool" => $pool, "poolRulesets" => $poolRulesets));
 	}
 	
 	
@@ -67,6 +67,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		if($this->post("poolSubmit") != "") {
 			$pool->title = $this->post("poolTitle");
 			$pool->link('Stage', array($this->post("stageId")));
+			$pool->link('PoolRuleset', array($this->post("poolRulesetId")));
 			$pool->save();
 
 			$this->relocate("/stage/detail/".$this->post("stageId"));

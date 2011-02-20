@@ -26,7 +26,7 @@ class Division extends BaseDivision {
 		$pool->title = "Registration seeding";
 		$pool->rank = 1;
 		$pool->link('Stage', array($stage->id));
-		$pool->pool_ruleset_id = PoolRuleset::SETUP_ID;
+		$pool->pool_ruleset_id = PoolRuleset::MANUAL_ID;
 		$pool->save();
 	}
 	
@@ -38,6 +38,18 @@ class Division extends BaseDivision {
 			}
 		}
 		return $rank;
+	}
+	
+	//TODO: build in a check that makes sure the stages ranks are ascending
+	/*
+	 * pre: Stages length is not 0
+	 */
+	public function schedule() {
+		$teamCount = $this->Stages[0]->geTeamCount();
+		foreach($this->Stages as $stage) {
+			$stage->schedule($teamCount);
+			$teamCount = $stage->getQualifiedTeamCount();
+		}
 	}
 	
 	

@@ -12,6 +12,16 @@
  */
 class PoolRuleset extends BasePoolRuleset {
 	
-	const SETUP_ID = 1;
+	const MANUAL_ID = 1;
+	
+	
+	
+	public static function getList() {
+		$q = Doctrine_Query::create()
+				->from('PoolRuleset t')
+				->leftJoin("t.PoolStrategy ps");
+		$rulesets = $q->execute();
+		return $rulesets;
+	}
 
 }

@@ -1,8 +1,8 @@
-PoolType:
-  PoolType_1:
-    title: Setup
-    description: 'manually setup pool'
-  PoolType_2:
+PoolStrategy:
+  PoolStrategy_1:
+    title: ManualRanking
+    description: 'manually rank pool'
+  PoolStrategy_2:
     title: Swissdraw
     description: 'Swissdraw matchmaking according to victory points'
 
@@ -10,7 +10,7 @@ PoolType:
 PoolRuleset:
   PoolRuleset_1:
     title: Setup
-    pool_type_id: 1
+    pool_strategy_id: 1
     numberOfRounds: 0
     matchLength: 0
     qualificationCutoff: 0

@@ -12,6 +12,27 @@
  */
 class Stage extends BaseStage{
 
+	
+	public function schedule($teamCount) {
+		
+	}
+	
+	public function getTeamCount() {
+		$result = 0;
+		foreach($this->Pools as $pool) {
+			$result += $pool->getTeamCount();
+		}
+		return $result;
+	}
+	
+	public function getQaulifiedTeamCount() {
+		$result = 0;
+		foreach($this->Pools as $pool) {
+			$result += $pool->getQualifiedTeamCount();
+		}
+		return $result;
+	}
+	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('Stage s')

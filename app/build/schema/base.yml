@@ -87,8 +87,6 @@ Team:
       type: integer(4)
     division_id:
       type: integer(4)
-    seed:
-      type: integer(4)
   relations:
     Tournament:
       foreignAlias: Teams
@@ -109,7 +107,7 @@ PoolRuleset:
       autoincrement: true
     title:
       type: string(255)
-    pool_type_id:
+    pool_strategy_id:
       type: integer(4)
     numberOfRounds:
       type: integer(4)
@@ -118,7 +116,7 @@ PoolRuleset:
     qualificationCutoff:
       type: integer(4)
   relations:
-    PoolType:
+    PoolStrategy:
       foreignType: one    
   options:
     collate: utf8_unicode_ci
@@ -168,7 +166,7 @@ PoolTeam:
     Team:
       foreignAlias: PoolTeams
     
-PoolType:
+PoolStrategy:
   columns:
     id:
       type: integer(4)

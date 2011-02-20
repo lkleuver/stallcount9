@@ -7,11 +7,11 @@
  * 
  * @property integer $id
  * @property string $title
- * @property integer $pool_type_id
+ * @property integer $pool_strategy_id
  * @property integer $numberOfRounds
  * @property integer $matchLength
  * @property integer $qualificationCutoff
- * @property PoolType $PoolType
+ * @property PoolStrategy $PoolStrategy
  * @property Pool $Pool
  * 
  * @package    ##PACKAGE##
@@ -34,7 +34,7 @@ abstract class BasePoolRuleset extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('pool_type_id', 'integer', 4, array(
+        $this->hasColumn('pool_strategy_id', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));
@@ -58,8 +58,8 @@ abstract class BasePoolRuleset extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('PoolType', array(
-             'local' => 'pool_type_id',
+        $this->hasOne('PoolStrategy', array(
+             'local' => 'pool_strategy_id',
              'foreign' => 'id'));
 
         $this->hasOne('Pool', array(
