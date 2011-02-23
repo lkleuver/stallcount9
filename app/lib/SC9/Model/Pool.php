@@ -15,8 +15,29 @@ class Pool extends BasePool {
 	private $_strategy; //type: SC9_Strategy_Interface
 	
 	
+	//TODO: currently assumes it's the only pool and consumes all teamspots
 	public function schedule($teamCount) {
+		$nrOfRounds = $this->getStrategy()->calculateNumberOfRounds($teamCount);
+		$matchCountPerRound = ceil($teamCount / 2);
 		
+		for($i = 0; $i < $nrOfRounds; $i++) {
+			$round = new Round();
+			$round->rank = $i+1;
+			$round->matchLength = $this->PoolRuleset->matchLength;
+			$round->link('Pool', array($this->id));	
+			$round->save();
+			
+			for($j = 0; $j < $matchCountPerRound; $j++) {
+				$match = new RoundMatch();
+				$match->link('Round', array($round->id));
+				$match->rank = $j+1;
+				$match->matchName = "match rank ".($j + 1);
+				//link fields
+				$match->save();
+			}
+		}
+		
+		return $teamCount;
 	}
 	
 	public function getTeamCount() {

@@ -10,7 +10,7 @@
  * @property integer $scheduledTime
  * @property integer $field_id
  * @property string $matchName
- * @property integer $matchRank
+ * @property integer $rank
  * @property integer $home_team_id
  * @property integer $away_team_id
  * @property integer $homeScore
@@ -53,7 +53,7 @@ abstract class BaseRoundMatch extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('matchRank', 'integer', 4, array(
+        $this->hasColumn('rank', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));

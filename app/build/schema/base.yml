@@ -210,6 +210,8 @@ Round:
       type: integer(4)
     matchLength:
       type: integer(4)
+    rank:
+      type: integer(4)
   relations:
     Pool:
       foreignAlias: Rounds
@@ -232,7 +234,7 @@ RoundMatch:
       type: integer(4)
     matchName:
       type: string(255)
-    matchRank:
+    rank:
       type: integer(4)
     home_team_id:
       type: integer(4)

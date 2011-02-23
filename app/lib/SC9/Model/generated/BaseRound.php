@@ -8,6 +8,7 @@
  * @property integer $id
  * @property integer $pool_id
  * @property integer $matchLength
+ * @property integer $rank
  * @property Pool $Pool
  * @property Doctrine_Collection $Matches
  * 
@@ -32,6 +33,10 @@ abstract class BaseRound extends Doctrine_Record
              'length' => '4',
              ));
         $this->hasColumn('matchLength', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('rank', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));

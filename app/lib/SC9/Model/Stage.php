@@ -14,7 +14,13 @@ class Stage extends BaseStage{
 
 	
 	public function schedule($teamCount) {
-		
+		foreach($this->Pools as $pool) {
+			if($teamCount > 0) {
+				$teamCount -= $pool->schedule($teamCount);
+			}else{
+				break;
+			}
+		}		
 	}
 	
 	public function getTeamCount() {
