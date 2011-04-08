@@ -7,6 +7,7 @@
  * 
  * @property integer $id
  * @property string $title
+ * @property integer $currentRound
  * @property integer $pool_ruleset_id
  * @property integer $stage_id
  * @property integer $rank
@@ -35,6 +36,11 @@ abstract class BasePool extends Doctrine_Record
         $this->hasColumn('title', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
+             ));
+        $this->hasColumn('currentRound', 'integer', 4, array(
+             'type' => 'integer',
+             'default' => 0,
+             'length' => '4',
              ));
         $this->hasColumn('pool_ruleset_id', 'integer', 4, array(
              'type' => 'integer',

@@ -63,18 +63,53 @@ class Pool extends BasePool {
 		return $this->_strategy;
 	}
 	
+	
+	public function isFinished() {
+		return $this->currentRound >= $this->getNumberOfRounds();
+	}
+	
+	public function getNumberOfRounds() {
+		return $this->getStrategy()->calculateNumberOfRounds($this->getTeamCount());
+	}
+	
+	public function getQualifiedTeams() {
+		$result = array();
+		$this->sortTeamsByRank();
+		for($i = 0; $i < $this->PoolRuleset->qualificationCutoff; $i++) {
+			$result[] = $this->PoolTeams[$i]->Team;
+		}
+		
+		return $result;
+	}
+
+//private helper functions
+
+	private function sortTeamsByRank() {
+		usort($this->PoolTeams, function($a, $b) {
+			if($a->rank == $b->rank) {
+				return 0;
+			}
+			return $a->rank < $b->rank ? -1 : 1;
+		});
+	}
+	
+//DATABASE FUNCTIONS
+	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('Pool p')
 			    ->leftJoin('p.Stage s')
 			    ->leftJoin('p.PoolRuleset rs')
 			    ->leftJoin('rs.PoolStrategy ps')
-			    ->leftJoin('p.Teams t')
+			    ->leftJoin('p.PoolTeams pt')
+			    ->leftJoin('pt.Team t')
 			    ->leftJoin('p.Rounds r')
 			    ->leftJoin('r.Matches rm')
 			    ->where('p.id = ?', $id);
 		$pool = $q->fetchOne();
 		return $pool;
 	}
+	
+
 	
 }

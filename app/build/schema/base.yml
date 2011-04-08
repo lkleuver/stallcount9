@@ -131,6 +131,9 @@ Pool:
       autoincrement: true
     title:
       type: string(255)
+    currentRound:
+      type: integer(4)
+      default: 0
     pool_ruleset_id:
       type: integer(4)
     stage_id:
@@ -142,10 +145,6 @@ Pool:
       foreignType: one
     Stage:
       foreignAlias: Pools
-    Teams:
-      foreignAlias: Pools
-      class: Team
-      refClass: PoolTeam
   options:
     collate: utf8_unicode_ci
     charset: utf8

@@ -12,7 +12,7 @@ Pool:
     title: 'Swissdraw pool'
     PoolRuleset: PoolRuleset_2
     Stage: Stage_2
-    rank: null
+    rank: '2'
 PoolRuleset:
   PoolRuleset_1:
     title: Manual

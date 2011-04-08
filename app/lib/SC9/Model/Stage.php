@@ -26,6 +26,7 @@ class Stage extends BaseStage{
 	/**
 	 * 
 	 * Number of teams in this Stage
+	 * @return int
 	 */
 	public function getTeamCount() {
 		$result = 0;
@@ -38,6 +39,7 @@ class Stage extends BaseStage{
 	/**
 	 * 
 	 * number of teams that will qualify for the next round
+	 * @return int
 	 */
 	public function getQualifiedTeamCount() {
 		$result = 0;
@@ -46,6 +48,39 @@ class Stage extends BaseStage{
 		}
 		return $result;
 	}
+	
+	/**
+	 * 
+	 * check if all matches in this stage are played
+	 * @return Boolean
+	 */
+	public function isFinished() {
+		foreach($this->Pools as $pool) {
+			if(!$pool->isFinished()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public function getQualifiedTeams() {
+		$result = array();
+		foreach($this->Pools as $pool) {
+			$qualifiedPoolTeams = $pool->getQualifiedTeams();
+			foreach($qualifiedPoolTeams as $team) $result[] = $team;
+		}
+		return $result;
+	}
+	
+	public function seedWithTeams($seedTeams) {
+		echo "Seeding:<br />";
+		foreach($seedTeams as $team) {
+			echo $team->id."<br />";
+		}
+		exit;
+	}
+	
+
 	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()

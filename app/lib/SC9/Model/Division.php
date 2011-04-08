@@ -52,9 +52,30 @@ class Division extends BaseDivision {
 				$teamCount = $stage->getQualifiedTeamCount();
 			}
 		}
-		exit;
 	}
 	
+	public function seedNextStage() {
+		$lastFinishedStage = null;
+		foreach($this->Stages as $stage) {
+			if(!$stage->isFinished()) {
+				if($lastFinishedStage != null) {
+					$stage->seedWithTeams($lastFinishedStage->getQualifiedTeams());
+					return;
+				}
+			}else{
+				$lastFinishedStage = $stage;
+			}
+		}
+	}
+	
+	public function getStageById($id) {
+		foreach($this->Stages as $stage) {
+			if($stage->id == $id) {
+				return $stage;
+			}
+		}
+		return null;
+	}
 	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()

@@ -47,6 +47,12 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$template->display(array("tournament" => $tournament, "division" => $division));
 	}
 	
+	public function nextstageAction() {
+		$division = Division::getById($this->divisionId);
+		$seedingStageId = $this->get("seedingStageId");
+		$division->seedNextStage();
+		
+	}
 	
 	public function removeAction() {
 		$division = Doctrine_Core::getTable("Division")->find($this->divisionId);
