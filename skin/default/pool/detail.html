@@ -5,6 +5,20 @@
 {% block content %}
 	<h1>{{pool.Stage.title}} - {{pool.title}}</h1>
 	
+	<h2>Rounds</h2>
+	<ul class="roundlist">
+		{% for round in pool.Rounds %}
+			<li>
+				<h3>Round {{round.rank}}</h3>
+				<ul class="matchlist">
+				{% for match in round.Matches %}
+					<li>{{match.matchName}}</li>
+				{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
+	
 	
 	<h2>Teams</h2>
 	

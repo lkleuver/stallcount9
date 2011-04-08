@@ -4,9 +4,10 @@ class SC9_Factory_Strategy {
 	
 	
 	public static function createStrategy(PoolRuleset $ruleset) {
-		$strategyId = $ruleset->PoolStrategy->id;
-		switch($strategyId) {
-			case 2:
+		$strategyTitle = $ruleset->PoolStrategy->title;
+
+		switch($strategyTitle) {
+			case "Swissdraw":
 				return new SC9_Strategy_SwissDraw($ruleset->numberOfRounds);
 				break;
 		}

@@ -23,6 +23,10 @@ class Stage extends BaseStage{
 		}		
 	}
 	
+	/**
+	 * 
+	 * Number of teams in this Stage
+	 */
 	public function getTeamCount() {
 		$result = 0;
 		foreach($this->Pools as $pool) {
@@ -31,7 +35,11 @@ class Stage extends BaseStage{
 		return $result;
 	}
 	
-	public function getQaulifiedTeamCount() {
+	/**
+	 * 
+	 * number of teams that will qualify for the next round
+	 */
+	public function getQualifiedTeamCount() {
 		$result = 0;
 		foreach($this->Pools as $pool) {
 			$result += $pool->getQualifiedTeamCount();

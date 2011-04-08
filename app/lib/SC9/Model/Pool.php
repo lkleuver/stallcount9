@@ -17,10 +17,14 @@ class Pool extends BasePool {
 	
 	//TODO: currently assumes it's the only pool and consumes all teamspots
 	public function schedule($teamCount) {
+
 		$nrOfRounds = $this->getStrategy()->calculateNumberOfRounds($teamCount);
+		echo "ROUNDS " .$nrOfRounds."<br />";
+		
 		$matchCountPerRound = ceil($teamCount / 2);
 		
 		for($i = 0; $i < $nrOfRounds; $i++) {
+			echo "loop<br />";
 			$round = new Round();
 			$round->rank = $i+1;
 			$round->matchLength = $this->PoolRuleset->matchLength;
@@ -66,6 +70,8 @@ class Pool extends BasePool {
 			    ->leftJoin('p.PoolRuleset rs')
 			    ->leftJoin('rs.PoolStrategy ps')
 			    ->leftJoin('p.Teams t')
+			    ->leftJoin('p.Rounds r')
+			    ->leftJoin('r.Matches rm')
 			    ->where('p.id = ?', $id);
 		$pool = $q->fetchOne();
 		return $pool;

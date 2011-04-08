@@ -88,6 +88,7 @@ class Stallcount9 {
 	 */
     static public function autoload($class) {
 		$file = Stallcount9::$path.'lib/'.str_replace('_', '/', $class).'.php';
+
         if (file_exists($file)) {
             require $file;
             return;
