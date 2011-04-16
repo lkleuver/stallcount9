@@ -13,4 +13,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	public function calculateNumberOfRounds($teamCount) {
 		return $this->numberOfRounds;
 	}
+	
+	public function createMatchups($pool) {
+		
+	}
 }

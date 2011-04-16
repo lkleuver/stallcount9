@@ -12,7 +12,6 @@
  * @property integer $division_id
  * @property Tournament $Tournament
  * @property Division $Division
- * @property Doctrine_Collection $Pools
  * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $HomeMatches
  * @property Doctrine_Collection $AwayMatches
@@ -68,11 +67,6 @@ abstract class BaseTeam extends Doctrine_Record
         $this->hasOne('Division', array(
              'local' => 'division_id',
              'foreign' => 'id'));
-
-        $this->hasMany('Pool as Pools', array(
-             'refClass' => 'PoolTeam',
-             'local' => 'team_id',
-             'foreign' => 'pool_id'));
 
         $this->hasMany('PoolTeam as PoolTeams', array(
              'local' => 'id',

@@ -10,10 +10,12 @@
  * @property integer $currentRound
  * @property integer $pool_ruleset_id
  * @property integer $stage_id
+ * @property integer $spots
  * @property integer $rank
  * @property PoolRuleset $PoolRuleset
  * @property Stage $Stage
- * @property Doctrine_Collection $Teams
+ * @property Doctrine_Collection $SourceMoves
+ * @property Doctrine_Collection $DestinationMoves
  * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $Rounds
  * 
@@ -50,6 +52,10 @@ abstract class BasePool extends Doctrine_Record
              'type' => 'integer',
              'length' => '4',
              ));
+        $this->hasColumn('spots', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
         $this->hasColumn('rank', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
@@ -70,10 +76,13 @@ abstract class BasePool extends Doctrine_Record
              'local' => 'stage_id',
              'foreign' => 'id'));
 
-        $this->hasMany('Team as Teams', array(
-             'refClass' => 'PoolTeam',
-             'local' => 'pool_id',
-             'foreign' => 'team_id'));
+        $this->hasMany('PoolMove as SourceMoves', array(
+             'local' => 'id',
+             'foreign' => 'pool_id'));
+
+        $this->hasMany('PoolMove as DestinationMoves', array(
+             'local' => 'id',
+             'foreign' => 'source_pool_id'));
 
         $this->hasMany('PoolTeam as PoolTeams', array(
              'local' => 'id',

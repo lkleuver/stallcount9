@@ -138,6 +138,8 @@ Pool:
       type: integer(4)
     stage_id:
       type: integer(4)
+    spots:
+      type: integer(4)
     rank:
       type: integer(4)
   relations:
@@ -148,7 +150,31 @@ Pool:
   options:
     collate: utf8_unicode_ci
     charset: utf8
-    
+
+PoolMove:
+  columns:
+    pool_id:
+      type: integer(4)
+      primary: true
+    source_pool_id:
+      type: integer(4)
+      primary: true
+    spot:
+      type: integer(4)
+      primary: true
+  relations:
+    Pool:
+      foreignAlias: SourceMoves
+    SourcePool:
+      class: Pool
+      local: source_pool_id
+      foreign: id
+      foreignAlias: DestinationMoves
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+
+
 PoolTeam:
   columns:
     pool_id:
