@@ -19,6 +19,16 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$template = $this->output->loadTemplate('stage/detail.html');
 		$template->display(array("stage" => $stage));
 	}
+
+	public function movesAction() {
+		$stage = Stage::getById($this->stageId);
+		$seedStage = $stage->getParentStage();
+		
+		$seedStage->Pools; //the call from Twig doesn't fetch the pools; this forces Doctrine to.
+		
+		$template = $this->output->loadTemplate('stage/moves.html');
+		$template->display(array("stage" => $stage, "seedStage" => $seedStage));
+	}
 	
 
 

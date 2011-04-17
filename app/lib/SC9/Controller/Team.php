@@ -19,11 +19,19 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 	}
 	
 	public function createAction() {
-		$division = Doctrine_Core::getTable("Division")->find($this->request("divisionId"));
+		$division = Division::getById($this->request("divisionId"));
 		$team = new Team();
+		if($this->handleFormSubmit($team)) {
+			
+			//now add this team to the registration seeding pool
+			$poolTeam = new PoolTeam();
+			$poolTeam->team_id = $team->id;
+			$poolTeam->pool_id = $division->getSeedPoolId();
+			$poolTeam->save();
+			
+			$this->relocate("/division/detail/".$this->post("divisionId"));
+		}
 		
-		$this->handleFormSubmit($team);		
-
 		
 		$template = $this->output->loadTemplate('team/create.html');
 		$template->display(array("division" => $division, "team" => $team));
@@ -33,7 +41,9 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 	public function editAction() {
 		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
 		
-		$this->handleFormSubmit($team);		
+		if($this->handleFormSubmit($team)) {
+			$this->relocate("/division/detail/".$this->post("divisionId"));
+		}
 
 		
 		$template = $this->output->loadTemplate('team/edit.html');
@@ -46,15 +56,15 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 			$team->name = $this->post("teamName");
 			$team->link('Division', array($this->post("divisionId")));
 			$team->save();
-
-			$this->relocate("/division/detail/".$this->post("divisionId"));
+			return true;
 		}
+		return false;
 	}
 	
 	
-	
+	//TODO: doesn't work because of FOREIGN_KEY constraints with POOL_TEAM	
 	public function removeAction() {
-		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
+ 		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
 		$divisionId = $team->Division->id; //needed? to lazy to check if delete also empties the object
 		$team->delete();
 		$this->relocate("/division/detail/".$divisionId);

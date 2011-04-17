@@ -46,6 +46,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$template = $this->output->loadTemplate('division/create.html');
 		$template->display(array("tournament" => $tournament, "division" => $division));
 	}
+
 	
 	public function nextstageAction() {
 		$division = Division::getById($this->divisionId);

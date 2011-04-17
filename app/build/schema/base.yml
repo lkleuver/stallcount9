@@ -159,7 +159,10 @@ PoolMove:
     source_pool_id:
       type: integer(4)
       primary: true
-    spot:
+    sourceSpot:
+      type: integer(4)
+      primary: true
+    destinationSpot:
       type: integer(4)
       primary: true
   relations:

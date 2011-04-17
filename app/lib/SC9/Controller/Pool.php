@@ -15,10 +15,9 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	public function detailAction() {
 
 		$pool = Pool::getById($this->poolId);
-		$teams = Team::getTeamsWithoutPoolForDivision($pool->Stage->Division->id);
 		
 		$template = $this->output->loadTemplate('pool/detail.html');
-		$template->display(array("pool" => $pool, "teams" => $teams));
+		$template->display(array("pool" => $pool));
 	}
 	
 	public function createAction() {
@@ -66,6 +65,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	private function handleFormSubmit($pool) {
 		if($this->post("poolSubmit") != "") {
 			$pool->title = $this->post("poolTitle");
+			$pool->spots = $this->post("poolSpots");
 			$pool->link('Stage', array($this->post("stageId")));
 			$pool->link('PoolRuleset', array($this->post("poolRulesetId")));
 			$pool->save();

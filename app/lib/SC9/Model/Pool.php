@@ -45,7 +45,7 @@ class Pool extends BasePool {
 	}
 	
 	public function getTeamCount() {
-		return count($this->Teams);
+		return count($this->PoolTeams);
 	}
 	
 	/**
@@ -64,12 +64,31 @@ class Pool extends BasePool {
 	}
 	
 	
+	public function getSpots() {
+		$result = array();
+ 		if($this->spots == 0) {
+ 			$this->spots = count($this->PoolTeams);
+ 		}
+ 		
+		for($i = 0; $i < $this->spots; $i++) {
+			$spot = new PoolSpot();
+			$spot->rank = $i + 1;
+			if($i < count($this->PoolTeams)) {
+				$spot->title = $this->PoolTeams[$i]->Team->name;
+			}else{
+				$spot->title = "empty";
+			}
+			$result[] = $spot;
+		}
+		return $result;
+	}
+	
 	public function isFinished() {
 		return $this->currentRound >= $this->getNumberOfRounds();
 	}
 	
 	public function getNumberOfRounds() {
-		return $this->getStrategy()->calculateNumberOfRounds($this->getTeamCount());
+		return $this->getStrategy()->calculateNumberOfRounds($this->spots);
 	}
 	
 	public function getQualifiedTeams() {
@@ -105,7 +124,8 @@ class Pool extends BasePool {
 			    ->leftJoin('pt.Team t')
 			    ->leftJoin('p.Rounds r')
 			    ->leftJoin('r.Matches rm')
-			    ->where('p.id = ?', $id);
+			    ->where('p.id = ?', $id)
+			    ->orderBy('pt.rank ASC');
 		$pool = $q->fetchOne();
 		return $pool;
 	}

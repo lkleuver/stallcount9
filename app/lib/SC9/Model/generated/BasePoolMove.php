@@ -7,7 +7,8 @@
  * 
  * @property integer $pool_id
  * @property integer $source_pool_id
- * @property integer $spot
+ * @property integer $sourceSpot
+ * @property integer $destinationSpot
  * @property Pool $Pool
  * @property Pool $SourcePool
  * 
@@ -31,7 +32,12 @@ abstract class BasePoolMove extends Doctrine_Record
              'primary' => true,
              'length' => '4',
              ));
-        $this->hasColumn('spot', 'integer', 4, array(
+        $this->hasColumn('sourceSpot', 'integer', 4, array(
+             'type' => 'integer',
+             'primary' => true,
+             'length' => '4',
+             ));
+        $this->hasColumn('destinationSpot', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
              'length' => '4',

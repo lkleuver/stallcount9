@@ -10,10 +10,15 @@
 	
 	<ul class="itemlist">
 		{% for pool in stage.Pools %}
-			<li><a href="?n=/pool/detail/{{pool.id}}">{{pool.title}}</a> <a class="action" href="?n=/pool/edit/{{pool.id}}">edit</a> <a class="action" href="?n=/pool/remove/{{pool.id}}">delete</a> {% if pool.isFinished() %}(finished){% endif %}</li>
+			<li><a href="?n=/pool/detail/{{pool.id}}">{{pool.title}}</a> <a class="action" href="?n=/pool/edit/{{pool.id}}">edit</a> <a class="action" href="?n=/pool/remove/{{pool.id}}">delete</a> {% if pool.isFinished() %}(finished){% endif %} ({{pool.spots}})</li>
 		{% endfor %}
 	</ul>
 	<a class="action" href="?n=/pool/create&stageId={{stage.id}}">+ Add pool</a>
+	
+	<p>
+		<a class="action" href="?n=/stage/moves/{{stage.id}}">Edit moves</a>
+	</p>
+	
 	
 	{% if stage.isFinished() %}
 		<p>

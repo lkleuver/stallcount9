@@ -77,14 +77,29 @@ class Division extends BaseDivision {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * Returns the ID of the first pool in the first stage (by rank)
+	 */
+	public function getSeedPoolId() {
+		if(count($this->Stages) > 0) {
+			if(count($this->Stages[0]->Pools) > 0) {
+				return $this->Stages[0]->Pools[0]->id;
+			}
+		}
+		return 1;
+	}
+	
+	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('Division d')
 			    ->leftJoin('d.Stages s')
 			    ->leftJoin('d.Tournament t')
 			    ->leftJoin('d.Teams tms')
+			    ->leftJoin('s.Pools p')
 			    ->where('d.id = ?', $id)
-			    ->orderBy('s.rank ASC');
+			    ->orderBy('s.rank ASC, p.rank ASC');
 		$division = $q->fetchOne();
 		return $division;
 	}

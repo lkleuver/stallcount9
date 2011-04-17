@@ -5,6 +5,12 @@ PoolStrategy:
   PoolStrategy_2:
     title: Swissdraw
     description: 'Swissdraw matchmaking according to victory points'
+  PoolStrategy_3:
+    title: Bracket
+    description: 'Bracket'
+  PoolStrategy_4:
+    title: RoundRobin
+    description: 'RoundRobin'
 
     
 PoolRuleset:

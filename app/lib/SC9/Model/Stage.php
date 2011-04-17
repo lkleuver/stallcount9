@@ -63,6 +63,20 @@ class Stage extends BaseStage{
 		return true;
 	}
 
+	public function getParentStage() {
+		$result = null;
+		for($i = 0; $i < count($this->Division->Stages); $i++) {
+			if($this->Division->Stages[$i]->id == $this->id) {
+				if($i > 0) {
+					$result = $this->Division->Stages[$i - 1]; 
+				}
+				break;
+			}
+		}
+		
+		return $result;
+	}
+	
 	public function getQualifiedTeams() {
 		$result = array();
 		foreach($this->Pools as $pool) {
@@ -87,7 +101,8 @@ class Stage extends BaseStage{
 			    ->from('Stage s')
 			    ->leftJoin('s.Division d')
 			    ->leftJoin('s.Pools p')
-			    ->where('s.id = ?', $id);
+			    ->where('s.id = ?', $id)
+			    ->orderBy('s.rank ASC');
 		$stage = $q->fetchOne();
 		return $stage;
 	}

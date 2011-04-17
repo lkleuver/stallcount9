@@ -9,7 +9,10 @@ class SC9_Factory_Strategy {
 		switch($strategyTitle) {
 			case "Swissdraw":
 				return new SC9_Strategy_SwissDraw($ruleset->numberOfRounds);
-				break;
+			case "Bracket": 
+				return new SC9_Strategy_Bracket();
+			case "RoundRobin":
+				return new SC9_Strategy_RoundRobin();				
 			default:
 				return new SC9_Strategy_Default();
 		}

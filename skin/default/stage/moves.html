@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+ 
+{% block title %}Edit Moves{% endblock %}
+
+{% block content %}
+	<h1>{{stage.Division.title}} - {{stage.title}} - Moves</h1>
+	
+	
+	
+	<div style="width: 420px; overflow: hidden; float: left; margin-right: 52px;">
+		<h2>Seed stage</h2>
+		
+		{% for pool in seedStage.Pools %}
+			<h3>{{ pool.title}}</h3>
+			<ul>
+				{% for spot in pool.getSpots() %}
+					<li>{{ spot.rank }} - {{ spot.title }}</li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</div>
+	
+	
+	<div style="width: 420px; overflow: hidden; float: left;">
+		<h2>Destination</h2>
+		
+		{% for pool in stage.Pools %}
+			<h3>{{ pool.title}}</h3>
+			<ul>
+				{% for spot in pool.getSpots() %}
+					<li>{{ spot.rank }} - {{ spot.title }}</li>
+				{% endfor %}
+			</ul>
+			
+		{% endfor %}
+	</div>
+	
+	
+	<p>
+		<a href="?n=/stage/detail/{{ stage.id }}">Back to stage</a>
+	</p>
+	  
+{% endblock %}
