@@ -177,8 +177,6 @@ class Pool extends BasePool {
 			    ->leftJoin('pt.Team t')
 			    ->leftJoin('p.Rounds r')
 			    ->leftJoin('r.Matches rm')
-			    ->leftJoin('p.SourceMoves sm')
-			    ->leftJoin('p.DestinationMoves dm')
 			    ->where('p.id = ?', $id)
 			    ->orderBy('pt.rank ASC, r.rank ASC, rm.rank ASC');
 		$pool = $q->fetchOne();
