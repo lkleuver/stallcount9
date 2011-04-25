@@ -41,7 +41,7 @@ var PoolMoves = function() {
 		o.destinationPoolId = d.poolId;
 		o.destinationSpot = d.rank;
 		
-		$.getJSON("/?n=/stage/setmove/"+_stageId, o, onSaveMove);
+		$.getJSON("?n=/stage/setmove/"+_stageId, o, onSaveMove);
 		reset();
 	}
 	
