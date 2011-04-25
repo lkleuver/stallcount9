@@ -22,13 +22,7 @@
 	<p>
 		<a class="action" href="?n=/stage/moves/{{stage.id}}">Edit moves</a>
 	</p>
-	
-	
-	{% if stage.isFinished() %}
-		<p>
-			<a href="?n=/division/nextstage/{{stage.Division.id}}/?seedingStageId={{stage.id}}">Seed next stage</a>
-		</p>
-	{% endif %}
+
 	<p>
 		<a href="?n=/division/detail/{{stage.Division.id}}">back to division</a>
 	</p>

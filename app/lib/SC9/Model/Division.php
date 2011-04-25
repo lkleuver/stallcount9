@@ -12,7 +12,7 @@
  */
 class Division extends BaseDivision {
 	
-	
+	//TODO: PoolRuleset ID Can't be always "1"
 	public function initializeDivision() {
 		//create registration stage and it's pool
 		$stage = new Stage();
