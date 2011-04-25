@@ -22,6 +22,16 @@ class Stage extends BaseStage{
 	
 	/**
 	 * 
+	 * executes moves
+	 */
+	public function performMoves() {
+		foreach($this->Pools as $pool) {
+			$pool->performMoves();
+		}
+	}
+	
+	/**
+	 * 
 	 * Number of teams in this Stage
 	 * @return int
 	 */

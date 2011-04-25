@@ -1,0 +1,12 @@
+	<?php  
+	
+	$config = array(
+		'database' => array(
+			      'type' => 'mysql', 
+			      	     	'user' => 'sc9', 
+					       	  'password' => 'sc9', 
+						  	     	'name' => 'stallcount9', 
+								       	  'host' => 'localhost'),
+									  
+										'skin'	=> 'default'
+										);
