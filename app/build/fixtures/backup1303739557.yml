@@ -1,0 +1,1614 @@
+Division:
+  Division_1:
+    title: 'Open division'
+    Tournament: Tournament_1
+  Division_2:
+    title: women
+    Tournament: Tournament_1
+Pool:
+  Pool_1:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_1
+    spots: null
+    rank: '1'
+  Pool_2:
+    title: 'Super pool'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_2
+    spots: '30'
+    rank: null
+  Pool_3:
+    title: 'Bracket 1'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: null
+  Pool_4:
+    title: 'Bracket 2'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: null
+  Pool_5:
+    title: 'Bracket 3'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: null
+  Pool_6:
+    title: 'Bracket 4'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_4
+    Stage: Stage_3
+    spots: '6'
+    rank: null
+  Pool_7:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_4
+    spots: null
+    rank: '1'
+PoolMove:
+  PoolMove_3_2_2_2:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_3_2_4_4:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_3_2_6_6:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '6'
+    destinationSpot: '6'
+PoolRuleset:
+  PoolRuleset_1:
+    title: Setup
+    PoolStrategy: PoolStrategy_1
+    numberOfRounds: '0'
+    matchLength: '0'
+    qualificationCutoff: '0'
+  PoolRuleset_2:
+    title: Swissdraw
+    PoolStrategy: PoolStrategy_2
+    numberOfRounds: '8'
+    matchLength: '50'
+    qualificationCutoff: '0'
+  PoolRuleset_3:
+    title: 'Windmill bracket'
+    PoolStrategy: PoolStrategy_3
+    numberOfRounds: '0'
+    matchLength: '75'
+    qualificationCutoff: '0'
+  PoolRuleset_4:
+    title: 'Windmill RoundRobin'
+    PoolStrategy: PoolStrategy_4
+    numberOfRounds: '0'
+    matchLength: '50'
+    qualificationCutoff: '0'
+PoolStrategy:
+  PoolStrategy_1:
+    title: ManualRanking
+    description: 'manually rank pool'
+  PoolStrategy_2:
+    title: Swissdraw
+    description: 'Swissdraw matchmaking according to victory points'
+  PoolStrategy_3:
+    title: Bracket
+    description: bracket
+  PoolStrategy_4:
+    title: RoundRobin
+    description: 'round robin '
+PoolTeam:
+  PoolTeam_1_8:
+    Pool: Pool_1
+    Team: Team_8
+    rank: null
+  PoolTeam_1_9:
+    Pool: Pool_1
+    Team: Team_9
+    rank: null
+Round:
+  Round_69:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '1'
+  Round_70:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '2'
+  Round_71:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '3'
+  Round_72:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '4'
+  Round_73:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '5'
+  Round_74:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '6'
+  Round_75:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '7'
+  Round_76:
+    Pool: Pool_2
+    matchLength: '50'
+    rank: '8'
+  Round_77:
+    Pool: Pool_6
+    matchLength: '50'
+    rank: '1'
+  Round_78:
+    Pool: Pool_6
+    matchLength: '50'
+    rank: '2'
+  Round_79:
+    Pool: Pool_6
+    matchLength: '50'
+    rank: '3'
+  Round_80:
+    Pool: Pool_6
+    matchLength: '50'
+    rank: '4'
+  Round_81:
+    Pool: Pool_6
+    matchLength: '50'
+    rank: '5'
+  Round_82:
+    Pool: Pool_3
+    matchLength: '75'
+    rank: '1'
+  Round_83:
+    Pool: Pool_3
+    matchLength: '75'
+    rank: '2'
+  Round_84:
+    Pool: Pool_3
+    matchLength: '75'
+    rank: '3'
+  Round_85:
+    Pool: Pool_4
+    matchLength: '75'
+    rank: '1'
+  Round_86:
+    Pool: Pool_4
+    matchLength: '75'
+    rank: '2'
+  Round_87:
+    Pool: Pool_4
+    matchLength: '75'
+    rank: '3'
+  Round_88:
+    Pool: Pool_5
+    matchLength: '75'
+    rank: '1'
+  Round_89:
+    Pool: Pool_5
+    matchLength: '75'
+    rank: '2'
+  Round_90:
+    Pool: Pool_5
+    matchLength: '75'
+    rank: '3'
+RoundMatch:
+  RoundMatch_591:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_592:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_593:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_594:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_595:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_596:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_597:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_598:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_599:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_600:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_601:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_602:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_603:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_604:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_605:
+    Round: Round_69
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_606:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_607:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_608:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_609:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_610:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_611:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_612:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_613:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_614:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_615:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_616:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_617:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_618:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_619:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_620:
+    Round: Round_70
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_621:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_622:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_623:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_624:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_625:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_626:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_627:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_628:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_629:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_630:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_631:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_632:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_633:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_634:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_635:
+    Round: Round_71
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_636:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_637:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_638:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_639:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_640:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_641:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_642:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_643:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_644:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_645:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_646:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_647:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_648:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_649:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_650:
+    Round: Round_72
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_651:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_652:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_653:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_654:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_655:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_656:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_657:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_658:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_659:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_660:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_661:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_662:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_663:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_664:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_665:
+    Round: Round_73
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_666:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_667:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_668:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_669:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_670:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_671:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_672:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_673:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_674:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_675:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_676:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_677:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_678:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_679:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_680:
+    Round: Round_74
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_681:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_682:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_683:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_684:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_685:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_686:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_687:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_688:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_689:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_690:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_691:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_692:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_693:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_694:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_695:
+    Round: Round_75
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_696:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_697:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_698:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_699:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_700:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 5'
+    rank: '5'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_701:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 6'
+    rank: '6'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_702:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 7'
+    rank: '7'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_703:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 8'
+    rank: '8'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_704:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 9'
+    rank: '9'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_705:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 10'
+    rank: '10'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_706:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 11'
+    rank: '11'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_707:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 12'
+    rank: '12'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_708:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 13'
+    rank: '13'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_709:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 14'
+    rank: '14'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_710:
+    Round: Round_76
+    scheduledTime: null
+    matchName: 'match rank 15'
+    rank: '15'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_711:
+    Round: Round_77
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_712:
+    Round: Round_77
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_713:
+    Round: Round_77
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_714:
+    Round: Round_78
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_715:
+    Round: Round_78
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_716:
+    Round: Round_78
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_717:
+    Round: Round_79
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_718:
+    Round: Round_79
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_719:
+    Round: Round_79
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_720:
+    Round: Round_80
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_721:
+    Round: Round_80
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_722:
+    Round: Round_80
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_723:
+    Round: Round_81
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_724:
+    Round: Round_81
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_725:
+    Round: Round_81
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_726:
+    Round: Round_82
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_727:
+    Round: Round_82
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_728:
+    Round: Round_82
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_729:
+    Round: Round_82
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_730:
+    Round: Round_83
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_731:
+    Round: Round_83
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_732:
+    Round: Round_83
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_733:
+    Round: Round_83
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_734:
+    Round: Round_84
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_735:
+    Round: Round_84
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_736:
+    Round: Round_84
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_737:
+    Round: Round_84
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_738:
+    Round: Round_85
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_739:
+    Round: Round_85
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_740:
+    Round: Round_85
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_741:
+    Round: Round_85
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_742:
+    Round: Round_86
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_743:
+    Round: Round_86
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_744:
+    Round: Round_86
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_745:
+    Round: Round_86
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_746:
+    Round: Round_87
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_747:
+    Round: Round_87
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_748:
+    Round: Round_87
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_749:
+    Round: Round_87
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_750:
+    Round: Round_88
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_751:
+    Round: Round_88
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_752:
+    Round: Round_88
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_753:
+    Round: Round_88
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_754:
+    Round: Round_89
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_755:
+    Round: Round_89
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_756:
+    Round: Round_89
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_757:
+    Round: Round_89
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_758:
+    Round: Round_90
+    scheduledTime: null
+    matchName: 'match rank 1'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_759:
+    Round: Round_90
+    scheduledTime: null
+    matchName: 'match rank 2'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_760:
+    Round: Round_90
+    scheduledTime: null
+    matchName: 'match rank 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+  RoundMatch_761:
+    Round: Round_90
+    scheduledTime: null
+    matchName: 'match rank 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    scoreSubmitTime: null
+Stage:
+  Stage_1:
+    title: 'Registration stage'
+    Division: Division_1
+    rank: '1'
+    locked: null
+  Stage_2:
+    title: 'swissdraw stage'
+    Division: Division_1
+    rank: '2'
+    locked: null
+  Stage_3:
+    title: Playoffs
+    Division: Division_1
+    rank: '3'
+    locked: null
+  Stage_4:
+    title: 'Registration stage'
+    Division: Division_2
+    rank: '1'
+    locked: null
+Team:
+  Team_8:
+    name: 'Team 1'
+    notes: null
+    Division: Division_1
+  Team_9:
+    name: 'Team 2'
+    notes: null
+    Division: Division_1
+Tournament:
+  Tournament_1:
+    title: Windmill
+    state: '1'
+    startDate: '0'
+    endDate: '0'
