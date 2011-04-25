@@ -1,0 +1,298 @@
+Division:
+  Division_1:
+    title: Women
+    Tournament: Tournament_1
+Pool:
+  Pool_1:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_1
+    spots: null
+    rank: '1'
+  Pool_2:
+    title: Swissdraw
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_2
+    spots: '16'
+    rank: null
+  Pool_3:
+    title: Playoff
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: null
+  Pool_4:
+    title: Playouts
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: null
+PoolMove:
+  PoolMove_2_1_1_1:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_2_1_2_2:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_2_1_3_3:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_2_1_4_4:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_2_1_5_5:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_2_1_6_6:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_2_1_7_7:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_2_1_8_8:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_2_1_9_9:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '9'
+    destinationSpot: '9'
+  PoolMove_2_1_10_10:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '10'
+    destinationSpot: '10'
+  PoolMove_2_1_11_11:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '11'
+    destinationSpot: '11'
+  PoolMove_2_1_12_12:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '12'
+    destinationSpot: '12'
+  PoolMove_2_1_13_13:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '13'
+    destinationSpot: '13'
+  PoolMove_2_1_14_14:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '14'
+    destinationSpot: '14'
+  PoolMove_2_1_15_15:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '15'
+    destinationSpot: '15'
+  PoolMove_2_1_16_16:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '16'
+    destinationSpot: '16'
+PoolRuleset:
+  PoolRuleset_1:
+    title: Setup
+    PoolStrategy: PoolStrategy_1
+    numberOfRounds: '0'
+    matchLength: '0'
+    qualificationCutoff: '0'
+  PoolRuleset_2:
+    title: Swissdraw
+    PoolStrategy: PoolStrategy_2
+    numberOfRounds: '5'
+    matchLength: '90'
+    qualificationCutoff: '0'
+  PoolRuleset_3:
+    title: Brackets
+    PoolStrategy: PoolStrategy_3
+    numberOfRounds: '3'
+    matchLength: '90'
+    qualificationCutoff: '0'
+PoolStrategy:
+  PoolStrategy_1:
+    title: ManualRanking
+    description: 'manually rank pool'
+  PoolStrategy_2:
+    title: Swissdraw
+    description: 'Swissdraw matchmaking according to victory points'
+  PoolStrategy_3:
+    title: Bracket
+    description: Bracket
+  PoolStrategy_4:
+    title: RoundRobin
+    description: RoundRobin
+PoolTeam:
+  PoolTeam_1_1:
+    Pool: Pool_1
+    Team: Team_1
+    rank: '1'
+  PoolTeam_1_2:
+    Pool: Pool_1
+    Team: Team_2
+    rank: '2'
+  PoolTeam_1_3:
+    Pool: Pool_1
+    Team: Team_3
+    rank: '3'
+  PoolTeam_1_4:
+    Pool: Pool_1
+    Team: Team_4
+    rank: '4'
+  PoolTeam_1_5:
+    Pool: Pool_1
+    Team: Team_5
+    rank: '5'
+  PoolTeam_1_6:
+    Pool: Pool_1
+    Team: Team_6
+    rank: '6'
+  PoolTeam_1_7:
+    Pool: Pool_1
+    Team: Team_7
+    rank: '7'
+  PoolTeam_1_8:
+    Pool: Pool_1
+    Team: Team_8
+    rank: '8'
+  PoolTeam_1_9:
+    Pool: Pool_1
+    Team: Team_9
+    rank: '9'
+  PoolTeam_1_10:
+    Pool: Pool_1
+    Team: Team_10
+    rank: '10'
+  PoolTeam_1_11:
+    Pool: Pool_1
+    Team: Team_11
+    rank: '11'
+  PoolTeam_1_12:
+    Pool: Pool_1
+    Team: Team_12
+    rank: '12'
+  PoolTeam_1_13:
+    Pool: Pool_1
+    Team: Team_13
+    rank: '13'
+  PoolTeam_1_14:
+    Pool: Pool_1
+    Team: Team_14
+    rank: '14'
+  PoolTeam_1_15:
+    Pool: Pool_1
+    Team: Team_15
+    rank: '15'
+  PoolTeam_1_16:
+    Pool: Pool_1
+    Team: Team_16
+    rank: '16'
+Stage:
+  Stage_1:
+    title: 'Registration stage'
+    Division: Division_1
+    rank: '1'
+    locked: null
+  Stage_2:
+    title: Swissdraw
+    Division: Division_1
+    rank: '2'
+    locked: null
+  Stage_3:
+    title: Playoff
+    Division: Division_1
+    rank: '3'
+    locked: null
+Team:
+  Team_1:
+    name: 'Hot Beaches'
+    notes: null
+    Division: Division_1
+  Team_2:
+    name: France
+    notes: null
+    Division: Division_1
+  Team_3:
+    name: Switzerland
+    notes: null
+    Division: Division_1
+  Team_4:
+    name: Finland
+    notes: null
+    Division: Division_1
+  Team_5:
+    name: Netherlands
+    notes: null
+    Division: Division_1
+  Team_6:
+    name: Germany
+    notes: null
+    Division: Division_1
+  Team_7:
+    name: GB
+    notes: null
+    Division: Division_1
+  Team_8:
+    name: Thalys
+    notes: null
+    Division: Division_1
+  Team_9:
+    name: Chakalakas
+    notes: null
+    Division: Division_1
+  Team_10:
+    name: Italy
+    notes: null
+    Division: Division_1
+  Team_11:
+    name: Ireland
+    notes: null
+    Division: Division_1
+  Team_12:
+    name: Ireland
+    notes: null
+    Division: Division_1
+  Team_13:
+    name: Russia
+    notes: null
+    Division: Division_1
+  Team_14:
+    name: Spain
+    notes: null
+    Division: Division_1
+  Team_15:
+    name: Norway
+    notes: null
+    Division: Division_1
+  Team_16:
+    name: Liechtenstein
+    notes: null
+    Division: Division_1
+Tournament:
+  Tournament_1:
+    title: Windmill
+    state: '1'
+    startDate: '0'
+    endDate: '0'

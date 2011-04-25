@@ -69,7 +69,7 @@ class Pool extends BasePool {
 	public function getTeamIdForSpot($rank) {
 		foreach($this->PoolTeams as $poolteam) {
 			if($poolteam->rank == $rank) {
-				return $poolteam;
+				return $poolteam->team_id;
 			}
 		}
 		return null;
