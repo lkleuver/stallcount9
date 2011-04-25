@@ -49,6 +49,33 @@ class Pool extends BasePool {
 		echo "<br /><br /> -- -- - -- - - -- <br /><br />";
 	}
 	
+	/**
+	 * 
+	 * executes moves
+	 */
+	public function performMoves() {
+		foreach($this->SourceMoves as $move) {
+			$poolTeam = new PoolTeam();
+			$poolTeam->pool_id = $this->id;
+			$poolTeam->rank = $move->destinationSpot;
+			$poolTeam->team_id = $move->SourcePool->getTeamIdForSpot($move->sourceSpot);
+			if ($poolTeam->team_id == null) {
+				throw new Exception('missing team_id, the move probably did not exist');
+			}
+			$poolTeam->save();
+		}
+	}
+	
+	public function getTeamIdForSpot($rank) {
+		foreach($this->PoolTeams as $poolteam) {
+			if($poolteam->rank == $rank) {
+				return $poolteam;
+			}
+		}
+		return null;
+	}
+	
+	
 	public function getTeamCount() {
 		return count($this->PoolTeams);
 	}

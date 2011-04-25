@@ -12,12 +12,32 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$this->stageId = count($params) > 0 ? $params[0] : "";
 	}
 	
-	
 	public function detailAction() {
 		$stage = Stage::getById($this->stageId);
 		
 		$template = $this->output->loadTemplate('stage/detail.html');
 		$template->display(array("stage" => $stage));
+	}
+	
+	public function matchupsAction() {
+		$stage = Stage::getById($this->stageId);
+		
+		$this -> relocate("/stage/detail/".$this->stageId);
+	}
+	
+	public function performmovesAction() {
+		$stage = Stage::getById($this->stageId);
+		
+		// check that previous stage is completed
+		
+		// check that all moves are present
+		try {
+			$stage->performMoves();
+		} catch (Exception $e) {
+			echo $e;
+			exit;
+		}
+		$this -> relocate("/stage/detail/".$this->stageId);
 	}
 
 	public function movesAction() {
