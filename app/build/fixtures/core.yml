@@ -20,3 +20,21 @@ PoolRuleset:
     numberOfRounds: 0
     matchLength: 0
     qualificationCutoff: 0
+  PoolRuleset_2:
+    title: Swissdraw
+    pool_strategy_id: 2
+    numberOfRounds: 5
+    matchLength: 90
+    qualificationCutoff: 0
+  PoolRuleset_3:
+    title: Bracket
+    pool_strategy_id: 3
+    numberOfRounds: 0
+    matchLength: 90
+    qualificationCutoff: 0
+  PoolRuleset_4:
+    title: RoundRobin
+    pool_strategy_id: 4
+    numberOfRounds: 0
+    matchLength: 90
+    qualificationCutoff: 0
