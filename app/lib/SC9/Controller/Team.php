@@ -27,6 +27,7 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 			$poolTeam = new PoolTeam();
 			$poolTeam->team_id = $team->id;
 			$poolTeam->pool_id = $division->getSeedPoolId();
+			$poolTeam->rank = count($division->Teams) + 1;
 			$poolTeam->save();
 			
 			$this->relocate("/division/detail/".$this->post("divisionId"));
