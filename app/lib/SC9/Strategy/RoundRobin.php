@@ -9,6 +9,9 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 		$this->numberOfRounds = 0;
 	}
 	
+	public function getName(){
+		return "RoundRobin";
+	}
 	
 	public function calculateNumberOfRounds($teamCount) {
 		$this->numberOfRounds = $teamCount - 1;

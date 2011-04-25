@@ -30,6 +30,34 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$template->display(array("stage" => $stage, "seedStage" => $seedStage));
 	}
 	
+	
+	
+	public function setmoveAction() {
+		$sourcePoolId = $this->request("sourcePoolId");
+		$sourceSpot = $this->request("sourceSpot");
+		$destinationPoolId = $this->request("destinationPoolId");
+		$destinationSpot = $this->request("destinationSpot");
+		
+		//avoid conflicts: first delete possible move for associated source and destination spots
+		Pool::deleteDestinationMovesForSpot($destinationPoolId, $destinationSpot);
+		Pool::deleteSourceMovesForSpot($sourcePoolId, $sourceSpot);
+		
+				
+		$move = new PoolMove();
+		$move->pool_id = $destinationPoolId;
+		$move->source_pool_id = $sourcePoolId;
+		$move->sourceSpot = $sourceSpot;
+		$move->destinationSpot = $destinationSpot;
+		$move->save();
+
+		if($this->isAjax()) {
+			$o = new stdClass();
+			$this->ajaxResponse($o);
+		}else{
+			$this->relocate("/stage/moves/".$this->stageId);
+		}
+		
+	}
 
 
 	public function createAction() {

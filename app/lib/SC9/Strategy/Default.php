@@ -9,8 +9,15 @@ class SC9_Strategy_Default implements SC9_Strategy_Interface {
 		$this->numberOfRounds = 0;
 	}
 	
+	public function getName() {
+		return "Default";
+	}
 	
 	public function calculateNumberOfRounds($teamCount) {
 		return $this->numberOfRounds;
+	}
+	
+	public function createMatchups($pool) {
+		
 	}
 }

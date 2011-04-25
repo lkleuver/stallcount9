@@ -225,4 +225,32 @@ div.division {
 	
 	
 a.action { color: red;}
+
+
+
+
+/* MOVES :::::::::::::::::::::::::::::::: */
+
+	ul.moves {
+		width: 200px;
+		border-top: 1px solid #333;
+		border-left: 1px solid #333;
+		border-right: 1px solid #333;
+		margin-bottom: 30px;
+	}
+	
+	ul.moves li {
+		height: 30px;
+		padding-top: 10px;
+		padding-left: 20px;
+		border-bottom: 1px solid #333;
+		cursor: pointer;
+	}
+	ul.moves li:hover {
+		background-color: #fff;
+	}
+	
+	ul.moves li.activeSpot {
+		background-color: red;
+	}
 	

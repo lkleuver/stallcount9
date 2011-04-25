@@ -45,11 +45,9 @@ class Division extends BaseDivision {
 	 * pre: Stages length is not 0
 	 */
 	public function schedule() {
-		$teamCount = $this->Stages[0]->getTeamCount();
 		foreach($this->Stages as $stage) {
 			if($stage->rank != 1) {
-				$stage->schedule($teamCount);
-				$teamCount = $stage->getQualifiedTeamCount();
+				$stage->schedule();
 			}
 		}
 	}

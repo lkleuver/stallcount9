@@ -16,15 +16,19 @@ class Pool extends BasePool {
 	
 	
 	//TODO: currently assumes it's the only pool and consumes all teamspots
-	public function schedule($teamCount) {
+	public function schedule() {
+		Round::deleteRounds($this->id);
 
-		$nrOfRounds = $this->getStrategy()->calculateNumberOfRounds($teamCount);
+		echo $this->getStrategy()->getName() ."<br />";
+		
+		$nrOfRounds = $this->getStrategy()->calculateNumberOfRounds($this->spots);
 		echo "ROUNDS " .$nrOfRounds."<br />";
 		
-		$matchCountPerRound = ceil($teamCount / 2);
+		$matchCountPerRound = ceil($this->spots / 2);
+		echo "MATCHCOUNT: ".$matchCountPerRound;
 		
 		for($i = 0; $i < $nrOfRounds; $i++) {
-			echo "loop<br />";
+			echo "---<br />ROUND ".($i + 1)."<br />";
 			$round = new Round();
 			$round->rank = $i+1;
 			$round->matchLength = $this->PoolRuleset->matchLength;
@@ -32,6 +36,7 @@ class Pool extends BasePool {
 			$round->save();
 			
 			for($j = 0; $j < $matchCountPerRound; $j++) {
+				echo "MATCH: ".($j + 1)."<br />";
 				$match = new RoundMatch();
 				$match->link('Round', array($round->id));
 				$match->rank = $j+1;
@@ -41,7 +46,7 @@ class Pool extends BasePool {
 			}
 		}
 		
-		return $teamCount;
+		echo "<br /><br /> -- -- - -- - - -- <br /><br />";
 	}
 	
 	public function getTeamCount() {
@@ -78,9 +83,30 @@ class Pool extends BasePool {
 			}else{
 				$spot->title = "empty";
 			}
+			$spot->sourceMove = $this->getSourceMoveForSpot($spot->rank);
+			$spot->destinationMove = $this->getDestinationMoveForSpot($spot->rank);
+			
 			$result[] = $spot;
 		}
 		return $result;
+	}
+	
+	public function getSourceMoveForSpot($rank) {
+		for($i = 0; $i < count($this->SourceMoves); $i++) {
+			if($this->SourceMoves[$i]->destinationSpot == $rank) {
+				return $this->SourceMoves[$i];
+			}
+		}
+		return null;
+	}
+	
+	public function getDestinationMoveForSpot($rank) {
+		for($i = 0; $i < count($this->DestinationMoves); $i++) {
+			if($this->DestinationMoves[$i]->sourceSpot == $rank) {
+				return $this->DestinationMoves[$i];
+			}
+		}
+		return null;
 	}
 	
 	public function isFinished() {
@@ -124,12 +150,26 @@ class Pool extends BasePool {
 			    ->leftJoin('pt.Team t')
 			    ->leftJoin('p.Rounds r')
 			    ->leftJoin('r.Matches rm')
+			    ->leftJoin('p.SourceMoves sm')
+			    ->leftJoin('p.DestinationMoves dm')
 			    ->where('p.id = ?', $id)
-			    ->orderBy('pt.rank ASC');
+			    ->orderBy('pt.rank ASC, r.rank ASC, rm.rank ASC');
 		$pool = $q->fetchOne();
 		return $pool;
 	}
 	
-
+	public static function deleteDestinationMovesForSpot($id, $spot) {
+		$q = Doctrine_Query::create()
+				->delete("PoolMove pm")
+				->where('pool_id = "'.$id.'" AND destinationSpot = "'.$spot.'"');
+		$q->execute();
+	}
+	
+	public static function deleteSourceMovesForSpot($id, $spot) {
+		$q = Doctrine_Query::create()
+				->delete("PoolMove pm")
+				->where('source_pool_id = "'.$id.'" AND sourceSpot = "'.$spot.'"');
+		$q->execute();
+	}
 	
 }

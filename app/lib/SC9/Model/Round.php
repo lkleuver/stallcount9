@@ -10,7 +10,28 @@
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Round extends BaseRound
-{
+class Round extends BaseRound {
 
+	
+	
+	public static function deleteRounds($poolId) {
+		$rounds = Round::getRounds($poolId);
+		foreach($rounds as $round) {
+			foreach($round->Matches as $match) {
+				$match->delete();
+			}
+			$round->delete();
+		}
+	}
+	
+	
+	public static function getRounds($poolId) {
+		$q = Doctrine_Query::create()
+			    ->from('Round r')
+			    ->leftJoin('r.Matches m')
+			    ->where('r.pool_id = ?', $poolId)
+			    ->orderBy('r.rank ASC, m.rank ASC');
+		return $q->execute();
+	}
+	
 }

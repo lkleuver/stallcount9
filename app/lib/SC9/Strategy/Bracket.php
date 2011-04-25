@@ -9,6 +9,9 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		$this->numberOfRounds = 0;
 	}
 	
+	public function getName() {
+		return "Bracket";
+	}
 	
 	public function calculateNumberOfRounds($teamCount) {
 		$r = $teamCount;
