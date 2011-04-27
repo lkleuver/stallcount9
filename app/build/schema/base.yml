@@ -188,6 +188,8 @@ PoolTeam:
       primary: true
     rank:
       type: integer(4)
+    currentRank:
+      type: integer(4)
   relations:
     Pool:
       foreignAlias: PoolTeams

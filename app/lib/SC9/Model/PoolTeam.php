@@ -13,4 +13,14 @@
 class PoolTeam extends BasePoolTeam
 {
 
+	public static function getSortedTeamsByPool($pool_id) {
+		$q = Doctrine_Query::create()
+			    ->from('PoolTeam pt')
+			    ->leftJoin('pt.Team t')
+			    ->where('pt.pool_id = ?', $pool_id)
+			    ->orderBy('pt.currentRank ASC, pt.rank ASC');
+		$poolteams = $q->execute();
+		return $poolteams;
+	}
+	
 }

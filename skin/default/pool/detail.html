@@ -16,10 +16,13 @@
 	<ul class="roundlist">
 		{% for round in pool.Rounds %}
 			<li>
-				<h3>Round {{round.rank}}</h3>
-				<ul class="matchlist">
+				<h3>Round {{round.rank}}</h3> 
+				{% if round.rank == pool.currentRound %}
+					<a class="action" href="?n=/pool/matchups/{{pool.id}}">Create Matchups for this round</a>					
+				{% endif %}
+				<ul class="matchlist">  {# TODO: display real team names, display more game information #}
 				{% for match in round.Matches %}
-					<li>{{match.matchName}}</li>
+					<li>{{match.matchName}} : {{match.home_team_id}} - {{match.away_team_id}}</li>
 				{% endfor %}
 				</ul>
 				<br />

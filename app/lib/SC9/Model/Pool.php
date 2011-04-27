@@ -47,7 +47,7 @@ class Pool extends BasePool {
 		}
 		
 		echo "<br /><br /> -- -- - -- - - -- <br /><br />";
-	}
+	}	
 	
 	/**
 	 * 
@@ -63,7 +63,14 @@ class Pool extends BasePool {
 				throw new Exception('missing team_id, the move probably did not exist');
 			}
 			$poolTeam->save();
+			
 		}
+		$this->currentRound=1;
+	}
+	
+	public function createMatchups() {
+		$this->getStrategy()->createMatchups($this);
+		return null;
 	}
 	
 	public function getTeamIdForSpot($rank) {

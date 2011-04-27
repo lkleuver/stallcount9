@@ -20,6 +20,14 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$template->display(array("pool" => $pool));
 	}
 	
+	public function matchupsAction() {
+		$pool = Pool::getById($this->poolId);
+		$pool->createMatchups();
+		
+		$this->relocate("/pool/detail/".$this->poolId);
+		
+	}
+	
 	public function createAction() {
 		$stage = Stage::getById($this->request("stageId"));
 		$pool = new Pool();
