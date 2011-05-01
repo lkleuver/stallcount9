@@ -20,13 +20,24 @@
 				{% if round.rank == pool.currentRound %}
 					<a class="action" href="?n=/pool/matchups/{{pool.id}}">Create Matchups for this round</a>					
 				{% endif %}
-				<ul class="matchlist">  {# TODO: display real team names, display more game information #}
+				
+				<table class="matchlist">
+					<tr>
+						<th>#</th>
+						<th>Home</th>
+						<th>Away</th>
+						<th>result</th>
+					</tr>
+					
 				{% for match in round.Matches %}
-					<li>{{match.matchName}} : {{match.home_team_id}} - {{match.away_team_id}} : score : {{match.homeScore}} - {{match.awayScore}}</li>
+					<tr{% if loop.index is even %} class="odd" {% endif %}>
+						<td class="rank">{{loop.index}}</td>
+						<td class="team"><a href="{{match.home_team_id}}">{{match.HomeTeam.name}}</a></td>
+						<td class="team"><a href="{{match.away_team_id}}">{{match.AwayTeam.name}}</a></td>
+						<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>
+					</tr>
 				{% endfor %}
-				</ul>
-				<br />
-				<br />
+				</table>
 			</li>
 		{% endfor %}
 	</ul>

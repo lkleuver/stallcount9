@@ -161,8 +161,9 @@ class Pool extends BasePool {
 		return $result;
 	}
 
+	
 //private helper functions
-
+	//TODO: only works php 5.3+ (anonymous function)
 	private function sortTeamsByRank() {
 		usort($this->PoolTeams, function($a, $b) {
 			if($a->rank == $b->rank) {
@@ -184,6 +185,8 @@ class Pool extends BasePool {
 			    ->leftJoin('pt.Team t')
 			    ->leftJoin('p.Rounds r')
 			    ->leftJoin('r.Matches rm')
+			    ->leftJoin('rm.HomeTeam ht')
+			    ->leftJoin('rm.AwayTeam at')
 			    ->where('p.id = ?', $id)
 			    ->orderBy('pt.rank ASC, r.rank ASC, rm.rank ASC');
 		$pool = $q->fetchOne();
