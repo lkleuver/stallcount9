@@ -29,6 +29,43 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			foreach($pool->PoolTeams as $poolteam) {
 				$poolteam->currentRank = $poolteam->rank;
 			}
+		} else {
+			// initialize standings arrays
+			foreach($pool->PoolTeams as $poolteam) {
+				$standings[$poolteam->team_id] = array('games' => 0, 'vp' => 0, 'margin' => 0, 'scored' => 0);
+			}
+			for ($i=0; $i<$roundnr; $i++) { // go through all rounds up to $roundnr
+				$curRound = $pool->Rounds[$i];
+				foreach($curRound->Matches as $match) {
+					echo $match->home_team_id." vs ".$match->away_team_id." was ".$match->homeScore." - ".$match->awayScore;
+					
+					// update home team stats
+					$standings[$match->home_team_id]['games']++;					
+					$standings[$match->home_team_id]['vp'] += VictoryPoints::getByMargin($match->homeScore - $match->awayScore);
+					$standings[$match->home_team_id]['margin'] += $match->homeScore - $match->awayScore;
+					$standings[$match->home_team_id]['scored'] += $match->homeScore;
+					
+					// update away team stats
+					$standings[$match->away_team_id]['games']++;					
+					$standings[$match->away_team_id]['vp'] += VictoryPoints::getByMargin($match->awayScore - $match->homeScore);
+					$standings[$match->away_team_id]['margin'] += $match->awayScore - $match->homeScore;
+					$standings[$match->away_team_id]['scored'] += $match->awayScore;					
+				}
+			}
+			
+			print_r($standings);
+			
+			return;
+			
+//			$pool->Rounds
+//			$q = Doctrine_Query::create()
+//			    ->from('Round r')
+//			    ->leftJoin('r.Matches m')
+//			    ->where('r.pool_id = ?', $poolId)
+//			    ->orderBy('r.rank ASC, m.rank ASC');
+//			echo $q->getSqlQuery();
+//			return;
+//			echo $q->execute();			
 		}
 		
 		$pool->save();
@@ -50,7 +87,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 //		}
 		
 		// get list of teams including names etc.
-		// sorted according to currentrank
+		// sorted according to currentRank
 		$poolteams=PoolTeam::getSortedTeamsByPool($pool->id);
 		
 		// fill in match ups
@@ -58,6 +95,11 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		for ($i=0; $i < count($curRound->Matches); $i++) {
 			$curRound->Matches[$i]->home_team_id = $pool->PoolTeams[$teamcounter++]->team_id;
 			$curRound->Matches[$i]->away_team_id = $pool->PoolTeams[$teamcounter++]->team_id;	
+			
+			// fill in random scores for testing
+			$curRound->Matches[$i]->homeScore = rand(0,15);
+			$curRound->Matches[$i]->awayScore = rand(0,15);
+			
 			$curRound->save();		
 		};
 		

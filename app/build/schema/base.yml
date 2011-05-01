@@ -296,3 +296,14 @@ RoundMatch:
     charset: utf8
 
     
+VictoryPoints:
+  columns:
+    margin:
+      type: integer(4)
+      primary: true
+    victorypoints:
+      type: integer(4)
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+    

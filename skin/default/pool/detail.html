@@ -22,7 +22,7 @@
 				{% endif %}
 				<ul class="matchlist">  {# TODO: display real team names, display more game information #}
 				{% for match in round.Matches %}
-					<li>{{match.matchName}} : {{match.home_team_id}} - {{match.away_team_id}}</li>
+					<li>{{match.matchName}} : {{match.home_team_id}} - {{match.away_team_id}} : score : {{match.homeScore}} - {{match.awayScore}}</li>
 				{% endfor %}
 				</ul>
 				<br />
