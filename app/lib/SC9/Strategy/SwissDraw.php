@@ -39,6 +39,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 				foreach($curRound->Matches as $match) {
 					echo $match->home_team_id." vs ".$match->away_team_id." was ".$match->homeScore." - ".$match->awayScore;
 					
+					echo 
+					
 					// update home team stats
 					$standings[$match->home_team_id]['games']++;					
 					$standings[$match->home_team_id]['vp'] += VictoryPoints::getByMargin($match->homeScore - $match->awayScore);
