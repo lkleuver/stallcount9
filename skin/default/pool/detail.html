@@ -12,6 +12,40 @@
 	{% endfor %}
 	</ul>
 	
+	<h2>Standing</h2>
+	
+	{% for round in pool.Rounds %}
+		<tr> {# TODO: insert the right format classes #}
+		<a {% if loop.index == standingsRound %} class="action" {% else %} class="roundchoice" {% endif %} href="?n=/pool/detail/{{pool.id}}&standingsRound={{loop.index}}">after Round {{loop.index}}</a> &nbsp&nbsp&nbsp;
+	{% endfor %}
+		
+	<table class="standings">
+		<tr>
+			<th>#</th>
+			<th>Team</th>
+			<th>Games</th>
+			<th>VP</th>
+			<th>Opponent VP</th>
+			<th>Margin</th>
+			<th>Goals Scored</th>
+			<th>Spirit</th>
+		</tr>
+		
+	{% for team in standings %}
+		<tr{% if loop.index is even %} class="odd" {% endif %}>
+			<td class="rank">{{team.rank}}</td>
+			<td class="team"><a href="{{team.team_id}}">{{team.name}}</a></td>
+			<td class="nrgames">{{team.games}}</td>
+			<td class="vp">{{team.vp}}</td>
+			<td class="opp_vp">{{team.opp_vp}}</td>
+			<td class="margin">{{team.margin}}</td>
+			<td class="scored">{{team.scored}}</td>
+			<td class="spirit">{{team.spirit}}</td>
+		</tr>
+	{% endfor %}
+	</table>
+	
+	
 	<h2>Rounds</h2>
 	<ul class="roundlist">
 		{% for round in pool.Rounds %}

@@ -281,3 +281,28 @@ a.action { color: red;}
 		background-color: #D0E1E5;
 	}
 	
+	
+/* POOL DETAILS Standings :::: */
+	table.standings {
+		margin-bottom: 40px;
+	}
+	
+	table.standings td, table.standings th {
+		padding: 4px 10px 4px 10px;
+	}
+	
+	table.standings th {
+		background-color: #000;
+		color: #fff;
+	}
+	
+	table.standings td.rank {
+		width: 50px;
+	}
+	
+	table.standings td.team {
+		width: 140px;
+	}
+	table.standings tr.odd td {
+		background-color: #D0E1E5;
+	}

@@ -13,11 +13,17 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
-
 		$pool = Pool::getById($this->poolId);
 		
-		$template = $this->output->loadTemplate('pool/detail.html');
-		$template->display(array("pool" => $pool));
+		if ($this->request("standingsRound") != "" ) {
+			$standingsRound = $this->request("standingsRound");
+		} else {
+			$standingsRound = $pool->currentRound-1;
+		}		
+		
+		$standings = $pool->standingsAfterRound($standingsRound); 		
+		$template = $this->output->loadTemplate('pool/detail.html');		
+		$template->display(array("pool" => $pool, "standings" => $standings, "standingsRound" => $standingsRound));
 	}
 	
 	public function matchupsAction() {

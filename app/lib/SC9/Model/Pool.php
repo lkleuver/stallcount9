@@ -161,6 +161,9 @@ class Pool extends BasePool {
 		return $result;
 	}
 
+	public function standingsAfterRound($roundNr) {
+		return $this->getStrategy()->standingsAfterRound($this, $roundNr);
+	}
 	
 //private helper functions
 	//TODO: only works php 5.3+ (anonymous function)

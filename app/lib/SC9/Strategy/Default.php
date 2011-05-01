@@ -20,4 +20,8 @@ class SC9_Strategy_Default implements SC9_Strategy_Interface {
 	public function createMatchups($pool) {
 		
 	}
+	
+	public function standingsAfterRound($pool, $roundNr) {
+		return null;
+	}
 }
