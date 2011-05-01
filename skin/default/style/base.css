@@ -254,3 +254,30 @@ a.action { color: red;}
 		background-color: red;
 	}
 	
+	
+/* POOL DETAILS :::: */
+
+	table.matchlist {
+		margin-bottom: 40px;
+	}
+	
+	table.matchlist td, table.matchlist th {
+		padding: 4px 10px 4px 10px;
+	}
+	
+	table.matchlist th {
+		background-color: #000;
+		color: #fff;
+	}
+	
+	table.matchlist td.rank {
+		width: 50px;
+	}
+	
+	table.matchlist td.team {
+		width: 140px;
+	}
+	table.matchlist tr.odd td {
+		background-color: #D0E1E5;
+	}
+	
