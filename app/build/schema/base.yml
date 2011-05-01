@@ -274,7 +274,13 @@ RoundMatch:
       type: integer(4)
     awayScore:
       type: integer(4)
+    homeSpirit:
+      type: integer(4)
+    awaySpirit:
+      type: integer(4)      
     scoreSubmitTime:
+      type: integer(10)
+    spiritSubmitTime:
       type: integer(10)
   relations:
     Field:

@@ -130,4 +130,7 @@ VictoryPoints:
   VictoryPoints_30:
     margin: 14
     victorypoints: 25
+  VictoryPoints_31:
+    margin: 15
+    victorypoints: 25
  

@@ -17,7 +17,7 @@ class VictoryPoints extends BaseVictoryPoints
 			    ->from('VictoryPoints vp')
 			    ->where('vp.margin = ?', $margin);
 		$vp = $q->fetchOne();
-		return $vp;
+		return $vp->victorypoints;
 	}
 	
 }

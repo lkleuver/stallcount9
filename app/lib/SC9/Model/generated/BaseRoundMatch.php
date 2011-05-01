@@ -15,7 +15,10 @@
  * @property integer $away_team_id
  * @property integer $homeScore
  * @property integer $awayScore
+ * @property integer $homeSpirit
+ * @property integer $awaySpirit
  * @property integer $scoreSubmitTime
+ * @property integer $spiritSubmitTime
  * @property Field $Field
  * @property Team $HomeTeam
  * @property Team $AwayTeam
@@ -73,7 +76,19 @@ abstract class BaseRoundMatch extends Doctrine_Record
              'type' => 'integer',
              'length' => '4',
              ));
+        $this->hasColumn('homeSpirit', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('awaySpirit', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
         $this->hasColumn('scoreSubmitTime', 'integer', 10, array(
+             'type' => 'integer',
+             'length' => '10',
+             ));
+        $this->hasColumn('spiritSubmitTime', 'integer', 10, array(
              'type' => 'integer',
              'length' => '10',
              ));
