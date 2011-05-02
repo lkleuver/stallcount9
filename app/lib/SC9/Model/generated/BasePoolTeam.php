@@ -8,7 +8,7 @@
  * @property integer $pool_id
  * @property integer $team_id
  * @property integer $rank
- * @property integer $currentRank
+ * @property integer $seed
  * @property Pool $Pool
  * @property Team $Team
  * 
@@ -36,7 +36,7 @@ abstract class BasePoolTeam extends Doctrine_Record
              'type' => 'integer',
              'length' => '4',
              ));
-        $this->hasColumn('currentRank', 'integer', 4, array(
+        $this->hasColumn('seed', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));

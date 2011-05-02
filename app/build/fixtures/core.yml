@@ -134,3 +134,221 @@ VictoryPoints:
     margin: 15
     victorypoints: 25
  
+Brackets:
+  Brackets_8_3_1_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '8'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '6'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_3_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_8_3_3_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_8_3_3_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '6'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_8_3_3_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '7'
+    away: '8'
+    winplace: '7'
+    loseplace: '8'
+  Brackets_9_3_1_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '9'
+    away: '6'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '8'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_3_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_9_3_3_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_9_3_3_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '7'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_9_3_3_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '8'
+    away: '9'
+    winplace: '7'
+    loseplace: '9'
+ 

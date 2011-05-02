@@ -3,6 +3,7 @@
 
 class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	
+	const DEBUG = false;
 	private $numberOfRounds;
 	
 	public function __construct($numberOfRounds) {
@@ -26,10 +27,12 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	 * @author Chris
 	 *
 	 */	
-	public function StandingsAfterRound($pool, $roundnr) {
+	public function standingsAfterRound($pool, $roundnr) {
+		global $debug;
+		
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
-			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank);
+			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
 		}
 		
 		if ($roundnr == 0) {
@@ -110,6 +113,10 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		
 		// get standings up to currentRound
 		$standings = $this->StandingsAfterRound($pool, $curRoundNr-1);
+		if (self::DEBUG) {
+			echo "initial standings:<br>";
+			$this->PrintStandings($standings);
+		}		
 		
 		// the goal is to swap around teams in $standings until we arrive at new standings where
 		// 1-2, 3-4, 5-6 etc. are valid matchups (i.e. they have not played each other before) 
@@ -119,7 +126,13 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			
 		while(!$foundValidArrangement){
 			$forward=!$forward;
-	//		print "trying the other way round, now forward? ".$forward."<br><br>";
+			if (self::DEBUG) {
+				if (forward) {
+					echo "round ".$roundcounter.", going forward <br>";
+				} else {
+					echo "round ".$roundcounter.", going backward <br>";
+				}
+			}
 			$foundValidArrangement = $this->AdjustForDuplicateGames($standings,$pool, $forward);
 			$roundcounter++;
 			if ($roundcounter>count($standings)*2) Die("Could not find a valid arrangment of teams"); 
@@ -148,18 +161,20 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		$pool->save();
 	}
 	
-	private function PrintStandings($standings){
+	private function printStandings($standings){
 		echo "<table border='1' width='600px'><tr>
 		<th>Rank</th>
 		<th>Team_Id</th>
-		<th>Teamname</th>";
+		<th>Teamname</th>
+		<th>Seed</th>";
 		
 		for($i=0;$i<count($standings);$i++) {
 			$row = $standings[$i];
 			echo "<tr>";
-			echo "<td >".utf8entities($row['rank'])."</td>";
-			echo "<td >".utf8entities($row['team_id'])."</td>";
-			echo "<td >".utf8entities($row['name'])."</td>";
+			echo "<td >".$row['rank']."</td>";
+			echo "<td >".$row['team_id']."</td>";
+			echo "<td >".$row['name']."</td>";
+			echo "<td >".$row['seed']."</td>";
 			echo "</tr>\n";
 			}
 		echo "</table>";
@@ -167,20 +182,22 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	}
 	
 
-	private function AdjustForDuplicateGames(&$standings,$pool,$forward) {
+	private function adjustForDuplicateGames(&$standings,$pool,$forward) {
 		// this function will change the variable $standings
 		
 		If ($forward) {
 			$sign = 1;
 			$startPos = 0;
 			$stopPos = count($standings);
-		}Else {
+		}else {
 			$sign = -1;
 			$startPos = count($standings)-1;
 			$stopPos = -1;        
 		}
 	
-	//	print "Loop from ".$startPos." until ".$stopPos." with steps ".($sign*2)."<br>";
+	    if (self::DEBUG) {
+	    	print "Loop from ".$startPos." until ".$stopPos." with steps ".($sign*2)."<br>";	
+	    }
 		for ($i=$startPos;$i!=$stopPos;$i=$i+$sign*2) {
 			If ($this->TeamsHavePlayed($standings[$i]['team_id'],$standings[$i+$sign]['team_id'],$pool)) {
 				// Find the first team in the rest of the list that hasn't played
@@ -191,23 +208,29 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 				}else{
 					// This is trouble.  There is no team further down that hasn't played
 					// the current team.
-	//				print "unable to find an unplayed team in this direction:".$forward." <br>";
+					if (self::DEBUG) {
+						print "unable to find an unplayed team in this direction: ".$forward." <br>";
+					}
 					return(false);
 				}
 			}
 		}
-	
-	//	print "It all worked out! :-) <br>";
+		
+		if (self::DEBUG) {
+	    	print "It all worked out! :-) <br>";
+		}
 		return(true);
 		
 	}
 	
-	private function MoveTeamToNewPosition($posFrom, $posTo, &$standings) {
+	private function moveTeamToNewPosition($posFrom, $posTo, &$standings) {
 	// This routine will move the team in posFrom to the posTo position, and shift
 	// everyone in between by one to accomodate.
 	
-	//	PrintMoves($moves);
-	//	print "<br>Moving team in position ".$posFrom." to position ".$posTo." <br>";
+		if (self::DEBUG) {
+			$this->printStandings($standings);
+	        print "<br>Moving team in position ".$posFrom." to position ".$posTo." <br>";
+		}
 		
 		If ($posFrom > $posTo) {
 			$sign = -1;
@@ -223,11 +246,13 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		}
 		$standings[$posTo]=$tempteam;
 		
-	//	PrintMoves($moves);
+		if (self::DEBUG) {
+			$this->printStandings($standings);
+		}
 	}
 	
 	
-	private function FindUnplayedTeam($teamid, $startPos, $standings, $pool, $forward) {
+	private function findUnplayedTeam($teamid, $startPos, $standings, $pool, $forward) {
 	
 		If ($forward){
 			$sign = 1;
@@ -241,7 +266,9 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		
 		for($i=$startPos; $i != $stopPos; $i=$i+$sign) {
 			If (!$this->TeamsHavePlayed($teamid, $standings[$i]['team_id'],$pool)){
-	//			print "Found an unplayed team for ".$teamid.", namely ".$moves[$i]['team_id']." on position ".$i."<br>";
+				if (self::DEBUG) {
+					print "Found an unplayed team for ".$teamid.", namely ".$standings[$i]['team_id']." on position ".$i."<br>";	
+				}
 				return($i);
 			}	
 		}
@@ -249,21 +276,30 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	}
 	
 	
-	private function TeamsHavePlayed($teamid1,$teamid2,$pool) {
+	private function teamsHavePlayed($teamid1,$teamid2,$pool) {
+		if (self::DEBUG) {
+			print "Checking if team_id ".$teamid1." has played team_id ".$teamid2." ... ";
+		}
 		// check all rounds of the pool up to currentRound-1
 		for($i=0 ; $i<($pool->currentRound)-1; $i++) {
 			// check all games in round i
 			foreach($pool->Rounds[$i]->Matches as $match) {
 				if (($match->home_team_id == $teamid1 && $match->away_team_id == $teamid2) || ($match->home_team_id == $teamid2 && $match->away_team_id == $teamid1)){
-					return(true);
+					if (self::DEBUG) {
+						print "yes! <br>";
+					}
+					return(true);					
 				} 
 			}
+		}
+		if (self::DEBUG) {
+			print "no <br>";
 		}
 		return(false);
 	}
 	
 	
-	private function CompareTeamsSwissdraw($a, $b)
+	private function compareTeamsSwissdraw($a, $b)
 	{//distinguish between first round and the rest
 	
 		if ($a['games']==1 && $b['games']==1){		

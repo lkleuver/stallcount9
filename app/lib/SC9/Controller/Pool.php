@@ -30,7 +30,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$pool = Pool::getById($this->poolId);
 		$pool->createMatchups();
 		
-		$this->relocate("/pool/detail/".$this->poolId);
+//		$this->relocate("/pool/detail/".$this->poolId);
 		
 	}
 	

@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__) . '/lib/SC9/Doctrine.php');
+//require_once(dirname(__FILE__) . '/lib/debughelper/debugHelper.php');
 
 class Stallcount9 {
 	

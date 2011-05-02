@@ -186,9 +186,9 @@ PoolTeam:
     team_id:
       type: integer(4)
       primary: true
-    rank:
+    rank: # current position
       type: integer(4)
-    currentRank:
+    seed: # that's on which position you enter the pool
       type: integer(4)
   relations:
     Pool:
@@ -313,3 +313,29 @@ VictoryPoints:
     collate: utf8_unicode_ci
     charset: utf8
     
+Brackets:
+  columns:
+    nrteams: 
+      type: integer(4)
+      primary: true
+    nrrounds:
+      type: integer(4)
+      primary: true
+    round:
+      type: integer(4)
+      primary: true
+    matchnr:
+      type: integer(4)
+      primary: true
+    home:
+      type: integer(4)
+    away:
+      type: integer(4)
+    winplace:
+      type: integer(4)
+    loseplace:
+      type: integer(4)
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  

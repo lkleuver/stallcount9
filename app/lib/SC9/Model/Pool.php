@@ -57,7 +57,8 @@ class Pool extends BasePool {
 		foreach($this->SourceMoves as $move) {
 			$poolTeam = new PoolTeam();
 			$poolTeam->pool_id = $this->id;
-			$poolTeam->rank = $move->destinationSpot;
+			$poolTeam->seed = $move->destinationSpot;
+			$poolTeam->rank = $move->destinationSpot; // set rank=seed to begin with
 			$poolTeam->team_id = $move->SourcePool->getTeamIdForSpot($move->sourceSpot);
 			if ($poolTeam->team_id == null) {
 				throw new Exception('missing team_id, the move probably did not exist');
@@ -66,6 +67,7 @@ class Pool extends BasePool {
 			
 		}
 		$this->currentRound=1;
+		$this->save();
 	}
 	
 	public function createMatchups() {
