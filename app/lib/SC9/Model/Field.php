@@ -10,7 +10,16 @@
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class Field extends BaseField
-{
+class Field extends BaseField {
+	
+	
+	
+	public static function getList($tournamentId) {
+		$q = Doctrine_Query::create()
+			    ->from('Field f')
+			    ->where('f.tournament_id = ?', $tournamentId)
+			    ->orderBy('f.title ASC');
+		return $q->execute();
+	}
 
 }

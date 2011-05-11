@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+ 
+{% block title %}Fields{% endblock %}
+
+{% block content %}
+	<h1>Field list</h1>
+	<ul class="fieldlist">
+	{% for field in fields %}
+		<li>{{field.title}}</li>		
+	{% endfor %}	
+	</ul>
+	
+	<a class="button" href="?n=/field/create&tournamentId={{tournamentId}}"><span>Add field</span></a>
+    
+  
+{% endblock %}

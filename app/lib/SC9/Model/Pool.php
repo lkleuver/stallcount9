@@ -41,6 +41,8 @@ class Pool extends BasePool {
 				$match->link('Round', array($round->id));
 				$match->rank = $j+1;
 				$match->matchName = "match rank ".($j + 1);
+				$match->homeName = "winner a";
+				$match->awayName = "winner b";
 				//link fields
 				$match->save();
 			}
@@ -66,7 +68,7 @@ class Pool extends BasePool {
 			$poolTeam->save();
 			
 		}
-		$this->currentRound=1;
+		$this->currentRound = 1;
 		$this->save();
 	}
 	

@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+ 
+{% block title %}Edit Match {{match.matchName}}{% endblock %}
+
+{% block content %}
+	<h1>Edit Match {{match.matchName}} {{match.HomeTeam.name}} vs {{match.AwayTeam.name}}</h1>
+  
+  	
+  	<form method="post" action="?n=/match/edit/{{match.id}}" name="form-match-edit">
+  		{% include "match/form.html" %}
+
+		<button name="matchSubmit" value="1">update</button>
+  	</form>
+  
+  	
+  
+  
+  
+{% endblock %}

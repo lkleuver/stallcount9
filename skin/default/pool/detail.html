@@ -65,14 +65,16 @@
 						<th>Home</th>
 						<th>Away</th>
 						<th>result</th>
+						<th>op</th>
 					</tr>
 					
 				{% for match in round.Matches %}
 					<tr{% if loop.index is even %} class="odd" {% endif %}>
 						<td class="rank">{{loop.index}}</td>
-						<td class="team"><a href="{{match.home_team_id}}">{{match.HomeTeam.name}}</a></td>
-						<td class="team"><a href="{{match.away_team_id}}">{{match.AwayTeam.name}}</a></td>
+						<td class="team"><a href="{{match.home_team_id}}">{% if match.home_team_id %}{{match.HomeTeam.name}}{% else %}{{match.homeName}}{% endif %}</a></td>
+						<td class="team"><a href="{{match.away_team_id}}">{% if match.away_team_id %}{{match.AwayTeam.name}}{% else %}{{match.awayName}}{% endif %}</a></td>
 						<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>
+						<td><a href="?n=/match/edit/{{match.id}}">edit</a></td>
 					</tr>
 				{% endfor %}
 				</table>

@@ -10,6 +10,8 @@
  * @property integer $scheduledTime
  * @property integer $field_id
  * @property string $matchName
+ * @property string $homeName
+ * @property string $awayName
  * @property integer $rank
  * @property integer $home_team_id
  * @property integer $away_team_id
@@ -53,6 +55,14 @@ abstract class BaseRoundMatch extends Doctrine_Record
              'length' => '4',
              ));
         $this->hasColumn('matchName', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('homeName', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('awayName', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
              ));

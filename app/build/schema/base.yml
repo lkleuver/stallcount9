@@ -264,6 +264,10 @@ RoundMatch:
       type: integer(4)
     matchName:
       type: string(255)
+    homeName:
+      type: string(255)
+    awayName:
+      type: string(255)
     rank:
       type: integer(4)
     home_team_id:

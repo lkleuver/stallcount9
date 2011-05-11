@@ -10,7 +10,23 @@
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
-class RoundMatch extends BaseRoundMatch
-{
+class RoundMatch extends BaseRoundMatch{
 
+	
+	
+	
+	public static function getById($id) {
+		$q = Doctrine_Query::create()
+			    ->from('RoundMatch m')
+			    ->leftJoin('m.Round r')
+			    ->leftJoin('r.Pool p')
+			    ->leftJoin('m.HomeTeam ht')
+			    ->leftJoin('m.AwayTeam at')
+			    ->where('m.id = ?', $id);
+		$match = $q->fetchOne();
+		return $match;
+	}
+	
+	
+	
 }

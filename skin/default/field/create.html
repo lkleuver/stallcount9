@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+ 
+{% block title %}Stallcount9 - New field{% endblock %}
+
+{% block content %}
+	<h1>Create new field</h1>
+  
+  
+  	<form method="post" action="?n=/field/create/" name="form-field-create">
+  		{% include "field/form.html" %}
+  		
+  		
+		<button name="fieldsubmit" value="1">add</button>
+  	</form>
+  
+  
+  
+{% endblock %}
