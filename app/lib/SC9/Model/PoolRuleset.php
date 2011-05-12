@@ -24,4 +24,11 @@ class PoolRuleset extends BasePoolRuleset {
 		return $rulesets;
 	}
 
+	public static function getByTitle($s) {
+		$q = Doctrine_Query::create()
+				->from('PoolRuleset t')
+				->where('title = ?', array($s));
+		$ruleset = $q->fetchOne();
+		return $ruleset;
+	}
 }

@@ -26,7 +26,8 @@ class Division extends BaseDivision {
 		$pool->title = "Registration seeding";
 		$pool->rank = 1;
 		$pool->link('Stage', array($stage->id));
-		$pool->pool_ruleset_id = PoolRuleset::MANUAL_ID;
+		$pr = PoolRuleset::getByTitle('Setup');
+		$pool->pool_ruleset_id = $pr->id;
 		$pool->save();
 	}
 	
