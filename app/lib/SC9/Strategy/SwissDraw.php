@@ -28,7 +28,6 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	 *
 	 */	
 	public function standingsAfterRound($pool, $roundnr) {
-		global $debug;
 		
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
