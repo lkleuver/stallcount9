@@ -16,7 +16,11 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 	}
 	
 	public function calculateNumberOfRounds($teamCount) {
-		$this->numberOfRounds = $teamCount - 1;
+		if ($teamCount%2 == 0) { // nr of teams even
+			$this->numberOfRounds = $teamCount - 1;
+		} else { // nr of teams odd
+			$this->numberOfRounds = $teamCount;
+		}		
 		return $this->numberOfRounds;
 	}
 	
@@ -25,8 +29,7 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 		
 		// therefore, if the first match is filled in, all of them should be filled in
 		if ($pool->Rounds[1]->Matches[1]->home_team_id != null) {
-			die('matchups have already been created');
-			return false;
+			echo "matchups have already been created. Previous games will be overwritten now! <br>";
 		}
 		
 		// we follow the algorithm described on http://en.wikipedia.org/wiki/Round-robin_tournament
@@ -76,10 +79,10 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 		
 		for ($i=0 ; $i<$nrTeams/2 ; $i++) {
 			$row1[]=$pool->PoolTeams[$i]->team_id;
-			if ($i+floor($nrTeams/2) < $nrTeams) {
-				$row2[]=$pool->PoolTeams[$i+floor($nrTeams/2)]->team_id; 
+			if ($i+ceil($nrTeams/2) < $nrTeams) {
+				$row2[]=$pool->PoolTeams[$i+ceil($nrTeams/2)]->team_id; 
 			} else {  
-				$row2[]=0; // add a BYE team
+				$row2[]=null; // add a BYE team
 			}
 		}
 		
@@ -101,9 +104,12 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 				$pool->Rounds[$i]->Matches[$j]->home_team_id = $row1[$j];
 				$pool->Rounds[$i]->Matches[$j]->away_team_id = $row2[$j];
 
-				// fill in random scores for testing
-				$pool->Rounds[$i]->Matches[$j]->homeScore = rand(0,15);
-				$pool->Rounds[$i]->Matches[$j]->awayScore = rand(0,15);	
+				if ($pool->Rounds[$i]->Matches[$j]->away_team_id != null && $pool->Rounds[$i]->Matches[$j]->home_team_id != null) {
+					// fill in random scores for testing
+					$pool->Rounds[$i]->Matches[$j]->homeScore = rand(0,15);
+					$pool->Rounds[$i]->Matches[$j]->awayScore = rand(0,15);	
+					$pool->Rounds[$i]->Matches[$j]->scoreSubmitTime = time();
+				}
 
 			}
 			
@@ -150,25 +156,28 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			for ($i=0; $i<$roundnr; $i++) { // go through all rounds up to $roundnr
 				$curRound = $pool->Rounds[$i];
 				foreach($curRound->Matches as $match) {
-					// update home team stats
-					$standings[$match->home_team_id]['games']++;					
-					$standings[$match->home_team_id]['margin'] += $match->homeScore - $match->awayScore;
-					$standings[$match->home_team_id]['scored'] += $match->homeScore;
-					$standings[$match->home_team_id]['spirit'] += $match->homeSpirit;
 					
-					// update away team stats
-					$standings[$match->away_team_id]['games']++;					
-					$standings[$match->away_team_id]['margin'] += $match->awayScore - $match->homeScore;
-					$standings[$match->away_team_id]['scored'] += $match->awayScore;
-					$standings[$match->away_team_id]['spirit'] += $match->awaySpirit;					
-
-					if ($match->homeScore > $match->awayScore) {
-						$standings[$match->home_team_id]['points'] += 2;
-					}elseif ($match->homeScore < $match->awayScore) {
-						$standings[$match->away_team_id]['points'] += 2;					
-					}else {
-						$standings[$match->home_team_id]['points'] += 1;
-						$standings[$match->away_team_id]['points'] += 1;										
+					if ($match->scoreSubmitTime != null && $match->home_team_id != null & $match->away_team_id != null) {
+						// update home team stats
+						$standings[$match->home_team_id]['games']++;					
+						$standings[$match->home_team_id]['margin'] += $match->homeScore - $match->awayScore;
+						$standings[$match->home_team_id]['scored'] += $match->homeScore;
+						$standings[$match->home_team_id]['spirit'] += $match->homeSpirit;
+						
+						// update away team stats
+						$standings[$match->away_team_id]['games']++;					
+						$standings[$match->away_team_id]['margin'] += $match->awayScore - $match->homeScore;
+						$standings[$match->away_team_id]['scored'] += $match->awayScore;
+						$standings[$match->away_team_id]['spirit'] += $match->awaySpirit;					
+	
+						if ($match->homeScore > $match->awayScore) {
+							$standings[$match->home_team_id]['points'] += 2;
+						}elseif ($match->homeScore < $match->awayScore) {
+							$standings[$match->away_team_id]['points'] += 2;					
+						}else {
+							$standings[$match->home_team_id]['points'] += 1;
+							$standings[$match->away_team_id]['points'] += 1;										
+						}
 					}
 					
 				}
@@ -196,18 +205,15 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 	private function compareTeamsRoundRobin($a, $b) {
 	
 		//sort according to
-		// 0. number of games 
 		// 1. points
 		// 2. margin
 		// 3. total points scored
 		// 4. spirit score
+		// 5. less number of games
 			
-		if ($a['games'] != $b['games']) {
-			return ($a['games'] > $b['games']) ? -1 : 1;
-		}else{
-			if($a['points'] != $b['points']) {
-				return ($a['points'] > $b['points']) ? -1 : 1;
-			} else {
+		if($a['points'] != $b['points']) {
+			return ($a['points'] > $b['points']) ? -1 : 1;
+		} else {
 			if ($a['margin'] != $b['margin']) {
 				return ($a['margin'] > $b['margin']) ? -1 : 1;
 			} else {
@@ -217,8 +223,11 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 					if ($a['spirit'] != $b['spirit']) {
 						return ($a['spirit'] > $b['spirit']) ? -1 : 1;
 					} else {
-						return 0;
-					}
+						if ($a['games'] != $b['games']) {
+							return ($a['games'] < $b['games']) ? -1 : 1;
+						}else{
+							return 0;
+						}
 					}
 				}	
 			}
