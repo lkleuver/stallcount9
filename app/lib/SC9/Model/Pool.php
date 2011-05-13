@@ -49,6 +49,7 @@ class Pool extends BasePool {
 		}
 		
 		echo "<br /><br /> -- -- - -- - - -- <br /><br />";
+		$this->getStrategy()->nameMatches($this);
 	}	
 	
 	/**
@@ -78,13 +79,36 @@ class Pool extends BasePool {
 	}
 	
 	public function getTeamIdForSpot($rank) {
-		foreach($this->PoolTeams as $poolteam) {
-			if($poolteam->rank == $rank) {
-				return $poolteam->team_id;
-			}
-		}
-		return null;
+		// the rank-property of PoolTeams can be ambiguous, 
+		// because several teams can have the same rank
+		// in this case, we use the seed as tie-breaker 
+		$q = Doctrine_Query::create()
+		    ->from('PoolTeam pt')
+		    ->where('pt.pool_id = ?',$this->id)
+		    ->orderBy('pt.rank ASC, pt.seed ASC');
+		$poolteams = $q->fetchArray();
+		
+		return($poolteams[$rank-1]['team_id']);
 	}
+	
+	public function getTeamNameForSpot($rank) {
+		// the rank-property of PoolTeams can be ambiguous, 
+		// because several teams can have the same rank
+		// in this case, we use the seed as tie-breaker 
+		$q = Doctrine_Query::create()
+			->select('pt.*, t.name as teamname')
+		    ->from('PoolTeam pt')
+			->leftJoin('pt.Team t')
+		    ->where('pt.pool_id = ?',$this->id)
+		    ->orderBy('pt.rank ASC, pt.seed ASC');
+		    
+//		echo "<pre>".$q->getSqlQuery()."</pre>";
+		$poolteams = $q->fetchArray();
+		
+		return($poolteams[$rank-1]['teamname']);
+		
+	}
+		
 	
 	
 	public function getTeamCount() {
@@ -117,7 +141,7 @@ class Pool extends BasePool {
 			$spot = new PoolSpot();
 			$spot->rank = $i + 1;
 			if($i < count($this->PoolTeams)) {
-				$spot->title = $this->PoolTeams[$i]->Team->name;
+				$spot->title = $this->getTeamNameForSpot($i+1); 
 			}else{
 				$spot->title = "empty";
 			}

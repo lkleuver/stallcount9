@@ -24,12 +24,20 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 		return $this->numberOfRounds;
 	}
 	
-	public function createMatchups($pool) {
+	public function nameMatches($pool) {
+		$this->createMatchups($pool,true);
+	}
+	
+	public function createMatchups($pool,$naming=false) {
 		// in Round Robin: matchups for all rounds can be created once and for all
 		
 		// therefore, if the first match is filled in, all of them should be filled in
 		if ($pool->Rounds[1]->Matches[1]->home_team_id != null) {
 			echo "matchups have already been created. Previous games will be overwritten now! <br>";
+		}
+		
+		if (self::DEBUG) {
+			echo "naming is ".(($naming) ? "on" : "off");
 		}
 		
 		// we follow the algorithm described on http://en.wikipedia.org/wiki/Round-robin_tournament
@@ -73,9 +81,11 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 		
 		// initialize first row with team_id's of first half of teams
 		// initialize second row with team_id's of second half of teams
-		$nrTeams = count($pool->PoolTeams);
 		
-		echo $nrTeams;
+		$nrTeams = count($pool->PoolTeams);  // might be zero if no teams have been moved into this pool yet
+		if ($nrTeams == 0 && !$naming) {
+			die('number of teams should not be zero when we are not just naming matches');
+		}
 		
 		for ($i=0 ; $i<$nrTeams/2 ; $i++) {
 			$row1[]=$pool->PoolTeams[$i]->team_id;
@@ -86,6 +96,18 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			}
 		}
 		
+		if ($naming) { // no teams have been filled in so far
+			$nrTeams=$pool->spots;			
+			for ($i=0 ; $i < $nrTeams/2 ; $i++) {
+				$row1[]=$i+1;
+				if ($i+ceil($nrTeams/2) < $nrTeams) {
+					$row2[]=$i+ceil($nrTeams/2)+1; 
+				} else {  
+					$row2[]=null; // add a BYE team
+				}
+			}
+		}
+		
 		if (self::DEBUG) {
 			echo "<pre>";
 			print_r($row1);
@@ -93,7 +115,7 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			echo "</pre>";			
 		}
 		
-		// assumes that $nrOfRounds is computes
+		// assumes that $nrOfRounds is computed
 		if ($this->numberOfRounds == 0) { 
 			$this->numberOfRounds = $this->calculateNumberOfRounds($nrTeams); 
 		}
@@ -101,14 +123,21 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 		for ($i=0 ; $i<$this->numberOfRounds ; $i++) {
 			// read of pairings of this round
 			for ($j=0 ; $j < ceil($nrTeams/2) ; $j++) {
-				$pool->Rounds[$i]->Matches[$j]->home_team_id = $row1[$j];
-				$pool->Rounds[$i]->Matches[$j]->away_team_id = $row2[$j];
+				if ($naming) {
+					$pool->Rounds[$i]->Matches[$j]->homeName = (($row1[$j]>0) ? "Team ".$row1[$j] : "BYE");
+					$pool->Rounds[$i]->Matches[$j]->awayName = (($row2[$j]>0) ? "Team ".$row2[$j] : "BYE");
 
-				if ($pool->Rounds[$i]->Matches[$j]->away_team_id != null && $pool->Rounds[$i]->Matches[$j]->home_team_id != null) {
-					// fill in random scores for testing
-					$pool->Rounds[$i]->Matches[$j]->homeScore = rand(0,15);
-					$pool->Rounds[$i]->Matches[$j]->awayScore = rand(0,15);	
-					$pool->Rounds[$i]->Matches[$j]->scoreSubmitTime = time();
+					$pool->Rounds[$i]->Matches[$j]->matchName = (($row1[$j]*$row2[$j]>0) ? "Match rank ".($j + 1) : "BYE match");
+				} else {
+					$pool->Rounds[$i]->Matches[$j]->home_team_id = $row1[$j];
+					$pool->Rounds[$i]->Matches[$j]->away_team_id = $row2[$j];
+	
+					if ($pool->Rounds[$i]->Matches[$j]->away_team_id != null && $pool->Rounds[$i]->Matches[$j]->home_team_id != null) {
+						// fill in random scores for testing
+						$pool->Rounds[$i]->Matches[$j]->homeScore = rand(0,15);
+						$pool->Rounds[$i]->Matches[$j]->awayScore = rand(0,15);	
+						$pool->Rounds[$i]->Matches[$j]->scoreSubmitTime = time();
+					}
 				}
 
 			}
@@ -188,14 +217,18 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 						
 		}
 
-		// fill in ranks
+		// fill in ranks, also in PoolTeam
 		$rank=1;
 		$standings[0]['rank']=1;  // assuming that it was sorted before, so the list starts with 0					
 		for ($i=1; $i<count($standings) ; $i++) {
 			if ($this->CompareTeamsRoundRobin($standings[$i-1],$standings[$i])!=0) {
 				$rank=$i+1;
 			}
-			$standings[$i]['rank']=$rank;		
+			$standings[$i]['rank']=$rank;
+
+			$poolteam = PoolTeam::getBySeed($pool->id, $standings[$i]['seed']);
+			$poolteam['rank']=$rank;
+			$poolteam->save();					
 		}
 		
 		return $standings;

@@ -18,6 +18,41 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		return $this->numberOfRounds;
 	}
 	
+	public function nameMatches($pool) {
+		// assumes that $nrOfRounds is computed
+		if ($this->numberOfRounds == 0) { 
+			die('number of rounds in swissdraw pool should never be set to 0'); 
+		}
+		
+		$nrTeams=$pool->spots;			
+		if ($nrTeams%2==1) {
+			die('number of spots in a Swissdraw pool should always be even!');
+		}
+		
+		$teamcount=0;
+		// first round Swissdraw is different
+		for ($j=0 ; $j < $nrTeams/2 ; $j++) {
+			$pool->Rounds[0]->Matches[$j]->homeName = "Seed ".++$teamcount;
+			$pool->Rounds[0]->Matches[$j]->awayName = "Seed ".($teamcount+($nrTeams/2));
+			$pool->Rounds[0]->Matches[$j]->matchName = "Match rank ".($j+1);
+		}
+				
+		// second and following rounds are the same
+		for ($i=1 ; $i<$this->numberOfRounds ; $i++) {
+			// read off pairings of this round
+			$teamcount=0;
+			for ($j=0 ; $j < ceil($nrTeams/2) ; $j++) {
+				$pool->Rounds[$i]->Matches[$j]->homeName = "Round ".$i." aprx rank ".++$teamcount;
+				$pool->Rounds[$i]->Matches[$j]->awayName = "Round ".$i." aprx rank ".++$teamcount;
+				$pool->Rounds[$i]->Matches[$j]->matchName = "Match rank ".($j+1);
+			}
+
+		}
+
+		$pool->save();
+					
+	}
+	
 	/**
 	 * gives back a multi-dimensional array $standings
 	 * containing the $standings after round $roundnr
@@ -78,14 +113,18 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 						
 		}
 
-		// fill in ranks
+		// fill in ranks, also in PoolTeam
 		$rank=1;
 		$standings[0]['rank']=1;  // assuming that it was sorted before, so the list starts with 0					
 		for ($i=1; $i<count($standings) ; $i++) {
 			if ($this->CompareTeamsSwissdraw($standings[$i-1],$standings[$i])!=0) {
 				$rank=$i+1;
 			}
-			$standings[$i]['rank']=$rank;		
+			$standings[$i]['rank']=$rank;
+			
+			$poolteam = PoolTeam::getBySeed($pool->id, $standings[$i]['seed']);
+			$poolteam['rank']=$rank;
+			$poolteam->save();		
 		}
 		
 		return $standings;
@@ -95,6 +134,11 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	public function createMatchups($pool) {
 		$curRoundNr = $pool->currentRound;
 		$curRound = $pool->Rounds[$curRoundNr-1];
+		$nrTeams = count($pool->PoolTeams);
+		
+		if ($nrTeams %2 ==1) {
+			die('number of teams in Swissdraw pool has to be even');
+		}
 		
 		// delete matchups and results of current round and all following rounds of the pool
 		foreach($pool->Rounds as $round) {
@@ -116,40 +160,54 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			echo "initial standings:<br>";
 			$this->PrintStandings($standings);
 		}		
-		
-		// the goal is to swap around teams in $standings until we arrive at new standings where
-		// 1-2, 3-4, 5-6 etc. are valid matchups (i.e. they have not played each other before) 
-		$forward=true;
-		$roundcounter=0;
-		$foundValidArrangement=$this->AdjustForDuplicateGames($standings,$pool,$forward);
-			
-		while(!$foundValidArrangement){
-			$forward=!$forward;
-			if (self::DEBUG) {
-				if (forward) {
-					echo "round ".$roundcounter.", going forward <br>";
-				} else {
-					echo "round ".$roundcounter.", going backward <br>";
+
+		// first Swissdraw round has different pairings
+		if($curRoundNr==1) {
+			$teamcounter=0;
+			for ($i=0; $i < count($curRound->Matches); $i++) {
+				$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
+				$curRound->Matches[$i]->away_team_id = $standings[($teamcounter+($nrTeams/2))-1]['team_id'];
+				
+				// fill in random scores for testing
+				$curRound->Matches[$i]->homeScore = rand(0,15);
+				$curRound->Matches[$i]->awayScore = rand(0,15);
+				
+			}	
+			$curRound->save();									
+		} else {			
+			// the goal is to swap around teams in $standings until we arrive at new standings where
+			// 1-2, 3-4, 5-6 etc. are valid matchups (i.e. they have not played each other before) 
+			$forward=true;
+			$roundcounter=0;
+			$foundValidArrangement=$this->AdjustForDuplicateGames($standings,$pool,$forward);
+				
+			while(!$foundValidArrangement){
+				$forward=!$forward;
+				if (self::DEBUG) {
+					if (forward) {
+						echo "round ".$roundcounter.", going forward <br>";
+					} else {
+						echo "round ".$roundcounter.", going backward <br>";
+					}
 				}
+				$foundValidArrangement = $this->AdjustForDuplicateGames($standings,$pool, $forward);
+				$roundcounter++;
+				if ($roundcounter>count($standings)*2) Die("Could not find a valid arrangment of teams"); 
+			}		
+			
+			// fill in matchups
+			$teamcounter=0;
+			for ($i=0; $i < count($curRound->Matches); $i++) {
+				$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
+				$curRound->Matches[$i]->away_team_id = $standings[$teamcounter++]['team_id'];	
+				
+				// fill in random scores for testing
+				$curRound->Matches[$i]->homeScore = rand(0,15);
+				$curRound->Matches[$i]->awayScore = rand(0,15);
+				
+				$curRound->save();		
 			}
-			$foundValidArrangement = $this->AdjustForDuplicateGames($standings,$pool, $forward);
-			$roundcounter++;
-			if ($roundcounter>count($standings)*2) Die("Could not find a valid arrangment of teams"); 
 		}
-		
-		
-		// fill in matchups
-		$teamcounter=0;
-		for ($i=0; $i < count($curRound->Matches); $i++) {
-			$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
-			$curRound->Matches[$i]->away_team_id = $standings[$teamcounter++]['team_id'];	
-			
-			// fill in random scores for testing
-			$curRound->Matches[$i]->homeScore = rand(0,15);
-			$curRound->Matches[$i]->awayScore = rand(0,15);
-			
-			$curRound->save();		
-		};
 		
 		// increase current round
 		if ($curRoundNr < $this->numberOfRounds) { 

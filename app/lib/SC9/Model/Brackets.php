@@ -25,4 +25,62 @@ class Brackets extends BaseBrackets
 		return $matchup;
 	}
 	
+	public static function getOrigin($nrTeams,$nrRounds,$round,$rank) {
+		// returns the name of the team which is ranked $rank in round $round
+		// of a bracket with $nrTeams and $nrRounds
+		
+		// it's easy in round 1
+		if ($round==1) {
+			return "Team ".$rank;
+		}
+
+		$origin="";
+		
+		// we have to look it up in higher rounds
+		$q = Doctrine_Query::create()
+			    ->from('Brackets br')
+			    ->where('br.nrteams = ?', $nrTeams)
+			    ->andWhere('br.nrrounds = ?',$nrRounds)
+			    ->andWhere('br.round = ?',($round-1))
+			    ->andWhere('br.home = ?', $rank);
+		$matchup = $q->fetchOne();
+		
+		if ($matchup) {
+			$origin .= (($matchup['away']>$rank) ? "Winner " : "Loser ");
+		} else { // the $rank we are looking for has to be an away team then
+			$q = Doctrine_Query::create()
+				    ->from('Brackets br')
+				    ->where('br.nrteams = ?', $nrTeams)
+				    ->andWhere('br.nrrounds = ?',$nrRounds)
+				    ->andWhere('br.round = ?',($round-1))
+				    ->andWhere('br.away = ?', $rank);
+			$matchup = $q->fetchOne();
+			if ($matchup==false) { die('$rank has to be somewhere...'); }
+			$origin .= (($matchup['home']>$rank) ? "Winner " : "Loser ");			
+		}
+		
+		$origin .= Brackets::getName($round-1, $nrRounds)." ".$matchup['matchnr'];
+		
+		return $origin;
+		
+	}
+	
+	
+	public static function getName($round, $nrRounds) {
+		switch ($nrRounds-$round) {
+			case 0:
+				return "Finals";
+			case 1:
+				return "Semifinals";
+			case 2:
+				return "Quarterfinals";
+			case 3:
+				return "Last16";
+			case 4:
+				return "Last32";
+			default:
+				die('unknown playoff name');
+		}
+	}
+	
 }
