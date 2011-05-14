@@ -279,6 +279,15 @@ Brackets:
     away: '2'
     winplace: null
     loseplace: null
+  Brackets_9_3_1_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '5'
+    home: '9'
+    away: null
+    winplace: null
+    loseplace: null    
   Brackets_9_3_2_1:
     nrteams: '9'
     nrrounds: '3'
@@ -315,6 +324,15 @@ Brackets:
     away: '7'
     winplace: null
     loseplace: null
+  Brackets_9_3_2_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '5'
+    home: '5'
+    away: null
+    winplace: null
+    loseplace: null    
   Brackets_9_3_3_1:
     nrteams: '9'
     nrrounds: '3'
@@ -351,4 +369,13 @@ Brackets:
     away: '9'
     winplace: '7'
     loseplace: '9'
+  Brackets_9_3_3_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '5'
+    home: '6'
+    away: null
+    winplace: '8'
+    loseplace: null
  

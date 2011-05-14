@@ -20,13 +20,19 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		return "Bracket";
 	}
 	
-	public function calculateNumberOfRounds($teamCount) {
-		$this->numberOfRounds=0;
-		$r = $teamCount;
-		while($r > 1) {
-			$this->numberOfRounds++;
-			$r = $r / 2;
-		}
+	public function calculateNumberOfRounds($nrTeams) {
+		// check if there is such a bracket structure
+		
+		$this->numberOfRounds = Brackets::getNrOfRounds($nrTeams);		
+//		
+//		$this->numberOfRounds=0;
+//		$r = $teamCount;
+//		while($r > 1) {
+//			$this->numberOfRounds++;
+//			$r = $r / 2;
+//		}
+
+//		echo "hello ".Brackets::getNrOfRounds($nrTeams)."<br>";
 		return $this->numberOfRounds;
 	}
 	
@@ -47,9 +53,9 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 				// then the rest of the bracket is defined as well
 					for($i=0; $i < count($pool->Rounds[0]->Matches); $i++) { // go through all matches
 						$matchup = Brackets::getMatchup($nrTeams, $nrRounds, $j+1, $i+1);
-						$pool->Rounds[$j]->Matches[$i]->homeName = Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['home']);
-						$pool->Rounds[$j]->Matches[$i]->awayName = Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['away']);
-						$pool->Rounds[$j]->Matches[$i]->matchName = Brackets::getName($j+1, $nrRounds)." ".($i+1);		
+						$pool->Rounds[$j]->Matches[$i]->homeName = ($matchup['home'] === null ? "BYE" : Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['home']));
+						$pool->Rounds[$j]->Matches[$i]->awayName = ($matchup['away'] === null ? "BYE" : Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['away']));
+						$pool->Rounds[$j]->Matches[$i]->matchName = Brackets::getName($j+1, $nrRounds)." ".(($matchup['home'] === null || $matchup['away'] === null) ? "BYE game" : ($i+1));		
 					}
 				}
 				$pool->save();
@@ -78,6 +84,9 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			// sort according to incoming rank 
 			usort($standings, create_function('$a,$b','return $a[\'seed\']==$b[\'seed\']?0:($a[\'seed\']<$b[\'seed\']?-1:1);'));			
 		} else {
+			$nrTeams=count($pool->PoolTeams);
+			$nrRounds=$this->calculateNumberOfRounds($nrTeams);
+			
 			for ($i=0; $i < $roundnr; $i++) { // go through all rounds up to $roundnr	
 				$curRound = $pool->Rounds[$i];
 				// set wins and losses of all teams to 0
@@ -87,41 +96,78 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 				}				
 				
 				foreach($curRound->Matches as $match) {
-					if ($match->home_team_id == null || $match->away_team_id == null) { break; }
-					// update home team stats
-					$standings[$match->home_team_id]['games']++;					
-					$standings[$match->home_team_id]['spirit'] += $match->homeSpirit;				
-					// update away team stats
-					$standings[$match->away_team_id]['games']++;					
-					$standings[$match->away_team_id]['spirit'] += $match->awaySpirit;
-					if ($match->homeScore > $match->awayScore) {
-						$standings[$match->home_team_id]['wins']++;
-						$standings[$match->away_team_id]['losses']++;
-					}elseif ($match->homeScore < $match->awayScore) {
-						$standings[$match->home_team_id]['losses']++;
-						$standings[$match->away_team_id]['wins']++;					
-					}else {
-						echo 'no ties allowed in playoffs, counting as home loss and continuing for testing purposes...';
-						$standings[$match->home_team_id]['losses']++;
-						$standings[$match->away_team_id]['wins']++;										
-					}
-	
-					// update ranks
-					$smallerrank = min($standings[$match->home_team_id]['rank'], $standings[$match->away_team_id]['rank']);
-					$largerrank = max($standings[$match->home_team_id]['rank'], $standings[$match->away_team_id]['rank']);  
-					if ($standings[$match->home_team_id]['wins'] < $standings[$match->away_team_id]['wins']) {
-						$standings[$match->home_team_id]['rank']=$largerrank;
-						$standings[$match->away_team_id]['rank']=$smallerrank;
-					} elseif ($standings[$match->home_team_id]['wins'] > $standings[$match->away_team_id]['wins']) {
-						$standings[$match->home_team_id]['rank']=$smallerrank;
-						$standings[$match->away_team_id]['rank']=$largerrank;					
-					} else {
-						// if tied, ranks remain the same as they were before
-					}
+					if ($match->home_team_id === null) {
+						// BYE - awayTeam:
+						// just check if we need to adjust the final rank
+						$matchup=Brackets::getMatchup($nrTeams, $nrRounds, $i+1, $match->rank);
+						if (!is_null($matchup['winplace'])) {
+							$standings[$match->away_team_id]['rank']=$matchup['winplace'];
+						}												
+					}elseif ($match->away_team_id === null) {
+						// homeTeam - BYE:
+						// just check if we need to adjust the final rank
+						$matchup=Brackets::getMatchup($nrTeams, $nrRounds, $i+1, $match->rank);
+						if (!is_null($matchup['winplace'])) {
+							$standings[$match->home_team_id]['rank']=$matchup['winplace'];
+						}																		
+					}else { 
+						// regular game:
 					
-					// TODO: update ranks in PoolTeams as well
-					// TODO: check if there is a final rank assignment in the Brackets DB (and apply it)
+						// update home team stats
+						$standings[$match->home_team_id]['games']++;					
+						$standings[$match->home_team_id]['spirit'] += $match->homeSpirit;				
+						// update away team stats
+						$standings[$match->away_team_id]['games']++;					
+						$standings[$match->away_team_id]['spirit'] += $match->awaySpirit;
+						if ($match->homeScore > $match->awayScore) {
+							$standings[$match->home_team_id]['wins']++;
+							$standings[$match->away_team_id]['losses']++;
+						}elseif ($match->homeScore < $match->awayScore) {
+							$standings[$match->home_team_id]['losses']++;
+							$standings[$match->away_team_id]['wins']++;					
+						}else {
+							echo 'no ties allowed in playoffs, counting as home loss and continuing for testing purposes...';
+							$standings[$match->home_team_id]['losses']++;
+							$standings[$match->away_team_id]['wins']++;										
+						}
+		
+						// update ranks
+						$smallerrank = min($standings[$match->home_team_id]['rank'], $standings[$match->away_team_id]['rank']);
+						$largerrank = max($standings[$match->home_team_id]['rank'], $standings[$match->away_team_id]['rank']);  
+						
+						// also check if there is a final rank assignment in the Brackets DB (and apply it)
+						$matchup=Brackets::getMatchup($nrTeams, $nrRounds, $i+1, $match->rank);
+						
+						// a quick sanity check
+						$smaller=min($matchup['home'],$matchup['away']);
+						$bigger=max($matchup['home'],$matchup['away']);
+						if ($smaller != $smallerrank || $bigger != $largerrank) {
+							die('we are not looking up the right matchup');
+						}
+						
+						if ($standings[$match->home_team_id]['wins'] < $standings[$match->away_team_id]['wins']) {
+							$standings[$match->home_team_id]['rank']=$largerrank;
+							$standings[$match->away_team_id]['rank']=$smallerrank;
+							if ($matchup['winplace'] != null) {
+								$standings[$match->away_team_id]['rank']=$matchup['winplace'];
+							}
+							if ($matchup['loseplace'] != null) {
+								$standings[$match->home_team_id]['rank']=$matchup['loseplace'];							
+							}												
+						} elseif ($standings[$match->home_team_id]['wins'] > $standings[$match->away_team_id]['wins']) {
+							$standings[$match->home_team_id]['rank']=$smallerrank;
+							$standings[$match->away_team_id]['rank']=$largerrank;
+							if ($matchup['winplace'] != null) {
+								$standings[$match->home_team_id]['rank']=$matchup['winplace'];
+							}
+							if ($matchup['loseplace'] != null) {
+								$standings[$match->away_team_id]['rank']=$matchup['loseplace'];							
+							}												
+						} else {
+							// if tied, ranks remain the same as they were before
+						}
 					
+					}					
 				} 
 			}
 			
@@ -129,15 +175,12 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			usort($standings, array($this,'CompareTeamsPlayoffs'));					
 		}		
 
-		// fill in ranks
-//		$rank=1;
-//		$standings[0]['rank']=1;  // assuming that it was sorted before, so the list starts with 0					
-//		for ($i=1; $i<count($standings) ; $i++) {
-//			if ($this->CompareTeamsPlayoffs($standings[$i-1],$standings[$i])!=0) {
-//				$rank=$i+1;
-//			}
-//			$standings[$i]['rank']=$rank;		
-//		}
+		// fill in ranks in PoolTeams
+		for ($i=0; $i<count($standings) ; $i++) {
+			$poolteam = PoolTeam::getBySeed($pool->id, $standings[$i]['seed']);
+			$poolteam['rank']=$i+1;
+			$poolteam->save();
+		}					
 		
 		return $standings;
 		
@@ -176,12 +219,15 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			// then the rest of the bracket is defined as well
 			for($i=0; $i < count($round->Matches); $i++) { // go through all matches
 				$matchup = Brackets::getMatchup($nrTeams, $nrRounds, $curRoundNr, $i+1);
-				$curRound->Matches[$i]->home_team_id = $standings[$matchup['home']-1]['team_id'];
-				$curRound->Matches[$i]->away_team_id = $standings[$matchup['away']-1]['team_id'];				
+				$curRound->Matches[$i]->home_team_id = (is_null($matchup['home']) ? null : $standings[$matchup['home']-1]['team_id']);
+				$curRound->Matches[$i]->away_team_id = (is_null($matchup['away']) ? null : $standings[$matchup['away']-1]['team_id']);				
 
-				// fill in random scores for testing				
-				$curRound->Matches[$i]->homeScore = rand(0,15);
-				$curRound->Matches[$i]->awayScore = rand(0,15);							
+				// fill in random scores for testing	
+				if (!is_null($matchup['home']) && !is_null($matchup['away'])) {			
+					$curRound->Matches[$i]->homeScore = rand(0,15);
+					$curRound->Matches[$i]->awayScore = rand(0,15);
+					$curRound->Matches[$i]->scoreSubmitTime = time();
+				}							
 			}
 		} else { // we don't know what to do
 			die('no bracket structure defined yet');
@@ -193,11 +239,11 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		
 		// increase current round
 		$this->calculateNumberOfRounds(count($pool->PoolTeams));
-		if ($curRoundNr < $this->numberOfRounds) { 
+//		if ($curRoundNr < $this->numberOfRounds) { 
 			$pool->currentRound = ($curRoundNr + 1);
-		} else { // or set to 0 if total number of rounds is reached
-			$pool->currentRound = 0;
-		}
+//		} else { // or set to -1 if total number of rounds is reached
+//			$pool->currentRound = -1;
+//		}
 		$pool->save();
 		
 	}

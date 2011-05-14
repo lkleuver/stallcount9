@@ -210,11 +210,11 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		}
 		
 		// increase current round
-		if ($curRoundNr < $this->numberOfRounds) { 
+//		if ($curRoundNr < $this->numberOfRounds) { 
 			$pool->currentRound = ($curRoundNr + 1);
-		} else { // or set to 0 if total number of rounds is reached
-			$pool->currentRound = 0;
-		}
+//		} else { // or set to -1 if total number of rounds is reached
+//			$pool->currentRound = -1;
+//		}
 		$pool->save();
 	}
 	

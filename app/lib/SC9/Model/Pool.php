@@ -63,7 +63,7 @@ class Pool extends BasePool {
 			$poolTeam->seed = $move->destinationSpot;
 			$poolTeam->rank = $move->destinationSpot; // set rank=seed to begin with
 			$poolTeam->team_id = $move->SourcePool->getTeamIdForSpot($move->sourceSpot);
-			if ($poolTeam->team_id == null) {
+			if ($poolTeam->team_id === null) {
 				throw new Exception('missing team_id, the move probably did not exist');
 			}
 			$poolTeam->save();
@@ -124,7 +124,7 @@ class Pool extends BasePool {
 	}
 	
 	public function getStrategy(){
-		if($this->_strategy == null) {
+		if($this->_strategy === null) {
 			$this->_strategy = SC9_Factory_Strategy::createStrategy($this->PoolRuleset);
 		}
 		return $this->_strategy;

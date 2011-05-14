@@ -219,7 +219,11 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 
 		// fill in ranks, also in PoolTeam
 		$rank=1;
-		$standings[0]['rank']=1;  // assuming that it was sorted before, so the list starts with 0					
+		$standings[0]['rank']=1;  // assuming that it was sorted before, so the list starts with 0
+		$poolteam = PoolTeam::getBySeed($pool->id, $standings[0]['seed']);
+		$poolteam['rank']=$rank;
+		$poolteam->save();					
+	
 		for ($i=1; $i<count($standings) ; $i++) {
 			if ($this->CompareTeamsRoundRobin($standings[$i-1],$standings[$i])!=0) {
 				$rank=$i+1;

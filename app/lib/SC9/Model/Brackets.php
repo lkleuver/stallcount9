@@ -25,6 +25,24 @@ class Brackets extends BaseBrackets
 		return $matchup;
 	}
 	
+	public static function getNrOfRounds($nrTeams) {
+		$q = Doctrine_Query::create()
+				->select('br.nrrounds')
+			    ->from('Brackets br')
+			    ->where('br.nrteams = ?', $nrTeams);
+		$bracket = $q->fetchOne();
+		
+		if ($nrRounds=false) {
+			trigger_error('no playoff bracket with '.$nrTeams.' teams defined yet');
+		}
+		
+		// TODO: That's OK for now, but later we have to cope with different playoff schemes for the same number of teams
+		// for this, we will need one more column in Brackets to specify which scheme we mean.
+		
+		return $bracket['nrrounds'];
+		
+	}
+	
 	public static function getOrigin($nrTeams,$nrRounds,$round,$rank) {
 		// returns the name of the team which is ranked $rank in round $round
 		// of a bracket with $nrTeams and $nrRounds
@@ -46,7 +64,12 @@ class Brackets extends BaseBrackets
 		$matchup = $q->fetchOne();
 		
 		if ($matchup) {
-			$origin .= (($matchup['away']>$rank) ? "Winner " : "Loser ");
+			if ($matchup['away']===null) {
+				$origin .= Brackets::getOrigin($nrTeams, $nrRounds, $round-1, $matchup['home']);
+			} else {
+				$origin .= (($matchup['away']>$rank) ? "Winner " : "Loser ");
+				$origin .= Brackets::getName($round-1, $nrRounds)." ".$matchup['matchnr'];
+			}
 		} else { // the $rank we are looking for has to be an away team then
 			$q = Doctrine_Query::create()
 				    ->from('Brackets br')
@@ -55,11 +78,15 @@ class Brackets extends BaseBrackets
 				    ->andWhere('br.round = ?',($round-1))
 				    ->andWhere('br.away = ?', $rank);
 			$matchup = $q->fetchOne();
-			if ($matchup==false) { die('$rank has to be somewhere...'); }
-			$origin .= (($matchup['home']>$rank) ? "Winner " : "Loser ");			
+			if ($matchup==false) { trigger_error('$rank '.$rank.' has to be somewhere. I was called with '.$nrTeams.$nrRounds.$round.$rank); }
+			if ($matchup['home']===null) {
+				$origin .= Brackets::getOrigin($nrTeams, $nrRounds, $round-1, $matchup['away']);	
+			} else {
+				$origin .= (($matchup['home']>$rank) ? "Winner " : "Loser ");
+				$origin .= Brackets::getName($round-1, $nrRounds)." ".$matchup['matchnr'];				
+			}			
 		}
 		
-		$origin .= Brackets::getName($round-1, $nrRounds)." ".$matchup['matchnr'];
 		
 		return $origin;
 		
