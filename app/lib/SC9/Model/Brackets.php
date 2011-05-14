@@ -43,6 +43,79 @@ class Brackets extends BaseBrackets
 		
 	}
 	
+	public static function getMatchupByRank($nrTeams,$nrRounds,$round,$rank) {
+		// returns array with elements {home, away, winplace, loseplace}
+		// describing the game of $round where $rank plays
+		$q = Doctrine_Query::create()
+			    ->from('Brackets br')
+			    ->where('br.nrteams = ?', $nrTeams)
+			    ->andWhere('br.nrrounds = ?',$nrRounds)
+			    ->andWhere('br.round = ?',$round)
+			    ->andWhere('br.home = ?', $rank);
+		$matchup = $q->fetchOne();
+		
+		if ($matchup == false) {
+			$q = Doctrine_Query::create()
+			    ->from('Brackets br')
+			    ->where('br.nrteams = ?', $nrTeams)
+			    ->andWhere('br.nrrounds = ?',$nrRounds)
+			    ->andWhere('br.round = ?',$round)
+			    ->andWhere('br.away = ?', $rank);
+			$matchup = $q->fetchOne();
+		}
+
+		return $matchup;		
+	}
+	
+	public static function getPossibleRanks($nrTeams,$nrRounds,$round,$matchnr) {
+		// returns the best and worst achievable rank when playing in $round and $matchnr
+		
+		// TODO: this all assumes that you can only achieve higher ranks by winning all the games
+		// in weird schemes however (like 9 teams, 3 rounds), it might be possible to end up higher eventually 
+		// by losing games..... :-\
+		// to cope with this, probably some recursive call (basically exhaustive search) would be needed
+		
+		$matchup=Brackets::getMatchup($nrTeams, $nrRounds, $round, $matchnr);
+		if (min($matchup['home'],$matchup['away'])>0) {
+			$best = min($matchup['home'],$matchup['away']);
+			$worst = max($matchup['home'],$matchup['away']);
+		} elseif (is_null($matchup['home'])) {
+			$best = $matchup['away'];
+			$worst = $matchup['away'];
+		} else {
+			$best = $matchup['home'];
+			$worst = $matchup['home'];			
+		}
+		
+		for ($i=$round+1 ; $i <= $nrRounds; $i++) { // go through all remaining rounds
+			$matchup=Brackets::getMatchupByRank($nrTeams, $nrRounds, $i, $best);
+			if (!is_null($matchup['winplace'])) {
+				$best = $matchup['winplace'];
+			} else {
+				if (min($matchup['home'],$matchup['away'])>0) {
+					$best = min($matchup['home'],$matchup['away']);
+				} else {
+					// team has a BYE
+				}
+			}
+		}
+		
+		for ($i=$round+1 ; $i <= $nrRounds; $i++) { // go through all remaining rounds
+			$matchup=Brackets::getMatchupByRank($nrTeams, $nrRounds, $i, $worst);
+			if (!is_null($matchup['loseplace'])) {
+				$worst = $matchup['loseplace'];
+			} else {
+				if (max($matchup['home'],$matchup['away'])>0) {
+					$worst = max($matchup['home'],$matchup['away']);
+				} else {
+					// team has a BYE
+				}
+			}
+		}
+		
+		return array('best'=>$best,'worst'=>$worst);		
+	}
+	
 	public static function getOrigin($nrTeams,$nrRounds,$round,$rank) {
 		// returns the name of the team which is ranked $rank in round $round
 		// of a bracket with $nrTeams and $nrRounds

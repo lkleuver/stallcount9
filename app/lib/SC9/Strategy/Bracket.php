@@ -44,7 +44,8 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		
 		$this->debprint('nrTeams '.$nrTeams. ', nrRounds '.$nrRounds);
 		
-		$this->debprint('test '.Brackets::getOrigin($nrTeams, $nrRounds, 3, 2));
+		$matchup=Brackets::getMatchupByRank(9, 3, 2, 5);
+		$this->debprint('test '.$matchup['home'].$matchup['away']);
 		
 		if (Brackets::getMatchup($nrTeams, $nrRounds, 1, 1) != false)  { 
 				for($j=0 ; $j<$nrRounds; $j++) { // go through rounds
@@ -70,7 +71,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		// initialize standings arrays
 		// note that rank is initialized with seed, as we are computing everything from scratch
 		foreach($pool->PoolTeams as $poolteam) {
-			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'wins' => 0, 'losses' => 0, 'spirit' => 0, 'rank' => $poolteam->seed, 'seed' => $poolteam->seed);
+			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'wins' => 0, 'losses' => 0, 'spirit' => 0, 'rank' => $poolteam->seed, 'seed' => $poolteam->seed, 'bestPossible' => 1, 'worstPossible' => count($pool->PoolTeams));
 		}
 		
 //		echo "<pre>";
@@ -103,13 +104,25 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 						if (!is_null($matchup['winplace'])) {
 							$standings[$match->away_team_id]['rank']=$matchup['winplace'];
 						}												
+
+						// fill in possible ranks
+						$possibleRanks=Brackets::getPossibleRanks($nrTeams, $nrRounds, $roundnr, $match->rank);
+						$standings[$match->away_team_id]['bestPossible']=$possibleRanks['best'];						
+						$standings[$match->away_team_id]['worstPossible']=$possibleRanks['worst'];						
+						
 					}elseif ($match->away_team_id === null) {
 						// homeTeam - BYE:
 						// just check if we need to adjust the final rank
 						$matchup=Brackets::getMatchup($nrTeams, $nrRounds, $i+1, $match->rank);
 						if (!is_null($matchup['winplace'])) {
 							$standings[$match->home_team_id]['rank']=$matchup['winplace'];
-						}																		
+						}
+						
+						// fill in possible ranks
+						$possibleRanks=Brackets::getPossibleRanks($nrTeams, $nrRounds, $roundnr, $match->rank);
+						$standings[$match->home_team_id]['bestPossible']=$possibleRanks['best'];
+						$standings[$match->home_team_id]['worstPossible']=$possibleRanks['worst'];
+												
 					}else { 
 						// regular game:
 					
@@ -166,10 +179,21 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 						} else {
 							// if tied, ranks remain the same as they were before
 						}
+						
+						// fill in possible ranks
+						$possibleRanks=Brackets::getPossibleRanks($nrTeams, $nrRounds, $roundnr, $match->rank);
+						$standings[$match->home_team_id]['bestPossible']=$possibleRanks['best'];
+						$standings[$match->home_team_id]['worstPossible']=$possibleRanks['worst'];
+						$standings[$match->away_team_id]['bestPossible']=$possibleRanks['best'];						
+						$standings[$match->away_team_id]['worstPossible']=$possibleRanks['worst'];						
 					
 					}					
 				} 
 			}
+			
+//			echo "<pre>";
+//			print_r($standings);
+//			echo "</pre>";
 			
 			// sort standings according to rank and number of wins
 			usort($standings, array($this,'CompareTeamsPlayoffs'));					
