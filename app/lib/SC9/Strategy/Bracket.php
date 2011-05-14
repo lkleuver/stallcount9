@@ -4,7 +4,7 @@
 class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 	
 	private $numberOfRounds;
-	const DEBUG = false;
+	const DEBUG = true;
 	
 	private function debprint($msg) {
 		if (self::DEBUG) {
@@ -21,6 +21,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 	}
 	
 	public function calculateNumberOfRounds($teamCount) {
+		$this->numberOfRounds=0;
 		$r = $teamCount;
 		while($r > 1) {
 			$this->numberOfRounds++;
@@ -28,6 +29,36 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		}
 		return $this->numberOfRounds;
 	}
+	
+	public function nameMatches($pool) {
+		$this->debprint('naming matches in Bracket');
+		
+		$nrTeams=$pool->spots;
+		$nrRounds=$this->calculateNumberOfRounds($nrTeams);
+		
+		$this->debprint('nrTeams '.$nrTeams. ', nrRounds '.$nrRounds);
+		
+		$this->debprint('test '.Brackets::getOrigin($nrTeams, $nrRounds, 3, 2));
+		
+		if (Brackets::getMatchup($nrTeams, $nrRounds, 1, 1) != false)  { 
+				for($j=0 ; $j<$nrRounds; $j++) { // go through rounds
+				// we know what to do
+				// assuming that when the first matchup for the first round is defined, 
+				// then the rest of the bracket is defined as well
+					for($i=0; $i < count($pool->Rounds[0]->Matches); $i++) { // go through all matches
+						$matchup = Brackets::getMatchup($nrTeams, $nrRounds, $j+1, $i+1);
+						$pool->Rounds[$j]->Matches[$i]->homeName = Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['home']);
+						$pool->Rounds[$j]->Matches[$i]->awayName = Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['away']);
+						$pool->Rounds[$j]->Matches[$i]->matchName = Brackets::getName($j+1, $nrRounds)." ".($i+1);		
+					}
+				}
+				$pool->save();
+		} else { // we don't know what to do
+			die('no bracket structure defined yet');
+		}		
+		
+	}
+	
 	
 	public function standingsAfterRound($pool, $roundnr) {
 		// initialize standings arrays
@@ -87,6 +118,10 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 					} else {
 						// if tied, ranks remain the same as they were before
 					}
+					
+					// TODO: update ranks in PoolTeams as well
+					// TODO: check if there is a final rank assignment in the Brackets DB (and apply it)
+					
 				} 
 			}
 			
