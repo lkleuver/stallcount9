@@ -6,7 +6,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 	
 	public function __construct($output, $params) {
 		parent::__construct($output, $params);
-		$this->divisionId = count($params) > 0 ? $params[0] : "";
+		$this->divisionId = isset($_REQUEST["divisionId"]) ? $_REQUEST["divisionId"] : "";
 	}
 	
 

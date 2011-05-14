@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+	body {
+		text-align: center;
+		background-color: #f2f2e6;
+	}
+	
+	
+	#menubar {
+		background-color: #a39f94;
+		border-bottom: 1px solid #726f67;
+		height: 31px;
+	}
+	
+	#header {
+		background-color: #cad99e;
+	}
+	
+	#content {
+		margin: auto;
+		width: 928px;
+		text-align: left;
+		padding: 16px;
+	}
+	

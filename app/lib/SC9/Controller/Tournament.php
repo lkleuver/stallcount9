@@ -6,8 +6,8 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	public $tournamentId;
 	
 	public function __construct($output, $params) {
-		parent::__construct($output, $params);
-		$this->tournamentId = count($params) > 0 ? $params[0] : "";
+		parent::__construct($output, $params, 'tournament');
+		$this->tournamentId = isset($_REQUEST["tournamentId"]) ? $_REQUEST["tournamentId"] : "";
 	}
 	
 	

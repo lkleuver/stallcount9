@@ -102,5 +102,15 @@ class Division extends BaseDivision {
 		$division = $q->fetchOne();
 		return $division;
 	}
+	
+	public static function getByIdLight($id) {
+		$q = Doctrine_Query::create()
+			    ->from('Division d')
+			    ->leftJoin('d.Stages s')
+			    ->where('d.id = ?', $id)
+			    ->orderBy('s.rank ASC');
+		$division = $q->fetchOne();
+		return $division;
+	}
 
 }

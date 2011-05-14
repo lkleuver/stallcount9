@@ -6,7 +6,7 @@ class SC9_Controller_Field extends SC9_Controller_Core {
 	public $fieldId;
 	
 	public function __construct($output, $params) {
-		parent::__construct($output, $params);
+		parent::__construct($output, $params, "field");
 		$this->fieldId = count($params) > 0 ? $params[0] : "";
 	}
 	

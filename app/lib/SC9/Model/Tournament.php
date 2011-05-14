@@ -18,6 +18,12 @@ class Tournament extends BaseTournament {
 	
 
 	
+	public static function getList() {
+		$q = Doctrine_Query::create()
+			    ->from('Tournament t')
+			    ->orderBy('t.startDate DESC, t.title ASC');
+		return $q->execute();
+	}
 	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()

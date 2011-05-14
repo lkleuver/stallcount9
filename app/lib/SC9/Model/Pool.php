@@ -200,6 +200,14 @@ class Pool extends BasePool {
 		return $pool;
 	}
 	
+	public static function getByIdLight($id) {
+		$q = Doctrine_Query::create()
+			    ->from('Pool p')
+			    ->where('p.id = ?', $id);
+		$pool = $q->fetchOne();
+		return $pool;
+	}
+	
 	public static function deleteDestinationMovesForSpot($id, $spot) {
 		$q = Doctrine_Query::create()
 				->delete("PoolMove pm")

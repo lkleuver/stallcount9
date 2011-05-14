@@ -1,22 +1,87 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="nl" lang="nl">
-<head>
-	<meta http-equiv="content-language" content="nl" />
- 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8" />
 	<title>{% block title %}Stallcount9{% endblock %}</title>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" type="text/css" href="skin/default/style/master.css"  />
+	<style type="text/css">
+		@import url("skin/default/assets/style/master.css");
+	</style>
 	{% block header %}{% endblock %}
 </head>
 <body>
-	
-	<div id="stallcount9">
-		<div id="sc9-menu" class="menubar"><a href="index.php">home</a></div>
-		{% block content %}
-			<h1>Hello world</h1>
-			<p> twig test </p>
-		{% endblock %}
-	
+<div id="menubar" class="menubar">
+	<div class="container">
+		<ul class="selection">
+			<li class="first">
+				<a href="#">{% if activeTournament %}{{activeTournament.title}}{% else %} Tournaments {% endif %}</a>
+				<ul>
+				{% for tournamentOption in tournamentOptions %}
+					<li><a href="index.php?n=/tournament/detail/{{tournamentOption.id}}">{{tournamentOption.title}}</a></li>
+				{% endfor %}
+				</ul>
+			</li>
+			{% if divisionOptions %}
+				<li>
+					<a href="#">{% if activeDivision %}{{activeDivision.title}}{% else %}Divisions{% endif %}</a>
+					<ul>
+					{% for divisionOption in divisionOptions %}
+						<li><a href="index.php?n=/division/detail/{{divisionOption.id}}&tournamentId={{tournamentId}}">{{divisionOption.title}}</a></li>
+					{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+			{% if stageOptions %}
+				<li>
+					<a href="#">{% if activeStage %}{{activeStage.title}}{% else %}Stages{% endif %}</a>
+					<ul>
+					{% for stageOption in stageOptions %}
+						<li><a href="index.php?n=/stage/detail/{{stageOption.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}">{{stageOption.title}}</a></li>
+					{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+			{% if poolOptions %}
+				<li>
+					<a href="#">{% if activePool %}{{activePool.title}}{% else %}Pools{% endif %}</a>
+					<ul>
+					{% for poolOption in poolOptions %}
+						<li><a href="index.php?n=/pool/detail/{{poolOption.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}">{{poolOption.title}}</a></li>
+					{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+		</ul>
+		
+		<ul class="controls">
+			<li class="first"><a href="index.php"><img src="skin/default/assets/img/icons/home.png" alt="home" /></a></li>
+		</ul>
 	</div>
+</div>
+
+<div id="header" class="header">
+	<h1>{% if title %}{{title}}{% else %}Stallcount 9{% endif %}</h1>
+	
+	<ul class="tabs">
+		{% block tabs %}
+			<li{% if section == 'tournament'%} class="active"{% endif %}><a href="index.php?n=/tournament/detail/{{tournamentId}}">Tournament</a></li>
+			<li{% if section == 'field'%} class="active"{% endif %}><a href="?n=/field/list&tournamentId={{tournamentId}}">Fields</a></li>
+			<li{% if section == 'volunteers'%} class="active"{% endif %}><a href="#">Volunteers</a></li>
+		{% endblock %}
+	</ul>
+
+</div>
+
+<div id="content">
+
+	{% block content %}
+		<h1>Hello world</h1>
+		<p> twig test </p>
+	{% endblock %}
+	
+</div>
+
+
+	
 </body>
 </html>

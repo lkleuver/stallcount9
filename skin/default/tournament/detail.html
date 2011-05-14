@@ -9,9 +9,9 @@
   	
   	{% for division in tournament.Divisions %}
 	  	<div class="division">
-	  		<h2><a class="action"href="?n=/division/detail/{{ division.id }}">{{ division.title }}</a></h2>
+	  		<h2><a class="action"href="?n=/division/detail/{{ division.id }}&tournamentId={{tournamentId}}">{{ division.title }}</a></h2>
 	  		
-	  		<a class="action" href="?n=/division/detail/{{ division.id }}">detail</a> <a class="action" href="?n=/division/remove/{{division.id}}">delete</a> <a class="action" href="?n=/division/registration/close">!!close registration</a>
+	  		<a class="action" href="?n=/division/detail/{{ division.id }}&tournamentId={{tournamentId}}">detail</a> <a class="action" href="?n=/division/remove/{{division.id}}&tournamentId={{tournamentId}}">delete</a> <a class="action" href="?n=/division/registration/close">!!close registration</a>
 	  	</div>
 	 {% endfor %}
   	

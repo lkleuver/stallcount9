@@ -1,23 +1,20 @@
 	
 	
 	body {
-		font-family: arial, helvetica;
+		font-family: Helvetica, Arial;
 		font-size: 12px;
 	}
 	
 	
-	h1 {
-		font-weight: bold;
+	h1, h2, h3 {
+		font-weight: normal;
 		font-size: 32px;
-		color: #005086;		
-		margin: 0 0 16px 0;	
+		font-family: Georgia;
 	}
 	
 	h2, h3 {
-		font-weight: bold;
 		font-size: 20px;
 		margin: 0 0 16px 0;
-		color: #005086;	
 	}
 	
 	h3 {
@@ -71,30 +68,22 @@
 	}
 	
 	
-/* FRIEND RANKING */
-	div.friendentry h4 {
-		font-weight: normal;
-		color: #005086;
-	} 
-
-	div.friendentry span {
-		font-weight: normal;
+/* MENU BAR ----*/	
+	.menubar ul.selection li a {
+		color: #f2f2e6;
+		font-family: Georgia;
+		font-size: 12px;
+	}
+/* HEADER -----*/
+	.header h1 {
 		color: #fff;
 	}
+	.header ul.tabs li a{
+		color: #a39f94;
+	}
 	
-	
-/* FORMS */
-
-	ul.formlist li label {
+	.header ul.tabs li.active a, .header ul.tabs li a:hover {
 		font-weight: bold;
-		color: #005086;
+		color: #7c7b75;
 	}
-	
-	
-	ul.formlist li.footnotes {
-		color: #69afc4;
-		font-style: italic;
-		font-size: 10px;
-	}
-	
 	

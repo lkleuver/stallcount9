@@ -51,7 +51,12 @@ class Stallcount9 {
 		$section 	= count($xpl) > 0 && $xpl[0] != "" ? array_shift($xpl) : "home"; // $n was empty
 		$action 	= count($xpl) > 0 ? array_Shift($xpl) : "index";				 // $n only contained a section
 		
-				
+		//hack
+		if(count($xpl) > 0) {
+			$_REQUEST[$section."Id"] = $xpl[0];
+		} 
+		
+		
 		$class 	= "SC9_Controller_".ucfirst($section);
 		$method	= $action."Action"; 
 		
@@ -68,9 +73,7 @@ class Stallcount9 {
 			exit;
 		}
 	}
-	
-	
-	
+
 	
 	/** 
 	 * Register autoloaders used by stallcount9

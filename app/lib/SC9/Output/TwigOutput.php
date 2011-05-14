@@ -18,8 +18,6 @@ class SC9_Output_TwigOutput { //implements SC9_Output_iOutput {
 		  'auto_reload' => true
 		));
 		
-		
-		$this->twig->addFilter('sc9', new Twig_Filter_Function('SC9_Output_TwigOutput::path'));
 	}
 	
 	
@@ -27,12 +25,9 @@ class SC9_Output_TwigOutput { //implements SC9_Output_iOutput {
 		return $this->twig->loadTemplate($src);		
 	}
 	
-	/**
-	 * 
-	 * Function used to create the paths for links in SC9.
-	 * @param String $p
-	 */
-	public static function path($p) {
-		return "/?n=".$p;
+	public function addGlobal($key, $value) {
+		$this->twig->addglobal($key, $value);
 	}
+	
+
 }
