@@ -54,7 +54,8 @@ abstract class BaseStage extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Division', array(
              'local' => 'division_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('Pool as Pools', array(
              'local' => 'id',

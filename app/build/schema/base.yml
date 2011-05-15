@@ -47,6 +47,7 @@ Division:
   relations:
     Tournament:
       foreignAlias: Divisions
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8
@@ -69,6 +70,7 @@ Stage:
   relations:
     Division:
       foreignAlias: Stages
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8
@@ -92,8 +94,10 @@ Team:
   relations:
     Tournament:
       foreignAlias: Teams
+      onDelete: CASCADE
     Division:
       foreignAlias: Teams
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8
@@ -149,6 +153,7 @@ Pool:
       foreignType: one
     Stage:
       foreignAlias: Pools
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8
@@ -170,6 +175,7 @@ PoolMove:
   relations:
     Pool:
       foreignAlias: SourceMoves
+      onDelete: CASCADE
     SourcePool:
       class: Pool
       local: source_pool_id
@@ -195,8 +201,10 @@ PoolTeam:
   relations:
     Pool:
       foreignAlias: PoolTeams
+      onDelete: CASCADE
     Team:
       foreignAlias: PoolTeams
+      onDelete: CASCADE
     
 PoolStrategy:
   columns:
@@ -247,6 +255,7 @@ Round:
   relations:
     Pool:
       foreignAlias: Rounds
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8
@@ -291,6 +300,7 @@ RoundMatch:
   relations:
     Field:
       foreignAlias: Matches
+      onDelete: CASCADE
     HomeTeam:
       class: Team
       local: home_team_id
@@ -303,6 +313,7 @@ RoundMatch:
       foreignAlias: AwayMatches
     Round:
       foreignAlias: Matches
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8

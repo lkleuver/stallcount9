@@ -13,9 +13,10 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 	
 	
 	public function detailAction() {
+		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
 		
 		$template = $this->output->loadTemplate('team/detail.html');
-		$template->display(array());
+		$template->display(array("team" => $team));
 	}
 	
 	public function createAction() {

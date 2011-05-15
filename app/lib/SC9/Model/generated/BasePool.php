@@ -74,7 +74,8 @@ abstract class BasePool extends Doctrine_Record
 
         $this->hasOne('Stage', array(
              'local' => 'stage_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('PoolMove as SourceMoves', array(
              'local' => 'id',

@@ -106,6 +106,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 				$poolTeam->team_id = $BYEteam->id;
 				$poolTeam->pool_id = $pool->id;
 				$poolTeam->rank = $pool->spots;
+				$poolTeam->seed = $pool->spots;
 				$poolTeam->save();
 				
 				// TODO: Display a message that the BYE team has been automatically generated

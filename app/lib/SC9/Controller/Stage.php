@@ -101,6 +101,9 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 	public function removeAction() {
 		$stage = Doctrine_Core::getTable("Stage")->find($this->stageId);
 		$divisionId = $stage->Division->id; //needed? to lazy to check if delete also empties the object
+		foreach($stage->Pools as $pool) {
+			$pool->delete();
+		}
 		$stage->delete();
 		$this->relocate("/division/detail/".$divisionId);
 	}

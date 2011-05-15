@@ -1,6 +1,8 @@
 <?php
 
 require_once(dirname(__FILE__) . '/lib/SC9/Doctrine.php');
+require_once(dirname(__FILE__) .'/lib/FirePHPCore/FirePHP.class.php');
+ob_start();
 //require_once(dirname(__FILE__) . '/lib/debughelper/debugHelper.php');
 
 class Stallcount9 {
@@ -35,6 +37,7 @@ class Stallcount9 {
 
 		$connStr = sprintf('%s://%s:%s@%s/%s', Stallcount9::$settings->database['type'], Stallcount9::$settings->database['user'], Stallcount9::$settings->database['password'], Stallcount9::$settings->database['host'], Stallcount9::$settings->database['name']);
 		$this->conn = Doctrine_Manager::connection($connStr);
+		
 	}
 	
 	/**

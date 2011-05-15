@@ -67,11 +67,13 @@ abstract class BaseTeam extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Tournament', array(
              'local' => 'tournament_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Division', array(
              'local' => 'division_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('PoolTeam as PoolTeams', array(
              'local' => 'id',

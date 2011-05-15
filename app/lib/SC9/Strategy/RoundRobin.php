@@ -115,7 +115,6 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			echo "</pre>";			
 		}
 		
-		// assumes that $nrOfRounds is computed
 		if ($this->numberOfRounds == 0) { 
 			$this->numberOfRounds = $this->calculateNumberOfRounds($nrTeams); 
 		}

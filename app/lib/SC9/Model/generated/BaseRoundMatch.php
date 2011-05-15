@@ -112,7 +112,8 @@ abstract class BaseRoundMatch extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Field', array(
              'local' => 'field_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Team as HomeTeam', array(
              'local' => 'home_team_id',
@@ -124,6 +125,7 @@ abstract class BaseRoundMatch extends Doctrine_Record
 
         $this->hasOne('Round', array(
              'local' => 'round_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

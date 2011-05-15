@@ -30,7 +30,7 @@
 		{% for pool in stage.Pools %}
 			<h3>{{ pool.title}} {{pool.id}}</h3>
 			<ul class="moves">
-				{% for spot in pool.getSpots() %}
+				{% for spot in pool.getSpots(true) %}
 					<li id="pool-{{pool.id}}-{{spot.rank}}">{{ spot.rank }} - {{ spot.title }} {{spot.sourceMove.source_pool_id}} {{spot.sourceMove.sourceSpot}}</li>
 				{% endfor %}
 			</ul>

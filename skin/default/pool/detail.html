@@ -5,9 +5,9 @@
 {% block content %}
 	<h1>{{pool.Stage.title}} - {{pool.title}}</h1>
 	
-	<h2>Spots</h2>
+	<h2>Seeds</h2>
 	<ul>
-	{% for spot in pool.getSpots() %}
+	{% for spot in pool.getSpots(true) %}
 		<li>{{ spot.rank }} - {{ spot.title }}</li>
 	{% endfor %}
 	</ul>

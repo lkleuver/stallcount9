@@ -91,7 +91,7 @@ class Pool extends BasePool {
 		return($poolteams[$rank-1]['team_id']);
 	}
 	
-	public function getTeamNameForSpot($rank) {
+	public function getTeamNameByRank($rank) {
 		// the rank-property of PoolTeams can be ambiguous, 
 		// because several teams can have the same rank
 		// in this case, we use the seed as tie-breaker 
@@ -105,10 +105,36 @@ class Pool extends BasePool {
 //		echo "<pre>".$q->getSqlQuery()."</pre>";
 		$poolteams = $q->fetchArray();
 		
+		if (count($poolteams) != $this->getTeamCount()) {
+			trigger_error('getTeamNameByRank is probably not returning the right thing here. Number of returned PoolTeams is '.count($poolteams).' and number of teams in pool is '.$this->getTeamCount());
+		}
+		
 		return($poolteams[$rank-1]['teamname']);
 		
 	}
+
+		public function getTeamNameBySeed($seed) {
+		$q = Doctrine_Query::create()
+			->select('pt.*, t.name as teamname')
+		    ->from('PoolTeam pt')
+			->leftJoin('pt.Team t')
+		    ->where('pt.pool_id = ?',$this->id)
+		    ->andWhere('pt.seed = ?',$seed);
+		    
+//		echo "<pre>".$q->getSqlQuery()."</pre>";
+		$poolteam = $q->fetchOne();
 		
+ 
+		if ($poolteam === false) {
+			$firephp = FirePHP::getInstance(true);
+			$firephp->warn('WARNING: requested seed '.$seed.' does not exist in pool with id '.$this->id);
+			return(false);
+		}
+		
+		return($poolteam['teamname']);
+		
+	}
+	
 	
 	
 	public function getTeamCount() {
@@ -129,9 +155,12 @@ class Pool extends BasePool {
 		}
 		return $this->_strategy;
 	}
-	
-	
-	public function getSpots() {
+		
+	public function getSpots($seed=false) {
+		// returns an array of PoolSpots
+		// if $seed is true, the spots are sorted according to the seeding
+		// if $seed is false, the sports are sorted according to rank
+		
 		$result = array();
  		if($this->spots == 0) {
  			$this->spots = count($this->PoolTeams);
@@ -140,11 +169,14 @@ class Pool extends BasePool {
 		for($i = 0; $i < $this->spots; $i++) {
 			$spot = new PoolSpot();
 			$spot->rank = $i + 1;
-			if($i < count($this->PoolTeams)) {
-				$spot->title = $this->getTeamNameForSpot($i+1); 
-			}else{
-				$spot->title = "empty";
-			}
+	//		if($i < count($this->PoolTeams)) {
+				$spot->title = ($seed ? $this->getTeamNameBySeed($i+1) : $this->getTeamNameByRank($i+1)); 
+				if ($spot->title === false) {
+					$spot->title = "empty";
+				}
+	//		}else{
+	//			$spot->title = "empty";
+	//		}
 			$spot->sourceMove = $this->getSourceMoveForSpot($spot->rank);
 			$spot->destinationMove = $this->getDestinationMoveForSpot($spot->rank);
 			

@@ -47,10 +47,12 @@ abstract class BasePoolTeam extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Pool', array(
              'local' => 'pool_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Team', array(
              'local' => 'team_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

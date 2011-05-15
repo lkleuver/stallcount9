@@ -23,11 +23,18 @@ class PoolTeam extends BasePoolTeam
 	}
 	
 	public static function getBySeed($pool_id,$seed) {
+		if ($seed === null) {
+			trigger_error('seed should not be null when retrieving PoolTeams');
+		}
 		$q = Doctrine_Query::create()
 			    ->from('PoolTeam pt')
 			    ->where('pt.pool_id = ?', $pool_id)
 			    ->andWhere('pt.seed = ?', $seed);
 		$poolteam = $q->fetchOne();
+		
+		if ($poolteam===false) {
+			trigger_error('could not retrieve PoolTeam with pool_id '.$pool_id.' and seed '.$seed);
+		}
 		return $poolteam;		
 	}
 	

@@ -3,7 +3,7 @@
 
 class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	
-	const DEBUG = false;
+	const DEBUG = true;
 	private $numberOfRounds;
 	
 	public function __construct($numberOfRounds) {
@@ -113,6 +113,12 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 						
 		}
 
+		if (self::DEBUG) {
+			echo "initial standings:<br>";
+			$this->PrintStandings($standings);
+		}		
+		
+		
 		// fill in ranks, also in PoolTeam
 		$rank=1;
 		$standings[0]['rank']=1;  // assuming that it was sorted before, so the list starts with 0					

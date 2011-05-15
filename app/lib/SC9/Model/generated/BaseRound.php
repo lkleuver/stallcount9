@@ -50,7 +50,8 @@ abstract class BaseRound extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Pool', array(
              'local' => 'pool_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasMany('RoundMatch as Matches', array(
              'local' => 'id',

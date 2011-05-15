@@ -52,7 +52,8 @@ abstract class BasePoolMove extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Pool', array(
              'local' => 'pool_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Pool as SourcePool', array(
              'local' => 'source_pool_id',
