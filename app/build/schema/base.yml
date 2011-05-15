@@ -87,6 +87,8 @@ Team:
       type: integer(4)
     division_id:
       type: integer(4)
+    BYEstatus: # 0 for a regular team, 1 for BYE team
+      type: integer(4)
   relations:
     Tournament:
       foreignAlias: Teams
