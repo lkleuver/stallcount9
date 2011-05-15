@@ -83,6 +83,34 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 			$pool->link('Stage', array($this->post("stageId")));
 			$pool->link('PoolRuleset', array($this->post("poolRulesetId")));
 			$pool->save();
+						
+			if ($this->post("poolRulesetId")==2 && $this->post("poolSpots")%2==1) {
+				// Swissdraw and odd number of spots
+				
+				// increase number of spots by 1
+				$pool->spots++;
+				$pool->save();
+				
+				// create a BYE team
+				$BYEteam = new Team();
+				$BYEteam->BYEstatus=1; 
+				$BYEteam->name = "BYE Team";				
+				$BYEteam->link('Division', array($pool->Stage->division_id));
+				$BYEteam->save();
+				
+//				echo "pool_id: ".$pool->id."<br>";
+//				echo "BYEteam_id ".$BYEteam->id."<br>";
+				
+				//now add this team to the Swissdraw pool
+				$poolTeam = new PoolTeam();
+				$poolTeam->team_id = $BYEteam->id;
+				$poolTeam->pool_id = $pool->id;
+				$poolTeam->rank = $pool->spots;
+				$poolTeam->save();
+				
+				// TODO: Display a message that the BYE team has been automatically generated
+				
+			}
 
 			$this->relocate("/stage/detail/".$this->post("stageId"));
 		}
