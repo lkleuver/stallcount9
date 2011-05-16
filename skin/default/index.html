@@ -60,7 +60,7 @@
 </div>
 
 <div id="header" class="header">
-	<h1>{% if title %}{{title}}{% else %}Stallcount 9{% endif %}</h1>
+	<h1>{% if activeTournament %}{{activeTournament.title}}{% else %}Stallcount 9{% endif %}</h1>
 	
 	<ul class="tabs">
 		{% block tabs %}
