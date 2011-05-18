@@ -164,8 +164,12 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		if($curRoundNr==1) {
 			$teamcounter=0;
 			for ($i=0; $i < count($curRound->Matches); $i++) {
-				$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
-				$curRound->Matches[$i]->away_team_id = $standings[($teamcounter+($nrTeams/2))-1]['team_id'];
+				//$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
+				//$curRound->Matches[$i]->away_team_id = $standings[($teamcounter+($nrTeams/2))-1]['team_id'];
+				
+				$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
+				$curRound->Matches[$i]->link('AwayTeam', array($standings[($teamcounter+($nrTeams/2))-1]['team_id']));
+				
 				$curRound->Matches[$i]->save();
 				
 				FB::log('checking if we scheduled a match with the BYE team');
