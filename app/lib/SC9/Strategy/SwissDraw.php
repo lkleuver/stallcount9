@@ -208,7 +208,6 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 				$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
 				$curRound->Matches[$i]->away_team_id = $standings[$teamcounter++]['team_id'];
 				$curRound->save();	
-				Doctrine_Connection::flush;
 
 				FB::log('checking if we scheduled a match with the BYE team');
 				fb('home team name '.$curRound->Matches[$i]->HomeTeam->name);				

@@ -10,7 +10,7 @@
  * @property string $notes
  * @property integer $tournament_id
  * @property integer $division_id
- * @property integer $BYEstatus
+ * @property integer $byeStatus
  * @property Tournament $Tournament
  * @property Division $Division
  * @property Doctrine_Collection $PoolTeams
@@ -49,7 +49,7 @@ abstract class BaseTeam extends Doctrine_Record
              'type' => 'integer',
              'length' => '4',
              ));
-        $this->hasColumn('BYEstatus', 'integer', 4, array(
+        $this->hasColumn('byeStatus', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));
