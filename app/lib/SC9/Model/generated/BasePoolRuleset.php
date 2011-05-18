@@ -11,6 +11,9 @@
  * @property integer $numberOfRounds
  * @property integer $matchLength
  * @property integer $qualificationCutoff
+ * @property integer $winningScore
+ * @property integer $byeScore
+ * @property integer $byeAgainst
  * @property PoolStrategy $PoolStrategy
  * @property Pool $Pool
  * 
@@ -47,6 +50,18 @@ abstract class BasePoolRuleset extends Doctrine_Record
              'length' => '4',
              ));
         $this->hasColumn('qualificationCutoff', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('winningScore', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('byeScore', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('byeAgainst', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));

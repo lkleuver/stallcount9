@@ -30,7 +30,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$pool = Pool::getById($this->poolId);
 		$pool->createMatchups();
 		
-//		$this->relocate("/pool/detail/".$this->poolId);
+		//$this->relocate("/pool/detail/".$this->poolId);
 		
 	}
 	
@@ -93,7 +93,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 				
 				// create a BYE team
 				$BYEteam = new Team();
-				$BYEteam->BYEstatus=1; 
+				$BYEteam->byeStatus=1; 
 				$BYEteam->name = "BYE Team";				
 				$BYEteam->link('Division', array($pool->Stage->division_id));
 				$BYEteam->save();

@@ -12,33 +12,46 @@ PoolStrategy:
     title: RoundRobin
     description: 'RoundRobin'
 
-    
+
 PoolRuleset:
   PoolRuleset_1:
     title: Setup
-    pool_strategy_id: 1
-    numberOfRounds: 0
-    matchLength: 0
-    qualificationCutoff: 0
+    PoolStrategy: PoolStrategy_1
+    numberOfRounds: '0'
+    matchLength: '0'
+    qualificationCutoff: '0'
+    winningScore: null
+    byeScore: null
+    byeAgainst: null
   PoolRuleset_2:
     title: Swissdraw
-    pool_strategy_id: 2
-    numberOfRounds: 5
-    matchLength: 90
-    qualificationCutoff: 0
+    PoolStrategy: PoolStrategy_2
+    numberOfRounds: '5'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: '12'
+    byeAgainst: '15'
   PoolRuleset_3:
     title: Bracket
-    pool_strategy_id: 3
-    numberOfRounds: 0
-    matchLength: 90
-    qualificationCutoff: 0
+    PoolStrategy: PoolStrategy_3
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
   PoolRuleset_4:
     title: RoundRobin
-    pool_strategy_id: 4
-    numberOfRounds: 0
-    matchLength: 90
-    qualificationCutoff: 0
+    PoolStrategy: PoolStrategy_4
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
     
+        
 VictoryPoints:
   VictoryPoints_1:
     margin: -15

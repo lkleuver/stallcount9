@@ -89,7 +89,7 @@ Team:
       type: integer(4)
     division_id:
       type: integer(4)
-    BYEstatus: # 0 for a regular team, 1 for BYE team
+    byeStatus: # 0 for a regular team, 1 for BYE team
       type: integer(4)
   relations:
     Tournament:
@@ -120,6 +120,12 @@ PoolRuleset:
     matchLength:
       type: integer(4)
     qualificationCutoff:
+      type: integer(4)
+    winningScore:
+      type: integer(4)
+    byeScore:  # how many points the BYE team (or a team that forfeits) gets
+      type: integer(4)
+    byeAgainst: # how many points the opponent of the BYE team (or a team giving up) gets
       type: integer(4)
   relations:
     PoolStrategy:

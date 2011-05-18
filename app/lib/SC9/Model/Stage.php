@@ -14,10 +14,11 @@ class Stage extends BaseStage{
 
 	
 	public function schedule() {
-		echo "::::: STAGE ".$this->title." ::::::: <br />";
+		FB::group("::::: STAGE ".$this->title." :::::::");
 		foreach($this->Pools as $pool) {
 			$pool->schedule();
 		}		
+		FB::groupEnd();
 	}
 	
 	/**

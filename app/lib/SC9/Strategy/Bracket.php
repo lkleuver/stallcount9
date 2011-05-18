@@ -4,13 +4,6 @@
 class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 	
 	private $numberOfRounds;
-	const DEBUG = true;
-	
-	private function debprint($msg) {
-		if (self::DEBUG) {
-			print $msg."<br>";
-		}
-	}
 	
 	public function __construct() {
 		$this->numberOfRounds = 0;
@@ -37,15 +30,15 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 	}
 	
 	public function nameMatches($pool) {
-		$this->debprint('naming matches in Bracket');
+		FB::log('naming matches in Bracket');
 		
 		$nrTeams=$pool->spots;
 		$nrRounds=$this->calculateNumberOfRounds($nrTeams);
 		
-		$this->debprint('nrTeams '.$nrTeams. ', nrRounds '.$nrRounds);
+		FB::log('nrTeams '.$nrTeams. ', nrRounds '.$nrRounds);
 		
 		$matchup=Brackets::getMatchupByRank(9, 3, 2, 5);
-		$this->debprint('test '.$matchup['home'].$matchup['away']);
+		FB::log('test '.$matchup['home'].$matchup['away']);
 		
 		if (Brackets::getMatchup($nrTeams, $nrRounds, 1, 1) != false)  { 
 				for($j=0 ; $j<$nrRounds; $j++) { // go through rounds
@@ -231,7 +224,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			}
 		};
 				
-		$this->debprint("number of matches: ".count($curRound->Matches));
+		FB::log("number of matches: ".count($curRound->Matches));
 		
 		// get standings up to currentRound
 		$standings = $this->StandingsAfterRound($pool, $curRoundNr-1);
@@ -259,7 +252,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		
 		$curRound->save();		
 		
-		$this->debprint("number of matches: ".count($curRound->Matches));
+		FB::log("number of matches: ".count($curRound->Matches));
 		
 		// increase current round
 		$this->calculateNumberOfRounds(count($pool->PoolTeams));

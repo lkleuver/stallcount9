@@ -18,17 +18,18 @@ class Pool extends BasePool {
 	//TODO: currently assumes it's the only pool and consumes all teamspots
 	public function schedule() {
 		Round::deleteRounds($this->id);
-
-		echo $this->getStrategy()->getName() ."<br />";
+		
+		FB::group('Scheduling Pool '.$this->id);
+		FB::log($this->getStrategy()->getName());
 		
 		$nrOfRounds = $this->getStrategy()->calculateNumberOfRounds($this->spots);
-		echo "ROUNDS " .$nrOfRounds."<br />";
+		FB::log("ROUNDS " .$nrOfRounds);
 		
 		$matchCountPerRound = ceil($this->spots / 2);
-		echo "MATCHCOUNT: ".$matchCountPerRound;
+		FB::log("MATCHCOUNT: ".$matchCountPerRound);
 		
 		for($i = 0; $i < $nrOfRounds; $i++) {
-			echo "---<br />ROUND ".($i + 1)."<br />";
+			FB::group("ROUND ".($i + 1));
 			$round = new Round();
 			$round->rank = $i+1;
 			$round->matchLength = $this->PoolRuleset->matchLength;
@@ -36,7 +37,7 @@ class Pool extends BasePool {
 			$round->save();
 			
 			for($j = 0; $j < $matchCountPerRound; $j++) {
-				echo "MATCH: ".($j + 1)."<br />";
+				FB::log("MATCH: ".($j + 1));
 				$match = new RoundMatch();
 				$match->link('Round', array($round->id));
 				$match->rank = $j+1;
@@ -46,9 +47,13 @@ class Pool extends BasePool {
 				//link fields
 				$match->save();
 			}
+			FB::groupEnd();
 		}
 		
-		echo "<br /><br /> -- -- - -- - - -- <br /><br />";
+		FB::groupEnd();
+		
+		$this->currentRound=0;
+//		echo "<br /><br /> -- -- - -- - - -- <br /><br />";
 		$this->getStrategy()->nameMatches($this);
 	}	
 	
@@ -74,6 +79,7 @@ class Pool extends BasePool {
 	}
 	
 	public function createMatchups() {
+		FB::log('Model/Pool.php: creating matchups');
 		$this->getStrategy()->createMatchups($this);
 		return null;
 	}

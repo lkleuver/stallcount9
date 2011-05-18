@@ -4,8 +4,6 @@
 class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 	
 	private $numberOfRounds;
-	const DEBUG = true;
-	
 	
 	public function __construct() {
 		$this->numberOfRounds = 0;
@@ -36,9 +34,7 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			echo "matchups have already been created. Previous games will be overwritten now! <br>";
 		}
 		
-		if (self::DEBUG) {
-			echo "naming is ".(($naming) ? "on" : "off");
-		}
+		FB:: log("naming is ".(($naming) ? "on" : "off"));
 		
 		// we follow the algorithm described on http://en.wikipedia.org/wiki/Round-robin_tournament
 		// If n is the number of competitors, a pure round robin tournament requires \begin{matrix} 
@@ -108,12 +104,8 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			}
 		}
 		
-		if (self::DEBUG) {
-			echo "<pre>";
-			print_r($row1);
-			print_r($row2);
-			echo "</pre>";			
-		}
+		FB::table('row1',$row1);
+		FB::table('row2',$row2);
 		
 		if ($this->numberOfRounds == 0) { 
 			$this->numberOfRounds = $this->calculateNumberOfRounds($nrTeams); 
@@ -150,13 +142,9 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			array_unshift($row1,$firstElementRow2); // fill up the first row again
 			array_unshift($row1,$firstElementRow1);
 
-			if (self::DEBUG) {
-				echo "<pre>";
-				echo "after Round ".($i+1)."<br>";
-				print_r($row1);
-				print_r($row2);
-				echo "</pre>";			
-			}
+			FB::log("after Round ".($i+1));
+			FB::table('row1',$row1);
+			FB::table('row2',$row2);
 			
 			
 		}

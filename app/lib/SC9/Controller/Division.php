@@ -13,8 +13,8 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 	public function scheduleAction() {
 		$division = Division::getById($this->divisionId);
 		$division->schedule();
-		exit;
-		//$this->relocate("/division/detail/".$this->divisionId);
+		//exit;
+		$this->relocate("/division/detail/".$this->divisionId);
 	}
 	
 	
