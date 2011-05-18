@@ -120,8 +120,11 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 
 					$pool->Rounds[$i]->Matches[$j]->matchName = (($row1[$j]*$row2[$j]>0) ? "Match rank ".($j + 1) : "BYE match");
 				} else {
-					$pool->Rounds[$i]->Matches[$j]->home_team_id = $row1[$j];
-					$pool->Rounds[$i]->Matches[$j]->away_team_id = $row2[$j];
+					$pool->Rounds[$i]->Matches[$j]->link('HomeTeam', array($row1[$j]));
+					$pool->Rounds[$i]->Matches[$j]->link('AwayTeam', array($row2[$j]));
+					$pool->Rounds[$i]->Matches[$j]->save();
+//					$pool->Rounds[$i]->Matches[$j]->home_team_id = $row1[$j];
+//					$pool->Rounds[$i]->Matches[$j]->away_team_id = $row2[$j];
 	
 					if ($pool->Rounds[$i]->Matches[$j]->away_team_id != null && $pool->Rounds[$i]->Matches[$j]->home_team_id != null) {
 						// fill in random scores for testing

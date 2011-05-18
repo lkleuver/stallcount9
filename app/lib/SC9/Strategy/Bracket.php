@@ -215,8 +215,8 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		foreach($pool->Rounds as $round) {
 			if ($round->rank >= $curRoundNr) {
 				for ($i=0; $i < count($round->Matches); $i++) {
-					$round->Matches[$i]->home_team_id = null;
-					$round->Matches[$i]->away_team_id = null;	
+					$round->Matches[$i]->unlink('HomeTeam');
+					$round->Matches[$i]->unlink('AwayTeam');
 					$round->Matches[$i]->homeScore = null;
 					$round->Matches[$i]->awayScore = null;					
 					$round->save();
@@ -236,9 +236,15 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			// then the rest of the bracket is defined as well
 			for($i=0; $i < count($round->Matches); $i++) { // go through all matches
 				$matchup = Brackets::getMatchup($nrTeams, $nrRounds, $curRoundNr, $i+1);
-				$curRound->Matches[$i]->home_team_id = (is_null($matchup['home']) ? null : $standings[$matchup['home']-1]['team_id']);
-				$curRound->Matches[$i]->away_team_id = (is_null($matchup['away']) ? null : $standings[$matchup['away']-1]['team_id']);				
-
+				
+				if (!is_null($matchup['home'])) {
+					$curRound->Matches[$i]->link('HomeTeam', array($standings[$matchup['home']-1]['team_id']));
+				}
+				if (!is_null($matchup['away'])) {
+					$curRound->Matches[$i]->link('AwayTeam', array($standings[$matchup['away']-1]['team_id']));
+				}
+				$curRound->Matches[$i]->save();
+				
 				// fill in random scores for testing	
 				if (!is_null($matchup['home']) && !is_null($matchup['away'])) {			
 					$curRound->Matches[$i]->homeScore = rand(0,15);

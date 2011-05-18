@@ -67,7 +67,7 @@ class Pool extends BasePool {
 			$poolTeam->pool_id = $this->id;
 			$poolTeam->seed = $move->destinationSpot;
 			$poolTeam->rank = $move->destinationSpot; // set rank=seed to begin with
-			$poolTeam->team_id = $move->SourcePool->getTeamIdForSpot($move->sourceSpot);
+			$poolTeam->team_id = $move->SourcePool->getTeamIdByRank($move->sourceSpot);
 			if ($poolTeam->team_id === null) {
 				throw new Exception('missing team_id, the move probably did not exist');
 			}
@@ -84,23 +84,36 @@ class Pool extends BasePool {
 		return null;
 	}
 	
-	public function getTeamIdForSpot($rank) {
+	public function getTeamIdByRank($rank) {
 		// the rank-property of PoolTeams can be ambiguous, 
 		// because several teams can have the same rank
-		// in this case, we use the seed as tie-breaker 
+		// in this case, we use the seed as tie-breaker
+
+		// TODO: if there is a BYE team in the pool, ignore its rank when getting this TeamId 
 		$q = Doctrine_Query::create()
 		    ->from('PoolTeam pt')
 		    ->where('pt.pool_id = ?',$this->id)
 		    ->orderBy('pt.rank ASC, pt.seed ASC');
 		$poolteams = $q->fetchArray();
+
+		if (count($poolteams) != $this->getTeamCount()) {
+			trigger_error('getTeamIdByRank is probably not returning the right thing here. Number of returned PoolTeams is '.count($poolteams).' and number of teams in pool is '.$this->getTeamCount());
+		}
 		
-		return($poolteams[$rank-1]['team_id']);
+		if ($rank-1 < count($poolteams)) {
+			return($poolteams[$rank-1]['team_id']);
+		} else {
+			return(false);
+		}
+
 	}
 	
 	public function getTeamNameByRank($rank) {
 		// the rank-property of PoolTeams can be ambiguous, 
 		// because several teams can have the same rank
 		// in this case, we use the seed as tie-breaker 
+
+		// TODO: if there is a BYE team in the pool, ignore its rank when getting this TeamId 		
 		$q = Doctrine_Query::create()
 			->select('pt.*, t.name as teamname')
 		    ->from('PoolTeam pt')
@@ -108,14 +121,17 @@ class Pool extends BasePool {
 		    ->where('pt.pool_id = ?',$this->id)
 		    ->orderBy('pt.rank ASC, pt.seed ASC');
 		    
-//		echo "<pre>".$q->getSqlQuery()."</pre>";
 		$poolteams = $q->fetchArray();
 		
 		if (count($poolteams) != $this->getTeamCount()) {
 			trigger_error('getTeamNameByRank is probably not returning the right thing here. Number of returned PoolTeams is '.count($poolteams).' and number of teams in pool is '.$this->getTeamCount());
 		}
 		
-		return($poolteams[$rank-1]['teamname']);
+		if ($rank-1 < count($poolteams)) {
+			return($poolteams[$rank-1]['teamname']);
+		} else {
+			return(false);
+		}
 		
 	}
 
@@ -170,6 +186,7 @@ class Pool extends BasePool {
 		$result = array();
  		if($this->spots == 0) {
  			$this->spots = count($this->PoolTeams);
+ 			// TODO: adjust the number of spots, if there is a BYE team in the pool and $seed=false 			
  		}
  		
 		for($i = 0; $i < $this->spots; $i++) {

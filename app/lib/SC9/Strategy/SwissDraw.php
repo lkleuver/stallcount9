@@ -146,8 +146,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		foreach($pool->Rounds as $round) {
 			if ($round->rank >= $curRoundNr) {
 				for ($i=0; $i < count($round->Matches); $i++) {
-					$round->Matches[$i]->home_team_id = null;
-					$round->Matches[$i]->away_team_id = null;	
+					$round->Matches[$i]->unlink('HomeTeam');
+					$round->Matches[$i]->unlink('AwayTeam');	
 					$round->Matches[$i]->homeScore = null;
 					$round->Matches[$i]->awayScore = null;					
 					$round->save();
@@ -165,21 +165,16 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		if($curRoundNr==1) {
 			$teamcounter=0;
 			for ($i=0; $i < count($curRound->Matches); $i++) {
-				//$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
-				//$curRound->Matches[$i]->away_team_id = $standings[($teamcounter+($nrTeams/2))-1]['team_id'];
-				
 				$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
 				$curRound->Matches[$i]->link('AwayTeam', array($standings[($teamcounter+($nrTeams/2))-1]['team_id']));
-				
 				$curRound->Matches[$i]->save();
 				
-				FB::log('checking if we scheduled a match with the BYE team');
-				$homeTeam=$curRound->Matches[$i]->HomeTeam; // make Doctrine load the stuff
-				$awayTeam=$curRound->Matches[$i]->AwayTeam;
-				if ($homeTeam->byeStatus == 1) {
+				if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
+					FB::log('filling automatic scores for home BYE team');
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
-				}elseif ($awayTeam->byeStatus == 1) {
+				}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
+					FB::log('filling automatic scores for away BYE team');
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
 				} else {				
@@ -193,40 +188,56 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		} else {			
 			// the goal is to swap around teams in $standings until we arrive at new standings where
 			// 1-2, 3-4, 5-6 etc. are valid matchups (i.e. they have not played each other before) 
+			FB::group('trying to find a valid arrangement');
 			$forward=true;
-			$roundcounter=0;
+			$roundcounter=0;			
 			$foundValidArrangement=$this->AdjustForDuplicateGames($standings,$pool,$forward);
-				
-			while(!$foundValidArrangement){
+							
+			while(!$foundValidArrangement && $roundcounter <= count($standings)*2){
 				$forward=!$forward;
-				if ($forward) {
-					FB::log("round ".$roundcounter.", going forward");
-				} else {
-					FB::log("round ".$roundcounter.", going backward");
-				}
+				FB::group("round ".$roundcounter.", going ".($forward ? "forward" : "backward"));
+				
 				$foundValidArrangement = $this->AdjustForDuplicateGames($standings,$pool, $forward);
 				$roundcounter++;
-				if ($roundcounter>count($standings)*2) Die("Could not find a valid arrangment of teams"); 
+				FB::groupEnd();
+			}
+			FB::groupEnd();
+			if (!$foundValidArrangement) { // TODO: find something better than this skipping shit
+				FB::group("could not find a valid arrangment of teams with the standard procedure, trying skipping tricks");
+				$roundcounter=0;
+				$skip=rand(1,2);  // counter that is decreased with every skip action
+				while(!$foundValidArrangement && $roundcounter <= count($standings)*10){
+					$forward=!$forward;
+					FB::group("round ".$roundcounter.", going ".($forward ? "forward" : "backward"));
+					
+					$foundValidArrangement = $this->AdjustForDuplicateGames($standings,$pool, $forward, $skip);
+					FB::groupEnd();
+					$roundcounter++;
+					if ($roundcounter %count($standings)==0) {
+						$skip=rand(1,4);						
+						FB::log('reinitializing skip to '.$skip);
+					}					
+				}
+				FB::groupEnd();
+				
+				if (!$foundValidArrangement) {
+					die ('one try of skipping did not help: could still not find a valid arrangment of teams ');
+				}
 			}		
 			
 			// fill in matchups
 			$teamcounter=0;
 			for ($i=0; $i < count($curRound->Matches); $i++) {
-				$curRound->Matches[$i]->home_team_id = $standings[$teamcounter++]['team_id'];
-				$curRound->Matches[$i]->away_team_id = $standings[$teamcounter++]['team_id'];
-				$curRound->save();	
+				$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
+				$curRound->Matches[$i]->link('AwayTeam', array($standings[$teamcounter++]['team_id']));
+				$curRound->Matches[$i]->save();
 
-				FB::log('checking if we scheduled a match with the BYE team');
-				fb('match id '.$curRound->Matches[$i]->id);	
-
-				$curRound = $pool->Rounds[$curRoundNr-1];				
-				$homeTeam=$curRound->Matches[$i]->HomeTeam; // make Doctrine load the stuff
-				fb('home team name '.$homeTeam->name);								
-				$awayTeam=$curRound->Matches[$i]->AwayTeam;
-				if ($homeTeam->byeStatus == 1) {
+				if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
+					FB::log('filling automatic scores for home BYE team');
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
-				}elseif ($awayTeam->byeStatus == 1) {
+				}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
+					FB::log('filling automatic scores for away BYE team');
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
 				} else {				
@@ -234,7 +245,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 					$curRound->Matches[$i]->homeScore = rand(0,15);
 					$curRound->Matches[$i]->awayScore = rand(0,15);
 				}
-				
+								
 				$curRound->save();		
 			}
 		}
@@ -269,8 +280,11 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	}
 	
 
-	private function adjustForDuplicateGames(&$standings,$pool,$forward) {
-		// this function will change the variable $standings
+	private function adjustForDuplicateGames(&$standings,$pool,$forward, &$skip=false) {
+		// this function will change the variable $standings  and  $skip
+		
+		// if $skip > 0, we do not take the *first* unplayed team we find, but skip it try with the next until $skip == 0
+		// that's to try to get out of infinite loops 
 		
 		If ($forward) {
 			$sign = 1;
@@ -282,11 +296,11 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			$stopPos = -1;        
 		}
 	    
-		FB::log("Loop from ".$startPos." until ".$stopPos." with steps ".($sign*2));		
+		FB::log("Loop from ".$startPos." until ".$stopPos." with steps ".($sign*2)." (skip is ".$skip.")");		
 		for ($i=$startPos;$i!=$stopPos;$i=$i+$sign*2) {
 			If ($this->TeamsHavePlayed($standings[$i]['team_id'],$standings[$i+$sign]['team_id'],$pool)) {
 				// Find the first team in the rest of the list that hasn't played
-				$j = $this->FindUnplayedTeam($standings[$i]['team_id'], $i + 2 * $sign, $standings, $pool, $forward);
+				$j = $this->FindUnplayedTeam($standings[$i]['team_id'], $i + 2 * $sign, $standings, $pool, $forward, $skip);
 				If ($j > 0) {
 					// this means we've found one.
 					$this->MoveTeamToNewPosition($j, $i + $sign, $standings);
@@ -329,22 +343,32 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	}
 	
 	
-	private function findUnplayedTeam($teamid, $startPos, $standings, $pool, $forward) {
-	
+	private function findUnplayedTeam($teamid, $startPos, $standings, $pool, $forward, &$skip=false) {
+		// this function will change $skip counter
+		
+		// if $skip > 0, we are not returning the *first* unplayed team in this direction, but 
+		// skip it and return the second (and decrease the $skip counter)
+		
 		If ($forward){
 			$sign = 1;
-			$stopPos = count($standings)-1;
+			$stopPos = count($standings);
 			if ($startPos>$stopPos) return(-1);
 		}Else{
 			$sign = -1;
-			$stopPos = 1;
+			$stopPos = -1;
 			if ($startPos<$stopPos) return(-1);
 		}
+		
+		FB::log('trying to find unplayed team for team id '.$teamid.' searching from '.$startPos.' to '.$stopPos.' taking steps '.$sign);
 		
 		for($i=$startPos; $i != $stopPos; $i=$i+$sign) {
 			If (!$this->TeamsHavePlayed($teamid, $standings[$i]['team_id'],$pool)){
 				FB::log("Found an unplayed team for ".$teamid.", namely ".$standings[$i]['team_id']." on position ".$i);
-				return($i);
+				if ($skip>0) {
+					$skip -= 1; // skip this one, decrease the counter and keep searching
+				} else {
+					return($i);
+				}
 			}	
 		}
 		return(-1);

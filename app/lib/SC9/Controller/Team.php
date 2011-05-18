@@ -39,6 +39,30 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 		$template->display(array("division" => $division, "team" => $team));
 	}
 	
+	public function create25Action() {
+		$division = Division::getById($this->request("divisionId"));
+		$teamnames=array("Jeremy Codhand", "GronicalDizzines", "Tallinn Frisbee", "Russo Turisto", "OUF", "Hungary Coed Tea", "Frizzly Bears", "Ah Ouh PUC", "France coed", "Wunderteam", "Principality of Sealand", "Sugar-Mix", "Team 2600", "DiscComfort", "Half Men Half", "Rusty Bikes", "Ultimate de Lux", "Los Quijotes", "Frankdam-Amsterfurt Connection", " Jabba the Huck", "Free Hucks", "XLR8RS", "WAF", "Cranberry Snack", "Random Fling");		
+		
+		for ($i=0 ; $i <25; $i++) {
+			$team = new Team();
+			$team->name=$teamnames[$i];
+			$team->link('Division', array($this->request("divisionId")));
+			$team->save();
+						
+			//now add this team to the registration seeding pool
+			$poolTeam = new PoolTeam();
+			$poolTeam->team_id = $team->id;
+			$poolTeam->pool_id = $division->getSeedPoolId();
+			$poolTeam->seed = count($division->Teams) + $i + 1;			
+			$poolTeam->rank = count($division->Teams) + $i + 1;
+			$poolTeam->save();
+		}
+			
+		$this->relocate("/division/detail/".$this->request("divisionId"));
+	}
+	
+	
+	
 	
 	public function editAction() {
 		$team = Doctrine_Core::getTable("Team")->find($this->teamId);
