@@ -160,7 +160,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		$standings = $this->StandingsAfterRound($pool, $curRoundNr-1);
 		FB::table('initial standings after round '.$curRoundNr-1,$standings);
 		
-		// first Swissdraw round has different pairings
+		// first Swissdraw round has different pairings, 
+		// namely, for 2n teams, 1 plays n+1, 2 plays n+2 etc.
 		if($curRoundNr==1) {
 			$teamcounter=0;
 			for ($i=0; $i < count($curRound->Matches); $i++) {
@@ -169,10 +170,12 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 				$curRound->Matches[$i]->save();
 				
 				FB::log('checking if we scheduled a match with the BYE team');
-				if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
+				$homeTeam=$curRound->Matches[$i]->HomeTeam; // make Doctrine load the stuff
+				$awayTeam=$curRound->Matches[$i]->AwayTeam;
+				if ($homeTeam->byeStatus == 1) {
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
-				}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
+				}elseif ($awayTeam->byeStatus == 1) {
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
 				} else {				
@@ -210,11 +213,16 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 				$curRound->save();	
 
 				FB::log('checking if we scheduled a match with the BYE team');
-				fb('home team name '.$curRound->Matches[$i]->HomeTeam->name);				
-				if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
+				fb('match id '.$curRound->Matches[$i]->id);	
+
+				$curRound = $pool->Rounds[$curRoundNr-1];				
+				$homeTeam=$curRound->Matches[$i]->HomeTeam; // make Doctrine load the stuff
+				fb('home team name '.$homeTeam->name);								
+				$awayTeam=$curRound->Matches[$i]->AwayTeam;
+				if ($homeTeam->byeStatus == 1) {
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
-				}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
+				}elseif ($awayTeam->byeStatus == 1) {
 					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
 				} else {				
