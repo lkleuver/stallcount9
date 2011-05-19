@@ -60,16 +60,22 @@
 </div>
 
 <div id="header" class="header">
-	<h1>{% if activeTournament %}{{activeTournament.title}}{% else %}Stallcount 9{% endif %}</h1>
-	
-	<ul class="tabs">
-		{% block tabs %}
-			<li{% if section == 'tournament'%} class="active"{% endif %}><a href="index.php?n=/tournament/detail/{{tournamentId}}">Tournament</a></li>
-			<li{% if section == 'field'%} class="active"{% endif %}><a href="?n=/field/list&tournamentId={{tournamentId}}">Fields</a></li>
-			<li{% if section == 'volunteers'%} class="active"{% endif %}><a href="#">Volunteers</a></li>
-		{% endblock %}
-	</ul>
+	<div class="container">
+		<h1>{% if activeTournament %}{{activeTournament.title}}{% else %}Stallcount 9{% endif %}</h1>
+		
+		<ul class="tabs">
+			{% block tabs %}
+				<li{% if section == 'volunteers'%} class="active"{% endif %}><a href="#">Volunteers</a></li>
+				<li{% if section == 'field'%} class="active"{% endif %}><a href="?n=/field/list&tournamentId={{tournamentId}}">Fields</a></li>
+				<li{% if section == 'tournament'%} class="active"{% endif %}><a href="index.php?n=/tournament/detail/{{tournamentId}}">Tournament</a></li>
+			{% endblock %}
+		</ul>
+	</div>	
+</div>
 
+<div id="titlebar" class="titlebar">
+	<h2>{% block pagetitle %}Home{% endblock %}</h2>
+	
 </div>
 
 <div id="content">

@@ -2,24 +2,30 @@
 
 	body {
 		text-align: center;
-		background-color: #f2f2e6;
+		background-color: #fff;
 	}
 	
 	
 	#menubar {
-		background-color: #a39f94;
-		border-bottom: 1px solid #726f67;
+		background-color: #020202;
 		height: 31px;
 	}
 	
 	#header {
-		background-color: #cad99e;
+		background: #3b454d url("img/headerbar_bg.png") repeat-x left top;
+		height: 80px;
+	}
+	
+	#titlebar {
+		height: 79px;
+		background-color: #e2e1dc;
+		border-bottom: 1px solid #71706e;
 	}
 	
 	#content {
 		margin: auto;
-		width: 928px;
+		width: 960px;
 		text-align: left;
-		padding: 16px;
+		padding: 32px 0 0 0;
 	}
 	

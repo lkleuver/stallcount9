@@ -8,23 +8,24 @@
 	
 	
 	.hidden, .data { display: none;}
-	
-	
-/* MENU BAR ----*/
-	.menubar .container {
+	.container {
 		width: 960px;
 		margin: auto;
 		text-align: left;
 	}
+	
+/* MENU BAR ----*/
+	
 
 	.menubar ul.selection {	float: left;}
 	.menubar ul li {	
 		float: left;
-		border-right: 1px solid #726f67;
+		border-right: 1px solid #4e4e4e;
 		height: 31px;
+		position: relative;
 	}
 	.menubar ul.selection li {
-		width: 200px;
+
 	}
 
 	.menubar ul li a {
@@ -36,7 +37,7 @@
 		background: transparent url('img/arrow_down.png') no-repeat right 13px;
 	}
 	.menubar ul li.first {
-		border-left: 1px solid #726f67;
+		border-left: 1px solid #4e4e4e;
 	}
 	
 	.menubar ul.controls {
@@ -48,8 +49,8 @@
 		.menubar ul li ul {
 			display: none;
 			float :left;
-			position: relative;
-			top: 12px;
+			position: absolute;
+			top: 32px;
 			left: 0;
 		}
 		
@@ -59,12 +60,12 @@
 		
 		.menubar ul li ul li{
 			display: block;
-			border-bottom: 1px solid #726f67;
-			background: #8D8A80;
+			border-bottom: 1px solid #4e4e4e;
+			background: #020202;
 		}
 		
 		.menubar ul li ul li:hover {
-			background: #77746C;
+			background: #ee252b;
 		}
 		
 		.menubar ul.selection li ul li a {
@@ -75,44 +76,116 @@
 /* HEADER ------*/
 	
 	.header h1 {
-		width: 944px;
-		margin: auto;
-		text-align: left;
-		padding: 32px 0 0 16px;
+		width: 448px;
+		padding: 26px 0 0 16px;
+		float: left;
 	}
 
 	.header ul.tabs {
-		width: 960px;
-		margin: auto;
-		text-align: left;
-		margin-top: 32px;
+		margin-top: 50px;
+		width: 496px;
 		overflow: hidden;
+		float: left;
 	}
 	.header ul.tabs li {
-		float: left;
+		float: right;
 		overflow: hidden;
 		margin: 0; padding: 0;
+		border-top: 1px solid #020202;
+		border-left: 1px solid #020202;
+		border-right: 1px solid #020202;
 	}
 	
 	.header ul.tabs li a{
 		display: block;
 		text-align: center;
-		padding: 12px 16px 8px 16px;
-		
-		-webkit-border-top-left-radius: 16px;
-		-webkit-border-top-right-radius: 16px;
-		-moz-border-radius-topleft: 16px;
-		-moz-border-radius-topright: 16px;
-		border-top-left-radius: 16px;
-		border-top-right-radius: 16px;
-		background-color: #e3e3d7;
+		padding: 8px 16px 8px 16px;
+		background-color: #333d44;
+		border-top: 1px solid #46555e;
 		cursor: pointer;
-		margin-right: 1px;
+		margin-left: 1px;
 	}
 	
 	.header ul.tabs li.active a, .header ul.tabs li a:hover {
-		background-color: #f2f2e6;
+		background-color: #e2e1dc;
 	}
+	
+	
+/* Titlebar--------*/
+
+	.titlebar h2 {
+		color: #3b454d;
+		width: 928px;
+		margin: auto;
+		padding: 32px 16px 0 16px;
+		text-align: left;
+	}
+
+	
+	
+/* Section ---------*/
+
+	.section {
+		background: #fff url("img/box_bg.png") repeat-x left top;
+		padding: 16px;
+		border: 1px solid #efefef;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.75);
+	}
+
+	.section h3 {
+		padding-bottom: 32px;
+	}
+
+
+
+/* Table ---------- */
+
+	table { width: 100%; margin-bottom: 16px;}
+	th, td {
+		padding: 16px;
+		border-bottom: 1px solid #dfdfdf;
+	}
+	
+	th {
+		background-color: #3b454d;
+		color: #fff;
+		font-weight: bold;
+	}
+	
+	tr.odd td {
+		background-color: #ededed;
+	}
+
+
+/* Buttons ---------*/
+
+
+	a.button {
+		display: inline-block;
+		width: 146px; /* 146 x 34 */
+		height: 34px;
+		color: #fff;
+		text-decoration: none;
+		background: transparent url("img/button_blue.png") no-repeat left top;
+	}
+	a.button span {
+		display: block;
+		height: 24px;
+		padding: 10px 0 0 16px;
+	}
+
+	a.button:hover {
+		color: #fff;
+	}
+
+	a.button-red {
+		background-image: url("img/button_red.png");
+	}
+	
+	a.button span.add {
+		background: transparent url("img/icon/plus.png") no-repeat 116px 6px;
+	}
+	
 	
 /* :::::::::::::::: OLD OLD OLD OLD OLD OLD OLD OLD ::::::::::::::::::::::::::::::::::::: */
 
@@ -153,35 +226,7 @@
 
 	
 	
-	/* buttons */
-	
-	a.button {
-		display: block;
-		padding-left: 8px;
-		background: transparent url("img/greenbutton.png") no-repeat left -32px;
-		width: 112px;
-		cursor: pointer;
-	}
-	a.button span{
-		display: block;
-		height: 23px;
-		background: transparent url("img/greenbutton.png") no-repeat right top;
-		text-align: center;
-		padding: 9px 8px 0 0;
-		color: #fff;
-	}
-	
-	a.button:hover {		background-position: left -96px;	}
-	a.button:hover span{	background-position: right -64px;	}
-	
-	
-	a.greybutton {		background-image: url("img/greybutton.png");	}
-	a.greybutton span { background-image: url("img/greybutton.png");	}
 
-	a.disabledbutton {		background-image: url("img/disabledbutton.png");	cursor: wait;}
-	a.disabledbutton span { background-image: url("img/disabledbutton.png");	}
-	
-	
 	ul.itemlist { margin-bottom: 16px;}
 	ul.itemlist li {
 		margin-bottom: 4px;

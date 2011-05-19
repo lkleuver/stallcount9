@@ -8,9 +8,14 @@
 	
 	h1, h2, h3 {
 		font-weight: normal;
-		font-size: 32px;
-		font-family: Georgia;
+		font-size: 24px;
+		font-family: Helvetica, arial;
 	}
+	h1 { 		
+		font-style: italic;
+		font-weight: 200;
+	};
+	
 	
 	h2, h3 {
 		font-size: 20px;
@@ -19,7 +24,7 @@
 	
 	h3 {
 		font-size: 16px;
-		line-height: 20px;
+		color: #020202;
 	}
 	
 	p {
@@ -52,13 +57,13 @@
 	}
 	
 	a {
-		color: #69afc4;
+		color: #186ea1;
 		font-weight: bold;
 		text-decoration: none;
 	}
 	
 	a:hover {
-		color: #005086;
+		color: #ee252b;
 	}
 	
 	
@@ -70,8 +75,7 @@
 	
 /* MENU BAR ----*/	
 	.menubar ul.selection li a {
-		color: #f2f2e6;
-		font-family: Georgia;
+		color: #999999;
 		font-size: 12px;
 	}
 /* HEADER -----*/
@@ -79,11 +83,10 @@
 		color: #fff;
 	}
 	.header ul.tabs li a{
-		color: #a39f94;
+		color: #fff;
 	}
 	
 	.header ul.tabs li.active a, .header ul.tabs li a:hover {
-		font-weight: bold;
-		color: #7c7b75;
+		color: #020202;
 	}
 	
