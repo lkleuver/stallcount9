@@ -116,6 +116,9 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		// fill in ranks, also in PoolTeam
 		$rank=1;
 		$standings[0]['rank']=1;  // assuming that it was sorted before, so the list starts with 0					
+		$poolteam = PoolTeam::getBySeed($pool->id, $standings[0]['seed']);
+		$poolteam['rank']=1;
+		$poolteam->save();		
 		for ($i=1; $i<count($standings) ; $i++) {
 			if ($this->CompareTeamsSwissdraw($standings[$i-1],$standings[$i])!=0) {
 				$rank=$i+1;
@@ -145,9 +148,9 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		// delete matchups and results of current round and all following rounds of the pool
 		foreach($pool->Rounds as $round) {
 			if ($round->rank >= $curRoundNr) {
-				for ($i=0; $i < count($round->Matches); $i++) {
-					$round->Matches[$i]->unlink('HomeTeam');
-					$round->Matches[$i]->unlink('AwayTeam');	
+				for ($i=0; $i < count($round->Matches); $i++) {					
+					$round->Matches[$i]->home_team_id =  null; // TODO: or do we want to use unlink here???
+					$round->Matches[$i]->away_team_id =  null;	
 					$round->Matches[$i]->homeScore = null;
 					$round->Matches[$i]->awayScore = null;					
 					$round->save();

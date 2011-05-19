@@ -85,57 +85,77 @@ class Pool extends BasePool {
 	}
 	
 	public function getTeamIdByRank($rank) {
+		$rankedteam=$this->getTeamByRank($rank);
+		if ($rankedteam === false ){
+			return(false);
+		} else {
+			return($rankedteam['id']);
+		}
+	}
+	
+	
+	public function getTeamNameByRank($rank) {
+		$rankedteam=$this->getTeamByRank($rank);
+		if ($rankedteam === false ){
+			return(false);
+		} else {
+			return($rankedteam['teamname']);
+		}
+	}
+	
+	public function getTeamByRank($rank) {
 		// the rank-property of PoolTeams can be ambiguous, 
 		// because several teams can have the same rank
 		// in this case, we use the seed as tie-breaker
+		FB::log('getting team with rank '.$rank); 
 
-		// TODO: if there is a BYE team in the pool, ignore its rank when getting this TeamId 
-		$q = Doctrine_Query::create()
-		    ->from('PoolTeam pt')
-		    ->where('pt.pool_id = ?',$this->id)
-		    ->orderBy('pt.rank ASC, pt.seed ASC');
-		$poolteams = $q->fetchArray();
-
-		if (count($poolteams) != $this->getTeamCount()) {
-			trigger_error('getTeamIdByRank is probably not returning the right thing here. Number of returned PoolTeams is '.count($poolteams).' and number of teams in pool is '.$this->getTeamCount());
-		}
+		// if there is a BYE team in the pool, skip it when getting this TeamName
+		// i.e. we have to adjust the $rank we are looking for
+		$byeRank=$this->byeRank();
+		if ($byeRank>0) {
+			FB::log('bye Rank: '.$byeRank);
+			if ($byeRank <= $rank) {
+				$rank++;
+				FB::log('rank we are looking for adjusted to '.$rank);
+			}
+		}		
 		
-		if ($rank-1 < count($poolteams)) {
-			return($poolteams[$rank-1]['team_id']);
-		} else {
-			return(false);
-		}
-
-	}
-	
-	public function getTeamNameByRank($rank) {
-		// the rank-property of PoolTeams can be ambiguous, 
-		// because several teams can have the same rank
-		// in this case, we use the seed as tie-breaker 
-
-		// TODO: if there is a BYE team in the pool, ignore its rank when getting this TeamId 		
+		// first try to retrieve the team with $rank directly
 		$q = Doctrine_Query::create()
 			->select('pt.*, t.name as teamname')
 		    ->from('PoolTeam pt')
 			->leftJoin('pt.Team t')
 		    ->where('pt.pool_id = ?',$this->id)
-		    ->orderBy('pt.rank ASC, pt.seed ASC');
-		    
-		$poolteams = $q->fetchArray();
+		    ->andWhere('pt.rank = ?', $rank);
 		
-		if (count($poolteams) != $this->getTeamCount()) {
-			trigger_error('getTeamNameByRank is probably not returning the right thing here. Number of returned PoolTeams is '.count($poolteams).' and number of teams in pool is '.$this->getTeamCount());
-		}
+		$poolteams = $q->fetchOne();
 		
-		if ($rank-1 < count($poolteams)) {
-			return($poolteams[$rank-1]['teamname']);
+		if ($poolteams != false) {
+			assert($poolteams['teamname'] != 'BYE Team');
+			return $poolteams;
 		} else {
-			return(false);
-		}
-		
+			// the concrete rank could not been retrieved
+			// so retrieve all teams instead and take it from there
+			
+			$q = Doctrine_Query::create()
+				->select('pt.*, t.name as teamname')
+			    ->from('PoolTeam pt')
+				->leftJoin('pt.Team t')
+			    ->where('pt.pool_id = ?',$this->id)
+			    ->orderBy('pt.rank ASC, pt.seed ASC');
+			    
+			$poolteams = $q->fetchArray();
+			
+			if (count($poolteams) < $rank || $poolteams[$rank-1]['rank'] > $rank) { 
+				return false;
+			} else {								
+				assert($poolteams[$rank-1]['teamname'] != 'BYE Team');
+				return($poolteams[$rank-1]);
+			}
+		}		
 	}
 
-		public function getTeamNameBySeed($seed) {
+	public function getTeamNameBySeed($seed) {
 		$q = Doctrine_Query::create()
 			->select('pt.*, t.name as teamname')
 		    ->from('PoolTeam pt')
@@ -177,6 +197,24 @@ class Pool extends BasePool {
 		}
 		return $this->_strategy;
 	}
+	
+	public function byeRank() {
+		// returns the rank of the BYE team
+		// or false if there is not BYE team in this pool
+		$q = Doctrine_Query::create()
+			    ->from('PoolTeam pt')
+			    ->leftJoin('pt.Team t')
+			    ->where('t.byeStatus = 1')
+			    ->andWhere('pt.pool_id = ?',$this->id);
+		$byeTeam = $q->fetchOne();
+		
+		if ($byeTeam === false) {
+			return (false);
+		} else {
+			assert($this->PoolRuleset->title == 'Swissdraw'); // make sure this is a Swissdraw pool
+			return ($byeTeam['rank']);
+		}				
+	}
 		
 	public function getSpots($seed=false) {
 		// returns an array of PoolSpots
@@ -186,8 +224,13 @@ class Pool extends BasePool {
 		$result = array();
  		if($this->spots == 0) {
  			$this->spots = count($this->PoolTeams);
- 			// TODO: adjust the number of spots, if there is a BYE team in the pool and $seed=false 			
  		}
+ 		// adjust the number of spots, if there is a BYE team in the pool and $seed=false 			
+ 		if ($this->byeRank() > 0 && !$seed) { 
+ 			$this->spots--; 
+ 		 	FB::log('adjusted number of spots to '.$this->spots);
+ 		} 				
+ 	
  		
 		for($i = 0; $i < $this->spots; $i++) {
 			$spot = new PoolSpot();
