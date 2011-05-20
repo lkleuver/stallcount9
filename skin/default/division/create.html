@@ -1,17 +1,25 @@
 {% extends "index.html" %}
  
 {% block title %}Stallcount9 - New Division{% endblock %}
+{% block pagetitle "Create Division" %}
+
 
 {% block content %}
-	<h1>Create new division for {{ tournament.title }}</h1>
+	
+	<div class="section">
+ 		<h3>New division for {{ tournament.title }}</h3>
   
   
-  	<form method="post" action="?n=division/create/" name="form-division-create">
-  		{% include "division/form.html" %}
-  		
-  		
-		<button name="divisionSubmit" value="1">add</button>
-  	</form>
+	  	<form method="post" action="?n=division/create/" name="form-division-create">
+	  		{% include "division/form.html" %}
+	  		
+	  		
+	  		<input type="hidden" name="divisionSubmit" value="1" />
+	  		
+	  		<a class="button button-blue" href="#" onclick="document['form-division-create'].submit();"><span class="add">Add</span></a>
+			<a class="button button-grey" href="?n=/tournament/detail/{{ tournament.id}}"><span class="cancel">Cancel</span></a>
+	  	</form>
+	</div>
   
   
   

@@ -1,23 +1,33 @@
 {% extends "index.html" %}
  
-{% block title %}Open Division - Swissdraw{% endblock %}
+{% block title %}{{stage.title}}{% endblock %}
+{% block pagetitle %}{{stage.title}}{% endblock %}
 
 {% block content %}
-	<h1>{{stage.Division.title}} - {{stage.title}}</h1>
-	
-	
-	<h2>Pools</h2>
-	
-	<ul class="itemlist">
-		{% for pool in stage.Pools %}
-			<li><a href="?n=/pool/detail/{{pool.id}}">{{pool.title}}</a> <a class="action" href="?n=/pool/edit/{{pool.id}}">edit</a> <a class="action" href="?n=/pool/remove/{{pool.id}}">delete</a> {% if pool.isFinished() %}(finished){% endif %} ({{pool.spots}})</li>
-		{% endfor %}
-	</ul>
-	<a class="action" href="?n=/pool/create&stageId={{stage.id}}">+ Add pool</a>
-	
-	
+
+	<div class="section">	
+		<h3>Pools</h3>
+		<table>
+			<tr>
+				<th>Pool name</th>
+				<th class="op">Operations</th>
+			</tr>
+			{% for pool in stage.Pools %}
+				<tr>
+					<td><a href="?n=/pool/detail/{{pool.id}}">{{pool.title}}</a>  {% if pool.isFinished() %}(finished){% endif %} ({{pool.spots}})</td>
+					<td class="op"> 
+						<a href="?n=/pool/edit/{{pool.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a> 
+						<a href="?n=/pool/remove/{{pool.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		
+		<a class="button button-blue" href="?n=/pool/create&stageId={{stage.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}"><span class="add">Add pool</span></a>
+		<a class="button button-red" href="?n=/stage/moves/{{stage.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}"><span class="move">Edit moves</span></a>
+	</div>
 	<p>
-		<a class="action" href="?n=/stage/moves/{{stage.id}}">Edit moves</a>
+		
 	</p>
 
 	<p>

@@ -1,30 +1,50 @@
 {% extends "index.html" %}
  
-{% block title %}Stallcount9 - Open Division{% endblock %}
+{% block title %}Stallcount9 - {{division.title}}{% endblock %}
+{% block pagetitle %}{{division.title}}{% endblock %}
 
 {% block content %}
-	<h1>{{division.Tournament.title}} {{division.title}}</h1>
-	<h2>Stages</h2>
 	
 	
-	<ul class="itemlist">
-		{% for stage in division.Stages %}
-			<li><a href="?n=/stage/detail/{{stage.id}}">{{stage.title}}</a> <a class="action" href="?n=/stage/remove/{{stage.id}}">delete</a></li>
-		{% endfor %}
-	</ul>
-	<a class="action" href="?n=/stage/create&divisionId={{division.id}}">+ Add stage</a>
-	
-	<br /><br />
-	
-	<h2>Teams</h2>
-  	<ul class="itemlist">
-		{% for team in division.Teams %}
-			<li><a href="?n=/team/detail/{{team.id}}">{{team.name}}</a> <a class="action" href="?n=/team/edit/{{team.id}}">edit</a> <a class="action" href="?n=/team/remove/{{team.id}}">delete</a></li>
-		{% endfor %}
- 	</ul>
+	<div class="section">
+		<h3>Stages</h3>
+		<table>
+			<tr>
+				<th>Stage name</th>
+				<th class="op">Operations</th>
+			</tr>
+			{% for stage in division.Stages %}
+				<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
+					<td><a href="?n=/stage/detail/{{stage.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}">{{stage.title}}</a></td>
+					<td class="op"><a href="?n=/stage/remove/{{stage.id}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a></td>
+				</tr>
+			{% endfor %}
+		</table>
+		<a class="button button-blue" href="?n=/stage/create&divisionId={{division.id}}&tournamentId={{tournamentId}}"><span class="add">Add stage</span></a>
+	</div>
+
+	<div class="section">	
+		<h3>Teams</h3>
+		<table>
+			<tr>
+				<th>Team name</th>
+				<th class="op">Operations</th>
+			</tr>
+			{% for team in division.Teams %}
+			<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
+				<td><a href="?n=/team/detail/{{team.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}">{{team.name}}</a></td>
+				<td class="op">
+					<a href="?n=/team/edit/{{team.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a> 
+					<a href="?n=/team/remove/{{team.id}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>
+				</td>
+			</tr>
+			{% endfor %}
+ 		</table>
   		
- 	<a class="action" href="?n=/team/create&divisionId={{division.id}}">+ Add team</a><br /><br />
- 	<a class="action" href="?n=/team/create25&divisionId={{division.id}}">+ Add 25 teams</a><br /><br />
- 	<a class="action" href="?n=/division/schedule/{{division.id}}">+ Create Games and Schedule them</a> 
-  
+	 	<a class="button button-blue" href="?n=/team/create&divisionId={{division.id}}&tournamentId={{tournamentId}}"><span class="add">Add team</span></a>
+
+	 	<a class="button button-red" href="?n=/division/schedule/{{division.id}}&tournamentId={{tournamentId}}"><span class="clock">Schedule</span></a>
+	 	<br /><br />
+	 	<a class="action" href="?n=/team/create25&divisionId={{division.id}}">+ Add 25 teams</a><br /><br /> 
+	</div>
 {% endblock %}

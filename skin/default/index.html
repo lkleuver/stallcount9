@@ -14,7 +14,7 @@
 	<div class="container">
 		<ul class="selection">
 			<li class="first">
-				<a href="#">{% if activeTournament %}{{activeTournament.title}}{% else %} Tournaments {% endif %}</a>
+				{% if activeTournament %}<a href="index.php?n=/tournament/detail/{{activeTournament.id}}">{{activeTournament.title}}</a>{% else %}<a href="#">Tournaments</a>{% endif %}
 				<ul>
 				{% for tournamentOption in tournamentOptions %}
 					<li><a href="index.php?n=/tournament/detail/{{tournamentOption.id}}">{{tournamentOption.title}}</a></li>
@@ -23,7 +23,7 @@
 			</li>
 			{% if divisionOptions %}
 				<li>
-					<a href="#">{% if activeDivision %}{{activeDivision.title}}{% else %}Divisions{% endif %}</a>
+					{% if activeDivision %}<a href="index.php?n=/division/detail/{{activeDivision.id}}&tournamentId={{tournamentId}}">{{activeDivision.title}}</a>{% else %}<a href="#">Divisions</a>{% endif %}
 					<ul>
 					{% for divisionOption in divisionOptions %}
 						<li><a href="index.php?n=/division/detail/{{divisionOption.id}}&tournamentId={{tournamentId}}">{{divisionOption.title}}</a></li>
@@ -33,7 +33,7 @@
 			{% endif %}
 			{% if stageOptions %}
 				<li>
-					<a href="#">{% if activeStage %}{{activeStage.title}}{% else %}Stages{% endif %}</a>
+					{% if activeStage %}<a href="index.php?n=/stage/detail/{{activeStage.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}">{{activeStage.title}}</a>{% else %}<a href="#">Stages</a>{% endif %}
 					<ul>
 					{% for stageOption in stageOptions %}
 						<li><a href="index.php?n=/stage/detail/{{stageOption.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}">{{stageOption.title}}</a></li>
@@ -43,7 +43,7 @@
 			{% endif %}
 			{% if poolOptions %}
 				<li>
-					<a href="#">{% if activePool %}{{activePool.title}}{% else %}Pools{% endif %}</a>
+					{% if activePool %}<a href="index.php?n=/pool/detail/{{activePool.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}">{{activePool.title}}</a>{% else %}<a href="#">Pools</a>{% endif %}
 					<ul>
 					{% for poolOption in poolOptions %}
 						<li><a href="index.php?n=/pool/detail/{{poolOption.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}">{{poolOption.title}}</a></li>

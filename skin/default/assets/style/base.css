@@ -62,6 +62,7 @@
 			display: block;
 			border-bottom: 1px solid #4e4e4e;
 			background: #020202;
+			width: 200px;
 		}
 		
 		.menubar ul li ul li:hover {
@@ -70,6 +71,7 @@
 		
 		.menubar ul.selection li ul li a {
 			background-image: url("img/arrow_right.png");
+			color: #fff;
 		}
 	
 
@@ -130,6 +132,7 @@
 		padding: 16px;
 		border: 1px solid #efefef;
 		box-shadow: 0 1px 2px rgba(0,0,0,0.75);
+		margin-bottom: 32px;
 	}
 
 	.section h3 {
@@ -153,9 +156,15 @@
 	}
 	
 	tr.odd td {
-		background-color: #ededed;
+		background-color: #f2f2f2;
 	}
 
+	table .op {
+		width: 100px;
+		padding-top: 0;
+		padding-bottom: 0;
+		text-align: right;
+	}
 
 /* Buttons ---------*/
 
@@ -178,12 +187,22 @@
 		color: #fff;
 	}
 
-	a.button-red {
-		background-image: url("img/button_red.png");
-	}
+	a.button-red {		background-image: url("img/button_red.png");	}
+	a.button-grey {		background-image: url("img/button_grey.png");	}
 	
-	a.button span.add {
-		background: transparent url("img/icon/plus.png") no-repeat 116px 6px;
+	a.button span.add {		background: transparent url("img/icon/plus.png") no-repeat 116px 6px;	}
+	a.button span.cancel {	background: transparent url("img/icon/cancel.png") no-repeat 116px 6px;	}
+	a.button span.clock {	background: transparent url("img/icon/clock.png") no-repeat 116px 6px;	}
+	a.button span.move {	background: transparent url("img/icon/move.png") no-repeat 116px 6px;	}
+	
+	
+	
+	button {
+		width: 146px; /* 146 x 34 */
+		height: 34px;
+		border: 0;
+		color: #fff;
+		background: transparent url("img/button_blue.png") no-repeat left top;
 	}
 	
 	

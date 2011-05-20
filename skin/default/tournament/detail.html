@@ -12,15 +12,16 @@
   		<table>
   			<tr>
   				<th>Name</th>
-  				<th>Operations</th>
+  				<th class="op">Operations</th>
   			</tr>
 	  	{% for division in tournament.Divisions %}
 	  		<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
 			  	<td>
 			  		<a href="?n=/division/detail/{{ division.id }}&tournamentId={{tournamentId}}">{{ division.title }}</a>
 			  	</td>
-			  	<td>
-			  		<a href="?n=/division/detail/{{ division.id }}&tournamentId={{tournamentId}}">detail</a> <a href="?n=/division/remove/{{division.id}}&tournamentId={{tournamentId}}">delete</a>
+			  	<td class="op">
+			  		<a href="?n=/division/detail/{{ division.id }}&tournamentId={{tournamentId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a> 
+			  		<a href="?n=/division/remove/{{division.id}}&tournamentId={{tournamentId}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>
 			  	</td>
 			</tr>
 		 {% endfor %}
