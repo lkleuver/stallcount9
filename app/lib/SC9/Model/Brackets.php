@@ -116,6 +116,38 @@ class Brackets extends BaseBrackets
 		return array('best'=>$best,'worst'=>$worst);		
 	}
 	
+	public static function possibleBYE($nrTeams,$nrRounds,$seed) {
+		// returns true if for $nrTeams and $nrRounds, it is possible in some way
+		// to have a BYE when starting in $seed
+		
+		FB::group('possible BYE check with '.$nrTeams.$nrRounds.$seed);
+		$possibleBYE=false;
+		// explore all paths from $seed recursively
+		Brackets::possibleBYErecurse($nrTeams, $nrRounds, 1, $seed, $possibleBYE);
+		
+		FB::groupEnd();
+		return $possibleBYE;
+	}
+	
+	private static function possibleBYErecurse($nrTeams,$nrRounds,$round,$rank,&$possibleBYE) {
+		// retrieve the match we play here
+		
+		if (!$possibleBYE) { // otherwise, we already know the answer
+			FB::log('possible BYE recurse with '.$nrTeams.$nrRounds.$round.$rank.$possibleBYE);
+			$matchup = Brackets::getMatchupByRank($nrTeams, $nrRounds, $round, $rank);
+			if ($matchup->home === null || $matchup->away === null) {
+				$possibleBYE=true; // and we are done
+				FB::log('BYE *is* possible');
+			} else {
+				if (is_null($matchup->winplace) && is_null($matchup->loseplace)) {
+					Brackets::possibleBYErecurse($nrTeams, $nrRounds, ($round+1), $matchup->home, $possibleBYE);
+					Brackets::possibleBYErecurse($nrTeams, $nrRounds, ($round+1), $matchup->away, $possibleBYE);
+				}
+			}
+		}
+		
+	}
+	
 	public static function getOrigin($nrTeams,$nrRounds,$round,$rank) {
 		// returns the name of the team which is ranked $rank in round $round
 		// of a bracket with $nrTeams and $nrRounds

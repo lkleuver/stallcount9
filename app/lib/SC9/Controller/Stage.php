@@ -31,12 +31,12 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		// TODO: check that previous stage is completed
 		
 		// check that all moves are present
-		try {
+//		try {
 			$stage->performMoves();
-		} catch (Exception $e) {
-			echo $e;
-			exit;
-		}
+//		} catch (Exception $e) {
+//			echo $e;
+//			exit;
+//		}
 		$this -> relocate("/stage/detail/".$this->stageId);
 	}
 

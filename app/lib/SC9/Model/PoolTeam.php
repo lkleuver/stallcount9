@@ -12,6 +12,35 @@
  */
 class PoolTeam extends BasePoolTeam
 {
+	public function countBYEs() {
+		// returns true iff this PoolTeam lives in a Swissdraw pool
+		// and played the BYE team so far
+
+		if ($this->Pool->PoolRuleset->title == 'Swissdraw') {
+			
+			FB::group('countBYEs business of PoolTeam '.$this->Team->name);		
+			
+			$byeCount=0;
+			foreach($this->Team->HomeMatches as $match) {
+				if ($match->AwayTeam->byeStatus == 1) {
+					$byeCount++;
+					FB::log('had a BYE in match '.$match->rank.' in round '.$match->round_id);
+				}
+			}
+			foreach($this->Team->AwayMatches as $match) {
+				if ($match->HomeTeam->byeStatus == 1) {
+					$byeCount++;
+					FB::log('had a BYE in match '.$match->rank.' in round '.$match->round_id);
+				}
+			}			
+			
+			FB::groupEnd();
+			return $byeCount;
+		} else {
+			return 0;
+		}
+	}
+	
 	public static function getSortedTeamsByPool($pool_id) {
 		$q = Doctrine_Query::create()
 			    ->from('PoolTeam pt')

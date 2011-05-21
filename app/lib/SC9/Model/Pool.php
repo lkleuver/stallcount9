@@ -62,6 +62,7 @@ class Pool extends BasePool {
 	 * executes moves
 	 */
 	public function performMoves() {
+		FB::group('performing moves in pool '.$this->id);
 		foreach($this->SourceMoves as $move) {
 			$poolTeam = new PoolTeam();
 			$poolTeam->pool_id = $this->id;
@@ -76,6 +77,7 @@ class Pool extends BasePool {
 		}
 		$this->currentRound = 1;
 		$this->save();
+		FB::groupEnd();
 	}
 	
 	public function createMatchups() {
@@ -89,7 +91,7 @@ class Pool extends BasePool {
 		if ($rankedteam === false ){
 			return(false);
 		} else {
-			return($rankedteam['id']);
+			return($rankedteam['team_id']);
 		}
 	}
 	
@@ -220,34 +222,45 @@ class Pool extends BasePool {
 		// returns an array of PoolSpots
 		// if $seed is true, the spots are sorted according to the seeding
 		// if $seed is false, the sports are sorted according to rank
+		// if $seed is false, 
+		FB::group('getSpots business of pool '.$this->id);
 		
 		$result = array();
- 		if($this->spots == 0) {
- 			$this->spots = count($this->PoolTeams);
- 		}
- 		// adjust the number of spots, if there is a BYE team in the pool and $seed=false 			
- 		if ($this->byeRank() > 0 && !$seed) { 
- 			$this->spots--; 
- 		 	FB::log('adjusted number of spots to '.$this->spots);
- 		} 				
- 	
+		
+		if ($this->spots == 0) {
+			$this->spots = count($this->PoolTeams);
+	 		// adjust the number of spots, if there is a BYE team in the pool and $seed=false 			
+	 		if ($this->byeRank() > 0 && !$seed) { 
+	 			$this->spots--; 
+	 		 	FB::log('adjusted number of spots to '.$this->spots);
+	 		} 				
+	 		$this->save(); // saving number of spots
+		}
+ 		FB::log('number of spots '.$this->spots);
  		
 		for($i = 0; $i < $this->spots; $i++) {
 			$spot = new PoolSpot();
 			$spot->rank = $i + 1;
-	//		if($i < count($this->PoolTeams)) {
-				$spot->title = ($seed ? $this->getTeamNameBySeed($i+1) : $this->getTeamNameByRank($i+1)); 
-				if ($spot->title === false) {
-					$spot->title = "empty";
+			$spot->title = ($seed ? $this->getTeamNameBySeed($i+1) : $this->getTeamNameByRank($i+1)); 
+			if ($spot->title === false) {
+				$spot->title = "empty";
+				if ($seed) {
+					// check if there is a danger of occuring a BYE in this spot
+					$spot->byeCount = (Brackets::possibleBYE($this->spots, $this->getNumberOfRounds(), $i+1) ? 1 : 0);
 				}
-	//		}else{
-	//			$spot->title = "empty";
-	//		}
+			} elseif (!$seed) {
+				$poolteamByRank = $this->getTeamByRank($i+1);
+				// count how many BYEs $poolteam had in this pool
+				$spot->byeCount = $poolteamByRank->countBYEs();				
+			} 			
+
 			$spot->sourceMove = $this->getSourceMoveForSpot($spot->rank);
 			$spot->destinationMove = $this->getDestinationMoveForSpot($spot->rank);
 			
 			$result[] = $spot;
 		}
+		
+		FB::groupEnd();
 		return $result;
 	}
 	

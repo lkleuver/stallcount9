@@ -17,7 +17,8 @@
 			<h3>{{ pool.title}} {{pool.id}}</h3>
 			<ul class="moves">
 				{% for spot in pool.getSpots() %}
-					<li id="pool-{{pool.id}}-{{spot.rank}}">{{ spot.rank }} - {{ spot.title }} {{spot.destinationMove.pool_id}} {{spot.destinationMove.destinationSpot}}</li>
+					{# TODO: make the bold face hack nicer for teams that had a BYE previously #} 
+					<li id="pool-{{pool.id}}-{{spot.rank}}">{% if spot.byeCount > 0 %}<b>{% endif %}{{ spot.rank }} - {{ spot.title }} {{spot.destinationMove.pool_id}} {{spot.destinationMove.destinationSpot}}{% if spot.byeCount > 0 %}</b>{% endif %}</li>
 				{% endfor %}
 			</ul>
 		{% endfor %}
@@ -31,7 +32,7 @@
 			<h3>{{ pool.title}} {{pool.id}}</h3>
 			<ul class="moves">
 				{% for spot in pool.getSpots(true) %}
-					<li id="pool-{{pool.id}}-{{spot.rank}}">{{ spot.rank }} - {{ spot.title }} {{spot.sourceMove.source_pool_id}} {{spot.sourceMove.sourceSpot}}</li>
+					<li id="pool-{{pool.id}}-{{spot.rank}}">{% if spot.byeCount > 0 %}<b>{% endif %}{{ spot.rank }} - {{ spot.title }} {{spot.sourceMove.source_pool_id}} {{spot.sourceMove.sourceSpot}}{% if spot.byeCount > 0 %}</b>{% endif %}</li>
 				{% endfor %}
 			</ul>
 			
