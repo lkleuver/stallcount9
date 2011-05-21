@@ -67,6 +67,8 @@ Stage:
       type: integer(4)
     locked:
       type: boolean
+    placement:  # if set, this stage is the final one in the tournament, the rank of the pools now matters
+      type: boolean
   relations:
     Division:
       foreignAlias: Stages
@@ -303,6 +305,10 @@ RoundMatch:
       type: integer(10)
     spiritSubmitTime:
       type: integer(10)
+    bestPossibleRank:
+      type: integer(4)
+    worstPossibleRank:
+      type: integer(4)      
   relations:
     Field:
       foreignAlias: Matches

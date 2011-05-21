@@ -31,8 +31,6 @@
 			<th>Goals Scored</th>
 			<th>Wins</th>
 			<th>Losses</th>
-			<th>Best Poss</th>
-			<th>Worst Poss</th>			
 			<th>Spirit</th>
 		</tr>
 		
@@ -48,8 +46,6 @@
 			<td class="scored">{{team.scored}}</td>
 			<td class="wins">{{team.wins}}</td>
 			<td class="losses">{{team.losses}}</td>
-			<td class="bestPossible">{{team.bestPossible}}</td>
-			<td class="worstPossible">{{team.worstPossible}}</td>
 			<td class="spirit">{{team.spirit}}</td>
 		</tr>
 	{% endfor %}
@@ -71,6 +67,7 @@
 						<th>Home</th>
 						<th>Away</th>
 						<th>result</th>
+						<th>for place</th>
 						<th>op</th>
 					</tr>
 					
@@ -80,6 +77,7 @@
 						<td class="team"><a href="{{match.home_team_id}}">{% if match.home_team_id==0 and not match.away_team_id==0%}BYE{% elseif match.home_team_id %}{{match.HomeTeam.name}}{% else %}{{match.homeName}}{% endif %}</a></td>
 						<td class="team"><a href="{{match.away_team_id}}">{% if match.away_team_id==0 and not match.home_team_id==0%}BYE{% elseif match.away_team_id %}{{match.AwayTeam.name}}{% else %}{{match.awayName}}{% endif %}</a></td>
 						<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>
+						<td class="possibleRanks">{{match.bestPossibleRank}} to {{match.worstPossibleRank}}</td>
 						<td><a href="?n=/match/edit/{{match.id}}">edit</a></td>
 					</tr>
 				{% endfor %}

@@ -25,7 +25,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		
 		$nrTeams=$pool->spots;			
 		if ($nrTeams%2==1) {
-			die('number of spots in a Swissdraw pool should always be even!');
+			FB::error('Swissdraw naming / scheduling','number of spots in a Swissdraw pool should always be even!');
 		}
 		
 		$teamcount=0;
@@ -63,12 +63,16 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	 */	
 	public function standingsAfterRound($pool, $roundnr) {
 		
+		FB::group('compute Swissdraw standings of pool '.$pool->id.' after round '.$roundnr);
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
 			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
 		}
 		
-		if ($roundnr == 0) {
+		if ($roundnr == -1) {
+			FB::groupEnd();
+			return null;
+		} elseif ($roundnr == 0) {
 			// note that sorting destroys the link with the $team_id keys, so the counting code in the "else" part does not work
 			// if we sort beforehand!
 			
@@ -131,6 +135,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		}
 		FB::table('standings after round '.$roundnr,$standings);
 		
+		FB::groupEnd();
 		return $standings;
 	}
 	

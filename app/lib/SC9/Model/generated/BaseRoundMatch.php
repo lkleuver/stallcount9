@@ -21,6 +21,8 @@
  * @property integer $awaySpirit
  * @property integer $scoreSubmitTime
  * @property integer $spiritSubmitTime
+ * @property integer $bestPossibleRank
+ * @property integer $worstPossibleRank
  * @property Field $Field
  * @property Team $HomeTeam
  * @property Team $AwayTeam
@@ -101,6 +103,14 @@ abstract class BaseRoundMatch extends Doctrine_Record
         $this->hasColumn('spiritSubmitTime', 'integer', 10, array(
              'type' => 'integer',
              'length' => '10',
+             ));
+        $this->hasColumn('bestPossibleRank', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('worstPossibleRank', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');

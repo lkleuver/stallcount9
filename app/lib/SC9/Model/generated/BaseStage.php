@@ -10,6 +10,7 @@
  * @property integer $division_id
  * @property integer $rank
  * @property boolean $locked
+ * @property boolean $placement
  * @property Division $Division
  * @property Doctrine_Collection $Pools
  * 
@@ -42,6 +43,9 @@ abstract class BaseStage extends Doctrine_Record
              'length' => '4',
              ));
         $this->hasColumn('locked', 'boolean', null, array(
+             'type' => 'boolean',
+             ));
+        $this->hasColumn('placement', 'boolean', null, array(
              'type' => 'boolean',
              ));
 

@@ -12,6 +12,16 @@
  */
 class Stage extends BaseStage{
 
+	public function getNextRank() {
+		$rank = 1;
+		foreach($this->Pools as $pool) {
+			if($pool->rank >= $rank) {
+				$rank = $pool->rank + 1;
+			}
+		}
+		return $rank;
+	}
+	
 	
 	public function schedule() {
 		FB::group("::::: STAGE ".$this->title." :::::::");
@@ -110,7 +120,7 @@ class Stage extends BaseStage{
 			    ->leftJoin('s.Division d')
 			    ->leftJoin('s.Pools p')
 			    ->where('s.id = ?', $id)
-			    ->orderBy('s.rank ASC');
+			    ->orderBy('s.rank ASC, p.rank ASC');
 		$stage = $q->fetchOne();
 		return $stage;
 	}

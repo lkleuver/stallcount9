@@ -62,7 +62,7 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 				$destinationSpot = $destSpotList[$destCounter]['spot'];
 				
 				$destCounter++; // stop when the destination list is exhausted
-				if ($destCounter >= count($destSpotList)) { break; }
+				if ($destCounter > count($destSpotList)) { break; }
 
 				//avoid conflicts: first delete possible move for associated source and destination spots
 				Pool::deleteDestinationMovesForSpot($destinationPoolId, $destinationSpot);
@@ -146,6 +146,5 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$stage->delete();
 		$this->relocate("/division/detail/".$divisionId);
 	}
-	
-	
+		
 }

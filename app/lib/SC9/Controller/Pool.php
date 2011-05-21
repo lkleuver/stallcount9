@@ -83,7 +83,9 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 			$pool->link('Stage', array($this->post("stageId")));
 			$pool->link('PoolRuleset', array($this->post("poolRulesetId")));
 			$pool->save();
-						
+			$pool->rank = $pool->Stage->getNextRank();
+			$pool->save();
+			
 			if ($this->post("poolRulesetId")==2 && $this->post("poolSpots")%2==1) {
 				// Swissdraw and odd number of spots
 				

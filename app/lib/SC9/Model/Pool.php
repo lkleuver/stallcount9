@@ -244,7 +244,7 @@ class Pool extends BasePool {
 			$spot->title = ($seed ? $this->getTeamNameBySeed($i+1) : $this->getTeamNameByRank($i+1)); 
 			if ($spot->title === false) {
 				$spot->title = "empty";
-				if ($seed) {
+				if ($seed && $this->PoolRuleset->title == 'Bracket') {
 					// check if there is a danger of occuring a BYE in this spot
 					$spot->byeCount = (Brackets::possibleBYE($this->spots, $this->getNumberOfRounds(), $i+1) ? 1 : 0);
 				}
