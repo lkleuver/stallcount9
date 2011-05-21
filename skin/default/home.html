@@ -4,43 +4,33 @@
 
 {% block tabs %}{% endblock %}
 
+{% block pagetitle "Stallcount9 tournament management" %}
+
 {% block content %}
-	<h1>Stallcount9 tournament management</h1>
-  	
-  	<h2>Open tournaments</h2>
-	<ul>
-		{% for tournament in tournamentList %}
-			{% if tournament.state == 1 %}
-				<li><a href="?n=/tournament/detail/{{tournament.id}}">{{ tournament.title }}</a> <a class="action" href="?n=/tournament/remove/{{tournament.id}}">remove</a></li>
-			{% endif %}
-		{% endfor %}
-	</ul> 	
+	
+  	<div class="section">
+  		<h3>Tournaments</h3>
+		
+		<table>
+			<tr>
+				<th>Tournament name</th>
+				<th class="op">Operations</th>
+			</tr>
+			{% for tournament in tournamentList %}
+			<tr>
+				<td>
+					<a href="?n=/tournament/detail/{{tournament.id}}">{{ tournament.title }}</a>
+				</td>
+				<td class="op">
+					<a href="?n=/tournament/remove/{{tournament.id}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>
+				</td>
+			</tr>
+			{% endfor %}
+	 	</table>
 
-	<br /><br />
-  	
-  	<h2>Active tournaments</h2>
 	
-	<ul>
-		{% for tournament in tournamentList %}
-			{% if tournament.state == 2 %}
-				<li><a href="?n=/tournament/detail/{{ tournament.id }}">{{ tournament.title }}</a></li>
-			{% endif %}
-		{% endfor %}
-	</ul> 	
-	
-	<br /><br />
-
-	<h2>Closed tournaments</h2>
-  	<ul>
-		{% for tournament in tournamentList %}
-			{% if tournament.state == 3 %}
-				<li><a href="?n=/tournament/detail/{{ tournament.id }}">{{ tournament.title }}</a></li>
-			{% endif %}
-		{% endfor %}
-  	</ul>
-	
-  	<a class="button" href="?n=/tournament/create"><span>New tournament</span></a>
-  	
+  		<a class="button button-blue" href="?n=/tournament/create"><span class="add">New tournament</span></a>
+  	</div>
 
   
 {% endblock %}

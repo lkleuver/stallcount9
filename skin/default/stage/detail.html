@@ -14,7 +14,7 @@
 			</tr>
 			{% for pool in stage.Pools %}
 				<tr>
-					<td><a href="?n=/pool/detail/{{pool.id}}">{{pool.title}}</a>  {% if pool.isFinished() %}(finished){% endif %} ({{pool.spots}})</td>
+					<td><a href="?n=/pool/detail/{{pool.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}">{{pool.title}}</a>  {% if pool.isFinished() %}(finished){% endif %} ({{pool.spots}})</td>
 					<td class="op"> 
 						<a href="?n=/pool/edit/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a> 
 						<a href="?n=/pool/remove/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>
@@ -31,7 +31,7 @@
 	</p>
 
 	<p>
-		<a href="?n=/division/detail/{{stage.Division.id}}">back to division</a>
+		<a href="?n=/division/detail/{{stage.Division.id}}&tournamentId{{tournamentId}}">back to division</a>
 	</p>
   
 {% endblock %}

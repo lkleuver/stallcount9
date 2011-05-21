@@ -1,16 +1,18 @@
 {% extends "index.html" %}
  
 {% block title %}Edit Match {{match.matchName}}{% endblock %}
-
+{% block pagetitle %} Edit Match {{match.matchName}} {{match.HomeTeam.name}} vs {{match.AwayTeam.name}} {% endblock %}
 {% block content %}
-	<h1>Edit Match {{match.matchName}} {{match.HomeTeam.name}} vs {{match.AwayTeam.name}}</h1>
-  
+	
+  	<div class="section">
+  		<h3>Edit match</h3>
   	
-  	<form method="post" action="?n=/match/edit/{{match.id}}" name="form-match-edit">
-  		{% include "match/form.html" %}
-
-		<button name="matchSubmit" value="1">update</button>
-  	</form>
+	  	<form method="post" action="?n=/match/edit/{{match.id}}" name="form-match-edit">
+	  		{% include "match/form.html" %}
+	
+			<button name="matchSubmit" value="1">update</button>
+	  	</form>
+	</div>
   
   	
   

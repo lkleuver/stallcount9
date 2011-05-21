@@ -16,4 +16,18 @@
   			<label>Away Spirit</label>
   			<input type="text" name="awaySpirit" value="{{ match.awaySpirit }}" />
   		</li>
+  		
+  		<li>
+  			<label>Field</label>
+  			<select name="fieldId">
+  				{% for field in fields %}
+					<option value="{{field.id}}" {% if field.id == match.field_id %} selected="selected"{% endif %}>{{field.title}}</option>  				
+  				{% endfor %}
+  			</select>
+  		</li>
   	</ul>
+  	
+  	
+  	<input type="hidden" name="tournamentId" value="{{tournamentId}}" />
+  	<input type="hidden" name="divisionId" value="{{divisionId}}" />
+  	<input type="hidden" name="stageId" value="{{stageId}}" />

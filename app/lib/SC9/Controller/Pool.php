@@ -21,8 +21,9 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 			$standingsRound = $pool->currentRound-1;
 		}		
 		
-		$standings = $pool->standingsAfterRound($standingsRound); 		
-		$template = $this->output->loadTemplate('pool/detail.html');		
+		$standings = $pool->standingsAfterRound($standingsRound); 
+		$template = $pool->getStrategy()->getName() == "Bracket" ? $this->output->loadTemplate("pool/bracket_detail.html") : $this->output->loadTemplate('pool/detail.html');
+				
 		$template->display(array("pool" => $pool, "standings" => $standings, "standingsRound" => $standingsRound));
 	}
 	

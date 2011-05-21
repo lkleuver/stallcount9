@@ -1,0 +1,9 @@
+
+.bracket { 
+	overflow: hidden;
+}
+
+.bracket div.round {
+	width: 200px;
+	float: left;		
+} 

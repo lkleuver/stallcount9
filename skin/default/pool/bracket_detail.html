@@ -1,10 +1,14 @@
 {% extends "index.html" %}
  
 {% block title %}Pool{% endblock %}
-{% block pagetitle %}{{pool.Stage.title}} - {{pool.title}}{% endblock %}
-
+{% block header %}
+	<style type="text/css">
+		@import url("skin/default/assets/style/strategy/bracket.css");
+	</style>
+{% endblock %}
+{% block pagetitle %} {{pool.title}} {% endblock %}
 {% block content %}
-	
+
 	<div class="section">
 		<h3>Seeds</h3>
 		<ul>
@@ -14,7 +18,6 @@
 		</ul>
 	</div>
 	
-	
 	<div class="section">
 		<h3>Standing</h3>
 	
@@ -22,7 +25,7 @@
 			{# TODO: insert the right format classes #}
 			<a {% if loop.index == standingsRound %} class="action" {% else %} class="roundchoice" {% endif %} href="?n=/pool/detail/{{pool.id}}&standingsRound={{loop.index}}">after Round {{loop.index}}</a> &nbsp&nbsp&nbsp;
 		{% endfor %}
-		
+	
 		<table class="standings">
 			<tr>
 				<th>#</th>
@@ -37,7 +40,7 @@
 				<th>Losses</th>
 				<th>Spirit</th>
 			</tr>
-			
+		
 		{% for team in standings %}
 			<tr{% if loop.index is even %} class="odd" {% endif %}>
 				<td class="rank">{{team.rank}}</td>
@@ -57,41 +60,52 @@
 	</div>
 	
 	<div class="section">
-		<h3>Rounds</h3>
-		<ul class="roundlist">
+		<h3>Bracket</h3>
+		
+		<div class="bracket">
 		{% for round in pool.Rounds %}
-			<li>
-				<h3>Round {{round.rank}}</h3> 
+			<div class="round">
+				{{round.rank}}
 				{% if round.rank == pool.currentRound %}
 					<a class="action" href="?n=/pool/matchups/{{pool.id}}">Create Matchups for this round</a>					
 				{% endif %}
 				
-				<table class="matchlist">
-					<tr>
-						<th>#</th>
-						<th>Field</th>
-						<th>Home</th>
-						<th>Away</th>
-						<th>result</th>
-						<th>for place</th>
-						<th class="op">op</th>
-					</tr>
+				
 					
 				{% for match in round.Matches %}
-					<tr{% if loop.index is even %} class="odd" {% endif %}>
-						<td class="rank">{{loop.index}}</td>
-						<td class="field">{% if match.field_id %}{{match.Field.title}}{% endif %}</td>
-						<td class="team"><a href="{{match.home_team_id}}">{% if match.home_team_id==0 and not match.away_team_id==0%}BYE{% elseif match.home_team_id %}{{match.HomeTeam.name}}{% else %}{{match.homeName}}{% endif %}</a></td>
-						<td class="team"><a href="{{match.away_team_id}}">{% if match.away_team_id==0 and not match.home_team_id==0%}BYE{% elseif match.away_team_id %}{{match.AwayTeam.name}}{% else %}{{match.awayName}}{% endif %}</a></td>
-						<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>
-						<td class="possibleRanks">{{match.bestPossibleRank}} to {{match.worstPossibleRank}}</td>
-						<td class="op"><a href="?n=/match/edit/{{match.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}&poolId={{poolId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a></td>
-					</tr>
+					<div class="match">
+						<div class="team">
+							{% if match.home_team_id==0 and not match.away_team_id==0%}
+								BYE
+							{% elseif match.home_team_id %}
+								{{match.HomeTeam.name}}
+							{% else %}
+								{{match.homeName}}
+							{% endif %}
+						</div>
+						
+						<div class="team">
+							{% if match.away_team_id==0 and not match.home_team_id==0%}
+								BYE
+							{% elseif match.away_team_id %}
+								{{match.AwayTeam.name}}
+							{% else %}
+								{{match.awayName}}
+							{% endif %}
+						</div>
+						
+						<div class="score">
+							{{match.homeScore}} - {{match.awayScore}}
+						</div>
+						
+						
+						<a href="?n=/match/edit/{{match.id}}">edit</a>
+					</div>
 				{% endfor %}
-				</table>
-			</li>
+				
+			</div>
 		{% endfor %}
-		</ul>
+		</div>
 	</div>
 	
 	

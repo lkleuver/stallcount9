@@ -1,16 +1,28 @@
 {% extends "index.html" %}
  
 {% block title %}Fields{% endblock %}
+{% block pagetitle "Field list" %}
 
 {% block content %}
-	<h1>Field list</h1>
-	<ul class="fieldlist">
-	{% for field in fields %}
-		<li>{{field.title}}</li>		
-	{% endfor %}	
-	</ul>
 	
-	<a class="button" href="?n=/field/create&tournamentId={{tournamentId}}"><span>Add field</span></a>
+	<div class="section">
+		<h3>Fields</h3>
+			
+		<table>
+			<tr>
+				<th>Field name</th>
+				<th class="op">Operations</th>
+			</tr>
+			{% for field in fields %}
+			<tr>
+				<td>{{field.title}}</td>
+				<td></td>
+			</tr>		
+			{% endfor %}	
+		</table>
+	
+		<a class="button" href="?n=/field/create&tournamentId={{tournamentId}}"><span class="add">Add field</span></a>
+	</div>
     
   
 {% endblock %}

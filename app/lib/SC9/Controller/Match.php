@@ -24,11 +24,11 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 		$match = RoundMatch::getById($this->matchId);
 		
 		if($this->handleFormSubmit($match)) {
-			$this->relocate("/pool/detail/".$match->Round->pool_id);	
+			$this->relocate("/pool/detail/".$match->Round->pool_id."&tournamentId=".$this->request("tournamentId")."&divisionId=".$this->request("divisionId")."&stageId=".$this->request("stageId"));	
 		}
 		
 		$template = $this->output->loadTemplate('match/edit.html');		
-		$template->display(array("match" => $match));
+		$template->display(array("match" => $match, "fields" => Field::getList($this->request("tournamentId"))));
 	}
 	
 	
@@ -39,7 +39,7 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 			$match->awayScore = $this->post("awayScore");
 			$match->homeSpirit = $this->post('homeSpirit');
 			$match->awaySpirit = $this->post('awaySpirit');
-			
+			$match->field_id = $this->post("fieldId");
 			$match->save();
 			return true;
 		}
