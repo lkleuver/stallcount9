@@ -315,6 +315,22 @@ class Pool extends BasePool {
 		});
 	}
 	
+	public function offsetRank() {		
+		// compute the sum of the number of teams in the pools in the same stage as this pool
+		FB::group('computing rank offset of pool '.$this->id);
+		
+		$offset = 0;
+		foreach($this->Stage->Pools as $pool) {
+			if ($pool->rank < $this->rank) {
+				$offset += $pool->getTeamCount();
+			}
+		}
+		
+		FB::log('offset is '.$offset);
+		FB::groupEnd();
+		return $offset;
+	}
+	
 //DATABASE FUNCTIONS
 	
 	public static function getById($id) {
