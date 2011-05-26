@@ -16,6 +16,8 @@
 				<tr>
 					<td><a href="?n=/pool/detail/{{pool.id}}">{{pool.title}}</a>  {% if pool.isFinished() %}(finished){% endif %} ({{pool.spots}})</td>
 					<td class="op"> 
+						{% if not loop.first %}<a href="?n=/pool/moveup/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}">up</a>{% endif %} 
+						{% if not loop.last  %}<a href="?n=/pool/movedown/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}">down</a>{% endif %}			
 						<a href="?n=/pool/edit/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a> 
 						<a href="?n=/pool/remove/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>
 					</td>

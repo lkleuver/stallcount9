@@ -35,17 +35,34 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			$pool->Rounds[0]->Matches[$j]->awayName = "Seed ".($teamcount+($nrTeams/2));
 			$pool->Rounds[0]->Matches[$j]->matchName = "Match rank ".($j+1);
 		}
+		
+		// BYE business:
+		if ($pool->byeRank()>0) {
+			// the last game is the BYE game
+			$j=$nrTeams/2 -1;
+			$pool->Rounds[0]->Matches[$j]->awayName = "BYE";
+			$pool->Rounds[0]->Matches[$j]->matchName = "BYE Match Round 1";
+		}
 				
 		// second and following rounds are the same
 		for ($i=1 ; $i<$this->numberOfRounds ; $i++) {
 			// read off pairings of this round
 			$teamcount=0;
-			for ($j=0 ; $j < ceil($nrTeams/2) ; $j++) {
+			for ($j=0 ; $j < $nrTeams/2 ; $j++) {
 				$pool->Rounds[$i]->Matches[$j]->homeName = "Round ".$i." aprx rank ".++$teamcount;
 				$pool->Rounds[$i]->Matches[$j]->awayName = "Round ".$i." aprx rank ".++$teamcount;
 				$pool->Rounds[$i]->Matches[$j]->matchName = "Match rank ".($j+1);
 			}
 
+			// BYE business:
+			if ($pool->byeRank()>0) {
+				// let's say that the last game is the BYE game
+				$j=$nrTeams/2 -1;				
+				$pool->Rounds[$i]->Matches[$j]->homeName = "Round ".$i." team";
+				$pool->Rounds[$i]->Matches[$j]->awayName = "BYE";
+				$pool->Rounds[$i]->Matches[$j]->matchName = "BYE Match Round ".$i;
+			}
+			
 		}
 
 		$pool->save();
@@ -66,7 +83,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		FB::group('compute Swissdraw standings of pool '.$pool->id.' after round '.$roundnr);
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
-			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
+			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'byeStatus' => $poolteam->Team->byeStatus, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
 		}
 		
 		if ($roundnr == -1) {
@@ -235,25 +252,46 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			
 			// fill in matchups
 			$teamcounter=0;
+			$byeHomeRank=0;
+			$byeAwayRank=0;
 			for ($i=0; $i < count($curRound->Matches); $i++) {
-				$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
-				$curRound->Matches[$i]->link('AwayTeam', array($standings[$teamcounter++]['team_id']));
-				$curRound->Matches[$i]->save();
+				
+				FB::log('teamcounter '.$teamcounter.'  vs total nb in standings '.count($standings),' i is '.$i);
+				
+				if ($i == count($curRound->Matches)-1 && $byeHomeRank > 0) {
+					// if last round and previously found a matchup with BYE
+					// then fill it in here 
+					assert($byeAwayRank>0);
+					$curRound->Matches[$i]->link('HomeTeam', array($standings[$byeHomeRank]['team_id']));
+					$curRound->Matches[$i]->link('AwayTeam', array($standings[$byeAwayRank]['team_id']));
+					$curRound->Matches[$i]->save();
 
-				if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
-					FB::log('filling automatic scores for home BYE team');
-					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
-					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
-				}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
-					FB::log('filling automatic scores for away BYE team');
-					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
-					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
-				} else {				
+					if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
+						FB::log('filling automatic scores for home BYE team');
+						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
+						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
+					}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
+						FB::log('filling automatic scores for away BYE team');
+						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
+						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
+					}
+				} else {
+					if ($standings[$teamcounter]['byeStatus'] == 1 || $standings[$teamcounter+1]['byeStatus'] == 1) {
+						$byeHomeRank=$teamcounter++;
+						$byeAwayRank=$teamcounter++;
+					}
+					
+					// otherwise, just fill in the matchup normally
+					$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
+					$curRound->Matches[$i]->link('AwayTeam', array($standings[$teamcounter++]['team_id']));
+					$curRound->Matches[$i]->save();
+						
 					// fill in random scores for testing
 					$curRound->Matches[$i]->homeScore = rand(0,15);
 					$curRound->Matches[$i]->awayScore = rand(0,15);
+					$curRound->Matches[$i]->save();
 				}
-								
+
 				$curRound->save();		
 			}
 		}

@@ -142,4 +142,20 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$this->relocate("/stage/detail/".$stageId);
 	}
 	
+	public function movedownAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$pool->swapPoolRankWith(($pool->rank)+1);
+		$stageId = $pool->Stage->id;
+		
+		$this->relocate("/stage/detail/".$stageId);
+	}
+	
+	public function moveupAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$pool->swapPoolRankWith(($pool->rank)-1);
+		$stageId = $pool->Stage->id;
+		
+		$this->relocate("/stage/detail/".$stageId);
+	}
+	
 }

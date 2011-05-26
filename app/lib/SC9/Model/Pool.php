@@ -138,21 +138,23 @@ class Pool extends BasePool {
 			if (count($poolteams) < $rank || $poolteams[$rank-1]['rank'] > $rank) { 
 				$targetTeam=false;
 			} else {				
-				// this does not work, probably because it did not retrieve the whole PoolTeam object... ???
-//				$targetTeam=$poolteams[$rank-1];
-				// TODO: this does work, but is much slower
-				$targetTeam=PoolTeam::getBySeed($this->id, $poolteams[$rank-1]['seed']);
+				$targetTeam=$poolteams[$rank-1];
 			}
 		}		
+
 		
 		// make sure we are never returning the BYE team
 		if ($targetTeam['byeStatus']==1) {
 			FB::log('we retrieved the BYE team on rank '.$rank.' retrieving '.($rank+1).'instead.');
 			$targetTeam=$this->getTeamIdByRank($rank+1);			
 		}
+
+		// this does not work, probably because it did not retrieve the whole PoolTeam object... ???
+		// TODO: this does work, but is much slower		
+		$teamByRank = PoolTeam::getBySeed($this->id, $targetTeam['seed']);
 		
-		assert($targetTeam['teamname'] != 'BYE Team');
-		return $targetTeam;				
+		assert($teamByRank->Team->name != 'BYE Team');
+		return $teamByRank;				
 		
 	}
 
@@ -306,6 +308,30 @@ class Pool extends BasePool {
 
 	public function standingsAfterRound($roundNr) {
 		return $this->getStrategy()->standingsAfterRound($this, $roundNr);
+	}
+	
+	public function swapPoolRankWith($swapRank) {
+		// swaps the rank of $this pool with the one with $rank		
+		assert($this->rank != $swapRank);
+		
+		FB::log('this rank '.$this->rank.' swapRank '.$swapRank);
+		$swapPool = $this->Stage->Pools[$swapRank-1];  
+		FB::group('pool with ranks'.$this->rank.' and '.$swapPool->rank.' switch ranks.');
+		
+		// swap ranks
+		$tempRank=$this->rank;
+		$this->rank=$swapPool->rank;
+		$swapPool->rank=$tempRank;
+		
+		$this->save();
+		$swapPool->save();
+		
+		// rename the games in this pool, because the poolOffsets might have changed
+		FB::log('renaming games in both pools');
+		$this->getStrategy()->nameMatches($this);
+		$swapPool->getStrategy()->nameMatches($swapPool);		
+		
+		FB::groupEnd();		
 	}
 	
 //private helper functions
