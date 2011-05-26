@@ -14,6 +14,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$division = Division::getById($this->divisionId);
 		$division->schedule();
 		
+		echo 'if no error is displayed, games have been successfully scheduled (see FireBug for debug info)<br>';
 		exit;
 		$this->relocate("/division/detail/".$this->divisionId);
 	}

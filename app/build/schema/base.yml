@@ -159,6 +159,7 @@ Pool:
   relations:
     PoolRuleset:
       foreignType: one
+      onDelete: CASCADE
     Stage:
       foreignAlias: Pools
       onDelete: CASCADE
@@ -189,6 +190,7 @@ PoolMove:
       local: source_pool_id
       foreign: id
       foreignAlias: DestinationMoves
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8
@@ -318,11 +320,13 @@ RoundMatch:
       local: home_team_id
       foreign: id
       foreignAlias: HomeMatches
+      onDelete: CASCADE
     AwayTeam:
       class: Team
       local: away_team_id
       foreign: id
       foreignAlias: AwayMatches
+      onDelete: CASCADE
     Round:
       foreignAlias: Matches
       onDelete: CASCADE
