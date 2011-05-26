@@ -85,8 +85,28 @@ Team:
       autoincrement: true
     name:
       type: string(255)
-    notes:
+    email1:
       type: string(255)
+    email2:
+      type: string(255)
+    contactName:
+      type: string(255)
+    city:
+      type: string(255)
+    country:
+      type: string(255)
+    mobile1:
+      type: string(255)
+    mobile2:
+      type: string(255)
+    mobile3:
+      type: string(255)
+    mobile4:
+      type: string(255)
+    mobile5:
+      type: string(255)
+    comment:
+      type: string(1000)
     tournament_id:
       type: integer(4)
     division_id:

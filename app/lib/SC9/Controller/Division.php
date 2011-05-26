@@ -29,7 +29,61 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 	}
 	
 
-	//TODO: find out how to prelink the Tournament object to division so you only have to assign the division object (needed for edit functionality later)
+	public function importAction() {
+		$division = Division::getById($this->divisionId);
+		
+		if($this->post("divisionImport") != "") {
+			FB::group('importing CSV stuff');
+			$fileHandle=$this->file('CSVFile');
+			FB::log('FILEname '.$fileHandle['tmp_name']);
+			
+			FB::log('moving uploaded file '.move_uploaded_file($fileHandle['tmp_name'], dirname(__FILE__) . '/../../../import/division.csv'));
+			
+			FB::log('trying to open '.dirname(__FILE__) . '/../../../import/division.csv');
+			$row = 1;
+			if (($handle = fopen(dirname(__FILE__) . '/../../../import/division.csv', "r")) !== FALSE) {
+				$data = fgetcsv($handle, 0, ","); // pop off the first line with the header information
+			    while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
+
+			    	FB::log('adding a new team ',$data[0]);
+			    	
+			    	// create new team
+					$team = new Team();
+					$team->name=$data[0];
+					$team->email1=$data[1];
+					$team->email2=$data[2];
+					$team->contactName=$data[3];
+					$team->city=$data[5];
+					$team->country=$data[6];
+					$team->mobile1=$data[7];
+					$team->mobile2=$data[8];
+					$team->comment=$data[10];					
+					$team->link('Division', array($this->post("divisionId")));
+					$team->save();
+								
+					//now add this team to the registration seeding pool
+					$poolTeam = new PoolTeam();
+					$poolTeam->team_id = $team->id;
+					$poolTeam->pool_id = $division->getSeedPoolId();
+					$poolTeam->seed = count($division->Teams) + 1;			
+					$poolTeam->rank = count($division->Teams) + 1;
+					$poolTeam->save();
+
+			    }
+			    fclose($handle);
+			}
+			
+			FB::groupEnd();
+			
+			FB::log('divisionId '.$this->post("divisionId"));
+			exit;
+			$this->relocate("/division/detail/".$this->post("divisionId"));
+		}
+		
+		$template = $this->output->loadTemplate('division/import.html');
+		$template->display(array("division" => $division));
+	}
+
 	public function createAction() {
 		$tournament = Tournament::getById($this->request("tournamentId"));
 		$division = new Division(); 
@@ -48,7 +102,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$template = $this->output->loadTemplate('division/create.html');
 		$template->display(array("tournament" => $tournament, "division" => $division));
 	}
-
+	
 	
 	public function nextstageAction() {
 		$division = Division::getById($this->divisionId);
