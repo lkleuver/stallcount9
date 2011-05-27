@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+ 
+{% block title %}Edit {{stage.title}} Stage in {{division.title}} Division{% endblock %}
+
+{% block content %}
+	<h1>Edit {{stage.title}} Stage in {{division.title}} Division</h1>
+  
+  	
+  	<form method="post" action="?n=/stage/edit/{{stage.id}}" name="form-stage-edit">
+  		{% include "stage/form.html" %}
+
+		<button name="stageSubmit" value="1">update</button>
+  	</form>
+  
+  	
+  
+{% endblock %}

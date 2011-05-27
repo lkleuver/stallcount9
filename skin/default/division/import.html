@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+ 
+{% block title %}Stallcount9 - Import CSV file from FFindr{% endblock %}
+{% block pagetitle "Import CSV from FFindr" %}
+
+
+{% block content %}
+	
+	<div class="section">
+ 		<h3>Importing CSV for {{ division.title }} Division</h3>
+  
+  
+	  	<form method="post" action="?n=division/import/" name="form-division-import" enctype="multipart/form-data">
+	  		{% include "division/importform.html" %}
+	  		
+	  		<input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+	  		<input type="hidden" name="divisionId" value="{{division.id}}" />
+	  		<input type="hidden" name="divisionImport" value="1" />
+	  		
+	  		<a class="button button-blue" href="#" onclick="document['form-division-import'].submit();"><span class="import">Import</span></a>
+			<a class="button button-grey" href="?n=/division/detail/{{ division.id}}"><span class="cancel">Cancel</span></a>
+	  	</form>
+	</div>
+  
+  
+  
+{% endblock %}
