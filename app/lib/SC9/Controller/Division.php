@@ -54,6 +54,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 				assert(stristr($data[8],'mobile') !== false);
 				assert(stristr($data[10],'comment') !== false);
 								
+				$teamcount=count($division->Teams);
 			    while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
 					$team = Team::teamNameExists($this->divisionId, $data[0]);
 			    	if ($team === false) {
@@ -67,8 +68,8 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 						$poolTeam = new PoolTeam();
 						$poolTeam->team_id = $team->id;
 						$poolTeam->pool_id = $division->getSeedPoolId();
-						$poolTeam->seed = count($division->Teams) + 1;			
-						$poolTeam->rank = count($division->Teams) + 1;
+						$poolTeam->seed = ++$teamcount;			
+						$poolTeam->rank = $teamcount;
 						$poolTeam->save();						
 			    	} else {
 			    		FB::log('team '.$team->name.' already exists in this division. Updating its data...');
