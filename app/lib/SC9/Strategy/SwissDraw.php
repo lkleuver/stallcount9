@@ -306,6 +306,10 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		$pool->save();
 	}
 	
+	public function createSMS($pool,$roundId) {
+		return null;
+	}
+	
 	
 	private function printStandings($standings){
 		echo "<table border='1' width='600px'><tr>

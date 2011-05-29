@@ -274,6 +274,10 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		
 	}
 	
+	public function createSMS($pool,$roundId) {
+		return null;
+	}
+	
 	private function compareTeamsPlayoffs($a, $b) {
 		//sort according to 
 		// 1. rank

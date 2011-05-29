@@ -157,5 +157,15 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		
 		$this->relocate("/stage/detail/".$stageId);
 	}
+
+	public function smsAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$roundId=$this->post('roundId');
+		$pool->createSMS($roundId);
+		
+		exit;
+		$this->relocate("/stage/detail/".$stageId);
+	}
+	
 	
 }

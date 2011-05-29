@@ -85,6 +85,13 @@ class Pool extends BasePool {
 		$this->getStrategy()->createMatchups($this);
 		return null;
 	}
+
+	public function createSMS($roundId) {
+		FB::group('Model/Pool.php: creating SMS for round with id '.$roundId);
+		$this->getStrategy()->createSMS($this,$roundId);
+		return null;
+	}
+	
 	
 	public function getTeamIdByRank($rank) {
 		$rankedteam=$this->getTeamByRank($rank);
@@ -120,7 +127,6 @@ class Pool extends BasePool {
 		    ->andWhere('pt.rank = ?', $rank);
 		
 		$targetTeam = $q->fetchOne();
-		FB::table('targetTeam',$targetTeam);
 		
 		if ($targetTeam == false) {
 			// the concrete rank could not been retrieved
@@ -256,7 +262,6 @@ class Pool extends BasePool {
 				$poolteamByRank = $this->getTeamByRank($i+1);
 				// count how many BYEs $poolteam had in this pool
 				FB::log('poolteamByRank '.$poolteamByRank['teamname']);
-				FB::log('trouble countBYE '.$poolteamByRank->countBYEs());
 				$spot->byeCount = $poolteamByRank->countBYEs();				
 			} 			
 
