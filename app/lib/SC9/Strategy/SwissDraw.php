@@ -294,6 +294,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 
 				$curRound->save();		
 			}
+			
 		}
 		
 		// increase current round
@@ -304,6 +305,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 //		}
 		$pool->save();
 	}
+	
 	
 	private function printStandings($standings){
 		echo "<table border='1' width='600px'><tr>

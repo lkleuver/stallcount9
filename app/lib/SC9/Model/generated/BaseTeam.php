@@ -26,6 +26,7 @@
  * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $HomeMatches
  * @property Doctrine_Collection $AwayMatches
+ * @property Doctrine_Collection $SMSs
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -67,25 +68,25 @@ abstract class BaseTeam extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('mobile1', 'string', 255, array(
+        $this->hasColumn('mobile1', 'string', 50, array(
              'type' => 'string',
-             'length' => '255',
+             'length' => '50',
              ));
-        $this->hasColumn('mobile2', 'string', 255, array(
+        $this->hasColumn('mobile2', 'string', 50, array(
              'type' => 'string',
-             'length' => '255',
+             'length' => '50',
              ));
-        $this->hasColumn('mobile3', 'string', 255, array(
+        $this->hasColumn('mobile3', 'string', 50, array(
              'type' => 'string',
-             'length' => '255',
+             'length' => '50',
              ));
-        $this->hasColumn('mobile4', 'string', 255, array(
+        $this->hasColumn('mobile4', 'string', 50, array(
              'type' => 'string',
-             'length' => '255',
+             'length' => '50',
              ));
-        $this->hasColumn('mobile5', 'string', 255, array(
+        $this->hasColumn('mobile5', 'string', 50, array(
              'type' => 'string',
-             'length' => '255',
+             'length' => '50',
              ));
         $this->hasColumn('comment', 'string', 1000, array(
              'type' => 'string',
@@ -136,5 +137,9 @@ abstract class BaseTeam extends Doctrine_Record
         $this->hasMany('RoundMatch as AwayMatches', array(
              'local' => 'id',
              'foreign' => 'away_team_id'));
+
+        $this->hasMany('SMS as SMSs', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
     }
 }

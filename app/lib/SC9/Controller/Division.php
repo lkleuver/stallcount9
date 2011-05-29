@@ -43,13 +43,36 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 			$row = 1;
 			if (($handle = fopen(dirname(__FILE__) . '/../../../import/division.csv', "r")) !== FALSE) {
 				$data = fgetcsv($handle, 0, ","); // pop off the first line with the header information
+				// make sure header data is of the right format
+				assert(stristr($data[0],'name') !== false);
+				assert(stristr($data[1],'mail') !== false);
+				assert(stristr($data[2],'mail') !== false);
+				assert(stristr($data[3],'contact') !== false);
+				assert(stristr($data[5],'city') !== false);
+				assert(stristr($data[6],'country') !== false);
+				assert(stristr($data[7],'mobile') !== false);
+				assert(stristr($data[8],'mobile') !== false);
+				assert(stristr($data[10],'comment') !== false);
+								
 			    while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
+					$team = Team::teamNameExists($this->divisionId, $data[0]);
+			    	if ($team === false) {
+				    	FB::log('adding a new team ',$data[0]);				    	
+				    	// create new team
+						$team = new Team();
+						$team->name=$data[0];
+						$team->save();
 
-			    	FB::log('adding a new team ',$data[0]);
-			    	
-			    	// create new team
-					$team = new Team();
-					$team->name=$data[0];
+						//now add this team to the registration seeding pool
+						$poolTeam = new PoolTeam();
+						$poolTeam->team_id = $team->id;
+						$poolTeam->pool_id = $division->getSeedPoolId();
+						$poolTeam->seed = count($division->Teams) + 1;			
+						$poolTeam->rank = count($division->Teams) + 1;
+						$poolTeam->save();						
+			    	} else {
+			    		FB::log('team '.$team->name.' already exists in this division. Updating its data...');
+			    	}
 					$team->email1=$data[1];
 					$team->email2=$data[2];
 					$team->contactName=$data[3];
@@ -59,15 +82,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 					$team->mobile2=$data[8];
 					$team->comment=$data[10];					
 					$team->link('Division', array($this->post("divisionId")));
-					$team->save();
-								
-					//now add this team to the registration seeding pool
-					$poolTeam = new PoolTeam();
-					$poolTeam->team_id = $team->id;
-					$poolTeam->pool_id = $division->getSeedPoolId();
-					$poolTeam->seed = count($division->Teams) + 1;			
-					$poolTeam->rank = count($division->Teams) + 1;
-					$poolTeam->save();
+					$team->save();								
 
 			    }
 			    fclose($handle);
