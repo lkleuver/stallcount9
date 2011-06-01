@@ -8,7 +8,12 @@ require_once(dirname(__FILE__) .'/lib/FirePHPCore/fb.php');
 ob_start();
 
 // turn logging off in a live site!
-// $firephp->setEnabled(false);
+//$firephp->setEnabled(false);
+
+function getmicrotime(){ 
+	list($usec, $sec) = explode(" ",microtime()); 
+	return ((float)$usec + (float)$sec); 
+}
 
 class Stallcount9 {
 	

@@ -19,7 +19,17 @@ class SC9_Controller_Field extends SC9_Controller_Core {
 	}
 	
 	
-
+	public function editAction() {
+		$field = Field::getById($this->fieldId);
+		
+		if($this->handleFormSubmit($field)) {
+			$this->relocate("/field/list/&tournamentId=".$field->tournament_id);
+		}
+		
+		$template = $this->output->loadTemplate('field/edit.html');
+		$template->display(array("field" => $field));
+	}
+	
 	public function createAction() {
 		$field = new Field();
 		$field->tournament_id = $this->get("tournamentId");

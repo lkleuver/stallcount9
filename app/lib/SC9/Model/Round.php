@@ -28,6 +28,9 @@ class Round extends BaseRound {
 		$q = Doctrine_Query::create()
 			    ->from('Round r')
 			    ->leftJoin('r.Matches m')
+			    ->leftJoin('m.HomeTeam ht')
+			    ->leftJoin('m.AwayTeam at')
+			    ->leftJoin('m.Field f')
 			    ->where('r.pool_id = ?', $poolId)
 			    ->orderBy('r.rank ASC, m.rank ASC');
 		return $q->execute();

@@ -374,6 +374,9 @@ class Pool extends BasePool {
 //DATABASE FUNCTIONS
 	
 	public static function getById($id) {
+		$start = getmicrotime();
+		
+
 		$q = Doctrine_Query::create()
 			    ->from('Pool p')
 			    ->leftJoin('p.Stage s')
@@ -381,14 +384,23 @@ class Pool extends BasePool {
 			    ->leftJoin('rs.PoolStrategy ps')
 			    ->leftJoin('p.PoolTeams pt')
 			    ->leftJoin('pt.Team t')
-			    ->leftJoin('p.Rounds r')
-			    ->leftJoin('r.Matches rm')
-			    ->leftJoin('rm.HomeTeam ht')
-			    ->leftJoin('rm.AwayTeam at')
-			    ->leftJoin('rm.Field f')
+			    //->leftJoin('p.Rounds r')
+			    //->leftJoin('r.Matches rm')
+			    //->leftJoin('rm.HomeTeam ht')
+			    //->leftJoin('rm.AwayTeam at')
+			    //->leftJoin('rm.Field f')
 			    ->where('p.id = ?', $id)
-			    ->orderBy('pt.rank ASC, r.rank ASC, rm.rank ASC');
+			    ->orderBy('pt.rank ASC');
 		$pool = $q->fetchOne();
+		
+		$pool->Rounds = Round::getRounds($pool->id);
+		
+		//echo "query <br /><br />";
+		
+		$end = getmicrotime();
+		
+		//echo ($end - $start) ."<br /><br />";
+		//exit;
 		return $pool;
 	}
 	

@@ -13,6 +13,15 @@
 class Field extends BaseField {
 	
 	
+	public static function getById($id) {
+		$q = Doctrine_Query::create()
+			    ->from('Field f')
+			    ->leftJoin('f.Matches m')
+			    ->where('f.id = ?', $id)
+			    ->orderBy('m.scheduledTime ASC');
+		$field = $q->fetchOne();
+		return $field;
+	}
 	
 	public static function getList($tournamentId) {
 		$q = Doctrine_Query::create()
