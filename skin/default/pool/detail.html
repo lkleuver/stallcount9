@@ -65,6 +65,9 @@
 				{% if round.rank == pool.currentRound %}
 					<a class="action" href="?n=/pool/matchups/{{pool.id}}">Create Matchups for this round</a>					
 				{% endif %}
+				{% if round.rank < pool.currentRound %}
+					<a class="action" href="?n=/pool/sms/{{pool.id}}&roundId={{round.id}}">Create SMS for transition to this round</a>					
+				{% endif %}
 				
 				<table class="matchlist">
 					<tr>

@@ -49,12 +49,13 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 						$matchup = Brackets::getMatchup($nrTeams, $nrRounds, $j+1, $i+1);
 						$pool->Rounds[$j]->Matches[$i]->homeName = ($matchup['home'] === null ? "BYE" : Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['home']));
 						$pool->Rounds[$j]->Matches[$i]->awayName = ($matchup['away'] === null ? "BYE" : Brackets::getOrigin($nrTeams, $nrRounds, $j+1, $matchup['away']));
-						$pool->Rounds[$j]->Matches[$i]->matchName = Brackets::getName($j+1, $nrRounds)." ".(($matchup['home'] === null || $matchup['away'] === null) ? "BYE game" : ($i+1));
+						$pool->Rounds[$j]->Matches[$i]->matchName = Brackets::getName($j+1, $nrRounds)." ".(($matchup['home'] === null || $matchup['away'] === null) ? "BYE match" : ($i+1));
 
 						// fill in possible ranks
+						$offsetRank = $pool->offsetRank();
 						$possibleRanks=Brackets::getPossibleRanks($nrTeams, $nrRounds, $j+1, $i+1);
-						$pool->Rounds[$j]->Matches[$i]->bestPossibleRank = $possibleRanks['best']; 
-						$pool->Rounds[$j]->Matches[$i]->worstPossibleRank = $possibleRanks['worst']; 						
+						$pool->Rounds[$j]->Matches[$i]->bestPossibleRank = $possibleRanks['best']+$offsetRank; 
+						$pool->Rounds[$j]->Matches[$i]->worstPossibleRank = $possibleRanks['worst']+$offsetRank; 						
 					}
 				}
 				$pool->save();
@@ -271,6 +272,10 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 //		}
 		$pool->save();
 		
+	}
+	
+	public function createSMS($pool,$roundId) {
+		return null;
 	}
 	
 	private function compareTeamsPlayoffs($a, $b) {

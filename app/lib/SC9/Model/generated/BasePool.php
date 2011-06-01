@@ -70,7 +70,8 @@ abstract class BasePool extends Doctrine_Record
         parent::setUp();
         $this->hasOne('PoolRuleset', array(
              'local' => 'pool_ruleset_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Stage', array(
              'local' => 'stage_id',

@@ -85,8 +85,28 @@ Team:
       autoincrement: true
     name:
       type: string(255)
-    notes:
+    email1:
       type: string(255)
+    email2:
+      type: string(255)
+    contactName:
+      type: string(255)
+    city:
+      type: string(255)
+    country:
+      type: string(255)
+    mobile1:
+      type: string(50)
+    mobile2:
+      type: string(50)
+    mobile3:
+      type: string(50)
+    mobile4:
+      type: string(50)
+    mobile5:
+      type: string(50)
+    comment:
+      type: string(1000)
     tournament_id:
       type: integer(4)
     division_id:
@@ -159,6 +179,7 @@ Pool:
   relations:
     PoolRuleset:
       foreignType: one
+      onDelete: CASCADE
     Stage:
       foreignAlias: Pools
       onDelete: CASCADE
@@ -189,6 +210,7 @@ PoolMove:
       local: source_pool_id
       foreign: id
       foreignAlias: DestinationMoves
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8
@@ -318,14 +340,51 @@ RoundMatch:
       local: home_team_id
       foreign: id
       foreignAlias: HomeMatches
+      onDelete: CASCADE
     AwayTeam:
       class: Team
       local: away_team_id
       foreign: id
       foreignAlias: AwayMatches
+      onDelete: CASCADE
     Round:
       foreignAlias: Matches
       onDelete: CASCADE
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+
+    
+SMS:
+  columns:
+    id:
+      type: integer(4)
+      primary: true
+      autoincrement: true
+    team_id:
+      type: integer(4)
+    round_id:    
+      type: integer(4)
+    message:
+      type: string(500)      
+    status:  # these properties might be adjusted depending on the information we get from ClickaTell
+      type: integer(4)
+    createTime:
+      type: integer(10)
+    submitTime:
+      type: integer(10)
+    sentTime:
+      type: integer(10)
+    receivedTime:
+      type: integer(10)
+  relations:
+    Team:
+      class: Team
+      local: team_id
+      foreign: id
+      foreignAlias: SMSs
+    Round:
+      foreignAlias: SMSs      
   options:
     collate: utf8_unicode_ci
     charset: utf8

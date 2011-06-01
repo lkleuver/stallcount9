@@ -11,7 +11,17 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class Team extends BaseTeam {
-	
+	public static function teamNameExists($divisionId, $teamName) {
+		// checks if a team with name $teamName exists in $divisionId
+		FB::group('checking if '.$teamName.' exists in division '.$divisionId);
+		$q = Doctrine_Query::create()
+				->from('Team t')
+				->where('t.division_id = ?',$divisionId)
+				->andWhere('t.name = ?', $teamName);
+		$team = $q->fetchOne();
+		FB::groupEnd();
+		return $team;
+	}
 	
 	public static function getTeamsWithoutPoolForDivision($divisionId) {
 		$q = Doctrine_Query::create()

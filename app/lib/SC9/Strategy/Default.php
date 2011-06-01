@@ -31,4 +31,9 @@ class SC9_Strategy_Default implements SC9_Strategy_Interface {
 		}		
 		return $standings;
 	}
+	
+	public function createSMS($pool,$roundId) {
+		return null;
+	}
+	
 }

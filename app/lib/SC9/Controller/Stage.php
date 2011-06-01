@@ -118,6 +118,18 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		
 	}
 
+	public function editAction() {
+		$stage = Doctrine_Core::getTable("Stage")->find($this->stageId);
+		$divisionId = $stage->Division->id; //needed? too lazy to check if delete also empties the object
+				
+		if($this->handleFormSubmit($stage)) {
+			$this->relocate("/division/detail/".$this->post("divisionId"));
+		}
+		
+		$template = $this->output->loadTemplate('stage/edit.html');
+		$template->display(array("division" => $stage->Division, "stage" => $stage));
+	}
+	
 
 	public function createAction() {
 		$division = Division::getById($this->request("divisionId"));
@@ -147,4 +159,14 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$this->relocate("/division/detail/".$divisionId);
 	}
 		
+	private function handleFormSubmit($stage) {
+		if($this->post("stageSubmit") != "") {
+			$stage->title = $this->post("stageTitle");
+			$stage->placement = $this->post("stagePlacement");
+			$stage->save();
+			return true;
+		}
+		return false;
+	}
+	
 }

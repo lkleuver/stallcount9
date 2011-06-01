@@ -3,6 +3,7 @@
 {% block title %}Edit Pool {{pool.title}} for {{stage.title}}{% endblock %}
 {% block pagetitle %} Edit Pool {{pool.title}} for {{stage.title}} {% endblock %}
 {% block content %}
+
 	
 	<div class="section">
 		<h3>Edit pool</h3>
@@ -10,9 +11,10 @@
 	  	<form method="post" action="?n=/pool/edit/{{pool.id}}" name="form-pool-edit">
 	  		{% include "pool/form.html" %}
 	
-			<button name="poolSubmit" value="1">update</button>
+			<button name="poolUpdate" value="1">update</button>
 	  	</form>
 	</div>
+
   
   	
   

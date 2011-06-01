@@ -7,7 +7,17 @@
  * 
  * @property integer $id
  * @property string $name
- * @property string $notes
+ * @property string $email1
+ * @property string $email2
+ * @property string $contactName
+ * @property string $city
+ * @property string $country
+ * @property string $mobile1
+ * @property string $mobile2
+ * @property string $mobile3
+ * @property string $mobile4
+ * @property string $mobile5
+ * @property string $comment
  * @property integer $tournament_id
  * @property integer $division_id
  * @property integer $byeStatus
@@ -16,6 +26,7 @@
  * @property Doctrine_Collection $PoolTeams
  * @property Doctrine_Collection $HomeMatches
  * @property Doctrine_Collection $AwayMatches
+ * @property Doctrine_Collection $SMSs
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -37,9 +48,49 @@ abstract class BaseTeam extends Doctrine_Record
              'type' => 'string',
              'length' => '255',
              ));
-        $this->hasColumn('notes', 'string', 255, array(
+        $this->hasColumn('email1', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
+             ));
+        $this->hasColumn('email2', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('contactName', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('city', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('country', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('mobile1', 'string', 50, array(
+             'type' => 'string',
+             'length' => '50',
+             ));
+        $this->hasColumn('mobile2', 'string', 50, array(
+             'type' => 'string',
+             'length' => '50',
+             ));
+        $this->hasColumn('mobile3', 'string', 50, array(
+             'type' => 'string',
+             'length' => '50',
+             ));
+        $this->hasColumn('mobile4', 'string', 50, array(
+             'type' => 'string',
+             'length' => '50',
+             ));
+        $this->hasColumn('mobile5', 'string', 50, array(
+             'type' => 'string',
+             'length' => '50',
+             ));
+        $this->hasColumn('comment', 'string', 1000, array(
+             'type' => 'string',
+             'length' => '1000',
              ));
         $this->hasColumn('tournament_id', 'integer', 4, array(
              'type' => 'integer',
@@ -86,5 +137,9 @@ abstract class BaseTeam extends Doctrine_Record
         $this->hasMany('RoundMatch as AwayMatches', array(
              'local' => 'id',
              'foreign' => 'away_team_id'));
+
+        $this->hasMany('SMS as SMSs', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
     }
 }

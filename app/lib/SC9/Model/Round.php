@@ -33,13 +33,22 @@ class Round extends BaseRound {
 		return $q->execute();
 	}
 
-	public static function getParticularRound($poolId, $roundRank) {
+	public static function getRoundByRank($poolId, $roundRank) {
 		$q = Doctrine_Query::create()
 			    ->from('Round r')
 			    ->leftJoin('r.Matches m')
 			    ->where('r.pool_id = "'.$poolId.'" AND r.rank = "'.$roundRank.'"')
 			    ->orderBy('m.rank ASC');
 	    echo "<br> SQL:" . $roundRank . " <br> ". $q->getSqlQuery() ."</br>";
+		return $q->execute();
+	}
+
+	public static function getRoundById($roundId) {
+		$q = Doctrine_Query::create()
+			    ->from('Round r')
+			    ->leftJoin('r.Matches m')
+			    ->where('r.id = "'.$roundId.'"')
+			    ->orderBy('m.rank ASC');
 		return $q->execute();
 	}
 	

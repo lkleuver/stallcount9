@@ -35,17 +35,34 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			$pool->Rounds[0]->Matches[$j]->awayName = "Seed ".($teamcount+($nrTeams/2));
 			$pool->Rounds[0]->Matches[$j]->matchName = "Match rank ".($j+1);
 		}
+		
+		// BYE business:
+		if ($pool->byeRank()>0) {
+			// the last game is the BYE game
+			$j=$nrTeams/2 -1;
+			$pool->Rounds[0]->Matches[$j]->awayName = "BYE";
+			$pool->Rounds[0]->Matches[$j]->matchName = "BYE Match Round 1";
+		}
 				
 		// second and following rounds are the same
 		for ($i=1 ; $i<$this->numberOfRounds ; $i++) {
 			// read off pairings of this round
 			$teamcount=0;
-			for ($j=0 ; $j < ceil($nrTeams/2) ; $j++) {
+			for ($j=0 ; $j < $nrTeams/2 ; $j++) {
 				$pool->Rounds[$i]->Matches[$j]->homeName = "Round ".$i." aprx rank ".++$teamcount;
 				$pool->Rounds[$i]->Matches[$j]->awayName = "Round ".$i." aprx rank ".++$teamcount;
 				$pool->Rounds[$i]->Matches[$j]->matchName = "Match rank ".($j+1);
 			}
 
+			// BYE business:
+			if ($pool->byeRank()>0) {
+				// let's say that the last game is the BYE game
+				$j=$nrTeams/2 -1;				
+				$pool->Rounds[$i]->Matches[$j]->homeName = "Round ".$i." team";
+				$pool->Rounds[$i]->Matches[$j]->awayName = "BYE";
+				$pool->Rounds[$i]->Matches[$j]->matchName = "BYE Match Round ".$i;
+			}
+			
 		}
 
 		$pool->save();
@@ -66,7 +83,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		FB::group('compute Swissdraw standings of pool '.$pool->id.' after round '.$roundnr);
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
-			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
+			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'byeStatus' => $poolteam->Team->byeStatus, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
 		}
 		
 		if ($roundnr == -1) {
@@ -235,27 +252,49 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			
 			// fill in matchups
 			$teamcounter=0;
+			$byeHomeRank=0;
+			$byeAwayRank=0;
 			for ($i=0; $i < count($curRound->Matches); $i++) {
-				$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
-				$curRound->Matches[$i]->link('AwayTeam', array($standings[$teamcounter++]['team_id']));
-				$curRound->Matches[$i]->save();
+				
+				FB::log('teamcounter '.$teamcounter.'  vs total nb in standings '.count($standings),' i is '.$i);
+				
+				if ($i == count($curRound->Matches)-1 && $byeHomeRank > 0) {
+					// if last round and previously found a matchup with BYE
+					// then fill it in here 
+					assert($byeAwayRank>0);
+					$curRound->Matches[$i]->link('HomeTeam', array($standings[$byeHomeRank]['team_id']));
+					$curRound->Matches[$i]->link('AwayTeam', array($standings[$byeAwayRank]['team_id']));
+					$curRound->Matches[$i]->save();
 
-				if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
-					FB::log('filling automatic scores for home BYE team');
-					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
-					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
-				}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
-					FB::log('filling automatic scores for away BYE team');
-					$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
-					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
-				} else {				
+					if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
+						FB::log('filling automatic scores for home BYE team');
+						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
+						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
+					}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
+						FB::log('filling automatic scores for away BYE team');
+						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
+						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
+					}
+				} else {
+					if ($standings[$teamcounter]['byeStatus'] == 1 || $standings[$teamcounter+1]['byeStatus'] == 1) {
+						$byeHomeRank=$teamcounter++;
+						$byeAwayRank=$teamcounter++;
+					}
+					
+					// otherwise, just fill in the matchup normally
+					$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
+					$curRound->Matches[$i]->link('AwayTeam', array($standings[$teamcounter++]['team_id']));
+					$curRound->Matches[$i]->save();
+						
 					// fill in random scores for testing
 					$curRound->Matches[$i]->homeScore = rand(0,15);
 					$curRound->Matches[$i]->awayScore = rand(0,15);
+					$curRound->Matches[$i]->save();
 				}
-								
+
 				$curRound->save();		
 			}
+			
 		}
 		
 		// increase current round
@@ -266,6 +305,183 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 //		}
 		$pool->save();
 	}
+	
+	public function createSMS($pool,$roundId) {
+		// generates SMS for round with id $roundId		
+		$round=Round::getRoundById($roundId);
+		$sms='';
+		
+		if ($round->rank > 1) {
+			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);
+			$standings=$this->standingsAfterRound($pool, $round->rank-1);
+		} else {
+			$sms .= 'Welcome to Windmill Windup 2011! Your first match is on Friday at 16:00 against Cambocakes on Field 2.';
+		}
+		
+		// go through all matches of $round
+		foreach($round->Matches as $match) {
+			// After a 15-2 loss in round 1, you are now ranked 12th. In round 2,
+            // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
+            
+			$sms .= "After a ";
+			$sms .= $this->getResultInRound($previousRound,$match->HomeTeam->id);
+			$sms .= 'in round '.$previousRound->rank.', you are now ranked ';
+			$sms .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$match->HomeTeam->id));
+			$sms .= 'In round '.$round->rank.", you'll play ";
+			$sms .= $match->AwayTeam->name. "(ranked ";
+			$sms .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$match->AwayTeam->id)). ") on Field ";
+			$sms .= $match->field_id;
+			$sms .= 'at '.$match->scheduledtime;			
+			
+		}
+		
+	}
+
+	private function getResultInRound($round,$team_id) {
+		// goes through matches in $round and checks for the match that $team_id played
+		// it returns  e.g. "8-15 loss"  or "12-9 win"  or  "5-5 tie"
+		$scored=0;
+		$received=0;
+		$matchfound=false;
+		foreach($round->Matches as $match) {
+			if ($match->HomeTeam->id == $team_id) {
+				$scored=$match->homescore;
+				$received=$match->awayscore;
+				$matchfound=true;				
+			} elseif ($match->AwayTeam->id == $team_id) {
+				$scored=$match->awayscore;
+				$received=$match->homescore;
+				$matchfound=true;								
+			}						
+		}
+		if ($scored < $received) {
+			return $scored.'-'.$received.' win';
+		} elseif ($scored < $received) {
+			return $scored.'-'.$received.' loss';
+		} elseif ($scored == $received && $matchfound == true) {
+			return $scored.'-'.$received.' tie';
+		} elseif ($matchfound === false) { // assumes
+			FB::error('no match found in round with id '.$round->id.' where team with id '.$team_id.' played!');
+		}
+	}
+		
+	
+//      
+//    'compare the dates of the current and next round
+//    tomorrow = (roundSheet.Range("NextRound").Resize(1, 1).Offset(-2, -3) < roundSheet.Range("NextRound").Resize(1, 1).Offset(-2, 1))
+//    
+//    'create string with "at " + the next playing time
+//    'prepend "tomorrow, " if necessary
+//    If tomorrow Then
+//        nextTime = "tomorrow, at "
+//    Else
+//        nextTime = "at "
+//    End If
+//    nextTime = nextTime + Format(roundSheet.Range("NextRound").Offset(-2, 2).Resize(1, 1).Value, "h:mm")
+//    
+//       
+//    ' show what's going on
+//    ActiveWorkbook.Worksheets("SmsDB").Activate
+//    
+//    'save counter
+//    firstSMSCounter = Range("SMSCounter").Value + 1
+//
+//    
+//    ' go through all the teams
+//    For i = 1 To TeamPhones.Rows.count
+//        TeamName = TeamPhones.Cells(i, 1)
+//        
+//        ' first figure out where the team is listed in the Range "RoundResults"
+//        Set cell = roundSheet.Range("RoundResults").Find(TeamName)
+//        If cell.Column = 1 Then   ' team is in first column
+//            currOpponent = cell.Offset(0, 2).Value
+//            currScore = cell.Offset(0, 1).Value
+//            currOppScore = cell.Offset(0, 3).Value
+//        ElseIf cell.Column = 3 Then ' team is listed in second column
+//            currOpponent = cell.Offset(0, -2).Value
+//            currScore = cell.Offset(0, 1).Value
+//            currOppScore = cell.Offset(0, -1).Value
+//        Else
+//            Err.Raise vbObjectError + 666, , "Something's fishy in figuring out where the team is listed in Current Results"
+//        End If
+//        
+//        newRank = GetRank(TeamName, roundSheet)
+//               
+//        ' first figure out where the team is listed in the Range "NextRound"
+//        Set cell = roundSheet.Range("NextRound").Find(TeamName, , xlValues)
+//        If cell.Column = 6 Then   ' team is in first column
+//            nextOpponent = cell.Offset(0, 1).Value
+//            nextField = cell.Offset(0, 3).Value
+//        ElseIf cell.Column = 7 Then ' team is listed in second column
+//            nextOpponent = cell.Offset(0, -1).Value
+//            nextField = cell.Offset(0, 2).Value
+//        Else
+//            Err.Raise vbObjectError + 666, , "Something's fishy in figuring out where the team is listed in Next Round"
+//        End If
+//              
+//        nextOppRank = GetRank(nextOpponent, roundSheet)
+//        
+//        
+//        'create message
+//        'After a 15-2 loss in round 1, you are now ranked 12th. In round 2,
+//        'you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
+//               
+//        mes = "After a " + CStr(currScore) + "-" + CStr(currOppScore)
+//        If currScore > currOppScore Then
+//            mes = mes + " win "
+//        ElseIf currScore < currOppScore Then
+//            mes = mes + " loss "
+//        ElseIf currScore = currOppScore Then
+//            mes = mes + " tie "
+//        End If
+//        mes = mes + "in Round " + CStr(curRound) + ", you are ranked " + Ordinal(newRank) + ".In round " + CStr(curRound + 1)
+//        
+//        If nextOpponent = "BYE" Then
+//            mes = mes + ", you can take a break due to the odd number of teams. You'll score a 15-15 tie."
+//        Else
+//            mes = mes + ", you'll play " + GetShortTeamName(nextOpponent) + " ("
+//            If newRank = nextOppRank Then
+//                mes = mes + "also "
+//            End If
+//            mes = mes + "ranked " + Ordinal(nextOppRank) + ") on Field " + CStr(nextField) + " " + nextTime + "."
+//        End If
+//        
+//        'if it's the end of the day, add reminder for handing in the spirit forms
+//        If tomorrow Then
+//            mes = mes + "Handin today's spirit!"
+//        End If
+//        
+//        
+//        For j = 1 To 2 ' loop over phone numbers
+//          number = GetPhone(TeamName, j)
+//          If number <> "" Then
+//            ' create a new SMS
+//            SMSCount = Range("SMSCounter").Value
+//            SMSCount = SMSCount + 1
+//            Range("SMSCounter").Value = SMSCount
+//            
+//            SMSDBStart.Offset(SMSCount, 0).Value = SMSCount
+//            SMSDBStart.Offset(SMSCount, 2).Value = number
+//            SMSDBStart.Offset(SMSCount, 8).Value = curRound
+//            SMSDBStart.Offset(SMSCount, 9).Value = TeamName
+//            SMSDBStart.Offset(SMSCount, 10).Value = currScore
+//            SMSDBStart.Offset(SMSCount, 11).Value = currOpponent
+//            SMSDBStart.Offset(SMSCount, 12).Value = currOppScore
+//            SMSDBStart.Offset(SMSCount, 13).Value = newRank
+//            SMSDBStart.Offset(SMSCount, 14).Value = nextOpponent
+//            SMSDBStart.Offset(SMSCount, 15).Value = nextOppRank
+//            SMSDBStart.Offset(SMSCount, 16).Value = nextField
+//            
+//            SMSDBStart.Offset(SMSCount, 3).Value = mes
+//            SMSDBStart.Offset(SMSCount, 4).Value = Len(mes)
+//          End If
+//        Next j
+//    Next i
+//    
+//    SMSSend firstSMSCounter, Range("SMSCounter").Value
+	
+
+	
 	
 	private function printStandings($standings){
 		echo "<table border='1' width='600px'><tr>

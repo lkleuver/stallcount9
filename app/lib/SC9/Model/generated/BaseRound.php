@@ -11,6 +11,7 @@
  * @property integer $rank
  * @property Pool $Pool
  * @property Doctrine_Collection $Matches
+ * @property Doctrine_Collection $SMSs
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -54,6 +55,10 @@ abstract class BaseRound extends Doctrine_Record
              'onDelete' => 'CASCADE'));
 
         $this->hasMany('RoundMatch as Matches', array(
+             'local' => 'id',
+             'foreign' => 'round_id'));
+
+        $this->hasMany('SMS as SMSs', array(
              'local' => 'id',
              'foreign' => 'round_id'));
     }

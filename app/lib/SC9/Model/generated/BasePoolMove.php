@@ -57,6 +57,7 @@ abstract class BasePoolMove extends Doctrine_Record
 
         $this->hasOne('Pool as SourcePool', array(
              'local' => 'source_pool_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

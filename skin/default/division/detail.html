@@ -16,11 +16,14 @@
 			{% for stage in division.Stages %}
 				<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
 					<td><a href="?n=/stage/detail/{{stage.id}}&tournamentId={{division.tournament_id}}&divisionId={{divisionId}}">{{stage.title}}</a></td>
-					<td class="op"><a href="?n=/stage/remove/{{stage.id}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a></td>
+					<td class="op">
+					<a href="?n=/stage/edit/{{stage.id}}&tournamentId={{division.tournament_id}}&divisionId={{divisionId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="edit" /></a> 					
+					<a href="?n=/stage/remove/{{stage.id}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a></td>
 				</tr>
 			{% endfor %}
 		</table>
 		<a class="button button-blue" href="?n=/stage/create&divisionId={{division.id}}&tournamentId={{division.tournament_id}}"><span class="add">Add stage</span></a>
+		<a class="button button-red" href="?n=/division/schedule/{{division.id}}&tournamentId={{division.tournament_id}}"><span class="clock">Schedule stages</span></a>		
 	</div>
 
 	<div class="section">	
@@ -42,8 +45,9 @@
  		</table>
   		
 	 	<a class="button button-blue" href="?n=/team/create&divisionId={{division.id}}&tournamentId={{division.tournament_id}}"><span class="add">Add team</span></a>
-
-	 	<a class="button button-red" href="?n=/division/schedule/{{division.id}}&tournamentId={{division.tournament_id}}"><span class="clock">Schedule</span></a>
+		<a class="button button-blue" href="?n=/division/import&divisionId={{division.id}}&tournamentId={{division.tournament_id}}"><span class="add">Import CSV</span></a>
+		
+		
 	 	<br /><br />
 	 	<a class="action" href="?n=/team/create25&divisionId={{division.id}}">+ Add 25 teams</a><br /><br /> 
 	</div>

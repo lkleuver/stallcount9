@@ -4,5 +4,9 @@
   			<label>Stage name</label>
   			<input type="text" name="stageTitle" value="{{ stage.title }}" />
   		</li>
+  		<li>
+  			<label>Placement stage?</label>
+  			<input type="checkbox" name="stagePlacement" value="1" {% if stage.placement == 1 %} CHECKED{% endif %}/>
+  		</li>
 
   	</ul>

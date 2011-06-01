@@ -1,0 +1,1945 @@
+Brackets:
+  Brackets_8_3_1_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '8'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '6'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_3_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_8_3_3_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_8_3_3_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '6'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_8_3_3_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '7'
+    away: '8'
+    winplace: '7'
+    loseplace: '8'
+  Brackets_9_3_1_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '5'
+    home: '9'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '9'
+    away: '6'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '8'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '5'
+    home: '5'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_9_3_3_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_9_3_3_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_9_3_3_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '7'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_9_3_3_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '8'
+    away: '9'
+    winplace: '7'
+    loseplace: '9'
+  Brackets_9_3_3_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '5'
+    home: '6'
+    away: null
+    winplace: '8'
+    loseplace: null
+  Brackets_10_3_1_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '4'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '5'
+    home: '9'
+    away: '10'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '4'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '6'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '5'
+    away: '10'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '5'
+    home: '7'
+    away: '9'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_3_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_10_3_3_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_10_3_3_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '6'
+    away: '5'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_10_3_3_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '7'
+    away: '8'
+    winplace: '7'
+    loseplace: '8'
+  Brackets_10_3_3_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '5'
+    home: '9'
+    away: '10'
+    winplace: '9'
+    loseplace: '10'
+Division:
+  Division_1:
+    title: open
+    Tournament: Tournament_1
+Pool:
+  Pool_1:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_1
+    spots: '46'
+    rank: '1'
+  Pool_2:
+    title: Swissdraw
+    currentRound: '1'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_2
+    spots: '42'
+    rank: '1'
+  Pool_3:
+    title: 'Top Playoffs'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '1'
+  Pool_4:
+    title: Playoff
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '2'
+  Pool_5:
+    title: Playoff
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '3'
+  Pool_6:
+    title: Playoff
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '4'
+  Pool_7:
+    title: Playouts
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '10'
+    rank: '5'
+PoolMove:
+  PoolMove_2_1_1_1:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_2_1_2_2:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_2_1_3_3:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_2_1_4_4:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_2_1_5_5:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_2_1_6_6:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_2_1_7_7:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_2_1_8_8:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_2_1_9_9:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '9'
+    destinationSpot: '9'
+  PoolMove_2_1_10_10:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '10'
+    destinationSpot: '10'
+  PoolMove_2_1_11_11:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '11'
+    destinationSpot: '11'
+  PoolMove_2_1_12_12:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '12'
+    destinationSpot: '12'
+  PoolMove_2_1_13_13:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '13'
+    destinationSpot: '13'
+  PoolMove_2_1_14_14:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '14'
+    destinationSpot: '14'
+  PoolMove_2_1_15_15:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '15'
+    destinationSpot: '15'
+  PoolMove_2_1_16_16:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '16'
+    destinationSpot: '16'
+  PoolMove_2_1_17_17:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '17'
+    destinationSpot: '17'
+  PoolMove_2_1_18_18:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '18'
+    destinationSpot: '18'
+  PoolMove_2_1_19_19:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '19'
+    destinationSpot: '19'
+  PoolMove_2_1_20_20:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '20'
+    destinationSpot: '20'
+  PoolMove_2_1_21_21:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '21'
+    destinationSpot: '21'
+  PoolMove_2_1_22_22:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '22'
+    destinationSpot: '22'
+  PoolMove_2_1_23_23:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '23'
+    destinationSpot: '23'
+  PoolMove_2_1_24_24:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '24'
+    destinationSpot: '24'
+  PoolMove_2_1_25_25:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '25'
+    destinationSpot: '25'
+  PoolMove_2_1_26_26:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '26'
+    destinationSpot: '26'
+  PoolMove_2_1_27_27:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '27'
+    destinationSpot: '27'
+  PoolMove_2_1_28_28:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '28'
+    destinationSpot: '28'
+  PoolMove_2_1_29_29:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '29'
+    destinationSpot: '29'
+  PoolMove_2_1_30_30:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '30'
+    destinationSpot: '30'
+  PoolMove_2_1_31_31:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '31'
+    destinationSpot: '31'
+  PoolMove_2_1_32_32:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '32'
+    destinationSpot: '32'
+  PoolMove_2_1_33_33:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '33'
+    destinationSpot: '33'
+  PoolMove_2_1_34_34:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '34'
+    destinationSpot: '34'
+  PoolMove_2_1_35_35:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '35'
+    destinationSpot: '35'
+  PoolMove_2_1_36_36:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '36'
+    destinationSpot: '36'
+  PoolMove_2_1_37_37:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '37'
+    destinationSpot: '37'
+  PoolMove_2_1_38_38:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '38'
+    destinationSpot: '38'
+  PoolMove_2_1_39_39:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '39'
+    destinationSpot: '39'
+  PoolMove_2_1_40_40:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '40'
+    destinationSpot: '40'
+  PoolMove_2_1_41_41:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '41'
+    destinationSpot: '41'
+  PoolMove_2_1_42_42:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '42'
+    destinationSpot: '42'
+PoolRuleset:
+  PoolRuleset_1:
+    title: Setup
+    PoolStrategy: PoolStrategy_1
+    numberOfRounds: '0'
+    matchLength: '0'
+    qualificationCutoff: '0'
+    winningScore: null
+    byeScore: null
+    byeAgainst: null
+  PoolRuleset_2:
+    title: Swissdraw
+    PoolStrategy: PoolStrategy_2
+    numberOfRounds: '5'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: '12'
+    byeAgainst: '15'
+  PoolRuleset_3:
+    title: Bracket
+    PoolStrategy: PoolStrategy_3
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
+  PoolRuleset_4:
+    title: RoundRobin
+    PoolStrategy: PoolStrategy_4
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
+PoolStrategy:
+  PoolStrategy_1:
+    title: ManualRanking
+    description: 'manually rank pool'
+  PoolStrategy_2:
+    title: Swissdraw
+    description: 'Swissdraw matchmaking according to victory points'
+  PoolStrategy_3:
+    title: Bracket
+    description: Bracket
+  PoolStrategy_4:
+    title: RoundRobin
+    description: RoundRobin
+PoolTeam:
+  PoolTeam_1_1:
+    Pool: Pool_1
+    Team: Team_1
+    rank: '1'
+    seed: '1'
+  PoolTeam_1_2:
+    Pool: Pool_1
+    Team: Team_2
+    rank: '2'
+    seed: '2'
+  PoolTeam_1_3:
+    Pool: Pool_1
+    Team: Team_3
+    rank: '3'
+    seed: '3'
+  PoolTeam_1_4:
+    Pool: Pool_1
+    Team: Team_4
+    rank: '4'
+    seed: '4'
+  PoolTeam_1_5:
+    Pool: Pool_1
+    Team: Team_5
+    rank: '5'
+    seed: '5'
+  PoolTeam_1_6:
+    Pool: Pool_1
+    Team: Team_6
+    rank: '6'
+    seed: '6'
+  PoolTeam_1_7:
+    Pool: Pool_1
+    Team: Team_7
+    rank: '7'
+    seed: '7'
+  PoolTeam_1_8:
+    Pool: Pool_1
+    Team: Team_8
+    rank: '8'
+    seed: '8'
+  PoolTeam_1_9:
+    Pool: Pool_1
+    Team: Team_9
+    rank: '9'
+    seed: '9'
+  PoolTeam_1_10:
+    Pool: Pool_1
+    Team: Team_10
+    rank: '10'
+    seed: '10'
+  PoolTeam_1_11:
+    Pool: Pool_1
+    Team: Team_11
+    rank: '11'
+    seed: '11'
+  PoolTeam_1_12:
+    Pool: Pool_1
+    Team: Team_12
+    rank: '12'
+    seed: '12'
+  PoolTeam_1_13:
+    Pool: Pool_1
+    Team: Team_13
+    rank: '13'
+    seed: '13'
+  PoolTeam_1_14:
+    Pool: Pool_1
+    Team: Team_14
+    rank: '14'
+    seed: '14'
+  PoolTeam_1_15:
+    Pool: Pool_1
+    Team: Team_15
+    rank: '15'
+    seed: '15'
+  PoolTeam_1_16:
+    Pool: Pool_1
+    Team: Team_16
+    rank: '16'
+    seed: '16'
+  PoolTeam_1_17:
+    Pool: Pool_1
+    Team: Team_17
+    rank: '17'
+    seed: '17'
+  PoolTeam_1_18:
+    Pool: Pool_1
+    Team: Team_18
+    rank: '18'
+    seed: '18'
+  PoolTeam_1_19:
+    Pool: Pool_1
+    Team: Team_19
+    rank: '19'
+    seed: '19'
+  PoolTeam_1_20:
+    Pool: Pool_1
+    Team: Team_20
+    rank: '20'
+    seed: '20'
+  PoolTeam_1_21:
+    Pool: Pool_1
+    Team: Team_21
+    rank: '21'
+    seed: '21'
+  PoolTeam_1_22:
+    Pool: Pool_1
+    Team: Team_22
+    rank: '22'
+    seed: '22'
+  PoolTeam_1_23:
+    Pool: Pool_1
+    Team: Team_23
+    rank: '23'
+    seed: '23'
+  PoolTeam_1_24:
+    Pool: Pool_1
+    Team: Team_24
+    rank: '24'
+    seed: '24'
+  PoolTeam_1_25:
+    Pool: Pool_1
+    Team: Team_25
+    rank: '25'
+    seed: '25'
+  PoolTeam_1_26:
+    Pool: Pool_1
+    Team: Team_26
+    rank: '26'
+    seed: '26'
+  PoolTeam_1_27:
+    Pool: Pool_1
+    Team: Team_27
+    rank: '27'
+    seed: '27'
+  PoolTeam_1_28:
+    Pool: Pool_1
+    Team: Team_28
+    rank: '28'
+    seed: '28'
+  PoolTeam_1_29:
+    Pool: Pool_1
+    Team: Team_29
+    rank: '29'
+    seed: '29'
+  PoolTeam_1_30:
+    Pool: Pool_1
+    Team: Team_30
+    rank: '30'
+    seed: '30'
+  PoolTeam_1_31:
+    Pool: Pool_1
+    Team: Team_31
+    rank: '31'
+    seed: '31'
+  PoolTeam_1_32:
+    Pool: Pool_1
+    Team: Team_32
+    rank: '32'
+    seed: '32'
+  PoolTeam_1_33:
+    Pool: Pool_1
+    Team: Team_33
+    rank: '33'
+    seed: '33'
+  PoolTeam_1_34:
+    Pool: Pool_1
+    Team: Team_34
+    rank: '34'
+    seed: '34'
+  PoolTeam_1_35:
+    Pool: Pool_1
+    Team: Team_35
+    rank: '35'
+    seed: '35'
+  PoolTeam_1_36:
+    Pool: Pool_1
+    Team: Team_36
+    rank: '36'
+    seed: '36'
+  PoolTeam_1_37:
+    Pool: Pool_1
+    Team: Team_37
+    rank: '37'
+    seed: '37'
+  PoolTeam_1_38:
+    Pool: Pool_1
+    Team: Team_38
+    rank: '38'
+    seed: '38'
+  PoolTeam_1_39:
+    Pool: Pool_1
+    Team: Team_39
+    rank: '39'
+    seed: '39'
+  PoolTeam_1_40:
+    Pool: Pool_1
+    Team: Team_40
+    rank: '40'
+    seed: '40'
+  PoolTeam_1_41:
+    Pool: Pool_1
+    Team: Team_41
+    rank: '41'
+    seed: '41'
+  PoolTeam_1_42:
+    Pool: Pool_1
+    Team: Team_42
+    rank: '42'
+    seed: '42'
+  PoolTeam_1_43:
+    Pool: Pool_1
+    Team: Team_43
+    rank: '43'
+    seed: '43'
+  PoolTeam_1_44:
+    Pool: Pool_1
+    Team: Team_44
+    rank: '44'
+    seed: '44'
+  PoolTeam_1_45:
+    Pool: Pool_1
+    Team: Team_45
+    rank: '45'
+    seed: '45'
+  PoolTeam_1_46:
+    Pool: Pool_1
+    Team: Team_46
+    rank: '46'
+    seed: '46'
+  PoolTeam_2_1:
+    Pool: Pool_2
+    Team: Team_1
+    rank: '1'
+    seed: '1'
+  PoolTeam_2_2:
+    Pool: Pool_2
+    Team: Team_2
+    rank: '1'
+    seed: '2'
+  PoolTeam_2_3:
+    Pool: Pool_2
+    Team: Team_3
+    rank: '1'
+    seed: '3'
+  PoolTeam_2_4:
+    Pool: Pool_2
+    Team: Team_4
+    rank: '1'
+    seed: '4'
+  PoolTeam_2_5:
+    Pool: Pool_2
+    Team: Team_5
+    rank: '1'
+    seed: '5'
+  PoolTeam_2_6:
+    Pool: Pool_2
+    Team: Team_6
+    rank: '1'
+    seed: '6'
+  PoolTeam_2_7:
+    Pool: Pool_2
+    Team: Team_7
+    rank: '1'
+    seed: '7'
+  PoolTeam_2_8:
+    Pool: Pool_2
+    Team: Team_8
+    rank: '1'
+    seed: '8'
+  PoolTeam_2_9:
+    Pool: Pool_2
+    Team: Team_9
+    rank: '1'
+    seed: '9'
+  PoolTeam_2_10:
+    Pool: Pool_2
+    Team: Team_10
+    rank: '1'
+    seed: '10'
+  PoolTeam_2_11:
+    Pool: Pool_2
+    Team: Team_11
+    rank: '1'
+    seed: '11'
+  PoolTeam_2_12:
+    Pool: Pool_2
+    Team: Team_12
+    rank: '1'
+    seed: '12'
+  PoolTeam_2_13:
+    Pool: Pool_2
+    Team: Team_13
+    rank: '1'
+    seed: '13'
+  PoolTeam_2_14:
+    Pool: Pool_2
+    Team: Team_14
+    rank: '1'
+    seed: '14'
+  PoolTeam_2_15:
+    Pool: Pool_2
+    Team: Team_15
+    rank: '1'
+    seed: '15'
+  PoolTeam_2_16:
+    Pool: Pool_2
+    Team: Team_16
+    rank: '1'
+    seed: '16'
+  PoolTeam_2_17:
+    Pool: Pool_2
+    Team: Team_17
+    rank: '1'
+    seed: '17'
+  PoolTeam_2_18:
+    Pool: Pool_2
+    Team: Team_18
+    rank: '1'
+    seed: '18'
+  PoolTeam_2_19:
+    Pool: Pool_2
+    Team: Team_19
+    rank: '1'
+    seed: '19'
+  PoolTeam_2_20:
+    Pool: Pool_2
+    Team: Team_20
+    rank: '1'
+    seed: '20'
+  PoolTeam_2_21:
+    Pool: Pool_2
+    Team: Team_21
+    rank: '1'
+    seed: '21'
+  PoolTeam_2_22:
+    Pool: Pool_2
+    Team: Team_22
+    rank: '1'
+    seed: '22'
+  PoolTeam_2_23:
+    Pool: Pool_2
+    Team: Team_23
+    rank: '1'
+    seed: '23'
+  PoolTeam_2_24:
+    Pool: Pool_2
+    Team: Team_24
+    rank: '1'
+    seed: '24'
+  PoolTeam_2_25:
+    Pool: Pool_2
+    Team: Team_25
+    rank: '1'
+    seed: '25'
+  PoolTeam_2_26:
+    Pool: Pool_2
+    Team: Team_26
+    rank: '1'
+    seed: '26'
+  PoolTeam_2_27:
+    Pool: Pool_2
+    Team: Team_27
+    rank: '1'
+    seed: '27'
+  PoolTeam_2_28:
+    Pool: Pool_2
+    Team: Team_28
+    rank: '1'
+    seed: '28'
+  PoolTeam_2_29:
+    Pool: Pool_2
+    Team: Team_29
+    rank: '1'
+    seed: '29'
+  PoolTeam_2_30:
+    Pool: Pool_2
+    Team: Team_30
+    rank: '1'
+    seed: '30'
+  PoolTeam_2_31:
+    Pool: Pool_2
+    Team: Team_31
+    rank: '1'
+    seed: '31'
+  PoolTeam_2_32:
+    Pool: Pool_2
+    Team: Team_32
+    rank: '1'
+    seed: '32'
+  PoolTeam_2_33:
+    Pool: Pool_2
+    Team: Team_33
+    rank: '1'
+    seed: '33'
+  PoolTeam_2_34:
+    Pool: Pool_2
+    Team: Team_34
+    rank: '1'
+    seed: '34'
+  PoolTeam_2_35:
+    Pool: Pool_2
+    Team: Team_35
+    rank: '1'
+    seed: '35'
+  PoolTeam_2_36:
+    Pool: Pool_2
+    Team: Team_36
+    rank: '1'
+    seed: '36'
+  PoolTeam_2_37:
+    Pool: Pool_2
+    Team: Team_37
+    rank: '1'
+    seed: '37'
+  PoolTeam_2_38:
+    Pool: Pool_2
+    Team: Team_38
+    rank: '1'
+    seed: '38'
+  PoolTeam_2_39:
+    Pool: Pool_2
+    Team: Team_39
+    rank: '1'
+    seed: '39'
+  PoolTeam_2_40:
+    Pool: Pool_2
+    Team: Team_40
+    rank: '1'
+    seed: '40'
+  PoolTeam_2_41:
+    Pool: Pool_2
+    Team: Team_41
+    rank: '1'
+    seed: '41'
+  PoolTeam_2_42:
+    Pool: Pool_2
+    Team: Team_42
+    rank: '1'
+    seed: '42'
+Stage:
+  Stage_1:
+    title: 'Registration stage'
+    Division: Division_1
+    rank: '1'
+    locked: null
+    placement: null
+  Stage_2:
+    title: Swissdraw
+    Division: Division_1
+    rank: '2'
+    locked: null
+    placement: null
+  Stage_3:
+    title: Playoff
+    Division: Division_1
+    rank: '3'
+    locked: null
+    placement: null
+Team:
+  Team_1:
+    name: 'Flying Bisc'
+    email1: tuscanultimate@gmail.com
+    email2: ''
+    contactName: 'Massimo Duradoni'
+    city: Florence
+    country: Italy
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_2:
+    name: Gentle
+    email1: johanbommie@yahoo.com
+    email2: ''
+    contactName: korneel
+    city: Gent
+    country: Belgium
+    mobile1: '0032486652562'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_3:
+    name: 'French National Master Team'
+    email1: pierril9@yahoo.com
+    email2: jygoliard@yahoo.com
+    contactName: jano
+    city: 'ALL AROUND'
+    country: FRANCE
+    mobile1: '0033685554475'
+    mobile2: '0033650741660'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_4:
+    name: 'L''avant-dernier'
+    email1: sigibodson@yahoo.com
+    email2: bodsonsigi@hotmail.com
+    contactName: 'Sigi Bodson'
+    city: 'Hasselt + Huy'
+    country: Belgium
+    mobile1: '0032476782806'
+    mobile2: '0032497305258'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hoi!\nJullie kennen ons misschien onder de naam Diabolic Heaven maar Windmill 2011 zouden we graag samen met Huyltimate één team vormen genaamd L'avant-dernier"
+    Division: Division_1
+    byeStatus: null
+  Team_5:
+    name: 'Rainbow Warriors'
+    email1: thomas.kuypers@laposte.net
+    email2: thomas.kuypers@laposte.net
+    contactName: 'Thomas Kuypers'
+    city: Lille/Besançon/Clermont
+    country: France
+    mobile1: '0033626820763'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hi Nan,\n\nwe are sooo looking forward to this year's Windmill Windup...\nWe are approx. the same team as last year's Eul'chtimate (but with another name!)\nC ya!\nTom"
+    Division: Division_1
+    byeStatus: null
+  Team_6:
+    name: 'Caracals Wuppertal'
+    email1: db@davidbender.de
+    email2: hauck@ghost-o-one.de
+    contactName: Torsten
+    city: 'Wuppertal/ Dortmund'
+    country: Germany
+    mobile1: '00491752015296'
+    mobile2: '00491732716004'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Groetjes!\n"
+    Division: Division_1
+    byeStatus: null
+  Team_7:
+    name: KoBOld
+    email1: tim.oehr@gmail.com
+    email2: timoehr@uni-bremen.de
+    contactName: 'Tim Oehr'
+    city: 'Bremen, Oldenburg, Osnabrück'
+    country: Germany
+    mobile1: '00491777157468'
+    mobile2: '004915111667320'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_8:
+    name: Catalyst
+    email1: info@catalystultimate.com
+    email2: info@catalystultimate.com
+    contactName: 'Roger van Swaay'
+    city: Barcelona
+    country: Spain
+    mobile1: '0034644222732'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "We are a new Open team training in Barcelona and focused on grass tournaments only. We are having try-outs in the next couple of weeks, giving opportunity to any player in Catalonia to play at the highest possible level.\n\nWindmill is the focus of our season."
+    Division: Division_1
+    byeStatus: null
+  Team_9:
+    name: Hardfisch
+    email1: tieiben@gmail.com
+    email2: tieiben@gmail.com
+    contactName: 'Tarek Iko Eiben'
+    city: Hamburg
+    country: Germany
+    mobile1: '004915773964214'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_10:
+    name: 'Tsunami Vintage'
+    email1: cyrille.perez@wanadoo.Fr
+    email2: cyrille.perez@wanadoo.fr
+    contactName: cyrille
+    city: Nemours
+    country: FRANCE
+    mobile1: '00643254983'
+    mobile2: '00650634651'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "We came last year, your tournament is incredible and fantastic!! We hope so coming this year...\n\nCyrille for Tsunami Vintage "
+    Division: Division_1
+    byeStatus: null
+  Team_11:
+    name: Xlr8rs
+    email1: lucchome@yahoo.com
+    email2: tsasfra@gmail.com
+    contactName: 'FRANZ TSAS'
+    city: Brussels
+    country: Belgium
+    mobile1: '0032497056317'
+    mobile2: '0032476909449'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_12:
+    name: Mooncatchers
+    email1: cbihin@gmail.com
+    email2: calimemo@hotmail.com
+    contactName: 'Nicolas De Mesmaeker'
+    city: Brussels
+    country: Belgium
+    mobile1: '0032487178892'
+    mobile2: '0032495866466'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_13:
+    name: 'MAM Friends'
+    email1: sbeltramo@wanadoo.fr
+    email2: seb.beltramo@gmail.com
+    contactName: Bab
+    city: Manies
+    country: France
+    mobile1: '0033601171070'
+    mobile2: '0033620698325'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_14:
+    name: 'Friselis Club Ultimate Versailles'
+    email1: friselisclubversailles@gmail.com
+    email2: augustinscala@gmail.com
+    contactName: Gus
+    city: Versailles
+    country: France
+    mobile1: '0033688435794'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_15:
+    name: 'Rebel Ultimate'
+    email1: rebelultimate@gmail.com
+    email2: flashdan9@gmail.com
+    contactName: 'Brian O''Callaghan'
+    city: Cork
+    country: Ireland
+    mobile1: '00353863979041'
+    mobile2: '00353860859092'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Windmill 2010 was our first tournament as an Open Division club and it is by far the best tournament we''ve attended and we can''t wait for 2011.'
+    Division: Division_1
+    byeStatus: null
+  Team_16:
+    name: 'PUF - Padova Ultimate Frisbee'
+    email1: info@ultimatepadova.it
+    email2: diego_melisi@yahoo.it
+    contactName: Diego
+    city: Padova
+    country: Italy
+    mobile1: '00393483609600'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "The name PUF is the name of our association that includes different teams (junior team, open and women team). i can subscribe on ffindr only using that name but if possible i preffer to change with \"barbastreji\" that's our open team name.\nthank you,\ndiego."
+    Division: Division_1
+    byeStatus: null
+  Team_17:
+    name: 'Czech National Team - Open'
+    email1: ondrej.bouska@gmail.com
+    email2: frankie@praguedevils.org
+    contactName: 'Ondrej Bouska'
+    city: Prague
+    country: 'Czech Republic'
+    mobile1: '00420777017243'
+    mobile2: '00420603751806'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Hey, we really want to come to Windmill this year, we want to use it as part of our preparaion to EUC 2011 in Maribor. The core of our team will be based on team Silence, I hope you remember us from last years. We are really looking foreward to playing on your amazing grass fields.'
+    Division: Division_1
+    byeStatus: null
+  Team_18:
+    name: Sun
+    email1: sunFrisbee@gmail.com
+    email2: pabs_agro@yahoo.fr
+    contactName: 'Pablo Lopez'
+    city: Créteil
+    country: France
+    mobile1: '0033677090606'
+    mobile2: '0033607560464 '
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_19:
+    name: Funatics
+    email1: vorstand@funaten.de
+    email2: mario-tonini@wanadoo.fr
+    contactName: Mario
+    city: Hannover
+    country: Germany
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_20:
+    name: 'Open France Offense'
+    email1: richard.francheteau@gmail.com
+    email2: spiroo@laposte.net
+    contactName: Spiroo
+    city: 'Open national team'
+    country: France
+    mobile1: '0033625251426'
+    mobile2: '0033618086583'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hi,\r\nWe are the France National Team Open.\r\n"
+    Division: Division_1
+    byeStatus: null
+  Team_21:
+    name: 'theBigEz - Vienna'
+    email1: ''
+    email2: christian_holzinger@inode.at
+    contactName: 'Christian Holzinger'
+    city: Vienna
+    country: Austria
+    mobile1: '00436505411902'
+    mobile2: '00436502443256'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_22:
+    name: 'Frisbeurs Nantais'
+    email1: info@frisbeurs.fr
+    email2: renaud.aurelien@hotmail.fr
+    contactName: 'Aurélien Renaud'
+    city: Nantes
+    country: France
+    mobile1: '0033624320040'
+    mobile2: '0033683334831'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_23:
+    name: ZawIERUCHAf
+    email1: zawieruchaf@gmail.com
+    email2: tomek7koc@gmail.com
+    contactName: 'Tomek Koc'
+    city: Warsaw
+    country: Poland
+    mobile1: '0048608694719'
+    mobile2: '0048502126330'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_24:
+    name: Solebang
+    email1: mario_baumann@hotmail.com
+    email2: benji@gnadelos.ch
+    contactName: 'Benji Fischer'
+    city: Cham
+    country: Schweiz
+    mobile1: '0041763377106'
+    mobile2: '0041788032851'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'please take us again this year... we love your tournament, it''s very well organized and the high level is just great.....please '
+    Division: Division_1
+    byeStatus: null
+  Team_25:
+    name: Feldrenner
+    email1: boss@feldrenner.de
+    email2: 'Heiko,karpowski@googlemail.com'
+    contactName: 'Bernhard Otto, Robert Pesch, Heiko Karpowski'
+    city: Mainz
+    country: Germany
+    mobile1: '004917681187476'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_26:
+    name: 'CUS Bologna'
+    email1: info@bodisc.it
+    email2: 'info#@bodisc.it'
+    contactName: 'Davide Morri'
+    city: Bologna
+    country: Italy
+    mobile1: '00393334064008'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_27:
+    name: M.U.C.
+    email1: michy@zamperl.com
+    email2: jens91@mnet-online.de
+    contactName: 'Jens Achenbach'
+    city: Munich
+    country: Germany
+    mobile1: '00491739438483'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Looking forward already'
+    Division: Division_1
+    byeStatus: null
+  Team_28:
+    name: 'Sesquidistus '
+    email1: toutouille9@yahoo.fr
+    email2: laurent.leipelt@gmail.com
+    contactName: Cédric
+    city: Strasburg
+    country: France
+    mobile1: '0033671340056'
+    mobile2: '0033661528544'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Thanks !!  Byyyyyye'
+    Division: Division_1
+    byeStatus: null
+  Team_29:
+    name: Freespeed
+    email1: info@freespeed.ch
+    email2: flow@freespeed.ch
+    contactName: 'Florian Kaeser'
+    city: Basel
+    country: Switzerland
+    mobile1: '0041764173505'
+    mobile2: '0041788795948'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_30:
+    name: 'Flying Angels Bern (FAB)'
+    email1: info@flyingangels.ch
+    email2: christian.brethaut@gmail.com
+    contactName: Chris
+    city: Bern
+    country: Switzerland
+    mobile1: '0041792066331'
+    mobile2: '0041787962969'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_31:
+    name: 'España National Team - Open'
+    email1: tim.kohlstadt@gmail.com
+    email2: ajpalmer@gmail.com
+    contactName: 'Tim + Justin'
+    city: Spain
+    country: Spain
+    mobile1: '+34649172116'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'This will be our test for EUC'
+    Division: Division_1
+    byeStatus: null
+  Team_32:
+    name: Iznogood
+    email1: ckriss9-izno@yahoo.fr
+    email2: Francoiszoubir@yahoo.fr
+    contactName: François
+    city: 'Paris '
+    country: France
+    mobile1: '00330698001248'
+    mobile2: '00330698001248'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: '3rd at outdoor French Championship'
+    Division: Division_1
+    byeStatus: null
+  Team_33:
+    name: 'UL Ninjas'
+    email1: ulultimatefrisbee@gmail.com
+    email2: jamesmoore@o2.ie
+    contactName: 'James Moore'
+    city: Limerick
+    country: Ireland
+    mobile1: '00353863989799'
+    mobile2: '00353857048535'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Back again for our 4th visit!'
+    Division: Division_1
+    byeStatus: null
+  Team_34:
+    name: 'Ultimate deLux'
+    email1: contact@ultimate-delux.org
+    email2: richardson_jt@yahoo.com
+    contactName: 'JT Richardson'
+    city: Luxembourg
+    country: Luxembourg
+    mobile1: '004916095063547'
+    mobile2: '00352621699507'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_35:
+    name: 'Leicester Ultimate Frisbee Club (Red)'
+    email1: dannymclaughlin@yahoo.co.uk
+    email2: Callumn@Gmail.com
+    contactName: 'Callum Law'
+    city: Leicester
+    country: England
+    mobile1: '00447849104707'
+    mobile2: '00447827830375'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'We came last year, partied hard, played hard and would love to come again. :) '
+    Division: Division_1
+    byeStatus: null
+  Team_36:
+    name: 'German Junior Open'
+    email1: Matthias@brucklacher.com
+    email2: matthias@brucklacher.com
+    contactName: Matthias
+    city: 'allover germany'
+    country: germany
+    mobile1: '00491727058899'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'hi ho, g e r m a n  j u n i o r s  let''s go!'
+    Division: Division_1
+    byeStatus: null
+  Team_37:
+    name: '7 Schwaben'
+    email1: schlecht@selk-stuttgart.de
+    email2: wolfi.a@gmx.de
+    contactName: 'Philipp Haas, Wolfgang Alder'
+    city: Stuttgart
+    country: Germany
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_38:
+    name: 'Cobra Kai'
+    email1: sionthaysen@yahoo.co.uk
+    email2: sionthaysen@yahoo.co.uk
+    contactName: Sion
+    city: 'London and Brighton'
+    country: England
+    mobile1: '00447810246317'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Cobra Kai is made up of mainly Clapham and Brighton players. We played Toms Tourney last year (2010) and won, defeating Freespeed in the final. We are well-up for playing more European tournaments and would love to come to Windmill Windup to play against more European teams.'
+    Division: Division_1
+    byeStatus: null
+  Team_39:
+    name: Gummibärchen
+    email1: trainer@ultimate-karlsruhe.de
+    email2: turniere@ultimate-karlsruhe.de
+    contactName: 'Felix Mach'
+    city: Karlsruhe
+    country: Germany
+    mobile1: '004917682121421'
+    mobile2: '004915159247750'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_40:
+    name: 'Disc Club Panthers'
+    email1: info@dcp.ch
+    email2: l.schaer@gmx.net
+    contactName: 'Lukas Schaer'
+    city: Bern
+    country: Switzerland
+    mobile1: '0041794596728'
+    mobile2: '0041792430667'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Hi! We are one of the five Top Open Teams in Switzerland for the last years and we would love to play in Amsterdam this year!'
+    Division: Division_1
+    byeStatus: null
+  Team_41:
+    name: 'Cambo Cakes'
+    email1: wombatcummings@hotmail.com
+    email2: miccwvdl@hotmail.com
+    contactName: 'Michiel van de Leur'
+    city: Amsterdam
+    country: Netherlands
+    mobile1: '+31643045677'
+    mobile2: '+31611000974'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_42:
+    name: BUG
+    email1: garrylhughes@googlemail.com
+    email2: pgaston8@gmail.com
+    contactName: Peter
+    city: Belfast
+    country: 'Northern Ireland'
+    mobile1: '00447525475977'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "As Ireland's third best team, we would love to be a part of what is one of Europe's premier events.\r\n\r\nAlways up for the craic and looking for exceptional tournaments across the world.  Last year we hit Kiamana Klassic in Hawaii.  This year Windmill Windup!!"
+    Division: Division_1
+    byeStatus: null
+  Team_43:
+    name: 'Russian National Open Team'
+    email1: av@rusultimate.org
+    email2: avasilyev18@gmail.com
+    contactName: 'Anatoly Vasilyev'
+    city: ''
+    country: Russia
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_44:
+    name: 'Broccoli Ultimate'
+    email1: earley.mark@gmail.com
+    email2: coach@broccoliultimate.com
+    contactName: 'David Rickard'
+    city: Dublin
+    country: Ireland
+    mobile1: '0877431088'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_45:
+    name: 'Soimii Patriei'
+    email1: pasalega_adrian@yahoo.com
+    email2: c_relu@yahoo.com
+    contactName: 'Adrian Pasalega'
+    city: Cluj-Napoca
+    country: ROMANIA
+    mobile1: '0040766772772'
+    mobile2: '0040745383562'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Created by windmill. moved from mixed to open'
+    Division: Division_1
+    byeStatus: null
+  Team_46:
+    name: 'Denmark National Team'
+    email1: administrator@dfsu.dk
+    email2: elite@dfsu.dk
+    contactName: 'Taiyo Jönsson'
+    city: Copenhagen
+    country: Denmark
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'accidentally signed in as mixed. moved to open'
+    Division: Division_1
+    byeStatus: null
+Tournament:
+  Tournament_1:
+    title: 'Windmill Windup 2011'
+    state: '1'
+    startDate: '0'
+    endDate: '0'
+VictoryPoints:
+  VictoryPoints_-15:
+    margin: '-15'
+    victorypoints: '0'
+  VictoryPoints_-14:
+    margin: '-14'
+    victorypoints: '1'
+  VictoryPoints_-13:
+    margin: '-13'
+    victorypoints: '2'
+  VictoryPoints_-12:
+    margin: '-12'
+    victorypoints: '3'
+  VictoryPoints_-11:
+    margin: '-11'
+    victorypoints: '4'
+  VictoryPoints_-10:
+    margin: '-10'
+    victorypoints: '5'
+  VictoryPoints_-9:
+    margin: '-9'
+    victorypoints: '6'
+  VictoryPoints_-8:
+    margin: '-8'
+    victorypoints: '7'
+  VictoryPoints_-7:
+    margin: '-7'
+    victorypoints: '8'
+  VictoryPoints_-6:
+    margin: '-6'
+    victorypoints: '9'
+  VictoryPoints_-5:
+    margin: '-5'
+    victorypoints: '10'
+  VictoryPoints_-4:
+    margin: '-4'
+    victorypoints: '11'
+  VictoryPoints_-3:
+    margin: '-3'
+    victorypoints: '12'
+  VictoryPoints_-2:
+    margin: '-2'
+    victorypoints: '13'
+  VictoryPoints_-1:
+    margin: '-1'
+    victorypoints: '14'
+  VictoryPoints_0:
+    margin: '0'
+    victorypoints: '15'
+  VictoryPoints_1:
+    margin: '1'
+    victorypoints: '16'
+  VictoryPoints_2:
+    margin: '2'
+    victorypoints: '17'
+  VictoryPoints_3:
+    margin: '3'
+    victorypoints: '18'
+  VictoryPoints_4:
+    margin: '4'
+    victorypoints: '19'
+  VictoryPoints_5:
+    margin: '5'
+    victorypoints: '20'
+  VictoryPoints_6:
+    margin: '6'
+    victorypoints: '21'
+  VictoryPoints_7:
+    margin: '7'
+    victorypoints: '22'
+  VictoryPoints_8:
+    margin: '8'
+    victorypoints: '23'
+  VictoryPoints_9:
+    margin: '9'
+    victorypoints: '24'
+  VictoryPoints_10:
+    margin: '10'
+    victorypoints: '25'
+  VictoryPoints_11:
+    margin: '11'
+    victorypoints: '25'
+  VictoryPoints_12:
+    margin: '12'
+    victorypoints: '25'
+  VictoryPoints_13:
+    margin: '13'
+    victorypoints: '25'
+  VictoryPoints_14:
+    margin: '14'
+    victorypoints: '25'
+  VictoryPoints_15:
+    margin: '15'
+    victorypoints: '25'

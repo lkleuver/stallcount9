@@ -78,6 +78,10 @@ class SC9_Controller_Core {
 		return isset($_POST[$key]) ? $_POST[$key] : $default;
 	}
 	
+	public function file($filename, $default = "") {
+		return isset($_FILES[$filename]) ? $_FILES[$filename] : $default;
+	}		
+	
 	public function request($key, $default = "") {
 		return isset($_REQUEST[$key]) ? $_REQUEST[$key] : $default;
 	}

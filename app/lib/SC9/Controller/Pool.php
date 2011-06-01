@@ -51,10 +51,10 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
 		
 		$this->handleFormSubmit($pool);		
-
 		
+		$poolRulesets = PoolRuleset::getList();
 		$template = $this->output->loadTemplate('pool/edit.html');
-		$template->display(array("stage" => $pool->Stage, "pool" => $pool));
+		$template->display(array("stage" => $pool->Stage, "pool" => $pool,"poolRulesets" => $poolRulesets));
 	}
 	
 	
@@ -78,7 +78,21 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	
 	
 	private function handleFormSubmit($pool) {
-		if($this->post("poolSubmit") != "") {
+		if ($this->post("poolUpdate") != "") {
+			$pool->title = $this->post("poolTitle");
+			if ($pool->spots != $this->post("poolSpots")) {
+				FB::error('changing of number of spots not supported yet.');
+				die;
+			}
+			if ($pool->PoolRuleset->id != $this->post("poolRulesetId")) {
+				FB::error('changing of ruleset not supported yet.');
+				die;
+			}
+			$pool->currentRound = $this->post("poolCurrentRound");
+			$pool->save();
+			
+			$this->relocate("/stage/detail/".$this->post("stageId"));						
+		} elseif ($this->post("poolSubmit") != "") {
 			$pool->title = $this->post("poolTitle");
 			$pool->spots = $this->post("poolSpots");
 			$pool->link('Stage', array($this->post("stageId")));
@@ -128,5 +142,31 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$pool->delete();
 		$this->relocate("/stage/detail/".$stageId);
 	}
+	
+	public function movedownAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$pool->swapPoolRankWith(($pool->rank)+1);
+		$stageId = $pool->Stage->id;
+		
+		$this->relocate("/stage/detail/".$stageId);
+	}
+	
+	public function moveupAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$pool->swapPoolRankWith(($pool->rank)-1);
+		$stageId = $pool->Stage->id;
+		
+		$this->relocate("/stage/detail/".$stageId);
+	}
+
+	public function smsAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$roundId=$this->post('roundId');
+		$pool->createSMS($roundId);
+		
+		exit;
+		$this->relocate("/stage/detail/".$stageId);
+	}
+	
 	
 }

@@ -8,11 +8,15 @@
   			<label>Spots</label>
   			<input type="text" name="poolSpots" value="{{ pool.spots }}" />
   		</li>
+  		<li>
+  			<label>Current Round</label>
+  			<input type="text" name="poolCurrentRound" value="{{ pool.currentRound }}" />
+  		</li>
 		<li>
   			<label>Pool Ruleset</label>
   			<select name="poolRulesetId">
   				{% for rs in poolRulesets %}
-  					<option value="{{rs.id}}">{{rs.title}}</option>
+  					<option value="{{rs.id}}" {% if pool.pool_ruleset_id == rs.id %}selected{% endif %}>{{rs.title}}</option>
   				{% endfor %}
   			</select>
   			

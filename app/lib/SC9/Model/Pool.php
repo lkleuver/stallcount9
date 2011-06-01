@@ -85,6 +85,13 @@ class Pool extends BasePool {
 		$this->getStrategy()->createMatchups($this);
 		return null;
 	}
+
+	public function createSMS($roundId) {
+		FB::group('Model/Pool.php: creating SMS for round with id '.$roundId);
+		$this->getStrategy()->createSMS($this,$roundId);
+		return null;
+	}
+	
 	
 	public function getTeamIdByRank($rank) {
 		$rankedteam=$this->getTeamByRank($rank);
@@ -110,37 +117,23 @@ class Pool extends BasePool {
 		// because several teams can have the same rank
 		// in this case, we use the seed as tie-breaker
 		FB::log('getting team with rank '.$rank); 
-
-		// if there is a BYE team in the pool, skip it when getting this TeamName
-		// i.e. we have to adjust the $rank we are looking for
-		$byeRank=$this->byeRank();
-		if ($byeRank>0) {
-			FB::log('bye Rank: '.$byeRank);
-			if ($byeRank <= $rank) {
-				$rank++;
-				FB::log('rank we are looking for adjusted to '.$rank);
-			}
-		}		
 		
 		// first try to retrieve the team with $rank directly
 		$q = Doctrine_Query::create()
-			->select('pt.*, t.name as teamname')
+			->select('pt.*, t.name as teamname, t.byeStatus as byeStatus')
 		    ->from('PoolTeam pt')
 			->leftJoin('pt.Team t')
 		    ->where('pt.pool_id = ?',$this->id)
 		    ->andWhere('pt.rank = ?', $rank);
 		
-		$poolteams = $q->fetchOne();
+		$targetTeam = $q->fetchOne();
 		
-		if ($poolteams != false) {
-			assert($poolteams['teamname'] != 'BYE Team');
-			return $poolteams;
-		} else {
+		if ($targetTeam == false) {
 			// the concrete rank could not been retrieved
 			// so retrieve all teams instead and take it from there
-			
+			FB::log('the concrete rank '.$rank.' could not been retrieved, getting all teams instead');
 			$q = Doctrine_Query::create()
-				->select('pt.*, t.name as teamname')
+				->select('pt.*, t.name as teamname, t.byeStatus as byeStatus')
 			    ->from('PoolTeam pt')
 				->leftJoin('pt.Team t')
 			    ->where('pt.pool_id = ?',$this->id)
@@ -149,12 +142,26 @@ class Pool extends BasePool {
 			$poolteams = $q->fetchArray();
 			
 			if (count($poolteams) < $rank || $poolteams[$rank-1]['rank'] > $rank) { 
-				return false;
-			} else {								
-				assert($poolteams[$rank-1]['teamname'] != 'BYE Team');
-				return($poolteams[$rank-1]);
+				$targetTeam=false;
+			} else {				
+				$targetTeam=$poolteams[$rank-1];
 			}
 		}		
+
+		
+		// make sure we are never returning the BYE team
+		if ($targetTeam['byeStatus']==1) {
+			FB::log('we retrieved the BYE team on rank '.$rank.' retrieving '.($rank+1).'instead.');
+			$targetTeam=$this->getTeamIdByRank($rank+1);			
+		}
+
+		// this does not work, probably because it did not retrieve the whole PoolTeam object... ???
+		// TODO: this does work, but is much slower		
+		$teamByRank = PoolTeam::getBySeed($this->id, $targetTeam['seed']);
+		
+		assert($teamByRank->Team->name != 'BYE Team');
+		return $teamByRank;				
+		
 	}
 
 	public function getTeamNameBySeed($seed) {
@@ -230,15 +237,18 @@ class Pool extends BasePool {
 		if ($this->spots == 0) {
 			$this->spots = count($this->PoolTeams);
 	 		// adjust the number of spots, if there is a BYE team in the pool and $seed=false 			
-	 		if ($this->byeRank() > 0 && !$seed) { 
-	 			$this->spots--; 
-	 		 	FB::log('adjusted number of spots to '.$this->spots);
-	 		} 				
 	 		$this->save(); // saving number of spots
 		}
- 		FB::log('number of spots '.$this->spots);
+		
+ 		FB::log('number of spots in pool '.$this->spots);
+
+ 		$nrSpots=$this->spots;
+		if ($this->byeRank() > 0 && !$seed) { 
+	 		$nrSpots--; 
+	 	 	FB::log('adjusted number of spots to be displayed to '.$nrSpots);
+	 	} 						
  		
-		for($i = 0; $i < $this->spots; $i++) {
+		for($i = 0; $i < $nrSpots; $i++) {
 			$spot = new PoolSpot();
 			$spot->rank = $i + 1;
 			$spot->title = ($seed ? $this->getTeamNameBySeed($i+1) : $this->getTeamNameByRank($i+1)); 
@@ -251,6 +261,7 @@ class Pool extends BasePool {
 			} elseif (!$seed) {
 				$poolteamByRank = $this->getTeamByRank($i+1);
 				// count how many BYEs $poolteam had in this pool
+				FB::log('poolteamByRank '.$poolteamByRank['teamname']);
 				$spot->byeCount = $poolteamByRank->countBYEs();				
 			} 			
 
@@ -304,6 +315,30 @@ class Pool extends BasePool {
 		return $this->getStrategy()->standingsAfterRound($this, $roundNr);
 	}
 	
+	public function swapPoolRankWith($swapRank) {
+		// swaps the rank of $this pool with the one with $rank		
+		assert($this->rank != $swapRank);
+		
+		FB::log('this rank '.$this->rank.' swapRank '.$swapRank);
+		$swapPool = $this->Stage->Pools[$swapRank-1];  
+		FB::group('pool with ranks'.$this->rank.' and '.$swapPool->rank.' switch ranks.');
+		
+		// swap ranks
+		$tempRank=$this->rank;
+		$this->rank=$swapPool->rank;
+		$swapPool->rank=$tempRank;
+		
+		$this->save();
+		$swapPool->save();
+		
+		// rename the games in this pool, because the poolOffsets might have changed
+		FB::log('renaming games in both pools');
+		$this->getStrategy()->nameMatches($this);
+		$swapPool->getStrategy()->nameMatches($swapPool);		
+		
+		FB::groupEnd();		
+	}
+	
 //private helper functions
 	//TODO: only works php 5.3+ (anonymous function)
 	private function sortTeamsByRank() {
@@ -313,6 +348,27 @@ class Pool extends BasePool {
 			}
 			return $a->rank < $b->rank ? -1 : 1;
 		});
+	}
+	
+	public function offsetRank() {		
+		// compute the sum of the number of teams in the pools in the same stage as this pool
+		FB::group('computing rank offset of pool '.$this->id);
+		
+		$offset = 0;
+		foreach($this->Stage->Pools as $pool) {
+			if ($pool->rank < $this->rank) {
+				$offset += $pool->spots;
+				FB::log('checking pool '.$pool->id.'. It has '.$pool->spots.' spots');
+				if ($pool->byeRank()>0) {
+					FB::log('correcting offset by one for BYE team in pool '.$pool->id);
+					$offset -= 1;
+				}
+			}
+		}
+		
+		FB::log('offset is '.$offset);
+		FB::groupEnd();
+		return $offset;
 	}
 	
 //DATABASE FUNCTIONS

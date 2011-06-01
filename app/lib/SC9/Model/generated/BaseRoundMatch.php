@@ -127,11 +127,13 @@ abstract class BaseRoundMatch extends Doctrine_Record
 
         $this->hasOne('Team as HomeTeam', array(
              'local' => 'home_team_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Team as AwayTeam', array(
              'local' => 'away_team_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Round', array(
              'local' => 'round_id',
