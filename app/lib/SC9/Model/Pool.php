@@ -103,6 +103,53 @@ class Pool extends BasePool {
 		$this->getStrategy()->createSMS($this,$roundId);
 		return null;
 	}
+
+	public function exportSMS($roundId) {
+		FB::group('Model/Pool.php: export SMS for round with id '.$roundId);
+		
+		$round=Round::getRoundById($roundId);
+		echo "INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `round_name` , `message` , `length` ,`number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )\n";
+		
+		foreach($round->SMSs as $sms) {
+			header("content-type: text/plain");
+			echo "VALUES (NULL , \n";
+			echo '`'.mysql_real_escape_string($sms->Team->id).'` , ';
+			echo "`".mysql_real_escape_string($this->Stage->Division->title)."` , ";
+			echo "`".mysql_real_escape_string($this->title.' Round '.$round->rank)."` , ";
+			echo "`".mysql_real_escape_string($sms->message)."` , ";
+			echo "`".mysql_real_escape_string(strlen($sms->message))."` , ";
+			echo "`".mysql_real_escape_string($sms->Team->mobile1)."` , ";
+			echo "`".mysql_real_escape_string($sms->Team->mobile2)."` , ";
+			echo "`".mysql_real_escape_string($sms->Team->mobile3)."` , ";
+			echo "`".mysql_real_escape_string($sms->Team->mobile4)."` , ";
+			echo "`".mysql_real_escape_string($sms->createTime)."` , `` , `` , ``\n";
+			echo "), ( \n";
+		}
+		
+		echo ");";
+
+		
+//		INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `message` , `number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )
+//		VALUES (
+// NULL , '4', 'mixed', 'another test', '010210201323asdfas', '', '', '', '', '', '', '', ''
+// ), (
+// NULL , '34', 'teas', 'adsfcxvzxcvxcvxc', '23sdfsadf', '', '', '', '', '', '', '', ''
+// );
+		
+// 		INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `message` , `number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )
+//VALUES (
+//'1', '2', 'open', 'This is the first test message', '0031619091702', '', '', '', '', '', '', '', ''
+//);
+		
+//		           sSQL = "INSERT INTO score SET round=" & nextRoundNumber & ", division='open', "
+//            sSQL = sSQL & "team_home = '" & SQLString(.Offset(i - 1, 0).Value) & "', team_away = '" & SQLString(.Offset(i - 1, 1)) & "'"
+//           If .Offset(i - 1, 3) > 0 Then
+//                sSQL = sSQL & ", field = " & .Offset(i - 1, 3)
+//            End If
+  
+		FB::groupEnd();
+		return null;
+	}
 	
 	
 	public function getTeamIdByRank($rank) {

@@ -49,7 +49,9 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$destSpotList=array();
 		foreach($stage->Pools as $destinationPool) {
 			foreach($destinationPool->getSpots(true) as $destinationSpot) {
-				$destSpotList[]=array('spot' => $destinationSpot->rank, 'destPoolId' => $destinationPool->id);
+				if ($destinationSpot->title == "empty") {
+					$destSpotList[]=array('spot' => $destinationSpot->rank, 'destPoolId' => $destinationPool->id);
+				}
 			}
 		}				
 		FB::table('destSpotList',$destSpotList);
