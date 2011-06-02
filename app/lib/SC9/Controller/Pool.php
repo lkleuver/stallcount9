@@ -164,6 +164,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$roundId=$this->request('roundId');
 		$pool->createSMS($roundId);
 		
+		$pool->exportSMS($roundId);
 		exit;
 		$this->relocate("/stage/detail/".$stageId);
 	}

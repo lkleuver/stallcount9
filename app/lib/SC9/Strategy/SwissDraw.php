@@ -165,7 +165,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		FB::log('creating matchups for pool with id '.$pool->id.' round '.$curRoundNr);
 		if ($nrTeams %2 == 1) {
 			FB::log('$nrTeams '.$nrTeams);
-			die('number of teams in Swissdraw pool has to be even');
+			FB::error('number of teams in Swissdraw pool has to be even');
 		}
 		
 		// delete matchups and results of current round and all following rounds of the pool
@@ -318,7 +318,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);
 			$standings=$this->standingsAfterRound($pool, $round->rank-1);
 		} else {
-			$text .= 'Welcome to Windmill Windup 2011! Your first match is on Friday at 16:00 against Cambocakes on Field 2.';
+			$previousRound=false;
+			$standings=false;
 		}
 		
 		// go through all matches of $round
@@ -343,19 +344,26 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			$tomorrow = false;
 		}
 		
-		$text = "After a ";
-		$text .= $this->getResultInRound($previousRound,$team->id);
-		$text .= ' in round '.$previousRound->rank.', you are now ranked ';
-		$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id));
-		$text .= '.In round '.$round->rank;
+		if ($round->rank > 1) {
+			$text = "After a ";
+			$text .= $this->getResultInRound($previousRound,$team->id);
+			$text .= ' in round '.$previousRound->rank.', you are now ranked ';
+			$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id)).".";
+		} else {
+			$text = "Welcome to Windmill Windup 2011!";
+		}
+		$text .= 'In round '.$round->rank;
 		if ($opponent_team->byeStatus == 1) {
 			// TODO: fill in the actual forfeit score from the pool
 			$text .=  ",you can take a break due to the odd number of teams.You'll score a 15-12 win";
 		} else {
 			$text .= ",you'll play ";
-			$text .= $opponent_team->name. "(ranked ";
-			$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)). ") on Field ";
-			$text .= $match->field_id;
+			$text .= $opponent_team->name;
+			if ($round->rank>1) {
+				$text .= "(ranked ";
+				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)).")";
+			}
+			$text .= " on Field ".$match->field_id;
 			if ($tomorrow) {
 				$text .= 'tomorrow ';
 			}
