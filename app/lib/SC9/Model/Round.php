@@ -25,6 +25,7 @@ class Round extends BaseRound {
 	}
 		
 	public static function getRounds($poolId) {
+		FB::error('maybe this does not work, we should fetchOne instead of execute');
 		$q = Doctrine_Query::create()
 			    ->from('Round r')
 			    ->leftJoin('r.Matches m')
@@ -42,8 +43,8 @@ class Round extends BaseRound {
 			    ->leftJoin('r.Matches m')
 			    ->where('r.pool_id = "'.$poolId.'" AND r.rank = "'.$roundRank.'"')
 			    ->orderBy('m.rank ASC');
-	    echo "<br> SQL:" . $roundRank . " <br> ". $q->getSqlQuery() ."</br>";
-		return $q->execute();
+//	    echo "<br> SQL:" . $roundRank . " <br> ". $q->getSqlQuery() ."</br>";
+		return $q->fetchOne();
 	}
 
 	public static function getRoundById($roundId) {
@@ -52,7 +53,7 @@ class Round extends BaseRound {
 			    ->leftJoin('r.Matches m')
 			    ->where('r.id = "'.$roundId.'"')
 			    ->orderBy('m.rank ASC');
-		return $q->execute();
+		return $q->fetchOne();
 	}
 	
 }
