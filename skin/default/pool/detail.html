@@ -83,7 +83,15 @@
 				{% for match in round.Matches %}
 					<tr{% if loop.index is even %} class="odd" {% endif %}>
 						<td class="rank">{{loop.index}}</td>
-						<td class="field">{% if match.field_id %}{{match.Field.title}}{% endif %}</td>
+						<td class="field">
+							<a href="#">
+							{% if match.field_id %}
+								{{match.Field.title}}
+							{% else %}
+								empty
+							{% endif %}
+							</a>
+						</td>
 						<td class="team"><a href="{{match.home_team_id}}">{% if match.home_team_id==0 and not match.away_team_id==0%}BYE{% elseif match.home_team_id %}{{match.HomeTeam.name}}{% else %}{{match.homeName}}{% endif %}</a></td>
 						<td class="team"><a href="{{match.away_team_id}}">{% if match.away_team_id==0 and not match.home_team_id==0%}BYE{% elseif match.away_team_id %}{{match.AwayTeam.name}}{% else %}{{match.awayName}}{% endif %}</a></td>
 						<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>

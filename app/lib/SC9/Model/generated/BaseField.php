@@ -8,6 +8,8 @@
  * @property integer $id
  * @property string $title
  * @property integer $tournament_id
+ * @property string $comments
+ * @property integer $rank
  * @property Tournament $Tournament
  * @property Doctrine_Collection $Matches
  * 
@@ -32,6 +34,14 @@ abstract class BaseField extends Doctrine_Record
              'length' => '255',
              ));
         $this->hasColumn('tournament_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('comments', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('rank', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));

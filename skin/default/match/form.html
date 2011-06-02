@@ -18,15 +18,21 @@
   		</li>
   		
   		<li>
+  			<label>Time slot</label>
+  			<input id="matchScheduledTime" type="text" name="scheduledTime" value="{{ match.scheduledTime}} " />
+  			&nbsp;
+  			<a href="matchScheduledTime/{{match.scheduledTime}}" class="sc9-schedule"><img src="skin/default/assets/img/icons/clipboard-search-24.png" /></a>
+  		</li>
+  		
+  		<li>
   			<label>Field</label>
   			<select name="fieldId">
   				{% for field in fields %}
-					<option value="{{field.id}}" {% if field.id == match.field_id %} selected="selected"{% endif %}>{{field.title}}</option>  				
+					<option value="{{field.id}}" {% if field.id == match.field_id %} selected="selected"{% endif %}>{{field.title}}{% if field.comments %} - ( {{field.comments}} ){% endif %}</option>  				
   				{% endfor %}
   			</select>
   		</li>
   	</ul>
-  	
   	
   	<input type="hidden" name="tournamentId" value="{{tournamentId}}" />
   	<input type="hidden" name="divisionId" value="{{divisionId}}" />

@@ -18,9 +18,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		exit;
 		$this->relocate("/division/detail/".$this->divisionId);
 	}
-	
-	
-	
+
 	public function detailAction() {
 		$division = Division::getById($this->divisionId);
 		

@@ -11,11 +11,13 @@
 		<table>
 			<tr>
 				<th>Field name</th>
+				<th>Comments</th>
 				<th class="op">Operations</th>
 			</tr>
 			{% for field in fields %}
 			<tr>
 				<td><a href="?n=/field/details/{{field.id}}&tournamentId={{tournamentId}}">{{field.title}}</a></td>
+				<td>{{field.comments}}</td>
 				<td class="op"><a href="?n=/field/edit/{{field.id}}&tournamentId={{tournamentId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="edit" title="edit" /></a></td>
 			</tr>		
 			{% endfor %}	

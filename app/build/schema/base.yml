@@ -262,6 +262,10 @@ Field:
       type: string(255)
     tournament_id:
       type: integer(4)
+    comments:
+      type: string(255)
+    rank:
+      type: integer(4)
   relations:
     Tournament:
       foreignAlias: Fields

@@ -18,4 +18,30 @@
 	</div>  
   
   
+  
+	<div class="section">
+		<h3>Create range of fields</h3>
+		
+		<form method="post" action="?n=/field/createrange" name="form-field-createrange">
+		  	<input type="hidden" name="tournamentId" value="{{field.tournament_id}}" />	
+			<ul class="formlist">
+  				<li>
+  					<label>Range start</label>
+  					<input type="text" name="rangeStart" value="1" />
+  				</li>
+  				<li>
+  					<label>Range end</label>
+  					<input type="text" name="rangeEnd" value="10" />
+  				</li>
+  				<li>
+  					<label>Prefix</label>
+  					<input type="text" name="prefix" value="Field" />
+  				</li>
+ 			</ul>
+			
+			<button name="fieldrangesubmit" value="1">generate</button>		
+		</form>
+	</div>
+  
+  
 {% endblock %}
