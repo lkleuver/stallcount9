@@ -309,52 +309,120 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	public function createSMS($pool,$roundId) {
 		// generates SMS for round with id $roundId		
 		$round=Round::getRoundById($roundId);
-		$sms='';
+		$text='';
+		
+		FB::log('roundId '.$roundId.' and rank '.$round->rank.' round->id '.$round->id);
 		
 		if ($round->rank > 1) {
 			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);
 			$standings=$this->standingsAfterRound($pool, $round->rank-1);
 		} else {
-			$sms .= 'Welcome to Windmill Windup 2011! Your first match is on Friday at 16:00 against Cambocakes on Field 2.';
+			$text .= 'Welcome to Windmill Windup 2011! Your first match is on Friday at 16:00 against Cambocakes on Field 2.';
 		}
 		
 		// go through all matches of $round
 		foreach($round->Matches as $match) {
-			// After a 15-2 loss in round 1, you are now ranked 12th. In round 2,
-            // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
-            
-			$sms .= "After a ";
-			$sms .= $this->getResultInRound($previousRound,$match->HomeTeam->id);
-			$sms .= 'in round '.$previousRound->rank.', you are now ranked ';
-			$sms .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$match->HomeTeam->id));
-			$sms .= 'In round '.$round->rank.", you'll play ";
-			$sms .= $match->AwayTeam->name. "(ranked ";
-			$sms .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$match->AwayTeam->id)). ") on Field ";
-			$sms .= $match->field_id;
-			$sms .= 'at '.$match->scheduledtime;			
-			
+			$this->createSMSForTeam($previousRound, $round, $standings, $match->HomeTeam, $match->AwayTeam, $match);
+			$this->createSMSForTeam($previousRound, $round, $standings, $match->AwayTeam, $match->HomeTeam, $match);			
 		}
 		
 	}
+	
+	private function createSMSForTeam($previousRound,$round,$standings,$team,$opponent_team,$match) {
+		// After a 15-2 loss in round 1, you are now ranked 12th. In round 2,
+        // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
 
+		// check if the next game is "tomorrow"
+		$previousGameTime=$this->getPlayingTimeInRound($round, $team->id);
+		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
+		$thisGameTimeComponents = date_parse(date("Y-m-d H:i", $match->scheduledTime));
+		if ($previousGameTimeComponents['day'] != $thisGameTimeComponents['day']) {
+			$tomorrow = true;
+		} else {
+			$tomorrow = false;
+		}
+		
+		$text = "After a ";
+		$text .= $this->getResultInRound($previousRound,$team->id);
+		$text .= ' in round '.$previousRound->rank.', you are now ranked ';
+		$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id));
+		$text .= '.In round '.$round->rank;
+		if ($opponent_team->byeStatus == 1) {
+			// TODO: fill in the actual forfeit score from the pool
+			$text .=  ",you can take a break due to the odd number of teams.You'll score a 15-12 win";
+		} else {
+			$text .= ",you'll play ";
+			$text .= $opponent_team->name. "(ranked ";
+			$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)). ") on Field ";
+			$text .= $match->field_id;
+			if ($tomorrow) {
+				$text .= 'tomorrow ';
+			}
+			$text .= 'at '.$match->scheduledTime;
+		}
+		if ($tomorrow) {
+			$text .= ".Please hand in today's spirit scores!";
+		}			
+		
+
+		FB::group('sms for team '.$team->name.':');
+		FB::log($text);
+		$sms = New SMS();
+		$sms->message = $text;
+		$sms->createTime=time();
+		$sms->link('Team', array($team->id));
+		$sms->link('Round',array($round->id));	
+		$sms->save();
+			
+		FB::groupEnd();
+	}
+	
+	private function getRankInStanding($standing,$team_id) {
+		// returns rank of team with id $team_id in $standing
+		// returns false if $team_id is not found
+		foreach($standing as $team) {
+			if ($team['team_id']==$team_id) {
+				return $team['rank'];
+			}
+		}
+		return false;
+	}
+
+	private function getPlayingTimeInRound($round,$team_id) {
+		// returns time when $team_id played in $round
+		// false if $team_id is not found in $round
+		FB::log('looking for playing time of team with id '.$team_id.' in round with id '.$round->id);
+		$time=0;
+		$matchfound=false;
+		foreach($round->Matches as $match) {
+			if ($match->HomeTeam->id == $team_id) {
+				return $match->scheduledTime;	
+			} elseif ($match->AwayTeam->id == $team_id) {
+				return $match->scheduledTime;	
+			}						
+		}
+		return false;
+	}
+	
 	private function getResultInRound($round,$team_id) {
 		// goes through matches in $round and checks for the match that $team_id played
 		// it returns  e.g. "8-15 loss"  or "12-9 win"  or  "5-5 tie"
+		FB::log('looking for team with id '.$team_id.' in round with id '.$round->id);
 		$scored=0;
 		$received=0;
 		$matchfound=false;
 		foreach($round->Matches as $match) {
 			if ($match->HomeTeam->id == $team_id) {
-				$scored=$match->homescore;
-				$received=$match->awayscore;
+				$scored=$match->homeScore;
+				$received=$match->awayScore;
 				$matchfound=true;				
 			} elseif ($match->AwayTeam->id == $team_id) {
-				$scored=$match->awayscore;
-				$received=$match->homescore;
+				$scored=$match->awayScore;
+				$received=$match->homeScore;
 				$matchfound=true;								
 			}						
 		}
-		if ($scored < $received) {
+		if ($scored > $received) {
 			return $scored.'-'.$received.' win';
 		} elseif ($scored < $received) {
 			return $scored.'-'.$received.' loss';
@@ -362,6 +430,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			return $scored.'-'.$received.' tie';
 		} elseif ($matchfound === false) { // assumes
 			FB::error('no match found in round with id '.$round->id.' where team with id '.$team_id.' played!');
+		} else {
+			die('hae?');
 		}
 	}
 		

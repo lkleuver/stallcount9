@@ -161,7 +161,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 
 	public function smsAction() {				
 		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
-		$roundId=$this->post('roundId');
+		$roundId=$this->request('roundId');
 		$pool->createSMS($roundId);
 		
 		exit;
