@@ -387,8 +387,10 @@ SMS:
       local: team_id
       foreign: id
       foreignAlias: SMSs
+      onDelete: CASCADE      
     Round:
-      foreignAlias: SMSs      
+      foreignAlias: SMSs
+      onDelete: CASCADE
   options:
     collate: utf8_unicode_ci
     charset: utf8

@@ -162,9 +162,14 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 	public function smsAction() {				
 		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
 		$roundId=$this->request('roundId');
-		$pool->createSMS($roundId);
+		$round=Round::getRoundById($roundId);
 		
-		$pool->exportSMS($roundId);
+		$pool->createSMS($roundId);		
+		$pool->exportSMSToMySQL($roundId);
+		$round->exportRoundResultsToMySQL();
+		// TODO: export standings
+		// TODO: somewhere, exportMatchups
+		
 		exit;
 		$this->relocate("/stage/detail/".$stageId);
 	}

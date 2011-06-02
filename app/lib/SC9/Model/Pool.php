@@ -76,6 +76,8 @@ class Pool extends BasePool {
 	public function performMoves() {
 		FB::group('performing moves in pool '.$this->id);
 		foreach($this->SourceMoves as $move) {
+			$poolteam=Team::
+			
 			$poolTeam = new PoolTeam();
 			$poolTeam->pool_id = $this->id;
 			$poolTeam->seed = $move->destinationSpot;
@@ -99,35 +101,48 @@ class Pool extends BasePool {
 	}
 
 	public function createSMS($roundId) {
+		FB::group('Model/Pool.php: deleting SMS for round with id '.$roundId);
+		$round=Round::getRoundById($roundId);
+		foreach($round->SMSs as $sms) {
+			FB::log('deleting SMS with id '.$sms->id);
+			$sms->delete();
+		}
+		FB::groupEnd();
+		
 		FB::group('Model/Pool.php: creating SMS for round with id '.$roundId);
 		$this->getStrategy()->createSMS($this,$roundId);
+		FB::groupEnd();
 		return null;
 	}
+	
 
-	public function exportSMS($roundId) {
+	public function exportSMSToMySQL($roundId) {
 		FB::group('Model/Pool.php: export SMS for round with id '.$roundId);
 		
 		$round=Round::getRoundById($roundId);
+		header("content-type: text/plain");
 		echo "INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `round_name` , `message` , `length` ,`number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )\n";
+		echo "VALUES ";
 		
 		foreach($round->SMSs as $sms) {
-			header("content-type: text/plain");
-			echo "VALUES (NULL , \n";
-			echo '`'.mysql_real_escape_string($sms->Team->id).'` , ';
-			echo "`".mysql_real_escape_string($this->Stage->Division->title)."` , ";
-			echo "`".mysql_real_escape_string($this->title.' Round '.$round->rank)."` , ";
-			echo "`".mysql_real_escape_string($sms->message)."` , ";
-			echo "`".mysql_real_escape_string(strlen($sms->message))."` , ";
-			echo "`".mysql_real_escape_string($sms->Team->mobile1)."` , ";
-			echo "`".mysql_real_escape_string($sms->Team->mobile2)."` , ";
-			echo "`".mysql_real_escape_string($sms->Team->mobile3)."` , ";
-			echo "`".mysql_real_escape_string($sms->Team->mobile4)."` , ";
-			echo "`".mysql_real_escape_string($sms->createTime)."` , `` , `` , ``\n";
-			echo "), ( \n";
-		}
+			$value = "(\n   NULL , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->Team->id)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($this->Stage->Division->title)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($this->title.' Round '.$round->rank)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->message)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic(strlen($sms->message))."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile1)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile2)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile3)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile4)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile5)."' , ";
+			$value .= "'".SMS::mysql_escape_mimic($sms->createTime)."' , '' , '' , ''\n";
+			$value .= ")";
+			$values[]=$value;			
+		}		
 		
-		echo ");";
-
+		echo implode(", ",$values).";\n\n";
+		
 		
 //		INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `message` , `number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )
 //		VALUES (
@@ -149,6 +164,30 @@ class Pool extends BasePool {
   
 		FB::groupEnd();
 		return null;
+	}
+	
+	public function exportStandingsAfterRoundToMySQL($roundNr) {
+//		sSQL = "INSERT INTO standing SET round=" & curRound & ", division='" & Range("Division") & "', "
+//		sSQL = sSQL & "team = '" & SQLString(.Offset(i - 1, 1).Value) & "', VP = " & SQLString(.Offset(i - 1, 2).Value) & ", "
+//		If .Parent.Name = "QuarterFinals" Then 'after last round of Swiss draw
+//			sSQL = sSQL & "avg_opp_VP = " & .Offset(i - 1, 3)
+//			sSQL = sSQL & ", margin = " & .Offset(i - 1, 4) & " , total_score = " & .Offset(i - 1, 5) & " , rank = " & .Offset(i - 1, 0)
+//			sSQL = sSQL & ", avg_score = " & .Offset(i - 1, 6).Value & " , bye = " & .Offset(i - 1, 7)
+//		Else 'Swiss-Draw rounds
+//			sSQL = sSQL & "margin = " & .Offset(i - 1, 3) & " , total_score = " & .Offset(i - 1, 4) & " , rank = " & .Offset(i - 1, 0)
+					
+		FB::group('Model/Round.php: export standings after round '.$roundNr.' of pool with id '.$this->id);
+		$standings = $this->getStrategy()->standingsAfterRound($this, $roundNr); 
+		
+		foreach($standings as $team) {
+			$sql = "INSERT INTO standing_2011 SET round = '".$roundNr."', division = '".SMS::mysql_escape_mimic($this->Stage->Division->title)."'";
+			$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', VP = '".SMS::mysql_escape_mimic($team['vp'])."'";
+			$sql .= ", opp_vp = '".SMS::mysql_escape_mimic($team['opp_vp'])."', margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
+			$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."'";
+			echo $sql."\n";			
+		}
+		
+		FB::groupEnd();		
 	}
 	
 	
