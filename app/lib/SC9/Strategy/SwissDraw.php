@@ -163,7 +163,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		$nrTeams = count($pool->PoolTeams);
 		
 		FB::log('creating matchups for pool with id '.$pool->id.' round '.$curRoundNr);
-		if ($nrTeams %2 ==1) {
+		if ($nrTeams %2 == 1) {
+			FB::log('$nrTeams '.$nrTeams);
 			die('number of teams in Swissdraw pool has to be even');
 		}
 		
