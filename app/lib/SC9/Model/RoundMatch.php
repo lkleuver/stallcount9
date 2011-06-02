@@ -19,6 +19,7 @@ class RoundMatch extends BaseRoundMatch{
 			    ->leftJoin('r.Pool p')
 			    ->leftJoin('m.HomeTeam ht')
 			    ->leftJoin('m.AwayTeam at')
+			    ->leftJoin('m.Field f')
 			    ->where('m.id = ?', $id);
 		$match = $q->fetchOne();
 		return $match;

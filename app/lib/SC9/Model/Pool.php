@@ -28,6 +28,11 @@ class Pool extends BasePool {
 		$matchCountPerRound = ceil($this->spots / 2);
 		FB::log("MATCHCOUNT: ".$matchCountPerRound);
 		
+		
+		$fields = Field::getList($this->Stage->Division->tournament_id);
+		$fieldsAvailable = count($fields) > 0;
+		$fieldIndex = 0;
+		
 		for($i = 0; $i < $nrOfRounds; $i++) {
 			FB::group("ROUND ".($i + 1));
 			$round = new Round();
@@ -44,8 +49,15 @@ class Pool extends BasePool {
 				$match->matchName = "match rank ".($j + 1);
 				$match->homeName = "winner a";
 				$match->awayName = "winner b";
+				
 				//link fields
+				if($fieldsAvailable) {
+					$match->link('Field', array($fields[$fieldIndex]->id));
+				}
 				$match->save();
+				
+				
+				$fieldIndex = $fieldIndex < count($fields) - 1 ? $fieldIndex + 1 : 0;
 			}
 			FB::groupEnd();
 		}
@@ -374,7 +386,6 @@ class Pool extends BasePool {
 //DATABASE FUNCTIONS
 	
 	public static function getById($id) {
-		$start = getmicrotime();
 		
 
 		$q = Doctrine_Query::create()
@@ -395,12 +406,9 @@ class Pool extends BasePool {
 		
 		$pool->Rounds = Round::getRounds($pool->id);
 		
-		//echo "query <br /><br />";
 		
 		$end = getmicrotime();
 		
-		//echo ($end - $start) ."<br /><br />";
-		//exit;
 		return $pool;
 	}
 	

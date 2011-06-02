@@ -2,6 +2,13 @@
  
 {% block title %}Edit Match {{match.matchName}}{% endblock %}
 {% block pagetitle %} Edit Match {{match.matchName}} {{match.homeName}} vs {{match.awayName}}{% endblock %}
+
+{% block header %}
+	<script type="text/javascript" src="app/js/jquery.js"></script>
+	<script type="text/javascript" src="app/js/schedule.js"></script>
+{% endblock %}
+
+
 {% block content %}
 	
   	<div class="section">
@@ -15,6 +22,7 @@
 	</div>
   
   	
+  	<a class="back" href="?n=/pool/detail/{{poolId}}&divisionId={{divisionId}}&stageId={{stageId}}&tournamentId={{tournamentId}}">Back to pool</a>
   
   
   

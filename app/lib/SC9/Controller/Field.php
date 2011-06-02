@@ -43,9 +43,27 @@ class SC9_Controller_Field extends SC9_Controller_Core {
 		$template->display(array("field" => $field));
 	}
 	
+	public function createrangeAction() {
+		$rangeStart = (int) $this->request("rangeStart");
+		$rangeEnd = (int) $this->request("rangeEnd");
+		$prefix = $this->request("prefix");
+		
+		for($i = $rangeStart; $i <= $rangeEnd; $i++) {
+			$field = new Field();
+			$field->tournament_id = $this->get("tournamentId");
+			$field->title = $prefix ." " . $i;
+			$field->comments = "";
+			$field->link('Tournament', array($this->post("tournamentId")));
+			$field->rank = $i;
+			$field->save();			
+		}
+		$this->relocate("/field/list/&tournamentId=".$this->request("tournamentId"));
+	}
+	
 	private function handleFormSubmit($field) {
 		if($this->post("fieldsubmit") != "") {
 			$field->title 			= $this->post("fieldName");
+			$field->comments		= $this->post("fieldComments");
 			$field->link('Tournament', array($this->post("tournamentId")));
 			$field->save();
 			return true;

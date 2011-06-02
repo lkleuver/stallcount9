@@ -10,5 +10,12 @@ ini_set('display_errors', "1");
 include 'config.local.php';
 include "app/Stallcount9.php";
 
+
+$start = getmicrotime();
+
 $sc9 = new Stallcount9($config);
 $sc9->handleRequests();
+
+
+
+echo "<!-- ". (getmicrotime() - $start) ." //-->";

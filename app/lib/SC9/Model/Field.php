@@ -27,7 +27,7 @@ class Field extends BaseField {
 		$q = Doctrine_Query::create()
 			    ->from('Field f')
 			    ->where('f.tournament_id = ?', $tournamentId)
-			    ->orderBy('f.title ASC');
+			    ->orderBy('f.rank ASC, f.title ASC');
 		return $q->execute();
 	}
 
