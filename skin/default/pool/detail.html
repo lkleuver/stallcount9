@@ -3,6 +3,11 @@
 {% block title %}Pool{% endblock %}
 {% block pagetitle %}{{pool.Stage.title}} - {{pool.title}}{% endblock %}
 
+{% block header %}
+	<script type="text/javascript" src="app/js/jquery.js"></script>
+	<script type="text/javascript" src="app/js/pool.js"></script>
+{% endblock %}
+
 {% block content %}
 	
 	<div class="section">
@@ -76,26 +81,24 @@
 						<th>Home</th>
 						<th>Away</th>
 						<th>result</th>
-						<th>for place</th>
+						<th>Time</th>
 						<th class="op">op</th>
 					</tr>
 					
 				{% for match in round.Matches %}
-					<tr{% if loop.index is even %} class="odd" {% endif %}>
+					<tr class="match" id="sc9-row-match-{{match.id}}">
 						<td class="rank">{{loop.index}}</td>
 						<td class="field">
-							<a href="#">
 							{% if match.field_id %}
 								{{match.Field.title}}
 							{% else %}
 								empty
 							{% endif %}
-							</a>
 						</td>
 						<td class="team"><a href="{{match.home_team_id}}">{% if match.home_team_id==0 and not match.away_team_id==0%}BYE{% elseif match.home_team_id %}{{match.HomeTeam.name}}{% else %}{{match.homeName}}{% endif %}</a></td>
 						<td class="team"><a href="{{match.away_team_id}}">{% if match.away_team_id==0 and not match.home_team_id==0%}BYE{% elseif match.away_team_id %}{{match.AwayTeam.name}}{% else %}{{match.awayName}}{% endif %}</a></td>
 						<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>
-						<td class="possibleRanks">{{match.bestPossibleRank}} to {{match.worstPossibleRank}}</td>
+						<td class="time">{{match.scheduledTime}}</td>
 						<td class="op"><a href="?n=/match/edit/{{match.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}&poolId={{poolId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a></td>
 					</tr>
 				{% endfor %}
@@ -109,5 +112,11 @@
 	<p>
 		<a href="?n=/stage/detail/{{pool.Stage.id}}">back to stage</a>
 	</p>
+	
+	
+	<div id="sc9-match-options" class="optionsbox">
+		<a class="button button-blue" id="pool-switch-fields" href="#"><span class="switch">Switch fields</span></a>
+	</div>
+	
   
 {% endblock %}
