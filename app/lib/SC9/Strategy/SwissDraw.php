@@ -100,19 +100,21 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			for ($i=0; $i<$roundnr; $i++) { // go through all rounds up to $roundnr
 				$curRound = $pool->Rounds[$i];
 				foreach($curRound->Matches as $match) {
-					// update home team stats
-					$standings[$match->home_team_id]['games']++;					
-					$standings[$match->home_team_id]['vp'] += VictoryPoints::getByMargin($match->homeScore - $match->awayScore);
-					$standings[$match->home_team_id]['margin'] += $match->homeScore - $match->awayScore;
-					$standings[$match->home_team_id]['scored'] += $match->homeScore;
-					$standings[$match->home_team_id]['spirit'] += $match->homeSpirit;
-					
-					// update away team stats
-					$standings[$match->away_team_id]['games']++;					
-					$standings[$match->away_team_id]['vp'] += VictoryPoints::getByMargin($match->awayScore - $match->homeScore);
-					$standings[$match->away_team_id]['margin'] += $match->awayScore - $match->homeScore;
-					$standings[$match->away_team_id]['scored'] += $match->awayScore;
-					$standings[$match->away_team_id]['spirit'] += $match->awaySpirit;					
+					if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+						// update home team stats
+						$standings[$match->home_team_id]['games']++;					
+						$standings[$match->home_team_id]['vp'] += VictoryPoints::getByMargin($match->homeScore - $match->awayScore);
+						$standings[$match->home_team_id]['margin'] += $match->homeScore - $match->awayScore;
+						$standings[$match->home_team_id]['scored'] += $match->homeScore;
+						$standings[$match->home_team_id]['spirit'] += $match->homeSpirit;
+
+						// update away team stats
+						$standings[$match->away_team_id]['games']++;					
+						$standings[$match->away_team_id]['vp'] += VictoryPoints::getByMargin($match->awayScore - $match->homeScore);
+						$standings[$match->away_team_id]['margin'] += $match->awayScore - $match->homeScore;
+						$standings[$match->away_team_id]['scored'] += $match->awayScore;
+						$standings[$match->away_team_id]['spirit'] += $match->awaySpirit;
+					}					
 				}
 			}
 			
@@ -120,11 +122,12 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			for ($i=0; $i<$roundnr; $i++) { // go through all rounds up to $roundnr
 				$curRound = $pool->Rounds[$i];
 				foreach($curRound->Matches as $match) {
-					// update home team stats
-					$standings[$match->home_team_id]['opp_vp'] += $standings[$match->away_team_id]['vp'];
-					
-					// update away team stats
-					$standings[$match->away_team_id]['opp_vp'] += $standings[$match->home_team_id]['vp'];
+					if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+						// update home team stats
+						$standings[$match->home_team_id]['opp_vp'] += $standings[$match->away_team_id]['vp'];					
+						// update away team stats
+						$standings[$match->away_team_id]['opp_vp'] += $standings[$match->home_team_id]['vp'];
+					}
 				}
 			}
 			
@@ -205,8 +208,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 					$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
 				} else {				
 					// fill in random scores for testing
-					$curRound->Matches[$i]->homeScore = rand(0,15);
-					$curRound->Matches[$i]->awayScore = rand(0,15);
+//					$curRound->Matches[$i]->homeScore = rand(0,15);
+//					$curRound->Matches[$i]->awayScore = rand(0,15);
 				}
 				
 			}	
@@ -288,9 +291,9 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 					$curRound->Matches[$i]->save();
 						
 					// fill in random scores for testing
-					$curRound->Matches[$i]->homeScore = rand(0,15);
-					$curRound->Matches[$i]->awayScore = rand(0,15);
-					$curRound->Matches[$i]->save();
+//					$curRound->Matches[$i]->homeScore = rand(0,15);
+//					$curRound->Matches[$i]->awayScore = rand(0,15);
+//					$curRound->Matches[$i]->save();
 				}
 
 				$curRound->save();		
@@ -299,12 +302,8 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		}
 		
 		// increase current round
-//		if ($curRoundNr < $this->numberOfRounds) { 
-			$pool->currentRound = ($curRoundNr + 1);
-//		} else { // or set to -1 if total number of rounds is reached
-//			$pool->currentRound = -1;
-//		}
-		$pool->save();
+//		$pool->currentRound = ($curRoundNr + 1);
+//		$pool->save();
 	}
 	
 	public function createSMS($pool,$roundId) {

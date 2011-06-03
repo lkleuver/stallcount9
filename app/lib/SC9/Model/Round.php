@@ -12,49 +12,39 @@
  */
 class Round extends BaseRound {
 
-	public function exportRoundResultsToMySQL() {
-	//	sSQL = "UPDATE score SET score_home = " & .Offset(i - 1, 1) & ", score_away = " & .Offset(i - 1, 3)
-	//	sSQL = sSQL & " WHERE team_home = '" & SQLString(.Offset(i - 1, 0)) & "' && team_away = '" & SQLString(.Offset(i - 1, 2)) & "'"
-	//	sSQL = sSQL & " && division='" & Range("Division") & "' && round = " & curRound
-	
-		// assumes that the matchups already exist in the database
-		FB::group('Model/Round.php: export results of round '.$this->rank.' of pool with id '.$this->pool_id);
-		
-		header("content-type: text/plain");
-		
+	public function allTeamsFilledIn() {
+		// returns true if all teams of all matches of this round are filled in
+		// i.e. the matchups have been created
 		foreach($this->Matches as $match) {
-			$sql = "UPDATE score_2011 SET score_home = ".$match->homeScore.", score_away = ".$match->awayScore;
-			$sql .= " WHERE team_home = '".SMS::mysql_escape_mimic($match->HomeTeam->name)."' && team_away = '".SMS::mysql_escape_mimic($match->AwayTeam->name)."'";			
-			$sql .= " && division = '".$this->Pool->Stage->Division->title."' && round = '".$this->rank."';\n";
-			echo $sql;			
-		}
-				
-		FB::groupEnd();
-	}
-	
-	public function exportRoundMatchupsToMySQL() {
-//		sSQL = "INSERT INTO score SET round=" & nextRoundNumber & ", division='" & Range("Division") & "', "
-//		sSQL = sSQL & "team_home = '" & SQLString(.Offset(i - 1, 0).Value) & "', team_away = '" & SQLString(.Offset(i - 1, 1)) & "'"
-//		If .Offset(i - 1, 3) > 0 Then
-//			sSQL = sSQL & ", field = " & .Offset(i - 1, 3)
-				
-		FB::group('Model/Round.php: export matchups of round '.$this->rank.' of pool with id '.$this->pool_id);
-		
-		header("content-type: text/plain");
-		
-		foreach($this->Matches as $match) {
-			$sql = "INSERT INTO score_2011 SET round = ".$this->rank.", division = '".$this->Pool->Division->title."'";
-			$sql .= ", team_home = '".SMS::mysql_escape_mimic($match->HomeTeam->name)."', team_away = '".SMS::mysql_escape_mimic($match->AwayTeam->name)."'";
-			if ($match->Field !== null) {
-				$sql .= ", field = '".$match->Field->name."'";
+			if (is_null($match->home_team_id) || is_null($match->away_team_id)) {
+				return false;
 			}
-			$sql .= "\n";
-			echo $sql;			
-		}
-				
-		FB::groupEnd();
+		}		
+		return true;		
 	}
-		
+	
+	public function allResultsFilledIn() {
+		// returns true if all results of all matches of this round are filled in
+		foreach($this->Matches as $match) {
+			if (is_null($match->homeScore) || is_null($match->awayScore)) {
+				return false;
+			}
+		}		
+		return true;
+	}
+	
+	public function randomScoreFill() {
+		foreach($this->Matches as $match) {
+			if (is_null($match->homeScore)) {
+				$match->homeScore=rand(0,15);
+				$match->save();				
+			}
+			if (is_null($match->awayScore)) {
+				$match->awayScore=rand(0,15);
+				$match->save();
+			}
+		}
+	}
 	
 	public static function deleteRounds($poolId) {
 		$rounds = Round::getRounds($poolId);

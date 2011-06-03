@@ -128,9 +128,9 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 	
 					if ($pool->Rounds[$i]->Matches[$j]->away_team_id != null && $pool->Rounds[$i]->Matches[$j]->home_team_id != null) {
 						// fill in random scores for testing
-						$pool->Rounds[$i]->Matches[$j]->homeScore = rand(0,15);
-						$pool->Rounds[$i]->Matches[$j]->awayScore = rand(0,15);	
-						$pool->Rounds[$i]->Matches[$j]->scoreSubmitTime = time();
+//						$pool->Rounds[$i]->Matches[$j]->homeScore = rand(0,15);
+//						$pool->Rounds[$i]->Matches[$j]->awayScore = rand(0,15);	
+//						$pool->Rounds[$i]->Matches[$j]->scoreSubmitTime = time();
 					}
 				}
 

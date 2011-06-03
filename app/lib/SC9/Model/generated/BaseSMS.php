@@ -75,10 +75,12 @@ abstract class BaseSMS extends Doctrine_Record
         parent::setUp();
         $this->hasOne('Team', array(
              'local' => 'team_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
 
         $this->hasOne('Round', array(
              'local' => 'round_id',
-             'foreign' => 'id'));
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
     }
 }

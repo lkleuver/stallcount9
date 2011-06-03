@@ -11,11 +11,25 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class VictoryPoints extends BaseVictoryPoints {
+	
 	public static function getByMargin($margin) {
 		$q = Doctrine_Query::create()
 			    ->from('VictoryPoints vp')
 			    ->where('vp.margin = ?', $margin);
 		$vp = $q->fetchOne();
+		
+		if ($vp === false) {
+			FB::error('trying to retrieve $margin '.$margin.' which does not exist in database');
+			if ($margin<-15) {
+				FB::error('using -15 instead');
+				return VictoryPoints::getByMargin(-15);
+			} elseif ($margin>15) {
+				FB::error('using +15 instead');
+				return VictoryPoints::getByMargin(15);				
+			} else {
+				trigger_error('we should never end up here');
+			}
+		}
 		return $vp->victorypoints;
 	}
 	

@@ -28,11 +28,6 @@ class Pool extends BasePool {
 		$matchCountPerRound = ceil($this->spots / 2);
 		FB::log("MATCHCOUNT: ".$matchCountPerRound);
 		
-		
-		$fields = Field::getList($this->Stage->Division->tournament_id);
-		$fieldsAvailable = count($fields) > 0;
-		$fieldIndex = 0;
-		
 		for($i = 0; $i < $nrOfRounds; $i++) {
 			FB::group("ROUND ".($i + 1));
 			$round = new Round();
@@ -49,15 +44,6 @@ class Pool extends BasePool {
 				$match->matchName = "match rank ".($j + 1);
 				$match->homeName = "winner a";
 				$match->awayName = "winner b";
-				
-				//link fields
-				if($fieldsAvailable) {
-					$match->link('Field', array($fields[$fieldIndex]->id));
-				}
-				$match->save();
-				
-				
-				$fieldIndex = $fieldIndex < count($fields) - 1 ? $fieldIndex + 1 : 0;
 			}
 			FB::groupEnd();
 		}
@@ -67,6 +53,33 @@ class Pool extends BasePool {
 		$this->currentRound=0;
 //		echo "<br /><br /> -- -- - -- - - -- <br /><br />";
 		$this->getStrategy()->nameMatches($this);
+
+		// assign fields		
+		FB::group('assigning fields');
+		$fields = Field::getList($this->Stage->Division->tournament_id);
+		$fieldsAvailable = count($fields) > 0;
+		$fieldIndex = 0;
+				
+		foreach($this->Rounds as $round) {
+			foreach($round->Matches as $match) {
+				FB::log('match name '.$match->matchName.' pos '.strpos($match->matchName,"BYE Match"));
+				if (strpos($match->matchName,"BYE Match") !== false) {
+					FB::log('unlinking field of match '.$match->matchName);
+					$match->field_id = null;
+					$match->save();					
+				} else {
+					//link fields
+					if($fieldsAvailable) {
+						FB::log('assigning Field with id'.$fields[$fieldIndex]->id.' to match id '.$match->id);
+						$match->link('Field', array($fields[$fieldIndex]->id));
+						$match->save();
+					}				
+					$fieldIndex = $fieldIndex < count($fields) - 1 ? $fieldIndex + 1 : 0;
+				}
+			}
+		}
+		FB::groupEnd();		
+		
 	}	
 	
 	/**
@@ -76,8 +89,6 @@ class Pool extends BasePool {
 	public function performMoves() {
 		FB::group('performing moves in pool '.$this->id);
 		foreach($this->SourceMoves as $move) {
-			$poolteam=Team::
-			
 			$poolTeam = new PoolTeam();
 			$poolTeam->pool_id = $this->id;
 			$poolTeam->seed = $move->destinationSpot;
@@ -113,81 +124,6 @@ class Pool extends BasePool {
 		$this->getStrategy()->createSMS($this,$roundId);
 		FB::groupEnd();
 		return null;
-	}
-	
-
-	public function exportSMSToMySQL($roundId) {
-		FB::group('Model/Pool.php: export SMS for round with id '.$roundId);
-		
-		$round=Round::getRoundById($roundId);
-		header("content-type: text/plain");
-		echo "INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `round_name` , `message` , `length` ,`number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )\n";
-		echo "VALUES ";
-		
-		foreach($round->SMSs as $sms) {
-			$value = "(\n   NULL , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->Team->id)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($this->Stage->Division->title)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($this->title.' Round '.$round->rank)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->message)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic(strlen($sms->message))."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile1)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile2)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile3)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile4)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile5)."' , ";
-			$value .= "'".SMS::mysql_escape_mimic($sms->createTime)."' , '' , '' , ''\n";
-			$value .= ")";
-			$values[]=$value;			
-		}		
-		
-		echo implode(", ",$values).";\n\n";
-		
-		
-//		INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `message` , `number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )
-//		VALUES (
-// NULL , '4', 'mixed', 'another test', '010210201323asdfas', '', '', '', '', '', '', '', ''
-// ), (
-// NULL , '34', 'teas', 'adsfcxvzxcvxcvxc', '23sdfsadf', '', '', '', '', '', '', '', ''
-// );
-		
-// 		INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `message` , `number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )
-//VALUES (
-//'1', '2', 'open', 'This is the first test message', '0031619091702', '', '', '', '', '', '', '', ''
-//);
-		
-//		           sSQL = "INSERT INTO score SET round=" & nextRoundNumber & ", division='open', "
-//            sSQL = sSQL & "team_home = '" & SQLString(.Offset(i - 1, 0).Value) & "', team_away = '" & SQLString(.Offset(i - 1, 1)) & "'"
-//           If .Offset(i - 1, 3) > 0 Then
-//                sSQL = sSQL & ", field = " & .Offset(i - 1, 3)
-//            End If
-  
-		FB::groupEnd();
-		return null;
-	}
-	
-	public function exportStandingsAfterRoundToMySQL($roundNr) {
-//		sSQL = "INSERT INTO standing SET round=" & curRound & ", division='" & Range("Division") & "', "
-//		sSQL = sSQL & "team = '" & SQLString(.Offset(i - 1, 1).Value) & "', VP = " & SQLString(.Offset(i - 1, 2).Value) & ", "
-//		If .Parent.Name = "QuarterFinals" Then 'after last round of Swiss draw
-//			sSQL = sSQL & "avg_opp_VP = " & .Offset(i - 1, 3)
-//			sSQL = sSQL & ", margin = " & .Offset(i - 1, 4) & " , total_score = " & .Offset(i - 1, 5) & " , rank = " & .Offset(i - 1, 0)
-//			sSQL = sSQL & ", avg_score = " & .Offset(i - 1, 6).Value & " , bye = " & .Offset(i - 1, 7)
-//		Else 'Swiss-Draw rounds
-//			sSQL = sSQL & "margin = " & .Offset(i - 1, 3) & " , total_score = " & .Offset(i - 1, 4) & " , rank = " & .Offset(i - 1, 0)
-					
-		FB::group('Model/Round.php: export standings after round '.$roundNr.' of pool with id '.$this->id);
-		$standings = $this->getStrategy()->standingsAfterRound($this, $roundNr); 
-		
-		foreach($standings as $team) {
-			$sql = "INSERT INTO standing_2011 SET round = '".$roundNr."', division = '".SMS::mysql_escape_mimic($this->Stage->Division->title)."'";
-			$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', VP = '".SMS::mysql_escape_mimic($team['vp'])."'";
-			$sql .= ", opp_vp = '".SMS::mysql_escape_mimic($team['opp_vp'])."', margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
-			$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."'";
-			echo $sql."\n";			
-		}
-		
-		FB::groupEnd();		
 	}
 	
 	

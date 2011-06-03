@@ -71,6 +71,9 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		FB::group('compute Bracket standings of pool '.$pool->id.' after round '.$roundnr);
 		
 		$nrTeams=count($pool->PoolTeams);
+		if ($nrTeams == 0) {
+			return null;
+		}
 		$nrRounds=$this->calculateNumberOfRounds($nrTeams);
 		
 		
@@ -249,11 +252,11 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 				$curRound->Matches[$i]->save();
 				
 				// fill in random scores for testing	
-				if (!is_null($matchup['home']) && !is_null($matchup['away'])) {			
-					$curRound->Matches[$i]->homeScore = rand(0,15);
-					$curRound->Matches[$i]->awayScore = rand(0,15);
-					$curRound->Matches[$i]->scoreSubmitTime = time();
-				}							
+//				if (!is_null($matchup['home']) && !is_null($matchup['away'])) {			
+//					$curRound->Matches[$i]->homeScore = rand(0,15);
+//					$curRound->Matches[$i]->awayScore = rand(0,15);
+//					$curRound->Matches[$i]->scoreSubmitTime = time();
+//				}							
 			}
 		} else { // we don't know what to do
 			die('no bracket structure defined yet');
@@ -264,13 +267,9 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		FB::log("number of matches: ".count($curRound->Matches));
 		
 		// increase current round
-		$this->calculateNumberOfRounds(count($pool->PoolTeams));
-//		if ($curRoundNr < $this->numberOfRounds) { 
-			$pool->currentRound = ($curRoundNr + 1);
-//		} else { // or set to -1 if total number of rounds is reached
-//			$pool->currentRound = -1;
-//		}
-		$pool->save();
+//		$this->calculateNumberOfRounds(count($pool->PoolTeams));
+//		$pool->currentRound = ($curRoundNr + 1);
+//		$pool->save();
 		
 	}
 	

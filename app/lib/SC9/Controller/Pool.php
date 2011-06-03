@@ -18,7 +18,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		if ($this->request("standingsRound") != "" ) {
 			$standingsRound = $this->request("standingsRound");
 		} else {
-			$standingsRound = $pool->currentRound-1;
+			$standingsRound = $pool->currentRound;
 		}		
 		
 		$standings = $pool->standingsAfterRound($standingsRound); 
@@ -27,10 +27,15 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$template->display(array("pool" => $pool, "standings" => $standings, "standingsRound" => $standingsRound));
 	}
 	
-	public function matchupsAction() {
+	public function computeMatchupsAction() {
 		$pool = Pool::getById($this->poolId);
 		$pool->createMatchups();
 		
+		echo "matchup computed, see FireBug output for debug info.";
+		
+		echo "<br>";
+		echo "<a href='index.php?n=/pool/detail/".$pool->id."&tournamentId=".$pool->Stage->Division->Tournament->id."&divisionId=".$pool->Stage->Division->id."&stageId=".$pool->Stage->id."'>back to pool</a>";		
+				
 		//$this->relocate("/pool/detail/".$this->poolId);
 		
 	}
@@ -159,20 +164,42 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$this->relocate("/stage/detail/".$stageId);
 	}
 
-	public function smsAction() {				
+	public function announceRoundAction() {				
 		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
 		$roundId=$this->request('roundId');
-		$round=Round::getRoundById($roundId);
 		
 		$pool->createSMS($roundId);		
-		$pool->exportSMSToMySQL($roundId);
-		$round->exportRoundResultsToMySQL();
-		// TODO: export standings
-		// TODO: somewhere, exportMatchups
+		Export::exportSMSToMySQL($roundId);
+		echo "exported SMS of this round to SQL file<br>";
+		Export::exportRoundMatchupsToMySQL($roundId);
+		echo "exported Matchups of this round to SQL file<br>";
 		
 		exit;
 		$this->relocate("/stage/detail/".$stageId);
 	}
+
+	public function finishRoundAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$roundId=$this->request('roundId');
+			
+		Export::exportRoundResultsToMySQL($roundId);
+		echo "exported results of this round to SQL file<br>";
+		Export::exportStandingsAfterRoundToMySQL($roundId);
+		echo "exported standings after this round to SQL file<br>";
+		
+		$pool->currentRound++;
+		$pool->save();
+		exit;
+		$this->relocate("/stage/detail/".$stageId);
+	}
 	
+	public function randomScoreRoundAction() {				
+		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
+		$roundId=$this->request('roundId');
+		$round=Round::getRoundById($roundId);
+		
+		$round->randomScoreFill();			
+		$this->relocate("/pool/detail/".$pool->id."&tournamentId=".$pool->Stage->Division->Tournament->id."&divisionId=".$pool->Stage->Division->id."&stageId=".$pool->Stage->id);
+	}
 	
 }

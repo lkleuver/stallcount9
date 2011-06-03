@@ -15,6 +15,10 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$division->schedule();
 		
 		echo 'if no error is displayed, games have been successfully scheduled (see FireBug for debug info)<br>';
+		
+		echo "<br>";
+		echo "<a href='index.php?n=/division/detail/".$this->divisionId."'>back to division</a>";
+		
 		exit;
 		$this->relocate("/division/detail/".$this->divisionId);
 	}
@@ -90,8 +94,12 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 			FB::groupEnd();
 			
 			FB::log('divisionId '.$this->post("divisionId"));
+			
+			echo "data imported, see FirePHP for info";
+			echo "<br>";
+			echo "<a href='index.php?n=/division/detail/".$this->post("divisionId")."'>back to division</a>";
 			exit;
-			$this->relocate("/division/detail/".$this->post("divisionId"));
+//			$this->relocate("/division/detail/".$this->post("divisionId"));
 		}
 		
 		$template = $this->output->loadTemplate('division/import.html');
