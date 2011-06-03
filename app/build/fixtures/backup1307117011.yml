@@ -1,0 +1,4471 @@
+Brackets:
+  Brackets_8_3_1_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '8'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '6'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_3_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_8_3_3_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_8_3_3_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '6'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_8_3_3_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '7'
+    away: '8'
+    winplace: '7'
+    loseplace: '8'
+  Brackets_9_3_1_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '5'
+    home: '9'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '9'
+    away: '6'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '8'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '5'
+    home: '5'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_9_3_3_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_9_3_3_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_9_3_3_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '7'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_9_3_3_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '8'
+    away: '9'
+    winplace: '7'
+    loseplace: '9'
+  Brackets_9_3_3_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '5'
+    home: '6'
+    away: null
+    winplace: '8'
+    loseplace: null
+  Brackets_10_3_1_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '4'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '5'
+    home: '9'
+    away: '10'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '4'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '6'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '5'
+    away: '10'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '5'
+    home: '7'
+    away: '9'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_3_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_10_3_3_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_10_3_3_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '6'
+    away: '5'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_10_3_3_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '7'
+    away: '8'
+    winplace: '7'
+    loseplace: '8'
+  Brackets_10_3_3_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '5'
+    home: '9'
+    away: '10'
+    winplace: '9'
+    loseplace: '10'
+Division:
+  Division_1:
+    title: mixed
+    Tournament: Tournament_1
+Field:
+  Field_44:
+    title: 'Field 1'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '1'
+  Field_45:
+    title: 'Field 2'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '2'
+  Field_46:
+    title: 'Field 3'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '3'
+  Field_47:
+    title: 'Field 4'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '4'
+  Field_48:
+    title: 'Field 5'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '5'
+  Field_49:
+    title: 'Field 6'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '6'
+  Field_50:
+    title: 'Field 7'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '7'
+  Field_51:
+    title: 'Field 8'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '8'
+  Field_52:
+    title: 'Field 9'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '9'
+  Field_53:
+    title: 'Field 10'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '10'
+  Field_54:
+    title: 'Field 11'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '11'
+  Field_55:
+    title: 'Field 12'
+    Tournament: Tournament_1
+    comments: 'artificial grass'
+    rank: '12'
+  Field_56:
+    title: 'Field 13'
+    Tournament: Tournament_1
+    comments: 'artificial grass'
+    rank: '13'
+  Field_57:
+    title: 'Field 14'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '14'
+  Field_58:
+    title: 'Field 15'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '15'
+  Field_59:
+    title: 'Field 16'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '16'
+  Field_60:
+    title: 'Field 17'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '17'
+  Field_61:
+    title: 'Field 18'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '18'
+  Field_62:
+    title: 'Field 19'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '19'
+  Field_63:
+    title: 'Field 20'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '20'
+  Field_64:
+    title: 'Field 21'
+    Tournament: Tournament_1
+    comments: ''
+    rank: '21'
+Pool:
+  Pool_1:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_1
+    spots: '33'
+    rank: '1'
+  Pool_2:
+    title: Swissdraw
+    currentRound: '6'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_2
+    spots: '28'
+    rank: '1'
+  Pool_3:
+    title: 'Top Playoffs'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '1'
+  Pool_4:
+    title: 'Middle Playoffs'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '2'
+  Pool_5:
+    title: 'Lower Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '3'
+  Pool_6:
+    title: Playouts
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_4
+    Stage: Stage_3
+    spots: '3'
+    rank: '4'
+PoolMove:
+  PoolMove_2_1_1_1:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_2_1_2_2:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_2_1_3_3:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_2_1_4_4:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_2_1_5_5:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_2_1_6_6:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_2_1_7_7:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_2_1_8_8:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_2_1_9_9:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '9'
+    destinationSpot: '9'
+  PoolMove_2_1_10_10:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '10'
+    destinationSpot: '10'
+  PoolMove_2_1_11_11:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '11'
+    destinationSpot: '11'
+  PoolMove_2_1_12_12:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '12'
+    destinationSpot: '12'
+  PoolMove_2_1_13_13:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '13'
+    destinationSpot: '13'
+  PoolMove_2_1_14_14:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '14'
+    destinationSpot: '14'
+  PoolMove_2_1_15_15:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '15'
+    destinationSpot: '15'
+  PoolMove_2_1_16_16:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '16'
+    destinationSpot: '16'
+  PoolMove_2_1_17_17:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '17'
+    destinationSpot: '17'
+  PoolMove_2_1_18_18:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '18'
+    destinationSpot: '18'
+  PoolMove_2_1_19_19:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '19'
+    destinationSpot: '19'
+  PoolMove_2_1_20_20:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '20'
+    destinationSpot: '20'
+  PoolMove_2_1_21_21:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '21'
+    destinationSpot: '21'
+  PoolMove_2_1_22_22:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '22'
+    destinationSpot: '22'
+  PoolMove_2_1_23_23:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '23'
+    destinationSpot: '23'
+  PoolMove_2_1_24_24:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '24'
+    destinationSpot: '24'
+  PoolMove_2_1_25_25:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '25'
+    destinationSpot: '25'
+  PoolMove_2_1_26_26:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '26'
+    destinationSpot: '26'
+  PoolMove_2_1_27_27:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '27'
+    destinationSpot: '27'
+  PoolMove_3_2_1_1:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_3_2_2_2:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_3_2_3_3:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_3_2_4_4:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_3_2_5_5:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_3_2_6_6:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_3_2_7_7:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_3_2_8_8:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_4_2_9_1:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '9'
+    destinationSpot: '1'
+  PoolMove_4_2_10_2:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '10'
+    destinationSpot: '2'
+  PoolMove_4_2_11_3:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '11'
+    destinationSpot: '3'
+  PoolMove_4_2_12_4:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '12'
+    destinationSpot: '4'
+  PoolMove_4_2_13_5:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '13'
+    destinationSpot: '5'
+  PoolMove_4_2_14_6:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '14'
+    destinationSpot: '6'
+  PoolMove_4_2_15_7:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '15'
+    destinationSpot: '7'
+  PoolMove_4_2_16_8:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '16'
+    destinationSpot: '8'
+  PoolMove_5_2_17_1:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '17'
+    destinationSpot: '1'
+  PoolMove_5_2_18_2:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '18'
+    destinationSpot: '2'
+  PoolMove_5_2_19_3:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '19'
+    destinationSpot: '3'
+  PoolMove_5_2_20_4:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '20'
+    destinationSpot: '4'
+  PoolMove_5_2_21_5:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '21'
+    destinationSpot: '5'
+  PoolMove_5_2_22_6:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '22'
+    destinationSpot: '6'
+  PoolMove_5_2_23_7:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '23'
+    destinationSpot: '7'
+  PoolMove_5_2_24_8:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '24'
+    destinationSpot: '8'
+  PoolMove_6_2_25_1:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '25'
+    destinationSpot: '1'
+  PoolMove_6_2_26_2:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '26'
+    destinationSpot: '2'
+  PoolMove_6_2_27_3:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '27'
+    destinationSpot: '3'
+PoolRuleset:
+  PoolRuleset_1:
+    title: Setup
+    PoolStrategy: PoolStrategy_1
+    numberOfRounds: '0'
+    matchLength: '0'
+    qualificationCutoff: '0'
+    winningScore: null
+    byeScore: null
+    byeAgainst: null
+  PoolRuleset_2:
+    title: Swissdraw
+    PoolStrategy: PoolStrategy_2
+    numberOfRounds: '5'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: '12'
+    byeAgainst: '15'
+  PoolRuleset_3:
+    title: Bracket
+    PoolStrategy: PoolStrategy_3
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
+  PoolRuleset_4:
+    title: RoundRobin
+    PoolStrategy: PoolStrategy_4
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
+PoolStrategy:
+  PoolStrategy_1:
+    title: ManualRanking
+    description: 'manually rank pool'
+  PoolStrategy_2:
+    title: Swissdraw
+    description: 'Swissdraw matchmaking according to victory points'
+  PoolStrategy_3:
+    title: Bracket
+    description: Bracket
+  PoolStrategy_4:
+    title: RoundRobin
+    description: RoundRobin
+PoolTeam:
+  PoolTeam_1_1:
+    Pool: Pool_1
+    Team: Team_1
+    rank: '1'
+    seed: '1'
+  PoolTeam_1_2:
+    Pool: Pool_1
+    Team: Team_2
+    rank: '2'
+    seed: '2'
+  PoolTeam_1_3:
+    Pool: Pool_1
+    Team: Team_3
+    rank: '3'
+    seed: '3'
+  PoolTeam_1_4:
+    Pool: Pool_1
+    Team: Team_4
+    rank: '4'
+    seed: '4'
+  PoolTeam_1_5:
+    Pool: Pool_1
+    Team: Team_5
+    rank: '5'
+    seed: '5'
+  PoolTeam_1_6:
+    Pool: Pool_1
+    Team: Team_6
+    rank: '6'
+    seed: '6'
+  PoolTeam_1_7:
+    Pool: Pool_1
+    Team: Team_7
+    rank: '7'
+    seed: '7'
+  PoolTeam_1_8:
+    Pool: Pool_1
+    Team: Team_8
+    rank: '8'
+    seed: '8'
+  PoolTeam_1_9:
+    Pool: Pool_1
+    Team: Team_9
+    rank: '9'
+    seed: '9'
+  PoolTeam_1_10:
+    Pool: Pool_1
+    Team: Team_10
+    rank: '10'
+    seed: '10'
+  PoolTeam_1_11:
+    Pool: Pool_1
+    Team: Team_11
+    rank: '11'
+    seed: '11'
+  PoolTeam_1_12:
+    Pool: Pool_1
+    Team: Team_12
+    rank: '12'
+    seed: '12'
+  PoolTeam_1_13:
+    Pool: Pool_1
+    Team: Team_13
+    rank: '13'
+    seed: '13'
+  PoolTeam_1_14:
+    Pool: Pool_1
+    Team: Team_14
+    rank: '14'
+    seed: '14'
+  PoolTeam_1_15:
+    Pool: Pool_1
+    Team: Team_15
+    rank: '15'
+    seed: '15'
+  PoolTeam_1_16:
+    Pool: Pool_1
+    Team: Team_16
+    rank: '16'
+    seed: '16'
+  PoolTeam_1_17:
+    Pool: Pool_1
+    Team: Team_17
+    rank: '17'
+    seed: '17'
+  PoolTeam_1_18:
+    Pool: Pool_1
+    Team: Team_18
+    rank: '18'
+    seed: '18'
+  PoolTeam_1_19:
+    Pool: Pool_1
+    Team: Team_19
+    rank: '19'
+    seed: '19'
+  PoolTeam_1_20:
+    Pool: Pool_1
+    Team: Team_20
+    rank: '20'
+    seed: '20'
+  PoolTeam_1_21:
+    Pool: Pool_1
+    Team: Team_21
+    rank: '21'
+    seed: '21'
+  PoolTeam_1_22:
+    Pool: Pool_1
+    Team: Team_22
+    rank: '22'
+    seed: '22'
+  PoolTeam_1_23:
+    Pool: Pool_1
+    Team: Team_23
+    rank: '23'
+    seed: '23'
+  PoolTeam_1_24:
+    Pool: Pool_1
+    Team: Team_24
+    rank: '24'
+    seed: '24'
+  PoolTeam_1_25:
+    Pool: Pool_1
+    Team: Team_25
+    rank: '25'
+    seed: '25'
+  PoolTeam_1_26:
+    Pool: Pool_1
+    Team: Team_26
+    rank: '26'
+    seed: '26'
+  PoolTeam_1_27:
+    Pool: Pool_1
+    Team: Team_27
+    rank: '27'
+    seed: '27'
+  PoolTeam_1_28:
+    Pool: Pool_1
+    Team: Team_28
+    rank: '28'
+    seed: '28'
+  PoolTeam_1_29:
+    Pool: Pool_1
+    Team: Team_29
+    rank: '29'
+    seed: '29'
+  PoolTeam_1_30:
+    Pool: Pool_1
+    Team: Team_30
+    rank: '30'
+    seed: '30'
+  PoolTeam_1_31:
+    Pool: Pool_1
+    Team: Team_31
+    rank: '31'
+    seed: '31'
+  PoolTeam_1_32:
+    Pool: Pool_1
+    Team: Team_32
+    rank: '32'
+    seed: '32'
+  PoolTeam_1_33:
+    Pool: Pool_1
+    Team: Team_33
+    rank: '33'
+    seed: '33'
+  PoolTeam_2_1:
+    Pool: Pool_2
+    Team: Team_1
+    rank: '24'
+    seed: '1'
+  PoolTeam_2_2:
+    Pool: Pool_2
+    Team: Team_2
+    rank: '8'
+    seed: '2'
+  PoolTeam_2_3:
+    Pool: Pool_2
+    Team: Team_3
+    rank: '25'
+    seed: '3'
+  PoolTeam_2_4:
+    Pool: Pool_2
+    Team: Team_4
+    rank: '22'
+    seed: '4'
+  PoolTeam_2_5:
+    Pool: Pool_2
+    Team: Team_5
+    rank: '21'
+    seed: '5'
+  PoolTeam_2_6:
+    Pool: Pool_2
+    Team: Team_6
+    rank: '15'
+    seed: '6'
+  PoolTeam_2_7:
+    Pool: Pool_2
+    Team: Team_7
+    rank: '6'
+    seed: '7'
+  PoolTeam_2_8:
+    Pool: Pool_2
+    Team: Team_8
+    rank: '2'
+    seed: '8'
+  PoolTeam_2_9:
+    Pool: Pool_2
+    Team: Team_9
+    rank: '9'
+    seed: '9'
+  PoolTeam_2_10:
+    Pool: Pool_2
+    Team: Team_10
+    rank: '27'
+    seed: '10'
+  PoolTeam_2_11:
+    Pool: Pool_2
+    Team: Team_11
+    rank: '28'
+    seed: '11'
+  PoolTeam_2_12:
+    Pool: Pool_2
+    Team: Team_12
+    rank: '19'
+    seed: '12'
+  PoolTeam_2_13:
+    Pool: Pool_2
+    Team: Team_13
+    rank: '23'
+    seed: '13'
+  PoolTeam_2_14:
+    Pool: Pool_2
+    Team: Team_14
+    rank: '18'
+    seed: '14'
+  PoolTeam_2_15:
+    Pool: Pool_2
+    Team: Team_15
+    rank: '16'
+    seed: '15'
+  PoolTeam_2_16:
+    Pool: Pool_2
+    Team: Team_16
+    rank: '7'
+    seed: '16'
+  PoolTeam_2_17:
+    Pool: Pool_2
+    Team: Team_17
+    rank: '4'
+    seed: '17'
+  PoolTeam_2_18:
+    Pool: Pool_2
+    Team: Team_18
+    rank: '11'
+    seed: '18'
+  PoolTeam_2_19:
+    Pool: Pool_2
+    Team: Team_19
+    rank: '17'
+    seed: '19'
+  PoolTeam_2_20:
+    Pool: Pool_2
+    Team: Team_20
+    rank: '14'
+    seed: '20'
+  PoolTeam_2_21:
+    Pool: Pool_2
+    Team: Team_21
+    rank: '20'
+    seed: '21'
+  PoolTeam_2_22:
+    Pool: Pool_2
+    Team: Team_22
+    rank: '1'
+    seed: '22'
+  PoolTeam_2_23:
+    Pool: Pool_2
+    Team: Team_23
+    rank: '3'
+    seed: '23'
+  PoolTeam_2_24:
+    Pool: Pool_2
+    Team: Team_24
+    rank: '5'
+    seed: '24'
+  PoolTeam_2_25:
+    Pool: Pool_2
+    Team: Team_25
+    rank: '12'
+    seed: '25'
+  PoolTeam_2_26:
+    Pool: Pool_2
+    Team: Team_26
+    rank: '13'
+    seed: '26'
+  PoolTeam_2_27:
+    Pool: Pool_2
+    Team: Team_27
+    rank: '10'
+    seed: '27'
+  PoolTeam_2_34:
+    Pool: Pool_2
+    Team: Team_34
+    rank: '26'
+    seed: '28'
+Round:
+  Round_232:
+    Pool: Pool_2
+    matchLength: '90'
+    rank: '1'
+  Round_233:
+    Pool: Pool_2
+    matchLength: '90'
+    rank: '2'
+  Round_234:
+    Pool: Pool_2
+    matchLength: '90'
+    rank: '3'
+  Round_235:
+    Pool: Pool_2
+    matchLength: '90'
+    rank: '4'
+  Round_236:
+    Pool: Pool_2
+    matchLength: '90'
+    rank: '5'
+  Round_237:
+    Pool: Pool_3
+    matchLength: '90'
+    rank: '1'
+  Round_238:
+    Pool: Pool_3
+    matchLength: '90'
+    rank: '2'
+  Round_239:
+    Pool: Pool_3
+    matchLength: '90'
+    rank: '3'
+  Round_240:
+    Pool: Pool_4
+    matchLength: '90'
+    rank: '1'
+  Round_241:
+    Pool: Pool_4
+    matchLength: '90'
+    rank: '2'
+  Round_242:
+    Pool: Pool_4
+    matchLength: '90'
+    rank: '3'
+  Round_243:
+    Pool: Pool_5
+    matchLength: '90'
+    rank: '1'
+  Round_244:
+    Pool: Pool_5
+    matchLength: '90'
+    rank: '2'
+  Round_245:
+    Pool: Pool_5
+    matchLength: '90'
+    rank: '3'
+  Round_246:
+    Pool: Pool_6
+    matchLength: '90'
+    rank: '1'
+  Round_247:
+    Pool: Pool_6
+    matchLength: '90'
+    rank: '2'
+  Round_248:
+    Pool: Pool_6
+    matchLength: '90'
+    rank: '3'
+RoundMatch:
+  RoundMatch_1237:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_44
+    matchName: 'Match rank 1'
+    homeName: 'Seed 1'
+    awayName: 'Seed 15'
+    rank: null
+    HomeTeam: Team_1
+    AwayTeam: Team_15
+    homeScore: '4'
+    awayScore: '4'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1238:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_45
+    matchName: 'Match rank 2'
+    homeName: 'Seed 2'
+    awayName: 'Seed 16'
+    rank: null
+    HomeTeam: Team_2
+    AwayTeam: Team_16
+    homeScore: '2'
+    awayScore: '2'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1239:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_50
+    matchName: 'Match rank 3'
+    homeName: 'Seed 3'
+    awayName: 'Seed 17'
+    rank: null
+    HomeTeam: Team_3
+    AwayTeam: Team_17
+    homeScore: '0'
+    awayScore: '13'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1240:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_47
+    matchName: 'Match rank 4'
+    homeName: 'Seed 4'
+    awayName: 'Seed 18'
+    rank: null
+    HomeTeam: Team_4
+    AwayTeam: Team_18
+    homeScore: '13'
+    awayScore: '11'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1241:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_48
+    matchName: 'Match rank 5'
+    homeName: 'Seed 5'
+    awayName: 'Seed 19'
+    rank: null
+    HomeTeam: Team_5
+    AwayTeam: Team_19
+    homeScore: '9'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1242:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_49
+    matchName: 'Match rank 6'
+    homeName: 'Seed 6'
+    awayName: 'Seed 20'
+    rank: null
+    HomeTeam: Team_6
+    AwayTeam: Team_20
+    homeScore: '14'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1243:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_46
+    matchName: 'Match rank 7'
+    homeName: 'Seed 7'
+    awayName: 'Seed 21'
+    rank: null
+    HomeTeam: Team_7
+    AwayTeam: Team_21
+    homeScore: '12'
+    awayScore: '6'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1244:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_56
+    matchName: 'Match rank 8'
+    homeName: 'Seed 8'
+    awayName: 'Seed 22'
+    rank: null
+    HomeTeam: Team_8
+    AwayTeam: Team_22
+    homeScore: '2'
+    awayScore: '5'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1245:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_52
+    matchName: 'Match rank 9'
+    homeName: 'Seed 9'
+    awayName: 'Seed 23'
+    rank: null
+    HomeTeam: Team_9
+    AwayTeam: Team_23
+    homeScore: '10'
+    awayScore: '7'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1246:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_63
+    matchName: 'Match rank 10'
+    homeName: 'Seed 10'
+    awayName: 'Seed 24'
+    rank: null
+    HomeTeam: Team_10
+    AwayTeam: Team_24
+    homeScore: '1'
+    awayScore: '8'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1247:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_53
+    matchName: 'Match rank 11'
+    homeName: 'Seed 11'
+    awayName: 'Seed 25'
+    rank: null
+    HomeTeam: Team_11
+    AwayTeam: Team_25
+    homeScore: '0'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1248:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_55
+    matchName: 'Match rank 12'
+    homeName: 'Seed 12'
+    awayName: 'Seed 26'
+    rank: null
+    HomeTeam: Team_12
+    AwayTeam: Team_26
+    homeScore: '10'
+    awayScore: '13'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1249:
+    Round: Round_232
+    scheduledTime: null
+    Field: Field_51
+    matchName: 'Match rank 13'
+    homeName: 'Seed 13'
+    awayName: 'Seed 27'
+    rank: null
+    HomeTeam: Team_13
+    AwayTeam: Team_27
+    homeScore: '12'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1250:
+    Round: Round_232
+    scheduledTime: null
+    matchName: 'BYE Match Round 1'
+    homeName: 'Seed 14'
+    awayName: BYE
+    rank: null
+    HomeTeam: Team_14
+    AwayTeam: Team_34
+    homeScore: '15'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1251:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_57
+    matchName: 'Match rank 1'
+    homeName: 'Round 1 aprx rank 1'
+    awayName: 'Round 1 aprx rank 2'
+    rank: null
+    HomeTeam: Team_17
+    AwayTeam: Team_25
+    homeScore: '15'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1252:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_58
+    matchName: 'Match rank 2'
+    homeName: 'Round 1 aprx rank 3'
+    awayName: 'Round 1 aprx rank 4'
+    rank: null
+    HomeTeam: Team_24
+    AwayTeam: Team_7
+    homeScore: '11'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1253:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_59
+    matchName: 'Match rank 3'
+    homeName: 'Round 1 aprx rank 5'
+    awayName: 'Round 1 aprx rank 6'
+    rank: null
+    HomeTeam: Team_19
+    AwayTeam: Team_27
+    homeScore: '6'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1254:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_45
+    matchName: 'Match rank 4'
+    homeName: 'Round 1 aprx rank 7'
+    awayName: 'Round 1 aprx rank 8'
+    rank: null
+    HomeTeam: Team_14
+    AwayTeam: Team_26
+    homeScore: '1'
+    awayScore: '5'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1255:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_61
+    matchName: 'Match rank 5'
+    homeName: 'Round 1 aprx rank 9'
+    awayName: 'Round 1 aprx rank 10'
+    rank: null
+    HomeTeam: Team_9
+    AwayTeam: Team_22
+    homeScore: '0'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1256:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_62
+    matchName: 'Match rank 6'
+    homeName: 'Round 1 aprx rank 11'
+    awayName: 'Round 1 aprx rank 12'
+    rank: null
+    HomeTeam: Team_4
+    AwayTeam: Team_20
+    homeScore: '0'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1257:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_54
+    matchName: 'Match rank 7'
+    homeName: 'Round 1 aprx rank 13'
+    awayName: 'Round 1 aprx rank 14'
+    rank: null
+    HomeTeam: Team_15
+    AwayTeam: Team_16
+    homeScore: '4'
+    awayScore: '13'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1258:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_64
+    matchName: 'Match rank 8'
+    homeName: 'Round 1 aprx rank 15'
+    awayName: 'Round 1 aprx rank 16'
+    rank: null
+    HomeTeam: Team_1
+    AwayTeam: Team_2
+    homeScore: '1'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1259:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_44
+    matchName: 'Match rank 9'
+    homeName: 'Round 1 aprx rank 17'
+    awayName: 'Round 1 aprx rank 18'
+    rank: null
+    HomeTeam: Team_6
+    AwayTeam: Team_18
+    homeScore: '5'
+    awayScore: '8'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1260:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_60
+    matchName: 'Match rank 10'
+    homeName: 'Round 1 aprx rank 19'
+    awayName: 'Round 1 aprx rank 20'
+    rank: null
+    HomeTeam: Team_12
+    AwayTeam: Team_23
+    homeScore: '12'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1261:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_46
+    matchName: 'Match rank 11'
+    homeName: 'Round 1 aprx rank 21'
+    awayName: 'Round 1 aprx rank 22'
+    rank: null
+    HomeTeam: Team_8
+    AwayTeam: Team_5
+    homeScore: '4'
+    awayScore: '2'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1262:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_47
+    matchName: 'Match rank 12'
+    homeName: 'Round 1 aprx rank 23'
+    awayName: 'Round 1 aprx rank 24'
+    rank: null
+    HomeTeam: Team_21
+    AwayTeam: Team_10
+    homeScore: '5'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1263:
+    Round: Round_233
+    scheduledTime: null
+    Field: Field_48
+    matchName: 'Match rank 13'
+    homeName: 'Round 1 aprx rank 25'
+    awayName: 'Round 1 aprx rank 26'
+    rank: null
+    HomeTeam: Team_11
+    AwayTeam: Team_3
+    homeScore: '11'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1264:
+    Round: Round_233
+    scheduledTime: null
+    matchName: 'BYE Match Round 1'
+    homeName: 'Round 1 team'
+    awayName: BYE
+    rank: null
+    HomeTeam: Team_34
+    AwayTeam: Team_13
+    homeScore: '12'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1265:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_49
+    matchName: 'Match rank 1'
+    homeName: 'Round 2 aprx rank 1'
+    awayName: 'Round 2 aprx rank 2'
+    rank: null
+    HomeTeam: Team_22
+    AwayTeam: Team_27
+    homeScore: '10'
+    awayScore: '3'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1266:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_50
+    matchName: 'Match rank 2'
+    homeName: 'Round 2 aprx rank 3'
+    awayName: 'Round 2 aprx rank 4'
+    rank: null
+    HomeTeam: Team_20
+    AwayTeam: Team_17
+    homeScore: '8'
+    awayScore: '11'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1267:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_59
+    matchName: 'Match rank 3'
+    homeName: 'Round 2 aprx rank 5'
+    awayName: 'Round 2 aprx rank 6'
+    rank: null
+    HomeTeam: Team_2
+    AwayTeam: Team_25
+    homeScore: '4'
+    awayScore: '4'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1268:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_52
+    matchName: 'Match rank 4'
+    homeName: 'Round 2 aprx rank 7'
+    awayName: 'Round 2 aprx rank 8'
+    rank: null
+    HomeTeam: Team_16
+    AwayTeam: Team_7
+    homeScore: '5'
+    awayScore: '6'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1269:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_57
+    matchName: 'Match rank 5'
+    homeName: 'Round 2 aprx rank 9'
+    awayName: 'Round 2 aprx rank 10'
+    rank: null
+    HomeTeam: Team_26
+    AwayTeam: Team_24
+    homeScore: '1'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1270:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_54
+    matchName: 'Match rank 6'
+    homeName: 'Round 2 aprx rank 11'
+    awayName: 'Round 2 aprx rank 12'
+    rank: null
+    HomeTeam: Team_10
+    AwayTeam: Team_18
+    homeScore: '5'
+    awayScore: '13'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1271:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_55
+    matchName: 'Match rank 7'
+    homeName: 'Round 2 aprx rank 13'
+    awayName: 'Round 2 aprx rank 14'
+    rank: null
+    HomeTeam: Team_13
+    AwayTeam: Team_8
+    homeScore: '2'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1272:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_56
+    matchName: 'Match rank 8'
+    homeName: 'Round 2 aprx rank 15'
+    awayName: 'Round 2 aprx rank 16'
+    rank: null
+    HomeTeam: Team_14
+    AwayTeam: Team_23
+    homeScore: '4'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1273:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_53
+    matchName: 'Match rank 9'
+    homeName: 'Round 2 aprx rank 17'
+    awayName: 'Round 2 aprx rank 18'
+    rank: null
+    HomeTeam: Team_6
+    AwayTeam: Team_19
+    homeScore: '5'
+    awayScore: '2'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1274:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_58
+    matchName: 'Match rank 10'
+    homeName: 'Round 2 aprx rank 19'
+    awayName: 'Round 2 aprx rank 20'
+    rank: null
+    HomeTeam: Team_5
+    AwayTeam: Team_9
+    homeScore: '3'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1275:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_51
+    matchName: 'Match rank 11'
+    homeName: 'Round 2 aprx rank 21'
+    awayName: 'Round 2 aprx rank 22'
+    rank: null
+    HomeTeam: Team_15
+    AwayTeam: Team_3
+    homeScore: '9'
+    awayScore: '10'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1276:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_60
+    matchName: 'Match rank 12'
+    homeName: 'Round 2 aprx rank 23'
+    awayName: 'Round 2 aprx rank 24'
+    rank: null
+    HomeTeam: Team_1
+    AwayTeam: Team_4
+    homeScore: '5'
+    awayScore: '5'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1277:
+    Round: Round_234
+    scheduledTime: null
+    Field: Field_61
+    matchName: 'Match rank 13'
+    homeName: 'Round 2 aprx rank 25'
+    awayName: 'Round 2 aprx rank 26'
+    rank: null
+    HomeTeam: Team_21
+    AwayTeam: Team_11
+    homeScore: '7'
+    awayScore: '7'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1278:
+    Round: Round_234
+    scheduledTime: null
+    matchName: 'BYE Match Round 2'
+    homeName: 'Round 2 team'
+    awayName: BYE
+    rank: null
+    HomeTeam: Team_12
+    AwayTeam: Team_34
+    homeScore: '15'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1279:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_62
+    matchName: 'Match rank 1'
+    homeName: 'Round 3 aprx rank 1'
+    awayName: 'Round 3 aprx rank 2'
+    rank: null
+    HomeTeam: Team_22
+    AwayTeam: Team_24
+    homeScore: '10'
+    awayScore: '10'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1280:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_63
+    matchName: 'Match rank 2'
+    homeName: 'Round 3 aprx rank 3'
+    awayName: 'Round 3 aprx rank 4'
+    rank: null
+    HomeTeam: Team_17
+    AwayTeam: Team_7
+    homeScore: '5'
+    awayScore: '3'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1281:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_64
+    matchName: 'Match rank 3'
+    homeName: 'Round 3 aprx rank 5'
+    awayName: 'Round 3 aprx rank 6'
+    rank: null
+    HomeTeam: Team_25
+    AwayTeam: Team_8
+    homeScore: '0'
+    awayScore: '6'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1282:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_44
+    matchName: 'Match rank 4'
+    homeName: 'Round 3 aprx rank 7'
+    awayName: 'Round 3 aprx rank 8'
+    rank: null
+    HomeTeam: Team_2
+    AwayTeam: Team_18
+    homeScore: '12'
+    awayScore: '11'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1283:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_45
+    matchName: 'Match rank 5'
+    homeName: 'Round 3 aprx rank 9'
+    awayName: 'Round 3 aprx rank 10'
+    rank: null
+    HomeTeam: Team_16
+    AwayTeam: Team_20
+    homeScore: '15'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1284:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_46
+    matchName: 'Match rank 6'
+    homeName: 'Round 3 aprx rank 11'
+    awayName: 'Round 3 aprx rank 12'
+    rank: null
+    HomeTeam: Team_23
+    AwayTeam: Team_27
+    homeScore: '13'
+    awayScore: '13'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1285:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_47
+    matchName: 'Match rank 7'
+    homeName: 'Round 3 aprx rank 13'
+    awayName: 'Round 3 aprx rank 14'
+    rank: null
+    HomeTeam: Team_9
+    AwayTeam: Team_6
+    homeScore: '12'
+    awayScore: '10'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1286:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_48
+    matchName: 'Match rank 8'
+    homeName: 'Round 3 aprx rank 15'
+    awayName: 'Round 3 aprx rank 16'
+    rank: null
+    HomeTeam: Team_12
+    AwayTeam: Team_10
+    homeScore: '2'
+    awayScore: '3'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1287:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_49
+    matchName: 'Match rank 9'
+    homeName: 'Round 3 aprx rank 17'
+    awayName: 'Round 3 aprx rank 18'
+    rank: null
+    HomeTeam: Team_26
+    AwayTeam: Team_19
+    homeScore: '4'
+    awayScore: '4'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1288:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_50
+    matchName: 'Match rank 10'
+    homeName: 'Round 3 aprx rank 19'
+    awayName: 'Round 3 aprx rank 20'
+    rank: null
+    HomeTeam: Team_14
+    AwayTeam: Team_3
+    homeScore: '13'
+    awayScore: '8'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1289:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_51
+    matchName: 'Match rank 11'
+    homeName: 'Round 3 aprx rank 21'
+    awayName: 'Round 3 aprx rank 22'
+    rank: null
+    HomeTeam: Team_1
+    AwayTeam: Team_13
+    homeScore: '9'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1290:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_52
+    matchName: 'Match rank 12'
+    homeName: 'Round 3 aprx rank 23'
+    awayName: 'Round 3 aprx rank 24'
+    rank: null
+    HomeTeam: Team_4
+    AwayTeam: Team_21
+    homeScore: '4'
+    awayScore: '13'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1291:
+    Round: Round_235
+    scheduledTime: null
+    Field: Field_53
+    matchName: 'Match rank 13'
+    homeName: 'Round 3 aprx rank 25'
+    awayName: 'Round 3 aprx rank 26'
+    rank: null
+    HomeTeam: Team_11
+    AwayTeam: Team_5
+    homeScore: '0'
+    awayScore: '5'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1292:
+    Round: Round_235
+    scheduledTime: null
+    matchName: 'BYE Match Round 3'
+    homeName: 'Round 3 team'
+    awayName: BYE
+    rank: null
+    HomeTeam: Team_34
+    AwayTeam: Team_15
+    homeScore: '12'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1293:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_54
+    matchName: 'Match rank 1'
+    homeName: 'Round 4 aprx rank 1'
+    awayName: 'Round 4 aprx rank 2'
+    rank: null
+    HomeTeam: Team_22
+    AwayTeam: Team_17
+    homeScore: '12'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1294:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_55
+    matchName: 'Match rank 2'
+    homeName: 'Round 4 aprx rank 3'
+    awayName: 'Round 4 aprx rank 4'
+    rank: null
+    HomeTeam: Team_8
+    AwayTeam: Team_24
+    homeScore: '15'
+    awayScore: '14'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1295:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_56
+    matchName: 'Match rank 3'
+    homeName: 'Round 4 aprx rank 5'
+    awayName: 'Round 4 aprx rank 6'
+    rank: null
+    HomeTeam: Team_2
+    AwayTeam: Team_7
+    homeScore: '1'
+    awayScore: '5'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1296:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_57
+    matchName: 'Match rank 4'
+    homeName: 'Round 4 aprx rank 7'
+    awayName: 'Round 4 aprx rank 8'
+    rank: null
+    HomeTeam: Team_16
+    AwayTeam: Team_18
+    homeScore: '7'
+    awayScore: '4'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1297:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_58
+    matchName: 'Match rank 5'
+    homeName: 'Round 4 aprx rank 9'
+    awayName: 'Round 4 aprx rank 10'
+    rank: null
+    HomeTeam: Team_23
+    AwayTeam: Team_20
+    homeScore: '9'
+    awayScore: '0'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1298:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_59
+    matchName: 'Match rank 6'
+    homeName: 'Round 4 aprx rank 11'
+    awayName: 'Round 4 aprx rank 12'
+    rank: null
+    HomeTeam: Team_27
+    AwayTeam: Team_25
+    homeScore: '11'
+    awayScore: '11'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1299:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_60
+    matchName: 'Match rank 7'
+    homeName: 'Round 4 aprx rank 13'
+    awayName: 'Round 4 aprx rank 14'
+    rank: null
+    HomeTeam: Team_9
+    AwayTeam: Team_12
+    homeScore: '10'
+    awayScore: '7'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1300:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_61
+    matchName: 'Match rank 8'
+    homeName: 'Round 4 aprx rank 15'
+    awayName: 'Round 4 aprx rank 16'
+    rank: null
+    HomeTeam: Team_6
+    AwayTeam: Team_14
+    homeScore: '6'
+    awayScore: '5'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1301:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_62
+    matchName: 'Match rank 9'
+    homeName: 'Round 4 aprx rank 17'
+    awayName: 'Round 4 aprx rank 18'
+    rank: null
+    HomeTeam: Team_10
+    AwayTeam: Team_26
+    homeScore: '0'
+    awayScore: '12'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1302:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_63
+    matchName: 'Match rank 10'
+    homeName: 'Round 4 aprx rank 19'
+    awayName: 'Round 4 aprx rank 20'
+    rank: null
+    HomeTeam: Team_21
+    AwayTeam: Team_19
+    homeScore: '4'
+    awayScore: '7'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1303:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_64
+    matchName: 'Match rank 11'
+    homeName: 'Round 4 aprx rank 21'
+    awayName: 'Round 4 aprx rank 22'
+    rank: null
+    HomeTeam: Team_15
+    AwayTeam: Team_13
+    homeScore: '11'
+    awayScore: '7'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1304:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_44
+    matchName: 'Match rank 12'
+    homeName: 'Round 4 aprx rank 23'
+    awayName: 'Round 4 aprx rank 24'
+    rank: null
+    HomeTeam: Team_3
+    AwayTeam: Team_1
+    homeScore: '3'
+    awayScore: '4'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1305:
+    Round: Round_236
+    scheduledTime: null
+    Field: Field_45
+    matchName: 'Match rank 13'
+    homeName: 'Round 4 aprx rank 25'
+    awayName: 'Round 4 aprx rank 26'
+    rank: null
+    HomeTeam: Team_11
+    AwayTeam: Team_4
+    homeScore: '6'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1306:
+    Round: Round_236
+    scheduledTime: null
+    matchName: 'BYE Match Round 4'
+    homeName: 'Round 4 team'
+    awayName: BYE
+    rank: null
+    HomeTeam: Team_34
+    AwayTeam: Team_5
+    homeScore: '12'
+    awayScore: '15'
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1307:
+    Round: Round_246
+    scheduledTime: null
+    Field: Field_44
+    matchName: 'Match rank 1'
+    homeName: 'Team 1'
+    awayName: 'Team 3'
+    rank: null
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1308:
+    Round: Round_246
+    scheduledTime: null
+    Field: Field_45
+    matchName: 'BYE match'
+    homeName: 'Team 2'
+    awayName: BYE
+    rank: null
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1309:
+    Round: Round_247
+    scheduledTime: null
+    Field: Field_46
+    matchName: 'Match rank 2'
+    homeName: 'Team 3'
+    awayName: 'Team 2'
+    rank: null
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1310:
+    Round: Round_247
+    scheduledTime: null
+    Field: Field_47
+    matchName: 'BYE match'
+    homeName: 'Team 1'
+    awayName: BYE
+    rank: null
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1311:
+    Round: Round_248
+    scheduledTime: null
+    Field: Field_48
+    matchName: 'Match rank 1'
+    homeName: 'Team 1'
+    awayName: 'Team 2'
+    rank: null
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+  RoundMatch_1312:
+    Round: Round_248
+    scheduledTime: null
+    Field: Field_49
+    matchName: 'BYE match'
+    homeName: BYE
+    awayName: 'Team 3'
+    rank: null
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: null
+    worstPossibleRank: null
+SMS:
+  SMS_1:
+    Team: Team_7
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play WAF on Field 46at '
+    status: null
+    createTime: '1307116587'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_2:
+    Team: Team_21
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Too Many Pies on Field 46at '
+    status: null
+    createTime: '1307116587'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_3:
+    Team: Team_14
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you can take a break due to the odd number of teams.You''ll score a 15-12 win'
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_4:
+    Team: Team_34
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play TeamAustria Mixed on Field at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_5:
+    Team: Team_4
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Glasgow Ultimate on Field 47at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_6:
+    Team: Team_18
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play PUF on Field 47at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_7:
+    Team: Team_11
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Ireland National Team Mixed Ultimate on Field 53at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_8:
+    Team: Team_25
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Frisbee Family on Field 53at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_9:
+    Team: Team_1
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Rusty Bikes on Field 44at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_10:
+    Team: Team_15
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Disco Stu on Field 44at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_11:
+    Team: Team_8
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Akka on Field 56at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_12:
+    Team: Team_22
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play France Mixed on Field 56at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_13:
+    Team: Team_5
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Robiram Project on Field 48at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_14:
+    Team: Team_19
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play GB - National - Mixed - Beach Ultimate on Field 48at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_15:
+    Team: Team_12
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Turkish Nationalish Team on Field 55at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_16:
+    Team: Team_26
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Spirit on Lemon on Field 55at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_17:
+    Team: Team_2
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Nuts''n Berries on Field 45at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_18:
+    Team: Team_16
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Superfly on Field 45at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_19:
+    Team: Team_9
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Switzerland National Team Mixed Ultimate on Field 52at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_20:
+    Team: Team_23
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Denmark National Team on Field 52at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_21:
+    Team: Team_6
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Dutch National Mixed Team on Field 49at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_22:
+    Team: Team_20
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Quijotes+Dulcineas on Field 49at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_23:
+    Team: Team_13
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Drehst''n Deckel on Field 51at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_24:
+    Team: Team_27
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Cheek2Cheek on Field 51at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_25:
+    Team: Team_3
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Deutsche Mixed Ultimate Nationalmannschaft on Field 50at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_26:
+    Team: Team_17
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Russian National Open Team on Field 50at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_27:
+    Team: Team_10
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Fling on Field 63at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_28:
+    Team: Team_24
+    Round: Round_232
+    message: 'Welcome to Windmill Windup 2011!In round 1,you''ll play Stockholm Syndromes Ultimate Frisbee Club on Field 63at '
+    status: null
+    createTime: '1307116588'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_29:
+    Team: Team_15
+    Round: Round_233
+    message: 'After a 4-4 tie in round 1, you are now ranked 13th.In round 2,you''ll play Nuts''n Berries(ranked 15th) on Field 54at '
+    status: null
+    createTime: '1307116629'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_30:
+    Team: Team_16
+    Round: Round_233
+    message: 'After a 2-2 tie in round 1, you are now ranked 15th.In round 2,you''ll play Rusty Bikes(ranked 13th) on Field 54at '
+    status: null
+    createTime: '1307116629'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_31:
+    Team: Team_34
+    Round: Round_233
+    message: 'After a 12-15 loss in round 1, you are now ranked 19th.In round 2,you''ll play Cheek2Cheek(ranked 19th) on Field at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_32:
+    Team: Team_13
+    Round: Round_233
+    message: 'After a 12-15 loss in round 1, you are now ranked 19th.In round 2,you can take a break due to the odd number of teams.You''ll score a 15-12 win'
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_33:
+    Team: Team_14
+    Round: Round_233
+    message: 'After a 15-12 win in round 1, you are now ranked 6th.In round 2,you''ll play Turkish Nationalish Team(ranked 8th) on Field 45at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_34:
+    Team: Team_26
+    Round: Round_233
+    message: 'After a 13-10 win in round 1, you are now ranked 8th.In round 2,you''ll play TeamAustria Mixed(ranked 6th) on Field 45at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_35:
+    Team: Team_8
+    Round: Round_233
+    message: 'After a 2-5 loss in round 1, you are now ranked 23rd.In round 2,you''ll play GB - National - Mixed - Beach Ultimate(ranked 24th) on Field 46at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_36:
+    Team: Team_5
+    Round: Round_233
+    message: 'After a 9-14 loss in round 1, you are now ranked 24th.In round 2,you''ll play France Mixed(ranked 23rd) on Field 46at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_37:
+    Team: Team_17
+    Round: Round_233
+    message: 'After a 13-0 win in round 1, you are now ranked 1st.In round 2,you''ll play Ireland National Team Mixed Ultimate(ranked 2nd) on Field 57at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_38:
+    Team: Team_25
+    Round: Round_233
+    message: 'After a 12-0 win in round 1, you are now ranked 2nd.In round 2,you''ll play Deutsche Mixed Ultimate Nationalmannschaft(ranked 1st) on Field 57at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_39:
+    Team: Team_1
+    Round: Round_233
+    message: 'After a 4-4 tie in round 1, you are now ranked 13th.In round 2,you''ll play Superfly(ranked 15th) on Field 64at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_40:
+    Team: Team_2
+    Round: Round_233
+    message: 'After a 2-2 tie in round 1, you are now ranked 15th.In round 2,you''ll play Disco Stu(ranked 13th) on Field 64at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_41:
+    Team: Team_9
+    Round: Round_233
+    message: 'After a 10-7 win in round 1, you are now ranked 9th.In round 2,you''ll play Akka(ranked 10th) on Field 61at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_42:
+    Team: Team_22
+    Round: Round_233
+    message: 'After a 5-2 win in round 1, you are now ranked 10th.In round 2,you''ll play Denmark National Team(ranked 9th) on Field 61at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_43:
+    Team: Team_21
+    Round: Round_233
+    message: 'After a 6-12 loss in round 1, you are now ranked 25th.In round 2,you''ll play Stockholm Syndromes Ultimate Frisbee Club(ranked 26th) on Field 47at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_44:
+    Team: Team_10
+    Round: Round_233
+    message: 'After a 1-8 loss in round 1, you are now ranked 26th.In round 2,you''ll play WAF(ranked 25th) on Field 47at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_45:
+    Team: Team_24
+    Round: Round_233
+    message: 'After a 8-1 win in round 1, you are now ranked 3rd.In round 2,you''ll play Too Many Pies(ranked 4th) on Field 58at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_46:
+    Team: Team_7
+    Round: Round_233
+    message: 'After a 12-6 win in round 1, you are now ranked 4th.In round 2,you''ll play Fling(ranked 3rd) on Field 58at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_47:
+    Team: Team_6
+    Round: Round_233
+    message: 'After a 14-15 loss in round 1, you are now ranked 17th.In round 2,you''ll play Glasgow Ultimate(ranked 18th) on Field 44at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_48:
+    Team: Team_18
+    Round: Round_233
+    message: 'After a 11-13 loss in round 1, you are now ranked 18th.In round 2,you''ll play Quijotes+Dulcineas(ranked 17th) on Field 44at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_49:
+    Team: Team_4
+    Round: Round_233
+    message: 'After a 13-11 win in round 1, you are now ranked 11th.In round 2,you''ll play Dutch National Mixed Team(ranked 12th) on Field 62at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_50:
+    Team: Team_20
+    Round: Round_233
+    message: 'After a 15-14 win in round 1, you are now ranked 12th.In round 2,you''ll play PUF(ranked 11th) on Field 62at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_51:
+    Team: Team_11
+    Round: Round_233
+    message: 'After a 0-12 loss in round 1, you are now ranked 27th.In round 2,you''ll play Russian National Open Team(ranked 28th) on Field 48at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_52:
+    Team: Team_3
+    Round: Round_233
+    message: 'After a 0-13 loss in round 1, you are now ranked 28th.In round 2,you''ll play Frisbee Family(ranked 27th) on Field 48at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_53:
+    Team: Team_19
+    Round: Round_233
+    message: 'After a 14-9 win in round 1, you are now ranked 5th.In round 2,you''ll play Drehst''n Deckel(ranked 6th) on Field 59at '
+    status: null
+    createTime: '1307116630'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_54:
+    Team: Team_27
+    Round: Round_233
+    message: 'After a 15-12 win in round 1, you are now ranked 6th.In round 2,you''ll play Robiram Project(ranked 5th) on Field 59at '
+    status: null
+    createTime: '1307116631'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_55:
+    Team: Team_12
+    Round: Round_233
+    message: 'After a 10-13 loss in round 1, you are now ranked 21st.In round 2,you''ll play Switzerland National Team Mixed Ultimate(ranked 22nd) on Field 60at '
+    status: null
+    createTime: '1307116631'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_56:
+    Team: Team_23
+    Round: Round_233
+    message: 'After a 7-10 loss in round 1, you are now ranked 22nd.In round 2,you''ll play Spirit on Lemon(ranked 21st) on Field 60at '
+    status: null
+    createTime: '1307116631'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_57:
+    Team: Team_13
+    Round: Round_234
+    message: 'After a 15-12 win in round 2, you are now ranked 13th.In round 3,you''ll play France Mixed(ranked 14th) on Field 55at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_58:
+    Team: Team_8
+    Round: Round_234
+    message: 'After a 4-2 win in round 2, you are now ranked 14th.In round 3,you''ll play Cheek2Cheek(ranked 13th) on Field 55at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_59:
+    Team: Team_12
+    Round: Round_234
+    message: 'After a 12-14 loss in round 2, you are now ranked 19th.In round 3,you can take a break due to the odd number of teams.You''ll score a 15-12 win'
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_60:
+    Team: Team_34
+    Round: Round_234
+    message: 'After a 12-15 loss in round 2, you are now ranked 20th.In round 3,you''ll play Spirit on Lemon(ranked 19th) on Field at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_61:
+    Team: Team_16
+    Round: Round_234
+    message: 'After a 13-4 win in round 2, you are now ranked 7th.In round 3,you''ll play Too Many Pies(ranked 8th) on Field 52at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_62:
+    Team: Team_7
+    Round: Round_234
+    message: 'After a 14-11 win in round 2, you are now ranked 8th.In round 3,you''ll play Nuts''n Berries(ranked 7th) on Field 52at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_63:
+    Team: Team_15
+    Round: Round_234
+    message: 'After a 4-13 loss in round 2, you are now ranked 23rd.In round 3,you''ll play Russian National Open Team(ranked 24th) on Field 51at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_64:
+    Team: Team_3
+    Round: Round_234
+    message: 'After a 14-11 win in round 2, you are now ranked 24th.In round 3,you''ll play Rusty Bikes(ranked 23rd) on Field 51at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_65:
+    Team: Team_22
+    Round: Round_234
+    message: 'After a 12-0 win in round 2, you are now ranked 1st.In round 3,you''ll play Drehst''n Deckel(ranked 2nd) on Field 49at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_66:
+    Team: Team_27
+    Round: Round_234
+    message: 'After a 15-6 win in round 2, you are now ranked 2nd.In round 3,you''ll play Akka(ranked 1st) on Field 49at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_67:
+    Team: Team_14
+    Round: Round_234
+    message: 'After a 1-5 loss in round 2, you are now ranked 15th.In round 3,you''ll play Switzerland National Team Mixed Ultimate(ranked 16th) on Field 56at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_68:
+    Team: Team_23
+    Round: Round_234
+    message: 'After a 14-12 win in round 2, you are now ranked 16th.In round 3,you''ll play TeamAustria Mixed(ranked 15th) on Field 56at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_69:
+    Team: Team_26
+    Round: Round_234
+    message: 'After a 5-1 win in round 2, you are now ranked 9th.In round 3,you''ll play Fling(ranked 10th) on Field 57at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_70:
+    Team: Team_24
+    Round: Round_234
+    message: 'After a 11-14 loss in round 2, you are now ranked 10th.In round 3,you''ll play Turkish Nationalish Team(ranked 9th) on Field 57at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_71:
+    Team: Team_1
+    Round: Round_234
+    message: 'After a 1-12 loss in round 2, you are now ranked 25th.In round 3,you''ll play PUF(ranked 26th) on Field 60at '
+    status: null
+    createTime: '1307116675'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_72:
+    Team: Team_4
+    Round: Round_234
+    message: 'After a 0-14 loss in round 2, you are now ranked 26th.In round 3,you''ll play Disco Stu(ranked 25th) on Field 60at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_73:
+    Team: Team_20
+    Round: Round_234
+    message: 'After a 14-0 win in round 2, you are now ranked 3rd.In round 3,you''ll play Deutsche Mixed Ultimate Nationalmannschaft(ranked 4th) on Field 50at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_74:
+    Team: Team_17
+    Round: Round_234
+    message: 'After a 15-15 tie in round 2, you are now ranked 4th.In round 3,you''ll play Dutch National Mixed Team(ranked 3rd) on Field 50at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_75:
+    Team: Team_6
+    Round: Round_234
+    message: 'After a 5-8 loss in round 2, you are now ranked 17th.In round 3,you''ll play Robiram Project(ranked 18th) on Field 53at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_76:
+    Team: Team_19
+    Round: Round_234
+    message: 'After a 6-15 loss in round 2, you are now ranked 18th.In round 3,you''ll play Quijotes+Dulcineas(ranked 17th) on Field 53at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_77:
+    Team: Team_10
+    Round: Round_234
+    message: 'After a 14-5 win in round 2, you are now ranked 11th.In round 3,you''ll play Glasgow Ultimate(ranked 12th) on Field 54at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_78:
+    Team: Team_18
+    Round: Round_234
+    message: 'After a 8-5 win in round 2, you are now ranked 12th.In round 3,you''ll play Stockholm Syndromes Ultimate Frisbee Club(ranked 11th) on Field 54at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_79:
+    Team: Team_21
+    Round: Round_234
+    message: 'After a 5-14 loss in round 2, you are now ranked 27th.In round 3,you''ll play Frisbee Family(ranked 28th) on Field 61at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_80:
+    Team: Team_11
+    Round: Round_234
+    message: 'After a 11-14 loss in round 2, you are now ranked 28th.In round 3,you''ll play WAF(ranked 27th) on Field 61at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_81:
+    Team: Team_2
+    Round: Round_234
+    message: 'After a 12-1 win in round 2, you are now ranked 5th.In round 3,you''ll play Ireland National Team Mixed Ultimate(ranked 6th) on Field 59at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_82:
+    Team: Team_25
+    Round: Round_234
+    message: 'After a 15-15 tie in round 2, you are now ranked 6th.In round 3,you''ll play Superfly(ranked 5th) on Field 59at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_83:
+    Team: Team_5
+    Round: Round_234
+    message: 'After a 2-4 loss in round 2, you are now ranked 21st.In round 3,you''ll play Denmark National Team(ranked 22nd) on Field 58at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_84:
+    Team: Team_9
+    Round: Round_234
+    message: 'After a 0-12 loss in round 2, you are now ranked 22nd.In round 3,you''ll play GB - National - Mixed - Beach Ultimate(ranked 21st) on Field 58at '
+    status: null
+    createTime: '1307116676'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_85:
+    Team: Team_9
+    Round: Round_235
+    message: 'After a 14-3 win in round 3, you are now ranked 13th.In round 4,you''ll play Quijotes+Dulcineas(ranked 14th) on Field 47at '
+    status: null
+    createTime: '1307116716'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_86:
+    Team: Team_6
+    Round: Round_235
+    message: 'After a 5-2 win in round 3, you are now ranked 14th.In round 4,you''ll play Denmark National Team(ranked 13th) on Field 47at '
+    status: null
+    createTime: '1307116716'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_87:
+    Team: Team_34
+    Round: Round_235
+    message: 'After a 12-15 loss in round 3, you are now ranked 21st.In round 4,you''ll play Rusty Bikes(ranked 22nd) on Field at '
+    status: null
+    createTime: '1307116716'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_88:
+    Team: Team_15
+    Round: Round_235
+    message: 'After a 9-10 loss in round 3, you are now ranked 22nd.In round 4,you can take a break due to the odd number of teams.You''ll score a 15-12 win'
+    status: null
+    createTime: '1307116716'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_89:
+    Team: Team_2
+    Round: Round_235
+    message: 'After a 4-4 tie in round 3, you are now ranked 6th.In round 4,you''ll play Glasgow Ultimate(ranked 8th) on Field 44at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_90:
+    Team: Team_18
+    Round: Round_235
+    message: 'After a 13-5 win in round 3, you are now ranked 8th.In round 4,you''ll play Superfly(ranked 6th) on Field 44at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_91:
+    Team: Team_1
+    Round: Round_235
+    message: 'After a 5-5 tie in round 3, you are now ranked 23rd.In round 4,you''ll play Cheek2Cheek(ranked 25th) on Field 51at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_92:
+    Team: Team_13
+    Round: Round_235
+    message: 'After a 2-14 loss in round 3, you are now ranked 25th.In round 4,you''ll play Disco Stu(ranked 23rd) on Field 51at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_93:
+    Team: Team_22
+    Round: Round_235
+    message: 'After a 10-3 win in round 3, you are now ranked 1st.In round 4,you''ll play Fling(ranked 2nd) on Field 62at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_94:
+    Team: Team_24
+    Round: Round_235
+    message: 'After a 15-1 win in round 3, you are now ranked 2nd.In round 4,you''ll play Akka(ranked 1st) on Field 62at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_95:
+    Team: Team_12
+    Round: Round_235
+    message: 'After a 15-12 win in round 3, you are now ranked 15th.In round 4,you''ll play Stockholm Syndromes Ultimate Frisbee Club(ranked 16th) on Field 48at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_96:
+    Team: Team_10
+    Round: Round_235
+    message: 'After a 5-13 loss in round 3, you are now ranked 16th.In round 4,you''ll play Spirit on Lemon(ranked 15th) on Field 48at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_97:
+    Team: Team_16
+    Round: Round_235
+    message: 'After a 5-6 loss in round 3, you are now ranked 9th.In round 4,you''ll play Dutch National Mixed Team(ranked 10th) on Field 45at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_98:
+    Team: Team_20
+    Round: Round_235
+    message: 'After a 8-11 loss in round 3, you are now ranked 10th.In round 4,you''ll play Nuts''n Berries(ranked 9th) on Field 45at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_99:
+    Team: Team_4
+    Round: Round_235
+    message: 'After a 5-5 tie in round 3, you are now ranked 24th.In round 4,you''ll play WAF(ranked 26th) on Field 52at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_100:
+    Team: Team_21
+    Round: Round_235
+    message: 'After a 7-7 tie in round 3, you are now ranked 26th.In round 4,you''ll play PUF(ranked 24th) on Field 52at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_101:
+    Team: Team_17
+    Round: Round_235
+    message: 'After a 11-8 win in round 3, you are now ranked 3rd.In round 4,you''ll play Too Many Pies(ranked 5th) on Field 63at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_102:
+    Team: Team_7
+    Round: Round_235
+    message: 'After a 6-5 win in round 3, you are now ranked 5th.In round 4,you''ll play Deutsche Mixed Ultimate Nationalmannschaft(ranked 3rd) on Field 63at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_103:
+    Team: Team_26
+    Round: Round_235
+    message: 'After a 1-15 loss in round 3, you are now ranked 17th.In round 4,you''ll play Robiram Project(ranked 18th) on Field 49at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_104:
+    Team: Team_19
+    Round: Round_235
+    message: 'After a 2-5 loss in round 3, you are now ranked 18th.In round 4,you''ll play Turkish Nationalish Team(ranked 17th) on Field 49at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_105:
+    Team: Team_23
+    Round: Round_235
+    message: 'After a 12-4 win in round 3, you are now ranked 11th.In round 4,you''ll play Drehst''n Deckel(ranked 12th) on Field 46at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_106:
+    Team: Team_27
+    Round: Round_235
+    message: 'After a 3-10 loss in round 3, you are now ranked 12th.In round 4,you''ll play Switzerland National Team Mixed Ultimate(ranked 11th) on Field 46at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_107:
+    Team: Team_11
+    Round: Round_235
+    message: 'After a 7-7 tie in round 3, you are now ranked 27th.In round 4,you''ll play GB - National - Mixed - Beach Ultimate(ranked 28th) on Field 53at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_108:
+    Team: Team_5
+    Round: Round_235
+    message: 'After a 3-14 loss in round 3, you are now ranked 28th.In round 4,you''ll play Frisbee Family(ranked 27th) on Field 53at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_109:
+    Team: Team_25
+    Round: Round_235
+    message: 'After a 4-4 tie in round 3, you are now ranked 4th.In round 4,you''ll play France Mixed(ranked 7th) on Field 64at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_110:
+    Team: Team_8
+    Round: Round_235
+    message: 'After a 14-2 win in round 3, you are now ranked 7th.In round 4,you''ll play Ireland National Team Mixed Ultimate(ranked 4th) on Field 64at '
+    status: null
+    createTime: '1307116717'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_111:
+    Team: Team_14
+    Round: Round_235
+    message: 'After a 4-12 loss in round 3, you are now ranked 19th.In round 4,you''ll play Russian National Open Team(ranked 20th) on Field 50at '
+    status: null
+    createTime: '1307116718'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_112:
+    Team: Team_3
+    Round: Round_235
+    message: 'After a 10-9 win in round 3, you are now ranked 20th.In round 4,you''ll play TeamAustria Mixed(ranked 19th) on Field 50at '
+    status: null
+    createTime: '1307116718'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_113:
+    Team: Team_9
+    Round: Round_236
+    message: 'After a 12-10 win in round 4, you are now ranked 13th.In round 5,you''ll play Spirit on Lemon(ranked 15th) on Field 60at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_114:
+    Team: Team_12
+    Round: Round_236
+    message: 'After a 2-3 loss in round 4, you are now ranked 15th.In round 5,you''ll play Denmark National Team(ranked 13th) on Field 60at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_115:
+    Team: Team_34
+    Round: Round_236
+    message: 'After a 12-15 loss in round 4, you are now ranked 23rd.In round 5,you''ll play GB - National - Mixed - Beach Ultimate(ranked 24th) on Field at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_116:
+    Team: Team_5
+    Round: Round_236
+    message: 'After a 5-0 win in round 4, you are now ranked 24th.In round 5,you can take a break due to the odd number of teams.You''ll score a 15-12 win'
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_117:
+    Team: Team_16
+    Round: Round_236
+    message: 'After a 15-14 win in round 4, you are now ranked 6th.In round 5,you''ll play Glasgow Ultimate(ranked 8th) on Field 57at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_118:
+    Team: Team_18
+    Round: Round_236
+    message: 'After a 11-12 loss in round 4, you are now ranked 8th.In round 5,you''ll play Nuts''n Berries(ranked 6th) on Field 57at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_119:
+    Team: Team_15
+    Round: Round_236
+    message: 'After a 15-12 win in round 4, you are now ranked 21st.In round 5,you''ll play Cheek2Cheek(ranked 22nd) on Field 64at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_120:
+    Team: Team_13
+    Round: Round_236
+    message: 'After a 12-9 win in round 4, you are now ranked 22nd.In round 5,you''ll play Rusty Bikes(ranked 21st) on Field 64at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_121:
+    Team: Team_22
+    Round: Round_236
+    message: 'After a 10-10 tie in round 4, you are now ranked 1st.In round 5,you''ll play Deutsche Mixed Ultimate Nationalmannschaft(ranked 2nd) on Field 54at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_122:
+    Team: Team_17
+    Round: Round_236
+    message: 'After a 5-3 win in round 4, you are now ranked 2nd.In round 5,you''ll play Akka(ranked 1st) on Field 54at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_123:
+    Team: Team_6
+    Round: Round_236
+    message: 'After a 10-12 loss in round 4, you are now ranked 14th.In round 5,you''ll play TeamAustria Mixed(ranked 16th) on Field 61at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_124:
+    Team: Team_14
+    Round: Round_236
+    message: 'After a 13-8 win in round 4, you are now ranked 16th.In round 5,you''ll play Quijotes+Dulcineas(ranked 14th) on Field 61at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_125:
+    Team: Team_23
+    Round: Round_236
+    message: 'After a 13-13 tie in round 4, you are now ranked 9th.In round 5,you''ll play Dutch National Mixed Team(ranked 10th) on Field 58at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_126:
+    Team: Team_20
+    Round: Round_236
+    message: 'After a 14-15 loss in round 4, you are now ranked 10th.In round 5,you''ll play Switzerland National Team Mixed Ultimate(ranked 9th) on Field 58at '
+    status: null
+    createTime: '1307116757'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_127:
+    Team: Team_3
+    Round: Round_236
+    message: 'After a 8-13 loss in round 4, you are now ranked 25th.In round 5,you''ll play Disco Stu(ranked 26th) on Field 44at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_128:
+    Team: Team_1
+    Round: Round_236
+    message: 'After a 9-12 loss in round 4, you are now ranked 26th.In round 5,you''ll play Russian National Open Team(ranked 25th) on Field 44at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_129:
+    Team: Team_8
+    Round: Round_236
+    message: 'After a 6-0 win in round 4, you are now ranked 3rd.In round 5,you''ll play Fling(ranked 4th) on Field 55at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_130:
+    Team: Team_24
+    Round: Round_236
+    message: 'After a 10-10 tie in round 4, you are now ranked 4th.In round 5,you''ll play France Mixed(ranked 3rd) on Field 55at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_131:
+    Team: Team_10
+    Round: Round_236
+    message: 'After a 3-2 win in round 4, you are now ranked 17th.In round 5,you''ll play Turkish Nationalish Team(ranked 19th) on Field 62at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_132:
+    Team: Team_26
+    Round: Round_236
+    message: 'After a 4-4 tie in round 4, you are now ranked 19th.In round 5,you''ll play Stockholm Syndromes Ultimate Frisbee Club(ranked 17th) on Field 62at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_133:
+    Team: Team_27
+    Round: Round_236
+    message: 'After a 13-13 tie in round 4, you are now ranked 11th.In round 5,you''ll play Ireland National Team Mixed Ultimate(ranked 12th) on Field 59at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_134:
+    Team: Team_25
+    Round: Round_236
+    message: 'After a 0-6 loss in round 4, you are now ranked 12th.In round 5,you''ll play Drehst''n Deckel(ranked 11th) on Field 59at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_135:
+    Team: Team_11
+    Round: Round_236
+    message: 'After a 0-5 loss in round 4, you are now ranked 27th.In round 5,you''ll play PUF(ranked 28th) on Field 45at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_136:
+    Team: Team_4
+    Round: Round_236
+    message: 'After a 4-13 loss in round 4, you are now ranked 28th.In round 5,you''ll play Frisbee Family(ranked 27th) on Field 45at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_137:
+    Team: Team_2
+    Round: Round_236
+    message: 'After a 12-11 win in round 4, you are now ranked 5th.In round 5,you''ll play Too Many Pies(ranked 7th) on Field 56at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_138:
+    Team: Team_7
+    Round: Round_236
+    message: 'After a 3-5 loss in round 4, you are now ranked 7th.In round 5,you''ll play Superfly(ranked 5th) on Field 56at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_139:
+    Team: Team_21
+    Round: Round_236
+    message: 'After a 13-4 win in round 4, you are now ranked 18th.In round 5,you''ll play Robiram Project(ranked 20th) on Field 63at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+  SMS_140:
+    Team: Team_19
+    Round: Round_236
+    message: 'After a 4-4 tie in round 4, you are now ranked 20th.In round 5,you''ll play WAF(ranked 18th) on Field 63at '
+    status: null
+    createTime: '1307116758'
+    submitTime: null
+    sentTime: null
+    receivedTime: null
+Stage:
+  Stage_1:
+    title: 'Registration stage'
+    Division: Division_1
+    rank: '1'
+    locked: null
+    placement: null
+  Stage_2:
+    title: Swissdraw
+    Division: Division_1
+    rank: '2'
+    locked: null
+    placement: null
+  Stage_3:
+    title: Playoffs
+    Division: Division_1
+    rank: '3'
+    locked: null
+    placement: null
+Team:
+  Team_1:
+    name: 'Disco Stu'
+    email1: raffarufus@hotmail.it
+    email2: raffarufus@hotmail.it
+    contactName: 'raffaele de curtis (rufus)'
+    city: modena
+    country: italy
+    mobile1: '00393331433038'
+    mobile2: '00393290237770'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Sorry, someone else made a \"disco stu\" team before me and in the previous registration form i chose the wrong one.\n\nrufus"
+    Division: Division_1
+    byeStatus: null
+  Team_2:
+    name: Superfly
+    email1: tomsummerbee@yahoo.com
+    email2: tomsummerbee@yahoo.com
+    contactName: 'Tom Summerbee'
+    city: Birmingham
+    country: England
+    mobile1: '0033611488080'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hi,\nI'm sorry but I just sent a message asking when registration opened, so please ignore that message. If you could let me know how to pay the team fee I will get that done as soon as possible.\n\nMany thanks\nTom Summerbee"
+    Division: Division_1
+    byeStatus: null
+  Team_3:
+    name: 'Russian National Open Team'
+    email1: av@rusultimate.org
+    email2: 'shebouniaev@yandex.ru '
+    contactName: Toly
+    city: ''
+    country: Russia
+    mobile1: '0079670919059'
+    mobile2: '0079162117731'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_4:
+    name: PUF
+    email1: lutzmuerau@hotmail.com
+    email2: ravi.a.vasudevan@gmail.com
+    contactName: 'Lutz, Ravi'
+    city: 'Delft, Den Haag, Leiden'
+    country: Netherlands
+    mobile1: '0031648385417'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_5:
+    name: 'GB - National - Mixed - Beach Ultimate'
+    email1: davet.frisbee@googlemail.com
+    email2: j.r.freeman@warwick.ac.uk
+    contactName: 'David Tyler, James Freeman'
+    city: 'UK: No single city'
+    country: 'United Kingdom'
+    mobile1: '00447841746307'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'We would like to come to the mixed division here as part of our training/warmup for Beach Worlds in Italy 2011.'
+    Division: Division_1
+    byeStatus: null
+  Team_6:
+    name: Quijotes+Dulcineas
+    email1: quijotesultimate@gmail.com
+    email2: ajpalmer@gmail.com
+    contactName: Justin
+    city: Madrid
+    country: Spain
+    mobile1: '0034687278957'
+    mobile2: '0034656824603'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Looking forward to Windmill again!We finished 14th last year with half the team and a handful of pickups, but the stories we brought back seem to have convinced the rest of the team to come along this year...'
+    Division: Division_1
+    byeStatus: null
+  Team_7:
+    name: 'Too Many Pies'
+    email1: too_many_pies08@hotmail.co.uk
+    email2: too_many_pies08@hotmail.co.uk
+    contactName: Nick
+    city: 'Newcastle Upon Tyne '
+    country: England
+    mobile1: '0007833654411'
+    mobile2: '0007833654411'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'Hi, As we are only a university team we would be looking to have fun rather than compete seriously but we still hope to bring a team that can play good quality fast ultimate :)'
+    Division: Division_1
+    byeStatus: null
+  Team_8:
+    name: 'France Mixed'
+    email1: intendant.mixte@ffdf.fr
+    email2: intendant.mixte@ffdf.fr
+    contactName: 'Guillaume CANAL'
+    city: ''
+    country: France
+    mobile1: '0033672615141'
+    mobile2: '0033688472848'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_9:
+    name: 'Denmark National Team'
+    email1: administrator@dfsu.dk
+    email2: elite@dfsu.dk
+    contactName: 'Taiyo Jönsson'
+    city: Copenhagen
+    country: Denmark
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'The National Team of Denmark would like to apply for a spot in this years Windmill.'
+    Division: Division_1
+    byeStatus: null
+  Team_10:
+    name: 'Stockholm Syndromes Ultimate Frisbee Club'
+    email1: ssufc@stockholmsyndromes.se
+    email2: paul.eriksson@frisbeesport.se
+    contactName: 'Paul Eriksson'
+    city: Stockholm
+    country: Sweden
+    mobile1: '0046739960557'
+    mobile2: '0046733783257'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hej,\n\nWe are the Stockholm Syndromes, have never been to a Dutch tournament, but have heard only great things. Beside the Swedish guys and girls, we are a pretty international squad from Stockholm and are aiming for a fun mixed experience :-)"
+    Division: Division_1
+    byeStatus: null
+  Team_11:
+    name: 'Frisbee Family'
+    email1: verena@frisbee-family.de
+    email2: matthias@brucklacher.com
+    contactName: 'Doerthe, Mattes'
+    city: Duesseldorf
+    country: Germany
+    mobile1: '004917666631600'
+    mobile2: '00491727071718'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_12:
+    name: 'Spirit on Lemon'
+    email1: ''
+    email2: tailor82@gmail.com
+    contactName: Tom
+    city: Sosnowiec
+    country: Poland
+    mobile1: '0048502489694'
+    mobile2: '0048507120311'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hello\nMy nam is Tom. I'am a capitan of Spirit on Lemon Ultimate Frisbee Team from Poland!\nI would like to register my team Spirit on Lemon from Poland for this year  Windmill Windup!\nIt would be pleasure to join you!\nTom"
+    Division: Division_1
+    byeStatus: null
+  Team_13:
+    name: Cheek2Cheek
+    email1: christoph.obenhuber@gmx.at
+    email2: florian.eywo@gmx.at
+    contactName: 'Christoph Obenhuber'
+    city: Vienna
+    country: Austria
+    mobile1: '00436508050081'
+    mobile2: '00436504783764'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hi guys,\n\nWe are the current Austrian Mixed Champion and would love to come to windmill with our girlz and boyz. We have been at windmill for the last few years with our open team (bigez) and now we are looking forward to join the windmill mixed experience ;-)\n\ncheers,\nchristoph"
+    Division: Division_1
+    byeStatus: null
+  Team_14:
+    name: 'TeamAustria Mixed'
+    email1: hnowak@gmx.at
+    email2: upsadaisy@gmx.at
+    contactName: 'harald nowak'
+    city: 'vienna - rest of austria'
+    country: austria
+    mobile1: '00436602266725'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_15:
+    name: 'Rusty Bikes'
+    email1: mariekebuijs@gmail.com
+    email2: mariekebuijs@gmail.com
+    contactName: 'Marleen Vervoort, Marieke Buijs'
+    city: Amsterdam
+    country: 'the netherlands'
+    mobile1: '0031648357529'
+    mobile2: '0031633695574'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_16:
+    name: 'Nuts''n Berries'
+    email1: hexemexe@web.de
+    email2: hexemexe@web.de
+    contactName: Kathleen
+    city: Halle
+    country: Germany
+    mobile1: '017648391108'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_17:
+    name: 'Deutsche Mixed Ultimate Nationalmannschaft'
+    email1: heiko.karpowski@googlemail.com
+    email2: heiko.karpowski@googlemail.com
+    contactName: ' Heiko Karpowski, Janne Lepthin'
+    city: ''
+    country: Germany
+    mobile1: '001917681187476'
+    mobile2: '00491757002822'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_18:
+    name: 'Glasgow Ultimate'
+    email1: shaun_m_webb@yahoo.co.uk
+    email2: webbpg@gmail.com
+    contactName: 'Philip Webb'
+    city: Glasgow
+    country: Scotland
+    mobile1: '00447816406343'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'We''ve changed our name - Last year we were Principality of Sealand, now we''ve moved our base closer to where we actually train and opened it up to all of our fair city.'
+    Division: Division_1
+    byeStatus: null
+  Team_19:
+    name: 'Robiram Project'
+    email1: tloustik@gmail.com
+    email2: julik8@gmail.com
+    contactName: 'Petra Moravkova, Julia Navratova'
+    city: Bratislava
+    country: Slovakia
+    mobile1: '00421903172634'
+    mobile2: '00421904566352'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_20:
+    name: 'Dutch National Mixed Team'
+    email1: frisbeemeisje@gmail.com
+    email2: frisbeemeisje@gmail.com
+    contactName: roelien
+    city: 'all over'
+    country: nederland
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_21:
+    name: WAF
+    email1: waf@wur.nl
+    email2: 'pnmdejongh@gmail.com,  bramtebrake1@gmail.com'
+    contactName: Niek
+    city: Wageningen
+    country: Netherlands
+    mobile1: '0031623185478'
+    mobile2: '0031651216904'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_22:
+    name: Akka
+    email1: akka@frisbee.se
+    email2: hanna@frisbee.se
+    contactName: Hanna
+    city: Lund
+    country: Sweden
+    mobile1: '0046722768111'
+    mobile2: '0046730292948'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_23:
+    name: 'Switzerland National Team Mixed Ultimate'
+    email1: international-coordinator@ultimate.ch
+    email2: kian.rieben@gmail.com
+    contactName: Nef
+    city: Switzerland
+    country: Switzerland
+    mobile1: '0041763703078'
+    mobile2: '0041765862927'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_24:
+    name: Fling
+    email1: fling.events@googlemail.com
+    email2: liydjb1@nottingham.ac.uk
+    contactName: James
+    city: Nottingham
+    country: 'United Kingdom'
+    mobile1: '00447952593146'
+    mobile2: '00447787308419'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_25:
+    name: 'Ireland National Team Mixed Ultimate'
+    email1: irelandmixed2011@gmail.com
+    email2: peter.forde@gmail.com
+    contactName: Peter
+    city: Dublin
+    country: Ireland
+    mobile1: '+353857068828'
+    mobile2: '+353863415106'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_26:
+    name: 'Turkish Nationalish Team'
+    email1: ord-yk@googlegroups.com
+    email2: demir.emra@gmail.com
+    contactName: 'Emrah Demir'
+    city: 'İstanbul - Ankara'
+    country: Turkey
+    mobile1: '00905337107856'
+    mobile2: '00905373843878'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_27:
+    name: 'Drehst''n Deckel'
+    email1: ulle@drehstn-deckel.de
+    email2: kirvel@gmx.ch
+    contactName: 'Christian Kirvel'
+    city: Dresden
+    country: Germany
+    mobile1: '00491785381277'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_28:
+    name: Outernationals
+    email1: admin@verlebbt.de
+    email2: ''
+    contactName: timo
+    city: various
+    country: various
+    mobile1: '00491637826830'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'nuff said. let''s rock!'
+    Division: Division_1
+    byeStatus: null
+  Team_29:
+    name: 'Cranberry Snack'
+    email1: juleclech@gmail.com
+    email2: klaatii@gmail.com
+    contactName: 'Klaus Walther'
+    city: Karlsruhe
+    country: Germany
+    mobile1: '00491782331741'
+    mobile2: '00491631622448'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "Hey Windmillers,\r\n\r\nwe did a mistake a registered us for the Open Division, but we're naturally mixed. We want to be registered for the MIXED DIVISON!\r\n\r\nCould you please help us to switch the division.\r\nI'm so sorry, i tried to register us several times for open. I just dont realize that i need to register especialy for mixed ;)\r\nI hope you could unterstand my doing.\r\n\r\nPlease contact me if something goes wrong or ask Nan. He should know me now ;)\r\n\r\nMy contact is: klaatii@gmail.com  \r\n\r\nThank you so much, i will bring you a present for that!\r\n\r\nSee you all in june!\r\nKlaus - Cranberry Snack\r\n\r\n"
+    Division: Division_1
+    byeStatus: null
+  Team_30:
+    name: 'Frizzly Bears'
+    email1: hanstiro@gmx.de
+    email2: ''
+    contactName: ''
+    city: ''
+    country: ''
+    mobile1: ''
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_31:
+    name: 'Moscow Chapiteau'
+    email1: moscowsharks@gmail.com
+    email2: chernykh.ira@gmail.com
+    contactName: 'Alexey, Irina'
+    city: Moscow
+    country: Russia
+    mobile1: '0079639785897'
+    mobile2: '0079060639113'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_32:
+    name: 'Aye-Aye Ultimate (UEA)'
+    email1: b.hutton@uea.ac.uk
+    email2: b.hutton@uea.ac.uk
+    contactName: 'Ben Hutton'
+    city: Norwich
+    country: England
+    mobile1: '07595739460'
+    mobile2: '07840391708'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: "We have already registered for the open division earlier this year. We have since decided that our team would be better suited to play in the mixed division. I will therefore be removing our open division bid after submitting this bid. Sorry for all the confusion, thanks.\r\n\r\nBen Hutton\r\nAye-Aye president"
+    Division: Division_1
+    byeStatus: null
+  Team_33:
+    name: 'Sexy Legs'
+    email1: ''
+    email2: liisa.licht@mail.ee
+    contactName: 'Liisa Licht'
+    city: 'we''re an international team'
+    country: 'mainly from Estonia'
+    mobile1: '0037256218415'
+    mobile2: '0037256563967'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: 'We''re an international team that played last year as "Tallinn Frisbee Club" in mixed division'
+    Division: Division_1
+    byeStatus: null
+  Team_34:
+    name: 'BYE Team'
+    email1: null
+    email2: null
+    contactName: null
+    city: null
+    country: null
+    mobile1: null
+    mobile2: null
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: null
+    Division: Division_1
+    byeStatus: '1'
+Tournament:
+  Tournament_1:
+    title: 'Windmill Windup 2011'
+    state: '1'
+    startDate: '0'
+    endDate: '0'
+VictoryPoints:
+  VictoryPoints_-15:
+    margin: '-15'
+    victorypoints: '0'
+  VictoryPoints_-14:
+    margin: '-14'
+    victorypoints: '1'
+  VictoryPoints_-13:
+    margin: '-13'
+    victorypoints: '2'
+  VictoryPoints_-12:
+    margin: '-12'
+    victorypoints: '3'
+  VictoryPoints_-11:
+    margin: '-11'
+    victorypoints: '4'
+  VictoryPoints_-10:
+    margin: '-10'
+    victorypoints: '5'
+  VictoryPoints_-9:
+    margin: '-9'
+    victorypoints: '6'
+  VictoryPoints_-8:
+    margin: '-8'
+    victorypoints: '7'
+  VictoryPoints_-7:
+    margin: '-7'
+    victorypoints: '8'
+  VictoryPoints_-6:
+    margin: '-6'
+    victorypoints: '9'
+  VictoryPoints_-5:
+    margin: '-5'
+    victorypoints: '10'
+  VictoryPoints_-4:
+    margin: '-4'
+    victorypoints: '11'
+  VictoryPoints_-3:
+    margin: '-3'
+    victorypoints: '12'
+  VictoryPoints_-2:
+    margin: '-2'
+    victorypoints: '13'
+  VictoryPoints_-1:
+    margin: '-1'
+    victorypoints: '14'
+  VictoryPoints_0:
+    margin: '0'
+    victorypoints: '15'
+  VictoryPoints_1:
+    margin: '1'
+    victorypoints: '16'
+  VictoryPoints_2:
+    margin: '2'
+    victorypoints: '17'
+  VictoryPoints_3:
+    margin: '3'
+    victorypoints: '18'
+  VictoryPoints_4:
+    margin: '4'
+    victorypoints: '19'
+  VictoryPoints_5:
+    margin: '5'
+    victorypoints: '20'
+  VictoryPoints_6:
+    margin: '6'
+    victorypoints: '21'
+  VictoryPoints_7:
+    margin: '7'
+    victorypoints: '22'
+  VictoryPoints_8:
+    margin: '8'
+    victorypoints: '23'
+  VictoryPoints_9:
+    margin: '9'
+    victorypoints: '24'
+  VictoryPoints_10:
+    margin: '10'
+    victorypoints: '25'
+  VictoryPoints_11:
+    margin: '11'
+    victorypoints: '25'
+  VictoryPoints_12:
+    margin: '12'
+    victorypoints: '25'
+  VictoryPoints_13:
+    margin: '13'
+    victorypoints: '25'
+  VictoryPoints_14:
+    margin: '14'
+    victorypoints: '25'
+  VictoryPoints_15:
+    margin: '15'
+    victorypoints: '25'
