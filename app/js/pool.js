@@ -7,14 +7,22 @@ var PoolManager = function() {
 	
 	var _selectedMatches;
 	
+	var _lastTimeValue;
+	
 	function init() {
 		_selectedMatches = new Array();
 		$("#pool-switch-fields").click(clickSwitchFields);
-		$("tr.match").click(clickMatch);
+		$("tr.match td.field").click(clickMatch);
+		
+		$("input.sc9-time-input").click(clickTimeInput);
+		$("input.sc9-time-input").blur(blurTimeInput);
+		
 	}
+
 	
+/* Match stuff */
 	function clickMatch() {
-		var tr = $(this);
+		var tr = $(this).parent("tr");
 		
 		if(tr.hasClass("active")) {
 			tr.removeClass("active");
@@ -91,6 +99,55 @@ var PoolManager = function() {
 				_selectedMatches.splice(i, 1);
 				return;
 			}
+		}
+	}
+	
+	
+	
+	/* TIME STUFF ---- */
+	
+	
+	function clickTimeInput() {
+		var inp = $(this);
+		_lastTimeValue = inp.val();
+		inp.val("");
+	}
+	
+	function blurTimeInput() {
+		var inp = $(this);
+		var matchId = inp.attr("id").split("-")[3];
+		
+		if(inp.val() == "") {
+			inp.val(_lastTimeValue);
+		}else{
+			
+			var s = inp.val().split(":");
+			if(s.length == 2) {
+				var hour = parseInt(s[0]);
+				var minute = parseInt(s[1]);
+				
+				if (hour < 24 && hour > 0 && minute < 60 && minute > 0) {
+					
+					var timeValue = hour * 60 + minute;
+					
+					$.getJSON("?n=/match/settime/", {"matchId": matchId, "scheduledTime": timeValue}, onSaveTime);
+					
+				}else{
+					alert("invalid time");
+					inp.val(_lastTimeValue);
+				}
+			}else{
+				alert("faulty format")
+				inp.val(_lastTimeValue);
+			}
+		}
+	}
+	
+	function onSaveTime(o) {
+		if(o.error != "1") {
+			
+		}else{
+			alert(o.message);
 		}
 	}
 	

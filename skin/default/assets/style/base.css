@@ -229,8 +229,8 @@
 		box-shadow: 0 1px 5px rgba(0,0,0,0.75);
 	}
 	
-	
-	
+
+/* Sorting -------------- */
 	
 	ul.sc9-sort { 
 	
@@ -253,7 +253,12 @@
 	}
 	
 	
-	
+/* Time input ------ */
+	input.sc9-time-input {
+		width: 40px;
+		border: 1px solid #ECECEE;
+	}
+
 	
 	
 /* :::::::::::::::: OLD OLD OLD OLD OLD OLD OLD OLD ::::::::::::::::::::::::::::::::::::: */

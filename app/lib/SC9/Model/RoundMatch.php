@@ -26,4 +26,29 @@ class RoundMatch extends BaseRoundMatch{
 	}
 		
 	
+	public function setScheduledTimeByFormat($s) {
+		$pieces = explode(":", $s);
+		if(count($pieces == 2)) {
+			
+			$hour = (int) $pieces[0];
+			$minute = (int) $pieces[1];
+			
+			$this->scheduledTime = $hour * 60 + $minute;
+		}
+	}
+	
+	
+	public function timeFormat() {
+		$minutes = $this->scheduledTime;
+		
+		$hours = floor($minutes / 60);
+		$minutes = $minutes - ($hours * 60);
+		
+		$hourString = $hours < 10 ? "0".$hours : $hours . "";
+		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
+		
+		return $hourString .":".$minuteString;
+	}
+	
+	
 }

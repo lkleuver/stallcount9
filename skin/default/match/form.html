@@ -19,9 +19,8 @@
   		
   		<li>
   			<label>Time slot</label>
-  			<input id="matchScheduledTime" type="text" name="scheduledTime" value="{{ match.scheduledTime}} " />
-  			&nbsp;
-  			<a href="matchScheduledTime/{{match.scheduledTime}}" class="sc9-schedule"><img src="skin/default/assets/img/icons/clipboard-search-24.png" /></a>
+  			<input id="matchScheduledTime" type="text" name="scheduledTimeHour" value="{{ match.timeFormat()}} " />
+  			
   		</li>
   		
   		<li>
