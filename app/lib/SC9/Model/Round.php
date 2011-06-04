@@ -33,6 +33,8 @@ class Round extends BaseRound {
 		return true;
 	}
 	
+
+	
 	public function randomScoreFill() {
 		foreach($this->Matches as $match) {
 			if (is_null($match->homeScore)) {
@@ -69,7 +71,7 @@ class Round extends BaseRound {
 		return $q->execute();
 	}
 
-	public static function getRoundByRank($poolId, $roundRank) {
+	public static function getRoundByRank($poolId, $roundRank, $orderByField = false) {
 		$q = Doctrine_Query::create()
 			    ->from('Round r')
 			    ->leftJoin('r.Pool p')
@@ -77,8 +79,12 @@ class Round extends BaseRound {
 			    ->leftJoin('m.Field f')
 			    ->leftJoin('m.HomeTeam ht')
 			    ->leftJoin('m.AwayTeam at')
-			    ->where('r.pool_id = "'.$poolId.'" AND r.rank = "'.$roundRank.'"')
-			    ->orderBy('m.rank ASC');
+			    ->where('r.pool_id = "'.$poolId.'" AND r.rank = "'.$roundRank.'"');
+	    if($orderByField) {
+	    	$q->orderBy('f.rank ASC');
+	    }else{
+		    $q->orderBy('m.rank ASC');
+	    }
 //	    echo "<br> SQL:" . $roundRank . " <br> ". $q->getSqlQuery() ."</br>";
 		return $q->fetchOne();
 	}

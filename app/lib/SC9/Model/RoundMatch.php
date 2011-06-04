@@ -55,6 +55,12 @@ class RoundMatch extends BaseRoundMatch{
 		return false;
 	}
 	
+	public function getFieldName() {
+		if($this->Field != null) {
+			return $this->Field->title;
+		}
+		return "empty";
+	}
 	public function getHomeName() {
 		if($this->HomeTeam != null) {
 			return $this->HomeTeam->name;
