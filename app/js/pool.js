@@ -8,6 +8,7 @@ var PoolManager = function() {
 	var _selectedMatches;
 	
 	var _lastTimeValue;
+	var _lastScoreValue;
 	
 	function init() {
 		_selectedMatches = new Array();
@@ -17,6 +18,8 @@ var PoolManager = function() {
 		$("input.sc9-time-input").click(clickTimeInput);
 		$("input.sc9-time-input").blur(blurTimeInput);
 		
+		$("input.sc9-score-input").click(clickScoreInput);
+		$("input.sc9-score-input").blur(blurScoreInput);
 	}
 
 	
@@ -146,6 +149,60 @@ var PoolManager = function() {
 	function onSaveTime(o) {
 		if(o.error != "1") {
 			
+		}else{
+			alert(o.message);
+		}
+	}
+	
+	
+	/* SCORE STUFF ------- */
+	
+	
+	
+	function clickScoreInput() {
+		var inp = $(this);
+		_lastScoreValue = inp.val();
+		inp.val("");
+	}
+	
+	function blurScoreInput() {
+		var inp = $(this);
+		var matchId = inp.attr("id").split("-")[3];
+		
+		if(inp.val() == "") {
+			inp.val(_lastScoreValue);
+		}else{
+			var s1 = inp.val().replace(" ", "");
+			var s = s1.split("-");
+			
+			if(s.length == 2) {
+				var homeScore = parseInt(s[0]);
+				var awayScore = parseInt(s[1]);
+				
+				if(homeScore >= awayScore) {
+					$("#sc9-hometeam-row-"+matchId).addClass("winner");
+				}else{
+					$("#sc9-hometeam-row-"+matchId).removeClass("winner");
+				}
+				
+				if(awayScore >= homeScore) {
+					$("#sc9-awayteam-row-"+matchId).addClass("winner");
+				}else{
+					$("#sc9-awayteam-row-"+matchId).removeClass("winner");
+				}
+				
+				$.getJSON("?n=/match/setscore/", {"matchId": matchId, "homeScore": homeScore, "awayScore" : awayScore}, onSaveScore);
+
+			}else{
+				alert("faulty format")
+				inp.val(_lastScoreValeue);
+			}
+		}
+	}
+	
+	function onSaveScore(o) {
+		if(o.error != "1") {
+			$("#sc9-match-row-"+o.matchId).addClass("finished");
 		}else{
 			alert(o.message);
 		}

@@ -112,6 +112,17 @@ class Stage extends BaseStage{
 		exit;
 	}
 	
+	
+	public function getActiveRound() {
+		$result = 0;
+		foreach($this->Pools as $pool) {
+			if($result == 0 || $pool->currentRound < $result) {
+				$result = $pool->currentRound;
+			}
+		}
+		return $result;
+	}
+	
 
 	
 	public static function getById($id) {

@@ -37,6 +37,37 @@ class RoundMatch extends BaseRoundMatch{
 		}
 	}
 	
+	public function played() {
+		return $this->homeScore != null;
+	}
+	
+	public function homeWon() {
+		if($this->homeScore != null && $this->awayScore != null) {
+			return $this->homeScore >= $this->awayScore;
+		}
+		return false;
+	}
+	
+	public function awayWon() {
+		if($this->homeScore != null && $this->awayScore != null) {
+			return $this->awayScore >= $this->homeScore;
+		}
+		return false;
+	}
+	
+	public function getHomeName() {
+		if($this->HomeTeam != null) {
+			return $this->HomeTeam->name;
+		}
+		return $this->homeName;
+	}
+	
+	public function getAwayName() {
+		if($this->AwayTeam != null) {
+			return $this->AwayTeam->name;
+		}
+		return $this->awayName;
+	}
 	
 	public function timeFormat() {
 		$minutes = $this->scheduledTime;

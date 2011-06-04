@@ -72,7 +72,11 @@ class Round extends BaseRound {
 	public static function getRoundByRank($poolId, $roundRank) {
 		$q = Doctrine_Query::create()
 			    ->from('Round r')
+			    ->leftJoin('r.Pool p')
 			    ->leftJoin('r.Matches m')
+			    ->leftJoin('m.Field f')
+			    ->leftJoin('m.HomeTeam ht')
+			    ->leftJoin('m.AwayTeam at')
 			    ->where('r.pool_id = "'.$poolId.'" AND r.rank = "'.$roundRank.'"')
 			    ->orderBy('m.rank ASC');
 //	    echo "<br> SQL:" . $roundRank . " <br> ". $q->getSqlQuery() ."</br>";

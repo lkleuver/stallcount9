@@ -27,6 +27,12 @@
 		color: #020202;
 	}
 	
+	h4 {
+		font-size: 16px;
+		color: #020202;
+		padding: 0 0 16px 0;
+	}
+	
 	p {
 		margin: 0 0 16px 0;
 		color: #005086;

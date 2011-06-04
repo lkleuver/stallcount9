@@ -140,4 +140,22 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$this->relocate("/tournament/detail/".$tournamentId);
 	}
 	
+	
+	public function activeAction() {
+		$division = Division::getById($this->divisionId);
+		$stage = $division->getActiveStage();
+		$currentRound = $stage->getActiveRound();
+		
+		$rounds = array();
+		foreach($stage->Pools as $pool) {
+			$rounds[] = Round::getRoundByRank($pool->id, $currentRound);
+		}
+		
+		
+		
+		$template = $this->output->loadTemplate('division/active.html');
+		$template->display(array("division" => $division, "activeStage" => $stage, "currentRound" => $currentRound, "rounds" => $rounds));
+	}
+	
+	
 }

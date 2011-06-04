@@ -12,6 +12,8 @@
   		<table>
   			<tr>
   				<th>Name</th>
+  				<th>State</th>
+  				<th>Active scoring</th>
   				<th class="op">Operations</th>
   			</tr>
 	  	{% for division in tournament.Divisions %}
@@ -19,6 +21,15 @@
 			  	<td>
 			  		<a href="?n=/division/detail/{{ division.id }}&tournamentId={{tournamentId}}">{{ division.title }}</a>
 			  	</td>
+			  	
+			  	<td>
+			  		{{division.getActiveStage().title}} Round {{division.getActiveStage().getActiveRound()}}
+			  	</td>
+			  	
+			  	<td>
+			  		<a href="?n=/division/active/{{division.id}}&tournamentId={{tournamentId}}">Tournament master</a>
+			  	</td>
+			  	
 			  	<td class="op">
 			  		<a href="?n=/division/detail/{{ division.id }}&tournamentId={{tournamentId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a> 
 			  		<a href="?n=/division/remove/{{division.id}}&tournamentId={{tournamentId}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>

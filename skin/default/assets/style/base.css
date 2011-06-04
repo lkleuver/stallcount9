@@ -166,9 +166,7 @@
 		text-align: right;
 	}
 	
-	tr.active td {
-		background-color: #C6C6C6;
-	}
+
 
 /* Buttons ---------*/
 
@@ -198,6 +196,8 @@
 	a.button span.cancel {	background: transparent url("img/icon/cancel.png") no-repeat 116px 6px;	}
 	a.button span.clock {	background: transparent url("img/icon/clock.png") no-repeat 116px 6px;	}
 	a.button span.move {	background: transparent url("img/icon/move.png") no-repeat 116px 6px;	}
+	a.button span.print {	background: transparent url("img/icon/print.png") no-repeat 116px 6px;	}
+	a.button span.proceed {	background: transparent url("img/icon/proceed.png") no-repeat 116px 6px;	}
 	
 	
 	
@@ -258,8 +258,30 @@
 		width: 40px;
 		border: 1px solid #ECECEE;
 	}
+	
+	input.sc9-score-input {
+		width: 60px;
+		text-align: center;
+		border: 1px solid #ECECEC;
+	}
 
 	
+/* ACTIVE TOURNAMENT MASTER ------------- */
+
+
+	tr.finished td {
+
+		background-color: #E7E7E7;
+	}
+
+	tr.active td {
+		background-color: #C6C6C6;
+	}
+	
+	td.winner {
+		font-weight: bold;
+		color: #7DC351;
+	}
 	
 /* :::::::::::::::: OLD OLD OLD OLD OLD OLD OLD OLD ::::::::::::::::::::::::::::::::::::: */
 

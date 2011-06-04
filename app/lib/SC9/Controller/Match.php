@@ -64,6 +64,20 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 		}
 	}
 	
+	public function setscoreAction() {
+		$match = RoundMatch::getById($this->request("matchId"));
+		$match->homeScore = $this->request("homeScore");
+		$match->awayScore = $this->request("awayScore");
+		$match->save();
+		
+		if($this->isAjax()) {
+			$o = new stdClass();
+			$o->matchId = $match->id;
+			$this->ajaxResponse($o);
+		}else{
+			$this->relocate("/pool/detail/".$match->Round->pool_id);
+		}
+	}
 	
 	private function handleFormSubmit($match) {
 		if($this->post("matchSubmit") != "") {
