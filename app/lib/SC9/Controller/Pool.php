@@ -32,7 +32,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 				$template = $this->output->loadTemplate("pool/manual_detail.html");
 				break;
 			default:
-				$teamplate = $this->output->loadTemplate('pool/detail.html');
+				$template = $this->output->loadTemplate('pool/detail.html');
 		}
 
 		
