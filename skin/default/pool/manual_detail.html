@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+ 
+{% block title %}Pool{% endblock %}
+{% block pagetitle %}{{pool.Stage.title}} - {{pool.title}}{% endblock %}
+
+{% block header %}
+	<script type="text/javascript" src="app/js/jquery.js"></script>
+	<script type="text/javascript" src="app/js/jquery-ui-1.8.13.custom.min.js"></script>
+	<script type="text/javascript" src="app/js/manualranking.js"></script>
+{% endblock %}
+
+{% block content %}
+	
+	<div class="section">
+		<h3>Seeds</h3>
+		<ul id="sc9-team-list" class="sc9-sort">
+		{% for poolTeam in pool.PoolTeams %}
+			<li><div class="rank">{{ poolTeam.rank }}</div><div class="team-name">{{ poolTeam.Team.name }}</div><span class="data">{{poolTeam.team_id}}</span></li>
+		{% endfor %}
+		</ul>
+	</div>
+	
+	
+	<span class="data" id="sc9-pool-id">{{pool.id}}</span>
+	
+	
+	
+	<p>
+		<a href="?n=/stage/detail/{{pool.Stage.id}}">back to stage</a>
+	</p>
+	
+	
+	
+{% endblock %}

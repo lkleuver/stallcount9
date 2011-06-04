@@ -232,6 +232,29 @@
 	
 	
 	
+	ul.sc9-sort { 
+	
+	}
+	ul.sc9-sort li {
+		background-color: #ECECEE;
+		margin-bottom: 3px;
+		cursor: move;
+	}
+	
+	ul.sc9-sort li div.rank {
+		padding: 8px;
+		width: 50px;
+		display: inline-block;	
+	}
+	
+	ul.sc9-sort li div.team-name {
+		padding: 8px;
+		display: inline-block;
+	}
+	
+	
+	
+	
 	
 /* :::::::::::::::: OLD OLD OLD OLD OLD OLD OLD OLD ::::::::::::::::::::::::::::::::::::: */
 

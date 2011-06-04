@@ -274,6 +274,8 @@ class Pool extends BasePool {
 	 		$this->save(); // saving number of spots
 		}
 		
+		
+		
  		FB::log('number of spots in pool '.$this->spots);
 
  		$nrSpots=$this->spots;
@@ -286,6 +288,7 @@ class Pool extends BasePool {
 			$spot = new PoolSpot();
 			$spot->rank = $i + 1;
 			$spot->title = ($seed ? $this->getTeamNameBySeed($i+1) : $this->getTeamNameByRank($i+1)); 
+			
 			if ($spot->title === false) {
 				$spot->title = "empty";
 				if ($seed && $this->PoolRuleset->title == 'Bracket') {
