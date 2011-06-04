@@ -26,6 +26,7 @@
   		<li>
   			<label>Field</label>
   			<select name="fieldId">
+  				<option value="0">empty</option>
   				{% for field in fields %}
 					<option value="{{field.id}}" {% if field.id == match.field_id %} selected="selected"{% endif %}>{{field.title}}{% if field.comments %} - ( {{field.comments}} ){% endif %}</option>  				
   				{% endfor %}

@@ -67,11 +67,11 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 	
 	private function handleFormSubmit($match) {
 		if($this->post("matchSubmit") != "") {
-			$match->homeScore = $this->post("homeScore");
-			$match->awayScore = $this->post("awayScore");
+			$match->homeScore = $this->post("homeScore") != "" ? $this->post("homeScore") : null;
+			$match->awayScore = $this->post("awayScore") != "" ? $this->post("awayScore") : null;
 			$match->homeSpirit = $this->post('homeSpirit');
 			$match->awaySpirit = $this->post('awaySpirit');
-			$match->field_id = $this->post("fieldId");
+			$match->field_id = $this->post("fieldId") != "0" ? $this->post("fieldId") : null;
 			$match->setScheduledTimeByFormat($this->post("scheduledTimeHour"));
 			
 			$match->save();
