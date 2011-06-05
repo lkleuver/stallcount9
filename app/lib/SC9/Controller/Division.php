@@ -42,9 +42,13 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 			FB::log('moving uploaded file '.move_uploaded_file($fileHandle['tmp_name'], dirname(__FILE__) . '/../../../import/division.csv'));
 			
 			FB::log('trying to open '.dirname(__FILE__) . '/../../../import/division.csv');
+//			FB::log('handle '.fopen(dirname(__FILE__) . '/../../../import/division.csv', "r"));
 			$row = 1;
 			if (($handle = fopen(dirname(__FILE__) . '/../../../import/division.csv', "r")) !== FALSE) {
 				$data = fgetcsv($handle, 0, ","); // pop off the first line with the header information
+				foreach($data as $item) {
+					FB::log('header data '.$item);
+				}
 				// make sure header data is of the right format
 				assert(stristr($data[0],'name') !== false);
 				assert(stristr($data[1],'mail') !== false);
