@@ -313,7 +313,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
         // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
 
 		// check if the next game is "tomorrow"
-		$previousGameTime=$this->getPlayingTimeInRound($round, $team->id);
+		$previousGameTime=Round::getPlayingTimeInRound($round, $team->id);
 		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
 		$thisGameTimeComponents = date_parse(date("Y-m-d H:i", $match->scheduledTime));
 		if ($previousGameTimeComponents['day'] != $thisGameTimeComponents['day']) {
@@ -324,7 +324,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		
 		if ($round->rank > 1) {
 			$text = "After a ";
-			$text .= $this->getResultInRound($previousRound,$team->id);
+			$text .= Round::getResultInRound($previousRound,$team->id);
 			$text .= ' in round '.$previousRound->rank.', you are now ranked ';
 			$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id)).".";
 		} else {
@@ -363,6 +363,18 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			
 		FB::groupEnd();
 	}
+	
+	private function getRankInStanding($standing,$team_id) {
+		// returns rank of team with id $team_id in $standing
+		// returns false if $team_id is not found
+		foreach($standing as $team) {
+			if ($team['team_id']==$team_id) {
+				return $team['rank'];
+			}
+		}
+		return false;
+	}
+	
 	
 	
 	private function compareTeamsPlayoffs($a, $b) {
