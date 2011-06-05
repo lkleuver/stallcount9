@@ -109,29 +109,7 @@ class Pool extends BasePool {
 		$this->save();
 		FB::groupEnd();
 	}
-	
-	public function createMatchups() {
-		FB::log('Model/Pool.php: creating matchups');
-		$this->getStrategy()->createMatchups($this);
-		return null;
-	}
-
-	public function createSMS($roundId) {
-		FB::group('Model/Pool.php: deleting SMS for round with id '.$roundId);
-		$round=Round::getRoundById($roundId);
-		foreach($round->SMSs as $sms) {
-			FB::log('deleting SMS with id '.$sms->id);
-			$sms->delete();
-		}
-		FB::groupEnd();
 		
-		FB::group('Model/Pool.php: creating SMS for round with id '.$roundId);
-		$this->getStrategy()->createSMS($this,$roundId);
-		FB::groupEnd();
-		return null;
-	}
-	
-	
 	public function getTeamIdByRank($rank) {
 		$rankedteam=$this->getTeamByRank($rank);
 		if ($rankedteam === false ){

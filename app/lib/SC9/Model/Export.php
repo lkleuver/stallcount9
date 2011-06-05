@@ -70,12 +70,20 @@ class Export {
 		$fh=Export::fileHandleFromRound($round,"Standings");
 		$standings = $round->Pool->getStrategy()->standingsAfterRound($round->Pool, $round->rank); 
 		
-		foreach($standings as $team) {
-			$sql = "REPLACE INTO standing_2011 SET round = '".$round->rank."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
-			$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', VP = '".SMS::mysql_escape_mimic($team['vp'])."'";
-			$sql .= ", opp_vp = '".SMS::mysql_escape_mimic($team['opp_vp'])."', margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
-			$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."'\n";
-			fwrite($fh,$sql);			
+		if ($round->Pool->PoolRuleset->title == "Swissdraw") {
+			foreach($standings as $team) {
+				$sql = "REPLACE INTO standing_2011 SET round = '".$round->rank."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', VP = '".SMS::mysql_escape_mimic($team['vp'])."'";
+				$sql .= ", opp_vp = '".SMS::mysql_escape_mimic($team['opp_vp'])."', margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
+				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."'\n";
+				fwrite($fh,$sql);			
+			}
+		} elseif ($round->Pool->PoolRuleset->title == "RoundRobin") {
+				$sql = "REPLACE INTO standing_2011 SET round = '".$round->rank."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', points = '".SMS::mysql_escape_mimic($team['points'])."'";
+				$sql .= ", margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
+				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."'\n";
+				fwrite($fh,$sql);						
 		}
 		
 		fclose($fh);

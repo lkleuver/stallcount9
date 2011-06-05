@@ -159,6 +159,8 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 	
 	public function standingsAfterRound($pool, $roundnr) {
 				
+		FB::group('compute RoundRobin standings of pool '.$pool->id.' after round '.$roundnr);
+		
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
 			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'points' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
@@ -173,10 +175,12 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 		} else {
 			
 			for ($i=0; $i<$roundnr; $i++) { // go through all rounds up to $roundnr
+				FB::table('standings after round '.($i+1),$standings);
 				$curRound = $pool->Rounds[$i];
 				foreach($curRound->Matches as $match) {
 					
-					if ($match->scoreSubmitTime != null && $match->home_team_id != null & $match->away_team_id != null) {
+//					if ($match->scoreSubmitTime != null && $match->home_team_id != null & $match->away_team_id != null) {
+					if ($match->home_team_id != null & $match->away_team_id != null) {
 						// update home team stats
 						$standings[$match->home_team_id]['games']++;					
 						$standings[$match->home_team_id]['margin'] += $match->homeScore - $match->awayScore;
@@ -224,6 +228,9 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 			$poolteam['rank']=$rank;
 			$poolteam->save();					
 		}
+		
+		FB::table('standings after round '.$roundnr,$standings);		
+		FB::groupEnd();
 		
 		return $standings;
 		

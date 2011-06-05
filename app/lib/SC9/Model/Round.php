@@ -25,28 +25,56 @@ class Round extends BaseRound {
 	}
 	
 	public function allResultsFilledIn() {
+		// first checks if all Teams of this round have been filled in
+		if (!$this->allTeamsFilledIn()) {
+			return false;
+		}
 		// returns true if all results of all matches of this round are filled in
 		foreach($this->Matches as $match) {
-			if (is_null($match->homeScore) || is_null($match->awayScore)) {
-				return false;
+			// only check matches where both away and home teams are filled in
+			if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+				if (is_null($match->homeScore) || is_null($match->awayScore) ) {
+					return false;
+				}
 			}
 		}		
 		return true;
 	}
 	
-
 	
 	public function randomScoreFill() {
 		foreach($this->Matches as $match) {
-			if (is_null($match->homeScore)) {
-				$match->homeScore=rand(0,15);
-				$match->save();				
-			}
-			if (is_null($match->awayScore)) {
-				$match->awayScore=rand(0,15);
-				$match->save();
+			if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+				if (is_null($match->homeScore)) {
+					$match->homeScore=rand(0,15);
+					$match->save();				
+				}
+				if (is_null($match->awayScore)) {
+					$match->awayScore=rand(0,15);
+					$match->save();
+				}
 			}
 		}
+	}
+
+	public function createMatchups() {
+		FB::log('Model/Round.php: creating matchups');
+		$this->Pool->getStrategy()->createMatchups($this);
+		return null;
+	}
+
+	public function createSMS() {
+		FB::group('Model/Round.php: deleting SMS for round with id '.$this->id);
+		foreach($this->SMSs as $sms) {
+			FB::log('deleting SMS with id '.$sms->id);
+			$sms->delete();
+		}
+		FB::groupEnd();
+		
+		FB::group('Model/Round.php: creating SMS for round with id '.$this->id);
+		$this->Pool->getStrategy()->createSMS($this->Pool,$this->id);
+		FB::groupEnd();
+		return null;
 	}
 	
 	public static function getPlayingTimeInRound($round,$team_id) {
