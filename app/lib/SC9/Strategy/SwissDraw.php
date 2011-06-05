@@ -255,49 +255,91 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			}		
 			
 			// fill in matchups
+			// ERROR: this procedure goes wrong when the BYE match is already the last match. Then it is not found previously.			 			
+//			$teamcounter=0;
+//			$byeHomeRank=0;
+//			$byeAwayRank=0;
+//			for ($i=0; $i < count($curRound->Matches); $i++) {
+//				
+//				FB::log('teamcounter '.$teamcounter.'  vs total nb in standings '.count($standings),' i is '.$i);
+//				
+//				if ($i == count($curRound->Matches)-1 && $byeHomeRank > 0) {
+//					// if last round and previously found a matchup with BYE
+//					// then fill it in here 
+//					assert($byeAwayRank>0);
+//					$curRound->Matches[$i]->link('HomeTeam', array($standings[$byeHomeRank]['team_id']));
+//					$curRound->Matches[$i]->link('AwayTeam', array($standings[$byeAwayRank]['team_id']));
+//					$curRound->Matches[$i]->save();
+//
+//					if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
+//						FB::log('filling automatic scores for home BYE team');
+//						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
+//						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
+//					}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
+//						FB::log('filling automatic scores for away BYE team');
+//						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
+//						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
+//					}
+//				} else {
+//					if ($standings[$teamcounter]['byeStatus'] == 1 || $standings[$teamcounter+1]['byeStatus'] == 1) {
+//						$byeHomeRank=$teamcounter++;
+//						$byeAwayRank=$teamcounter++;
+//					}
+//					
+//					// otherwise, just fill in the matchup normally
+//					$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
+//					$curRound->Matches[$i]->link('AwayTeam', array($standings[$teamcounter++]['team_id']));
+//					$curRound->Matches[$i]->save();
+//				}
+//				$curRound->save();		
+//			}
+
+			// let's do it better! It should work for both the cases with and without BYE match
+			// go through available matches, we know that BYE match is at the end, if there is one
 			$teamcounter=0;
 			$byeHomeRank=0;
 			$byeAwayRank=0;
 			for ($i=0; $i < count($curRound->Matches); $i++) {
 				
 				FB::log('teamcounter '.$teamcounter.'  vs total nb in standings '.count($standings),' i is '.$i);
-				
-				if ($i == count($curRound->Matches)-1 && $byeHomeRank > 0) {
-					// if last round and previously found a matchup with BYE
-					// then fill it in here 
-					assert($byeAwayRank>0);
-					$curRound->Matches[$i]->link('HomeTeam', array($standings[$byeHomeRank]['team_id']));
-					$curRound->Matches[$i]->link('AwayTeam', array($standings[$byeAwayRank]['team_id']));
-					$curRound->Matches[$i]->save();
 
-					if ($curRound->Matches[$i]->HomeTeam->byeStatus == 1) {
-						FB::log('filling automatic scores for home BYE team');
-						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeScore;
-						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeAgainst;					
-					}elseif ($curRound->Matches[$i]->AwayTeam->byeStatus == 1) {
-						FB::log('filling automatic scores for away BYE team');
-						$curRound->Matches[$i]->awayScore = $pool->PoolRuleset->byeScore;
-						$curRound->Matches[$i]->homeScore = $pool->PoolRuleset->byeAgainst;
-					}
-				} else {
-					if ($standings[$teamcounter]['byeStatus'] == 1 || $standings[$teamcounter+1]['byeStatus'] == 1) {
-						$byeHomeRank=$teamcounter++;
-						$byeAwayRank=$teamcounter++;
-					}
-					
-					// otherwise, just fill in the matchup normally
+				if ($standings[$teamcounter]['byeStatus'] == 1 || $standings[$teamcounter+1]['byeStatus'] == 1) {
+					$byeHomeRank=$teamcounter++;
+					$byeAwayRank=$teamcounter++;
+					// skipping these guys
+				}
+				
+				if ($teamcounter < count($standings)-1) {
 					$curRound->Matches[$i]->link('HomeTeam', array($standings[$teamcounter++]['team_id']));
 					$curRound->Matches[$i]->link('AwayTeam', array($standings[$teamcounter++]['team_id']));
 					$curRound->Matches[$i]->save();
-						
-					// fill in random scores for testing
-//					$curRound->Matches[$i]->homeScore = rand(0,15);
-//					$curRound->Matches[$i]->awayScore = rand(0,15);
-//					$curRound->Matches[$i]->save();
 				}
-
-				$curRound->save();		
+				
 			}
+			
+			if ($byeAwayRank > 0) {  // we previously founda BYE matchup
+				assert($byeHomeRank>0);
+				$lastMatch=$curRound->Matches[count($curRound->Matches)-1];
+				assert($lastMatch->home_team_id === null); // we should have skipped that match above
+				assert($lastMatch->away_team_id === null); // we should have skipped that match above
+				
+				FB::log('filling in matchups for BYE match');
+				$lastMatch->link('HomeTeam', array($standings[$byeHomeRank]['team_id']));
+				$lastMatch->link('AwayTeam', array($standings[$byeAwayRank]['team_id']));
+				$lastMatch->save();
+
+				if ($lastMatch->HomeTeam->byeStatus == 1) {
+					FB::log('filling automatic scores for home BYE team');
+					$lastMatch->homeScore = $pool->PoolRuleset->byeScore;
+					$lastMatch->awayScore = $pool->PoolRuleset->byeAgainst;					
+				}elseif ($lastMatch->AwayTeam->byeStatus == 1) {
+					FB::log('filling automatic scores for away BYE team');
+					$lastMatch->awayScore = $pool->PoolRuleset->byeScore;
+					$lastMatch->homeScore = $pool->PoolRuleset->byeAgainst;
+				}
+				$lastMatch->save();				
+			}
+			
 			
 		}
 		

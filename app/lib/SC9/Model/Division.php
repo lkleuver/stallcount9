@@ -80,6 +80,7 @@ class Division extends BaseDivision {
 	
 	
 	public function getActiveStage() {
+		// returns the first stage with active rounds
 		if($this->_activeStage == null) {
 			foreach($this->Stages as $stage) {
 				if($stage->getActiveRound() > 0) {

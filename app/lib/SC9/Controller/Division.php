@@ -151,8 +151,6 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 			$rounds[] = Round::getRoundByRank($pool->id, $currentRound);
 		}
 		
-		
-		
 		$template = $this->output->loadTemplate('division/active.html');
 		$template->display(array("division" => $division, "activeStage" => $stage, "currentRound" => $currentRound, "rounds" => $rounds));
 	}

@@ -16,7 +16,8 @@ class Round extends BaseRound {
 		// returns true if all teams of all matches of this round are filled in
 		// i.e. the matchups have been created
 		foreach($this->Matches as $match) {
-			if (is_null($match->home_team_id) || is_null($match->away_team_id)) {
+			if (is_null($match->home_team_id) && is_null($match->away_team_id)) {
+				// in brackets with odd number of teams, it is allowed that one of the two teams is not set 
 				return false;
 			}
 		}		

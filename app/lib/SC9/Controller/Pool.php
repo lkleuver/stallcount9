@@ -204,6 +204,10 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		
 		$pool->currentRound++;
 		$pool->save();
+		
+		echo "<br>";
+		echo "<a href='index.php?n=/pool/detail/".$this->poolId."&tournamentId=".$pool->Stage->Division->tournament_id."&divisionId=".$pool->Stage->Division->id."&stageId=".$pool->Stage->id."'>back to pool</a>";
+		
 		exit;
 		$this->relocate("/stage/detail/".$stageId);
 	}

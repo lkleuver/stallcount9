@@ -114,6 +114,8 @@ class Stage extends BaseStage{
 	
 	
 	public function getActiveRound() {
+		// returns the smallest currentRound of all Pools of this stage
+		
 		$result = 0;
 		foreach($this->Pools as $pool) {
 			if($result == 0 || $pool->currentRound < $result) {

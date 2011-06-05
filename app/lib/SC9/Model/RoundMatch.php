@@ -75,7 +75,7 @@ class RoundMatch extends BaseRoundMatch{
 		return $this->awayName;
 	}
 	
-	public function timeFormat() {
+	public function timeFormatOLD() {
 		$minutes = $this->scheduledTime;
 		
 		$hours = floor($minutes / 60);
@@ -85,6 +85,22 @@ class RoundMatch extends BaseRoundMatch{
 		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
 		
 		return $hourString .":".$minuteString;
+	}
+
+	public function timeFormat() {
+		if ($this->scheduledTime === null) {
+			return "unknown";
+		}
+		
+		$timeParse=getdate($this->scheduledTime);		
+		
+		$hours = $timeParse['hours'];
+		$minutes = $timeParse['minutes'];
+		
+		$hourString = $hours < 10 ? "0".$hours : $hours . "";
+		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
+		
+		return substr($timeParse['weekday'],0,3)." ".$hourString.":".$minuteString;
 	}
 	
 	

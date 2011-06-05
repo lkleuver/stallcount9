@@ -17,7 +17,11 @@
 		
 		{% for round in rounds %}
 			<h4>{{round.Pool.title}} {% if round.Pool.currentRound > currentRound %} (finished) {%endif%}</h4>
-			
+			<a class="action" href="?n=/pool/computeMatchups/{{round.Pool.id}}&roundId={{round.id}}">Create Matchups for this round</a>
+			{% if round.allTeamsFilledIn() == true %} &nbsp&nbsp&nbsp&nbsp; <a class="action" href="?n=/pool/announceRound/{{pool.id}}&roundId={{round.id}}">Announce this round (upload SMS and matchups)</a>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <a class="action" href="?n=/round/randomScore/{{round.id}}">Fill this round up with random scores</a>{% endif %}
+			{% if round.allResultsFilledIn() == true %}<br><a class="action" href="?n=/pool/finishRound/{{round.Pool.id}}&roundId={{round.id}}">Finish this round (upload results and ranking, increase current round)</a>{% endif %}					
+			<br><br>
 			
 			<table>
 				<tr>
@@ -48,7 +52,7 @@
 		<h3>Round operations</h3>
 		<a class="button button-blue" href="?n=/print/schedule&stageId={{ activeStage.id }}&roundRank={{currentRound}}" target="_blank"><span class="print">Print schedule</span></a>
 		<a class="button button-blue" href="?n=/print/standings&stageId={{ activeStage.id }}&roundRank={{currentRound}}"><span class="print">Print standings</span></a>
-		<a class="button button-red" href="#"><span class="proceed">Finish round</span></a>
+		<a class="button button-red" href="?n=/pool/finishRound/{{pool.id}}&roundId={{round.id}}"><span class="proceed">Finish round</span></a>
 	</div>
 	
 	

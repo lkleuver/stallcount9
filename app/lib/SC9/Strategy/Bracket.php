@@ -67,9 +67,6 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 	
 	
 	public function standingsAfterRound($pool, $roundnr) {
-
-		// TODO: cope with requests of too high $roundnr
-		// make sure only rounds that are played are taken into account
 		
 		FB::group('compute Bracket standings of pool '.$pool->id.' after round '.$roundnr);
 		
@@ -100,6 +97,17 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			// sort according to incoming rank 
 			usort($standings, create_function('$a,$b','return $a[\'seed\']==$b[\'seed\']?0:($a[\'seed\']<$b[\'seed\']?-1:1);'));			
 		} else {
+			
+			// make sure we are not trying to retrieve results that are not there
+			// i.e. only take into account rounds where all teams are filled in
+			$actualRoundNr=0;
+			while ($pool->Rounds[$actualRoundNr]->allTeamsFilledIn()) {
+				$actualRoundNr++;
+			}
+			if ($actualRoundNr < $roundnr) {
+				FB::log('adjusted round number from '.$roundnr.' to '.$actualRoundNr);
+				$roundnr = $actualRoundNr;
+			}
 			
 			for ($i=0; $i < $roundnr; $i++) { // go through all rounds up to $roundnr	
 				$curRound = $pool->Rounds[$i];

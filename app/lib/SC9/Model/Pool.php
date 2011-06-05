@@ -79,8 +79,11 @@ class Pool extends BasePool {
 				}
 			}
 		}
-		FB::groupEnd();		
+		FB::groupEnd();
 		
+		$this->save();
+		// WINDMILL only: insert playing times
+		Windmill::insertMatchTimes($this);
 	}	
 	
 	/**
