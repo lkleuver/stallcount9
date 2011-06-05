@@ -334,7 +334,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
         // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
 
 		// check if the next game is "tomorrow"
-		$previousGameTime=$this->getPlayingTimeInRound($round, $team->id);
+		$previousGameTime=Round::getPlayingTimeInRound($round, $team->id);
 		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
 		$thisGameTimeComponents = date_parse(date("Y-m-d H:i", $match->scheduledTime));
 		if ($previousGameTimeComponents['day'] != $thisGameTimeComponents['day']) {
@@ -345,7 +345,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		
 		if ($round->rank > 1) {
 			$text = "After a ";
-			$text .= $this->getResultInRound($previousRound,$team->id);
+			$text .= Round::getResultInRound($previousRound,$team->id);
 			$text .= ' in round '.$previousRound->rank.', you are now ranked ';
 			$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id)).".";
 		} else {
@@ -396,53 +396,6 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		return false;
 	}
 
-	private function getPlayingTimeInRound($round,$team_id) {
-		// returns time when $team_id played in $round
-		// false if $team_id is not found in $round
-		FB::log('looking for playing time of team with id '.$team_id.' in round with id '.$round->id);
-		$time=0;
-		$matchfound=false;
-		foreach($round->Matches as $match) {
-			if ($match->HomeTeam->id == $team_id) {
-				return $match->scheduledTime;	
-			} elseif ($match->AwayTeam->id == $team_id) {
-				return $match->scheduledTime;	
-			}						
-		}
-		return false;
-	}
-	
-	private function getResultInRound($round,$team_id) {
-		// goes through matches in $round and checks for the match that $team_id played
-		// it returns  e.g. "8-15 loss"  or "12-9 win"  or  "5-5 tie"
-		FB::log('looking for team with id '.$team_id.' in round with id '.$round->id);
-		$scored=0;
-		$received=0;
-		$matchfound=false;
-		foreach($round->Matches as $match) {
-			if ($match->HomeTeam->id == $team_id) {
-				$scored=$match->homeScore;
-				$received=$match->awayScore;
-				$matchfound=true;				
-			} elseif ($match->AwayTeam->id == $team_id) {
-				$scored=$match->awayScore;
-				$received=$match->homeScore;
-				$matchfound=true;								
-			}						
-		}
-		if ($scored > $received) {
-			return $scored.'-'.$received.' win';
-		} elseif ($scored < $received) {
-			return $scored.'-'.$received.' loss';
-		} elseif ($scored == $received && $matchfound == true) {
-			return $scored.'-'.$received.' tie';
-		} elseif ($matchfound === false) { // assumes
-			FB::error('no match found in round with id '.$round->id.' where team with id '.$team_id.' played!');
-		} else {
-			die('hae?');
-		}
-	}
-		
 	
 //      
 //    'compare the dates of the current and next round

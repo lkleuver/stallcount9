@@ -65,9 +65,12 @@
 		<div class="bracket">
 		{% for round in pool.Rounds %}
 			<div class="round">
-				{{round.rank}}
+				{{round.rank}}				
 				{% if round.rank == pool.currentRound %}
-					<a class="action" href="?n=/pool/matchups/{{pool.id}}">Create Matchups for this round</a>					
+					<a class="action" href="?n=/pool/computeMatchups/{{pool.id}}">Create Matchups for this round</a>					
+					{% if round.allTeamsFilledIn() == true %} <br> <a class="action" href="?n=/pool/announceRound/{{pool.id}}&roundId={{round.id}}">Announce this round (upload SMS and matchups)</a>
+					<br><a class="action" href="?n=/pool/randomScoreRound/{{pool.id}}&roundId={{round.id}}">Fill this round up with random scores</a>{% endif %}
+					{% if round.allResultsFilledIn() == true %}<br><a class="action" href="?n=/pool/finishRound/{{pool.id}}&roundId={{round.id}}">Finish this round (upload results and ranking, increase current round)</a>{% endif %}					
 				{% endif %}
 				
 				
@@ -99,7 +102,7 @@
 						</div>
 						
 						
-						<a href="?n=/match/edit/{{match.id}}">edit</a>
+						<a href="?n=/match/edit/{{match.id}}&TournamentId={{TournamentId}}">edit</a>
 					</div>
 				{% endfor %}
 				

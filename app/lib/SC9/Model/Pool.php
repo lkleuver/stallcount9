@@ -44,6 +44,7 @@ class Pool extends BasePool {
 				$match->matchName = "match rank ".($j + 1);
 				$match->homeName = "winner a";
 				$match->awayName = "winner b";
+				$match->save();
 			}
 			FB::groupEnd();
 		}
@@ -94,6 +95,7 @@ class Pool extends BasePool {
 			$poolTeam->seed = $move->destinationSpot;
 			$poolTeam->rank = $move->destinationSpot; // set rank=seed to begin with
 			$poolTeam->team_id = $move->SourcePool->getTeamIdByRank($move->sourceSpot);
+			FB::log('retrieved team ranked '.$move->sourceSpot.', got team_id '.$poolTeam->team_id);
 			if ($poolTeam->team_id === null) {
 				throw new Exception('missing team_id, the move probably did not exist');
 			}
@@ -132,7 +134,7 @@ class Pool extends BasePool {
 		if ($rankedteam === false ){
 			return(false);
 		} else {
-			return($rankedteam['team_id']);
+			return($rankedteam->team_id);
 		}
 	}
 	
@@ -142,15 +144,15 @@ class Pool extends BasePool {
 		if ($rankedteam === false ){
 			return(false);
 		} else {
-			return($rankedteam['teamname']);
+			return($rankedteam->Team->name);
 		}
 	}
 	
-	public function getTeamByRank($rank) {
+	public function getTeamByRankOLD($rank) {
 		// the rank-property of PoolTeams can be ambiguous, 
 		// because several teams can have the same rank
 		// in this case, we use the seed as tie-breaker
-		FB::log('getting team with rank '.$rank); 
+		FB::log('getting team with rank '.$rank.' in pool '.$this->title.' of division '.$this->Stage->Division->title); 
 		
 		// first try to retrieve the team with $rank directly
 		$q = Doctrine_Query::create()
@@ -182,12 +184,17 @@ class Pool extends BasePool {
 			}
 		}		
 
-		
+//		$targetTeamSeed=$targetTeam['seed'];
 		// make sure we are never returning the BYE team
 		if ($targetTeam['byeStatus']==1) {
 			FB::log('we retrieved the BYE team on rank '.$rank.' retrieving '.($rank+1).'instead.');
-			$targetTeam=$this->getTeamIdByRank($rank+1);			
+			return $this->getTeamByRank($rank+1);		
+//			$targetTeamSeed=$targetTeam->seed;	// TODO: ugly hack such that the recursion works
+			// this was necessary, because the actual procedure return a PoolTeam Object, 
+			// whereas we only need the 'seed' property of $targetTeam to continue
 		}
+		
+		FB::log('targetTeam id'.$targetTeam['teamname'].' seed '.$targetTeam['seed'].' rank '.$targetTeam['rank']);
 
 		// this does not work, probably because it did not retrieve the whole PoolTeam object... ???
 		// TODO: this does work, but is much slower		
@@ -198,6 +205,41 @@ class Pool extends BasePool {
 		
 	}
 
+	public function getTeamByRank($rank) {
+		// the rank-property of PoolTeams can be ambiguous, 
+		// because several teams can have the same rank
+		// in this case, we use the seed as tie-breaker
+		FB::log('getting team with rank '.$rank.' in pool '.$this->title.' of division '.$this->Stage->Division->title); 
+		
+			// the concrete rank could not been retrieved
+			// so retrieve all teams instead and take it from there
+		$q = Doctrine_Query::create()
+		    ->from('PoolTeam pt')
+		    ->leftJoin('pt.Team')
+		    ->where('pt.pool_id = ?',$this->id)
+		    ->orderBy('pt.rank ASC, pt.seed ASC');
+		$poolTeams = $q->execute();
+		
+		FB::log('poolTeams: count '.count($poolTeams));
+		FB::table('poolTeams ',$poolTeams);
+
+		if (count($poolTeams) < $rank || $poolTeams[$rank-1]->rank > $rank) { 
+			return false;
+		} 
+		
+		$rankCount=0;
+		foreach($poolTeams as $poolTeam) {
+			if ($poolTeam->Team->byeStatus != 1) {
+				$rankCount++;
+				if ($rankCount == $rank) {
+					return $poolTeam;
+				}	
+			}
+		}
+			
+		return false;			
+	}
+	
 	public function getTeamNameBySeed($seed) {
 		$q = Doctrine_Query::create()
 			->select('pt.*, t.name as teamname')
@@ -295,7 +337,7 @@ class Pool extends BasePool {
 			} elseif (!$seed) {
 				$poolteamByRank = $this->getTeamByRank($i+1);
 				// count how many BYEs $poolteam had in this pool
-				FB::log('poolteamByRank '.$poolteamByRank['teamname']);
+				FB::log('poolteamByRank '.$poolteamByRank->Team->name);
 				$spot->byeCount = $poolteamByRank->countBYEs();				
 			} 			
 

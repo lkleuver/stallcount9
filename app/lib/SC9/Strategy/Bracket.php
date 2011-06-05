@@ -68,6 +68,9 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 	
 	public function standingsAfterRound($pool, $roundnr) {
 
+		// TODO: cope with requests of too high $roundnr
+		// make sure only rounds that are played are taken into account
+		
 		FB::group('compute Bracket standings of pool '.$pool->id.' after round '.$roundnr);
 		
 		$nrTeams=count($pool->PoolTeams);
@@ -272,10 +275,87 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 //		$pool->save();
 		
 	}
-	
 	public function createSMS($pool,$roundId) {
-		return null;
+		// generates SMS for round with id $roundId		
+		$round=Round::getRoundById($roundId);
+		FB::log('creating SMS for roundId '.$roundId.' and rank '.$round->rank.' round->id '.$round->id);
+				
+		if ($round->rank > 1) {
+			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);
+			$standings=$this->standingsAfterRound($pool, $round->rank-1);
+		} else {
+			foreach($pool->SourceMoves as $move) {
+				FB::table('move',$move);
+			}
+			exit;
+			$previousRound=$pool->SourcePool->Rounds[count($pool->SourcePool->Rounds)];
+			$standings=false;
+		}
+		
+		// go through all matches of $round
+		foreach($round->Matches as $match) {
+			$this->createSMSForTeam($previousRound, $round, $standings, $match->HomeTeam, $match->AwayTeam, $match);
+			$this->createSMSForTeam($previousRound, $round, $standings, $match->AwayTeam, $match->HomeTeam, $match);			
+		}
+		
 	}
+	
+	private function createSMSForTeam($previousRound,$round,$standings,$team,$opponent_team,$match) {
+		// After a 15-2 loss in round 1, you are now ranked 12th. In round 2,
+        // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
+
+		// check if the next game is "tomorrow"
+		$previousGameTime=$this->getPlayingTimeInRound($round, $team->id);
+		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
+		$thisGameTimeComponents = date_parse(date("Y-m-d H:i", $match->scheduledTime));
+		if ($previousGameTimeComponents['day'] != $thisGameTimeComponents['day']) {
+			$tomorrow = true;
+		} else {
+			$tomorrow = false;
+		}
+		
+		if ($round->rank > 1) {
+			$text = "After a ";
+			$text .= $this->getResultInRound($previousRound,$team->id);
+			$text .= ' in round '.$previousRound->rank.', you are now ranked ';
+			$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id)).".";
+		} else {
+			$text = "Welcome to Windmill Windup 2011!";
+		}
+		$text .= 'In round '.$round->rank;
+		if ($opponent_team->byeStatus == 1) {
+			// TODO: fill in the actual forfeit score from the pool
+			$text .=  ",you can take a break due to the odd number of teams.You'll score a 15-12 win";
+		} else {
+			$text .= ",you'll play ";
+			$text .= $opponent_team->name;
+			if ($round->rank>1) {
+				$text .= "(ranked ";
+				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)).")";
+			}
+			$text .= " on Field ".$match->field_id;
+			if ($tomorrow) {
+				$text .= 'tomorrow ';
+			}
+			$text .= 'at '.$match->scheduledTime;
+		}
+		if ($tomorrow) {
+			$text .= ".Please hand in today's spirit scores!";
+		}			
+		
+
+		FB::group('sms for team '.$team->name.':');
+		FB::log($text);
+		$sms = New SMS();
+		$sms->message = $text;
+		$sms->createTime=time();
+		$sms->link('Team', array($team->id));
+		$sms->link('Round',array($round->id));	
+		$sms->save();
+			
+		FB::groupEnd();
+	}
+	
 	
 	private function compareTeamsPlayoffs($a, $b) {
 		//sort according to 

@@ -46,6 +46,56 @@ class Round extends BaseRound {
 		}
 	}
 	
+	public static function getPlayingTimeInRound($round,$team_id) {
+		// returns time when $team_id played in $round
+		// false if $team_id is not found in $round
+		FB::log('looking for playing time of team with id '.$team_id.' in round with id '.$round->id);
+		$time=0;
+		$matchfound=false;
+		foreach($round->Matches as $match) {
+			if ($match->HomeTeam->id == $team_id) {
+				return $match->scheduledTime;	
+			} elseif ($match->AwayTeam->id == $team_id) {
+				return $match->scheduledTime;	
+			}						
+		}
+		return false;
+	}
+			
+	
+	
+	public static function getResultInRound($round,$team_id) {
+		// goes through matches in $round and checks for the match that $team_id played
+		// it returns  e.g. "8-15 loss"  or "12-9 win"  or  "5-5 tie"
+		FB::log('looking for team with id '.$team_id.' in round with id '.$round->id);
+		$scored=0;
+		$received=0;
+		$matchfound=false;
+		foreach($round->Matches as $match) {
+			if ($match->HomeTeam->id == $team_id) {
+				$scored=$match->homeScore;
+				$received=$match->awayScore;
+				$matchfound=true;				
+			} elseif ($match->AwayTeam->id == $team_id) {
+				$scored=$match->awayScore;
+				$received=$match->homeScore;
+				$matchfound=true;								
+			}						
+		}
+		if ($scored > $received) {
+			return $scored.'-'.$received.' win';
+		} elseif ($scored < $received) {
+			return $scored.'-'.$received.' loss';
+		} elseif ($scored == $received && $matchfound == true) {
+			return $scored.'-'.$received.' tie';
+		} elseif ($matchfound === false) { // assumes
+			FB::error('no match found in round with id '.$round->id.' where team with id '.$team_id.' played!');
+		} else {
+			die('hae?');
+		}
+	}
+	
+	
 	public static function deleteRounds($poolId) {
 		$rounds = Round::getRounds($poolId);
 		foreach($rounds as $round) {
