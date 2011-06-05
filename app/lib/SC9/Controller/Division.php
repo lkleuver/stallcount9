@@ -35,17 +35,30 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$division = Division::getById($this->divisionId);
 		
 		if($this->post("divisionImport") != "") {
-			FB::group('importing CSV stuff');
+			// if there exists a CSV file, import it
 			$fileHandle=$this->file('CSVFile');
-			FB::log('FILEname '.$fileHandle['tmp_name']);
-			
-			FB::log('moving uploaded file '.move_uploaded_file($fileHandle['tmp_name'], dirname(__FILE__) . '/../../../import/division.csv'));
-			
-			FB::log('trying to open '.dirname(__FILE__) . '/../../../import/division.csv');
-//			FB::log('handle '.fopen(dirname(__FILE__) . '/../../../import/division.csv', "r"));
+			FB::table('fileHandle ',$fileHandle);
+			if ($fileHandle['size'] > 0) {
+				FB::group('importing CSV stuff');
+				FB::log('FILEname '.$fileHandle['tmp_name']);
+				$targetFileName=dirname(__FILE__).'/../../../import/division.csv';		
+				FB::log('moving uploaded file '.move_uploaded_file($fileHandle['tmp_name'], $targetFileName));			
+				$delimiter=",";
+			} else {
+				$fileHandle = $this->file('TABFile');
+				if ($fileHandle['size'] == 0) {
+					trigger_error('no file uploaded');
+					die;
+				}
+				FB::group('importing TAB stuff');
+				FB::log('FILEname '.$fileHandle['tmp_name']);		
+				$targetFileName=dirname(__FILE__).'/../../../import/division.tab';
+				FB::log('moving uploaded file '.move_uploaded_file($fileHandle['tmp_name'], $targetFileName));
+				$delimiter="\t";			
+			}
 			$row = 1;
-			if (($handle = fopen(dirname(__FILE__) . '/../../../import/division.csv', "r")) !== FALSE) {
-				$data = fgetcsv($handle, 0, ","); // pop off the first line with the header information
+			if (($handle = fopen($targetFileName, "r")) !== FALSE) {
+				$data = fgetcsv($handle, 0, $delimiter); // pop off the first line with the header information
 				foreach($data as $item) {
 					FB::log('header data '.$item);
 				}
@@ -61,7 +74,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 				assert(stristr($data[10],'comment') !== false);
 								
 				$teamcount=count($division->Stages[0]->Pools[0]->PoolTeams); // in registration pool of seeding stage
-			    while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
+			    while (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE) {
 					$team = Team::teamNameExists($this->divisionId, $data[0]);
 			    	if ($team === false) {
 				    	FB::log('adding a new team ',$data[0]);				    	
