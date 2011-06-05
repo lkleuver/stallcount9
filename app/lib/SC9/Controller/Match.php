@@ -50,13 +50,44 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 		}
 	}
 	
+	public function settimeAction() {
+		$match = RoundMatch::getById($this->request("matchId"));
+		$match->scheduledTime = $this->request("scheduledTime");
+		$match->save();
+		
+		if($this->isAjax()) {
+			$o = new stdClass();
+			$o->matchId = $match->id;
+			$this->ajaxResponse($o);
+		}else{
+			$this->relocate("/pool/detail/".$match->Round->pool_id);
+		}
+	}
+	
+	public function setscoreAction() {
+		$match = RoundMatch::getById($this->request("matchId"));
+		$match->homeScore = $this->request("homeScore");
+		$match->awayScore = $this->request("awayScore");
+		$match->save();
+		
+		if($this->isAjax()) {
+			$o = new stdClass();
+			$o->matchId = $match->id;
+			$this->ajaxResponse($o);
+		}else{
+			$this->relocate("/pool/detail/".$match->Round->pool_id);
+		}
+	}
+	
 	private function handleFormSubmit($match) {
 		if($this->post("matchSubmit") != "") {
-			$match->homeScore = $this->post("homeScore");
-			$match->awayScore = $this->post("awayScore");
+			$match->homeScore = $this->post("homeScore") != "" ? $this->post("homeScore") : null;
+			$match->awayScore = $this->post("awayScore") != "" ? $this->post("awayScore") : null;
 			$match->homeSpirit = $this->post('homeSpirit');
 			$match->awaySpirit = $this->post('awaySpirit');
-			$match->field_id = $this->post("fieldId");
+			$match->field_id = $this->post("fieldId") != "0" ? $this->post("fieldId") : null;
+			$match->setScheduledTimeByFormat($this->post("scheduledTimeHour"));
+			
 			$match->save();
 			return true;
 		}

@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+ 
+{% block title %}{{division.title}}{% endblock %}
+{% block pagetitle %}{{division.title}} - Active{% endblock %}
+
+
+{% block header %}
+	<script type="text/javascript" src="app/js/jquery.js"></script>
+	<script type="text/javascript" src="app/js/pool.js"></script>
+{% endblock %}
+
+{% block content %}
+	
+	
+	<div class="section">
+		<h3>Round {{currentRound}}</h3>
+		
+		{% for round in rounds %}
+			<h4>{{round.Pool.title}} {% if round.Pool.currentRound > currentRound %} (finished) {%endif%}</h4>
+			
+			
+			<table>
+				<tr>
+					<th>Field</th>
+					<th>Time</th>
+					<th>Home</th>
+					<th>Away</th>
+					<th>Score</th>
+				</tr>
+			{% for match in round.Matches %}
+				<tr id="sc9-match-row-{{match.id}}" class="match{% if match.played() %} finished{%endif%}">
+					<td class="field">{% if match.field_id %}{{match.Field.title}}{% else %}empty{% endif %}</td>
+					<td><input class="sc9-time-input" id="sc9-time-input-{{match.id}}" value="{{match.timeFormat()}}" /></td>
+					<td id="sc9-hometeam-row-{{match.id}}" class="hometeam{% if match.homeWon() %} winner{%endif%}">{{match.getHomeName()}}</td>
+					<td id="sc9-awayteam-row-{{match.id}}" class="awayteam{% if match.awayWon() %} winner{%endif%}">{{match.getAwayName()}}</td>
+					<td><input class="sc9-score-input" id="sc9-score-input-{{match.id}}" value="{{match.homeScore}} - {{match.awayScore}}" /></td>
+				</tr>
+			{% endfor %}
+			
+			</table>
+						
+		
+		{% endfor %}
+
+	</div>
+	
+	<div class="section">
+		<h3>Round operations</h3>
+		<a class="button button-blue" href="?n=/print/schedule&stageId={{ activeStage.id }}&roundRank={{currentRound}}" target="_blank"><span class="print">Print schedule</span></a>
+		<a class="button button-blue" href="?n=/print/standings&stageId={{ activeStage.id }}&roundRank={{currentRound}}"><span class="print">Print standings</span></a>
+		<a class="button button-red" href="#"><span class="proceed">Finish round</span></a>
+	</div>
+	
+	
+	<br /><Br /><br />
+
+	<div id="sc9-match-options" class="optionsbox">
+		<a class="button button-blue" id="pool-switch-fields" href="#"><span class="switch">Switch fields</span></a>
+	</div>
+
+{% endblock %}

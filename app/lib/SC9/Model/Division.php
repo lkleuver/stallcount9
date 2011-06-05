@@ -12,6 +12,8 @@
  */
 class Division extends BaseDivision {
 	
+	private $_activeStage = null;
+	
 	//TODO: PoolRuleset ID Can't be always "1"
 	public function initializeDivision() {
 		//create registration stage and it's pool
@@ -75,6 +77,19 @@ class Division extends BaseDivision {
 		}
 		return null;
 	}
+	
+	
+	public function getActiveStage() {
+		if($this->_activeStage == null) {
+			foreach($this->Stages as $stage) {
+				if($stage->getActiveRound() > 0) {
+					$this->_activeStage = $stage;
+				}
+			}
+		}
+		return $this->_activeStage;
+	}
+	
 	
 	/**
 	 * 

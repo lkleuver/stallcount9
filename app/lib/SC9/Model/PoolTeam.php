@@ -67,4 +67,14 @@ class PoolTeam extends BasePoolTeam
 		return $poolteam;		
 	}
 	
+	public static function setRank($poolId, $teamId, $rank) {
+		$q = Doctrine_Query::create()
+			->update('PoolTeam pt')
+			->set('rank', $rank)
+			->where('pool_id = ?', $poolId)
+			->andWhere('team_id = ?', $teamId);
+		$q->execute();
+	}
+	
+	
 }

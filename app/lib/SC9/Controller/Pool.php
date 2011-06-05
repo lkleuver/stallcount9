@@ -22,8 +22,23 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		}		
 		
 		$standings = $pool->standingsAfterRound($standingsRound); 
-		$template = $pool->getStrategy()->getName() == "Bracket" ? $this->output->loadTemplate("pool/bracket_detail.html") : $this->output->loadTemplate('pool/detail.html');
-				
+		
+		$template = null;
+		switch($pool->getStrategy()->getName()) {
+			case "Bracket":
+				$template = $this->output->loadTemplate("pool/bracket_detail.html");
+				break;
+			case "Default":
+				$template = $this->output->loadTemplate("pool/manual_detail.html");
+				break;
+			default:
+				$template = $this->output->loadTemplate('pool/detail.html');
+		}
+
+		
+		//echo count($pool->PoolTeams);
+		//exit;
+		
 		$template->display(array("pool" => $pool, "standings" => $standings, "standingsRound" => $standingsRound));
 	}
 	
@@ -201,5 +216,25 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$round->randomScoreFill();			
 		$this->relocate("/pool/detail/".$pool->id."&tournamentId=".$pool->Stage->Division->Tournament->id."&divisionId=".$pool->Stage->Division->id."&stageId=".$pool->Stage->id);
 	}
+	
+	
+	
+	public function rankteamsAction() {
+		$poolId = $this->request("poolId");
+		$ranksRaw = $this->request("ranks");
+		$ranks = explode(",", $ranksRaw);
+		for($i = 0; $i < count($ranks); $i++) {
+			PoolTeam::setRank($poolId, $ranks[$i], $i+1);
+		}
+		
+		if($this->isAjax()) {
+			$o = new stdClass();
+			$this->ajaxResponse($o);
+		}else{
+			$this->relocate("/pool/detail/".$poolId);
+		}
+		
+	}
+	
 	
 }

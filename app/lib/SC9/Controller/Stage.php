@@ -90,6 +90,7 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		
 		$template = $this->output->loadTemplate('stage/moves.html');
 		$template->display(array("stage" => $stage, "seedStage" => $seedStage));
+		
 	}
 
 	

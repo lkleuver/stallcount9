@@ -16,31 +16,38 @@ class SC9_Controller_Core {
 		
 		if(isset($_REQUEST["tournamentId"])) {
 			$tournament = Tournament::getById($_REQUEST["tournamentId"]);
-			
-			$output->addGlobal("tournamentId", $_REQUEST["tournamentId"]);
-			$output->addGlobal('activeTournament', $tournament);
-			$output->addGlobal('divisionOptions', $tournament->Divisions);
+			if($tournament) {
+				$output->addGlobal("tournamentId", $_REQUEST["tournamentId"]);
+				$output->addGlobal('activeTournament', $tournament);
+				$output->addGlobal('divisionOptions', $tournament->Divisions);
+			}
 		}
 		
 		
 		if(isset($_REQUEST["divisionId"])) {
 			$division = Division::getByIdLight($_REQUEST["divisionId"]);
-			$output->addGlobal("divisionId", $division->id);
-			$output->addGlobal("activeDivision", $division);
-			$output->addGlobal("stageOptions", $division->Stages);
+			if($division) {
+				$output->addGlobal("divisionId", $division->id);
+				$output->addGlobal("activeDivision", $division);
+				$output->addGlobal("stageOptions", $division->Stages);
+			}
 		}
 		
 		if(isset($_REQUEST["stageId"])) {
 			$stage = Stage::getById($_REQUEST["stageId"]);
-			$output->addGlobal("stageId", $stage->id);
-			$output->addGlobal("activeStage", $stage);
-			$output->addGlobal("poolOptions", $stage->Pools);
+			if($stage) {
+				$output->addGlobal("stageId", $stage->id);
+				$output->addGlobal("activeStage", $stage);
+				$output->addGlobal("poolOptions", $stage->Pools);
+			}
 		}
 		
 		if(isset($_REQUEST["poolId"])) {
 			$pool = Pool::getByIdLight($_REQUEST["poolId"]);
-			$output->addGlobal("poolId", $pool->id);
-			$output->addGlobal("activePool", $pool);
+			if($pool) {
+				$output->addGlobal("poolId", $pool->id);
+				$output->addGlobal("activePool", $pool);
+			}
 		}
 		
 	}
