@@ -56,7 +56,7 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 				assert(stristr($data[8],'mobile') !== false);
 				assert(stristr($data[10],'comment') !== false);
 								
-				$teamcount=count($division->Teams);
+				$teamcount=count($division->Stages[0]->Pools[0]->PoolTeams); // in registration pool of seeding stage
 			    while (($data = fgetcsv($handle, 0, ",")) !== FALSE) {
 					$team = Team::teamNameExists($this->divisionId, $data[0]);
 			    	if ($team === false) {
