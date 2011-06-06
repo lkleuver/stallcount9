@@ -59,7 +59,7 @@ class Round extends BaseRound {
 
 	public function createMatchups() {
 		FB::log('Model/Round.php: creating matchups');
-		$this->Pool->getStrategy()->createMatchups($this);
+		$this->Pool->getStrategy()->createMatchups($this->Pool);
 		return null;
 	}
 

@@ -85,6 +85,8 @@ Team:
       autoincrement: true
     name:
       type: string(255)
+    shortName:
+      type: string(255)    
     email1:
       type: string(255)
     email2:
