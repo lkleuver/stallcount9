@@ -31,7 +31,7 @@ class SC9_Controller_Print extends SC9_Controller_Core {
 		//HEADER
 		$pdf->SetFont('Helvetica','B',48);
 		$pdf->SetTextColor(89, 178, 239);
-		$pdf->Cell(0,30,'ROUND '.$roundRank, 0, 0, 'C');
+		$pdf->Cell(0,30,'MATCHUPS ROUND '.$roundRank, 0, 0, 'C');
 		$pdf->Ln();
 		$pdf->SetFont('Helvetica','',14);
 		$pdf->SetTextColor(89, 178, 239);
@@ -79,6 +79,53 @@ class SC9_Controller_Print extends SC9_Controller_Core {
 		foreach($stage->Pools as $pool) {
 			$standings[] = $pool->standingsAfterRound($roundRank); 
 		}
+
+		$pdf = new FPDF_fpdf("P", "mm", "A3");
+		$pdf->SetMargins(20,20,20);
+		$pdf->AddPage();
+		
+		//HEADER
+		$pdf->SetFont('Helvetica','B',48);
+		$pdf->SetTextColor(89, 178, 239);
+		$pdf->Cell(0,30,'STANDINGS ROUND '.$roundRank, 0, 0, 'C');
+		$pdf->Ln();
+		$pdf->SetFont('Helvetica','',14);
+		$pdf->SetTextColor(89, 178, 239);
+		
+		//TABLE
+		//the widths of the columns  field time hometeam awayteam, in mm  
+		//total: 297 - 20 - 20 = 257
+		$w = array(40, 217);
+		$cellHeight = 12;
+		//table header
+		$header = array("Rank", "Team");
+		
+		foreach($standings as $standing) {
+			for($i = 0; $i <count($header); $i++) {
+		        $pdf->Cell($w[$i], 7, $header[$i], 1,0, 'C', true);
+			}
+    		$pdf->Ln();
+    		
+    		$fill = false;
+    		$pdf->SetFillColor(224,235,255);
+    		foreach($standing as $team) {
+    			$pdf->SetFont('Helvetica','B',16);
+    			$pdf->Cell($w[0], $cellHeight, " " .$team["rank"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[1], $cellHeight, "   ".$team["name"], "LR", 0, "L", $fill);
+
+				/*$pdf->SetFont('Helvetica','',12);
+				$pdf->Cell($w[2], $cellHeight, $match->getHomeName(), "LR", 0, "L", $fill);
+				$pdf->Cell($w[3], $cellHeight, $match->getAwayName(), "LR", 0, "L", $fill);
+				*/
+				$fill = !$fill;
+				
+				$pdf->Ln();
+    		}
+    		
+    		$pdf->Ln();
+		}
+    	
+		$pdf->Output();
 	}
 	
 }
