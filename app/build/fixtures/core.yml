@@ -148,6 +148,87 @@ VictoryPoints:
     victorypoints: 25
  
 Brackets:
+  Brackets_5_3_1_1:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_1_2:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '4'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_1_3:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '3'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_5_3_2_1:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_2_2:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '2'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_2_3:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '4'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_5_3_3_1:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_5_3_3_2:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '4'
+    away: '3'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_5_3_3_3:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: null
+    winplace: '5'
+    loseplace: null
   Brackets_8_3_1_1:
     nrteams: '8'
     nrrounds: '3'

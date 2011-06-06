@@ -44,4 +44,45 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		$tournament->delete();
 		$this->relocate("/home/index");
 	}
+	
+	public function saveAction() {
+		$modelsPath = dirname(__FILE__).'/../SC9/Model';
+		$s = time() . "";
+		$filename=dirname(__FILE__).'/../../../build/fixtures/backup'.$s.'.yml';
+		
+		echo "saving all tournament data to ".$filename;
+		FB::log("saving all tournament data to ".$filename);
+		
+		Doctrine_Core::debug(true);
+		Doctrine_Core::loadModels($modelsPath);
+		Doctrine_Core::dumpData($filename);
+	}
+	
+	public function windmill2011Action() {
+		
+		$modelsPath = dirname(__FILE__).'/../SC9/Model';
+		$options = array();
+		
+		echo "deleting all data and initializing with Windmill 2011 data";
+		FB::log("deleting all data");
+		//deleting old models first (dangerous!)
+		exec('rm '.$modelsPath."/generated/*");
+		
+		Doctrine_Core::dropDatabases();
+		Doctrine_Core::createDatabases();
+		Doctrine_Core::generateModelsFromYaml(dirname(__FILE__).'/../../../build/schema/base.yml', $modelsPath, $options);
+		Doctrine_Core::createTablesFromModels($modelsPath);
+		Doctrine_Core::loadData(dirname(__FILE__).'/../../../build/fixtures/core.yml');
+		
+		FB::log("Loading Windmill 2011 starting data...");
+		
+		$file = dirname(__FILE__)."/../../../build/fixtures/Windmill2011.yml";
+		FB::log('file name '.$file);
+		
+		Doctrine_Core::debug(true);
+//		Doctrine_Core::loadModels($modelsPath);
+		Doctrine_Core::loadData($file);
+		
+		$this->relocate("/tournament/detail/1");
+	}
 }

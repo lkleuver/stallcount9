@@ -74,36 +74,38 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 				assert(stristr($data[10],'comment') !== false);
 								
 				$teamcount=count($division->Stages[0]->Pools[0]->PoolTeams); // in registration pool of seeding stage
-			    while (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE) {
-					$team = Team::teamNameExists($this->divisionId, $data[0]);
-			    	if ($team === false) {
-				    	FB::log('adding a new team ',$data[0]);				    	
-				    	// create new team
-						$team = new Team();
-						$team->name=$data[0];
-						$team->save();
-
-						//now add this team to the registration seeding pool
-						$poolTeam = new PoolTeam();
-						$poolTeam->team_id = $team->id;
-						$poolTeam->pool_id = $division->getSeedPoolId();
-						$poolTeam->seed = ++$teamcount;			
-						$poolTeam->rank = $teamcount;
-						$poolTeam->save();						
+			    while (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE) {			    	
+			    	if ($data[0] == "") {
+			    		FB::log('this record does not contain a team name, ignoring.');
 			    	} else {
-			    		FB::log('team '.$team->name.' already exists in this division. Updating its data...');
-			    	}
-					$team->email1=$data[1];
-					$team->email2=$data[2];
-					$team->contactName=$data[3];
-					$team->city=$data[5];
-					$team->country=$data[6];
-					$team->mobile1=$data[7];
-					$team->mobile2=$data[8];
-					$team->comment=$data[10];					
-					$team->link('Division', array($this->post("divisionId")));
-					$team->save();								
-
+				    	if (Team::teamNameExists($this->divisionId, $data[0]) === false) {
+					    	FB::log('adding a new team ',$data[0]);				    	
+					    	// create new team
+							$team = new Team();
+							$team->name=$data[0];
+							$team->save();
+	
+							//now add this team to the registration seeding pool
+							$poolTeam = new PoolTeam();
+							$poolTeam->team_id = $team->id;
+							$poolTeam->pool_id = $division->getSeedPoolId();
+							$poolTeam->seed = ++$teamcount;			
+							$poolTeam->rank = $teamcount;
+							$poolTeam->save();						
+				    	} else {
+				    		FB::log('team '.$team->name.' already exists in this division. Updating its data...');
+				    	}
+						$team->email1=$data[1];
+						$team->email2=$data[2];
+						$team->contactName=$data[3];
+						$team->city=$data[5];
+						$team->country=$data[6];
+						$team->mobile1=$data[7];
+						$team->mobile2=$data[8];
+						$team->comment=$data[10];					
+						$team->link('Division', array($this->post("divisionId")));
+						$team->save();
+			    	}								
 			    }
 			    fclose($handle);
 			}
