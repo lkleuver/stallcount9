@@ -4,7 +4,7 @@
  */
 
 require_once(dirname(__FILE__) . '/../../config.local.php');
-require_once(dirname(__FILE__) . '/../lib/Doctrine/core.php');
+require_once(dirname(__FILE__) . '/../lib/Doctrine/Core.php');
 
 //autoloading
 ini_set('unserialize_callback_func', 'spl_autoload_call');
