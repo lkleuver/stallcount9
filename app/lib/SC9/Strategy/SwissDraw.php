@@ -81,6 +81,12 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	public function standingsAfterRound($pool, $roundnr) {
 		
 		FB::group('compute Swissdraw standings of pool '.$pool->id.' after round '.$roundnr);
+		if (count($pool->PoolTeams) == 0) {
+			echo "no teams in Pool yet. Perform move first!";
+			FB::error('no teams in Pool yet. Perform move first!');
+			FB::groupEnd();
+			exit;
+		}
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
 			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'byeStatus' => $poolteam->Team->byeStatus, 'name' => $poolteam->Team->name, 'games' => 0, 'vp' => 0, 'opp_vp' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
@@ -303,7 +309,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 				
 				FB::log('teamcounter '.$teamcounter.'  vs total nb in standings '.count($standings),' i is '.$i);
 
-				if ($standings[$teamcounter]['byeStatus'] == 1 || $standings[$teamcounter+1]['byeStatus'] == 1) {
+				if ($byeHomeRank ==0 && ($standings[$teamcounter]['byeStatus'] == 1 || $standings[$teamcounter+1]['byeStatus'] == 1)) {
 					$byeHomeRank=$teamcounter++;
 					$byeAwayRank=$teamcounter++;
 					// skipping these guys
@@ -399,7 +405,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			$text .=  ",you can take a break due to the odd number of teams.You'll score a 15-12 win";
 		} else {
 			$text .= ",you'll play ";
-			$text .= $opponent_team->name;
+			$text .= $opponent_team->shortName;
 			if ($round->rank>1) {
 				$text .= "(ranked ";
 				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)).")";

@@ -64,7 +64,7 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		$roundId=$this->request('roundId');
 		$round=Round::getRoundById($roundId);
 		
-		$round->Pool->createMatchups();
+		$round->createMatchups();
 		
 		echo "matchup computed, see FireBug output for debug info.";
 		

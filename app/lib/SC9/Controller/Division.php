@@ -71,14 +71,17 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 				assert(stristr($data[6],'country') !== false);
 				assert(stristr($data[7],'mobile') !== false);
 				assert(stristr($data[8],'mobile') !== false);
+				assert(stristr($data[9],'mobile') !== false);
 				assert(stristr($data[10],'comment') !== false);
+				assert(stristr($data[14],'short') !== false);
 								
 				$teamcount=count($division->Stages[0]->Pools[0]->PoolTeams); // in registration pool of seeding stage
 			    while (($data = fgetcsv($handle, 0, $delimiter)) !== FALSE) {			    	
 			    	if ($data[0] == "") {
 			    		FB::log('this record does not contain a team name, ignoring.');
 			    	} else {
-				    	if (Team::teamNameExists($this->divisionId, $data[0]) === false) {
+			    		$team=Team::teamNameExists($this->divisionId, $data[0]);
+				    	if ($team === false) {
 					    	FB::log('adding a new team ',$data[0]);				    	
 					    	// create new team
 							$team = new Team();
@@ -102,7 +105,12 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 						$team->country=$data[6];
 						$team->mobile1=$data[7];
 						$team->mobile2=$data[8];
-						$team->comment=$data[10];					
+						$morenumbers=explode(",",$data[9]);
+						if (count($morenumbers) > 0) {							
+							FB::table('more mobile nrs ',$morenumbers);
+						}
+						$team->comment=$data[10];
+						$team->shortName=$data[14];				
 						$team->link('Division', array($this->post("divisionId")));
 						$team->save();
 			    	}								

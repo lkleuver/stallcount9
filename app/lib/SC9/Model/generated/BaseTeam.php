@@ -7,6 +7,7 @@
  * 
  * @property integer $id
  * @property string $name
+ * @property string $shortName
  * @property string $email1
  * @property string $email2
  * @property string $contactName
@@ -45,6 +46,10 @@ abstract class BaseTeam extends Doctrine_Record
              'length' => '4',
              ));
         $this->hasColumn('name', 'string', 255, array(
+             'type' => 'string',
+             'length' => '255',
+             ));
+        $this->hasColumn('shortName', 'string', 255, array(
              'type' => 'string',
              'length' => '255',
              ));
