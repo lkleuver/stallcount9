@@ -64,7 +64,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		$options = array();
 		
 //		echo "deleting all data and initializing with Windmill 2011 data";
-		FB::log("deleting all data");
+//		FB::log("deleting all data");
 		//deleting old models first (dangerous!)
 		
 		
@@ -72,7 +72,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		FB::log('file name '.$file);
 		
 		Doctrine_Core::debug(true);
-//		Doctrine_Core::loadModels($modelsPath);
+		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::loadData($file);
 		
 		$this->relocate("/tournament/detail/1");
