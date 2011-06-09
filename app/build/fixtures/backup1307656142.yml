@@ -1,9 +1,3 @@
-Tournament:
-  Tournament_1:
-    title: 'Windmill Windup 2011'
-    state: '1'
-    startDate: '1308261600'
-    endDate: '1308434400'
 Brackets:
   Brackets_5_3_1_1:
     nrteams: '5'
@@ -6969,6 +6963,12 @@ Team:
     comment: null
     Division: Division_1
     byeStatus: null
+Tournament:
+  Tournament_1:
+    title: 'Windmill Windup 2011'
+    state: '1'
+    startDate: '1308261600'
+    endDate: '1308434400'
 VictoryPoints:
   VictoryPoints_-15:
     margin: '-15'
