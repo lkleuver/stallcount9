@@ -172,7 +172,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$ranksRaw = $this->request("ranks");
 		$ranks = explode(",", $ranksRaw);
 		for($i = 0; $i < count($ranks); $i++) {
-			PoolTeam::setRank($poolId, $ranks[$i], $i+1);
+			PoolTeam::setTeamRank($poolId, $ranks[$i], $i+1);
 		}
 		
 		if($this->isAjax()) {
