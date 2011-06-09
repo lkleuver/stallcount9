@@ -72,7 +72,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		FB::log('file name '.$file);
 		
 		Doctrine_Core::debug(true);
-		Doctrine_Core::loadModels($modelsPath);
+//		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::loadData($file);
 		
 		$this->relocate("/tournament/detail/1");
