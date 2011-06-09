@@ -63,18 +63,10 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		$modelsPath = dirname(__FILE__).'/../SC9/Model';
 		$options = array();
 		
-		echo "deleting all data and initializing with Windmill 2011 data";
+//		echo "deleting all data and initializing with Windmill 2011 data";
 		FB::log("deleting all data");
 		//deleting old models first (dangerous!)
-		exec('rm '.$modelsPath."/generated/*");
 		
-		Doctrine_Core::dropDatabases();
-		Doctrine_Core::createDatabases();
-		Doctrine_Core::generateModelsFromYaml(dirname(__FILE__).'/../../../build/schema/base.yml', $modelsPath, $options);
-		Doctrine_Core::createTablesFromModels($modelsPath);
-		Doctrine_Core::loadData(dirname(__FILE__).'/../../../build/fixtures/core.yml');
-		
-		FB::log("Loading Windmill 2011 starting data...");
 		
 		$file = dirname(__FILE__)."/../../../build/fixtures/Windmill2011.yml";
 		FB::log('file name '.$file);
