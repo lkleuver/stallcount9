@@ -60,7 +60,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	
 	public function windmill2011Action() {
 		
-		$modelsPath = dirname(__FILE__).'/../SC9/Model';
+		$modelsPath = dirname(__FILE__).'/../Model';
 		$options = array();
 		
 //		echo "deleting all data and initializing with Windmill 2011 data";
