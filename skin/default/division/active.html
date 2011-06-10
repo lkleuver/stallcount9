@@ -34,7 +34,7 @@
 			{% for match in round.Matches %}
 				<tr id="sc9-match-row-{{match.id}}" class="match{% if match.played() %} finished{%endif%}">
 					<td class="field">{% if match.field_id %}{{match.Field.title}}{% else %}empty{% endif %}</td>
-					<td><input class="sc9-time-input" id="sc9-time-input-{{match.id}}" value="{{match.timeFormat()}}" /></td>
+					<td>{{match.timeFormat()}}</td>
 					<td id="sc9-hometeam-row-{{match.id}}" class="hometeam{% if match.homeWon() %} winner{%endif%}">{{match.getHomeName()}}</td>
 					<td id="sc9-awayteam-row-{{match.id}}" class="awayteam{% if match.awayWon() %} winner{%endif%}">{{match.getAwayName()}}</td>
 					<td><input class="sc9-score-input" id="sc9-score-input-{{match.id}}" value="{{match.homeScore}} - {{match.awayScore}}" /></td>

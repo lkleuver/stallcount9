@@ -67,6 +67,10 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 //		FB::log("deleting all data");
 		//deleting old models first (dangerous!)
 		
+		Doctrine_Core::dropDatabases();
+		Doctrine_Core::createDatabases();
+		Doctrine_Core::generateModelsFromYaml(dirname(__FILE__).'/../../../build/schema/base.yml', $modelsPath, $options);
+		Doctrine_Core::createTablesFromModels($modelsPath);
 		
 		$file = dirname(__FILE__)."/../../../build/fixtures/Windmill2011.yml";
 		FB::log('file name '.$file);
