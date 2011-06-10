@@ -59,7 +59,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	}
 	
 	public function windmill2011Action() {
-		
+		Doctrine_Core::debug(true);		
 		$modelsPath = dirname(__FILE__).'/../Model';
 		$options = array();
 		
@@ -74,18 +74,12 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		
 		$file = dirname(__FILE__)."/../../../build/fixtures/Windmill2011.yml";
 		
-		if(file_exists($file)) {
-			echo "whee ";
-		}
-		
-		echo 'file name '.$file;
 		
 		
 		Doctrine_Core::loadData("app/build/fixtures/core.yml");
-		exit;
-		Doctrine_Core::debug(true);
-		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::loadData($file);
+
+		echo "not working..";
 		
 		//$this->relocate("/tournament/detail/1");
 	}
