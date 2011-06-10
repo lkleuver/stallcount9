@@ -80,6 +80,9 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		
 		echo 'file name '.$file;
 		
+		
+		Doctrine_Core::loadData("app/build/fixtures/core.yml");
+		exit;
 		Doctrine_Core::debug(true);
 		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::loadData($file);
