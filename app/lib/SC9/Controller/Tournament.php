@@ -77,9 +77,9 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		
 		
 		Doctrine_Core::loadData("app/build/fixtures/core.yml");
-		Doctrine_Core::loadData($file);
+		Doctrine_Core::loadData("app/build/fixtures/Windmill2011.yml");
 
-		echo "not working..";
+		echo "not working 2..";
 		
 		//$this->relocate("/tournament/detail/1");
 	}
