@@ -79,6 +79,6 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 //		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::loadData($file);
 		
-		$this->relocate("/tournament/detail/1");
+		//$this->relocate("/tournament/detail/1");
 	}
 }
