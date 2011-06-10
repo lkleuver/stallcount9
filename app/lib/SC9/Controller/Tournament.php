@@ -46,9 +46,9 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	}
 	
 	public function saveAction() {
-		$modelsPath = dirname(__FILE__).'/../SC9/Model';
+		$modelsPath = dirname(__FILE__).'/../Model';
 		$s = time() . "";
-		$filename=dirname(__FILE__).'/../../../build/fixtures/backup'.$s.'.yml';
+		$filename=dirname(__FILE__).'/../../../build/fixtures/SaveFromSite'.$s.'.yml';
 		
 		echo "saving all tournament data to ".$filename;
 		FB::log("saving all tournament data to ".$filename);

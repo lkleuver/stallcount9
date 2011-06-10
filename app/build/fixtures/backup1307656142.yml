@@ -1972,6 +1972,54 @@ PoolTeam:
     rank: '14'
     seed: '14'
 Round:
+  Round_6:
+    Pool: Pool_3
+    matchLength: '90'
+    rank: '1'
+  Round_7:
+    Pool: Pool_3
+    matchLength: '90'
+    rank: '2'
+  Round_8:
+    Pool: Pool_3
+    matchLength: '90'
+    rank: '3'
+  Round_9:
+    Pool: Pool_4
+    matchLength: '90'
+    rank: '1'
+  Round_10:
+    Pool: Pool_4
+    matchLength: '90'
+    rank: '2'
+  Round_11:
+    Pool: Pool_4
+    matchLength: '90'
+    rank: '3'
+  Round_12:
+    Pool: Pool_7
+    matchLength: '90'
+    rank: '1'
+  Round_13:
+    Pool: Pool_7
+    matchLength: '90'
+    rank: '2'
+  Round_14:
+    Pool: Pool_7
+    matchLength: '90'
+    rank: '3'
+  Round_15:
+    Pool: Pool_5
+    matchLength: '90'
+    rank: '1'
+  Round_16:
+    Pool: Pool_5
+    matchLength: '90'
+    rank: '2'
+  Round_17:
+    Pool: Pool_5
+    matchLength: '90'
+    rank: '3'
   Round_21:
     Pool: Pool_9
     matchLength: '90'
@@ -2084,87 +2132,775 @@ Round:
     Pool: Pool_17
     matchLength: '90'
     rank: '3'
-  Round_49:
-    Pool: Pool_18
-    matchLength: '90'
-    rank: '1'
-  Round_50:
-    Pool: Pool_18
-    matchLength: '90'
-    rank: '2'
-  Round_51:
-    Pool: Pool_18
-    matchLength: '90'
-    rank: '3'
-  Round_52:
-    Pool: Pool_18
-    matchLength: '90'
-    rank: '4'
-  Round_53:
-    Pool: Pool_18
-    matchLength: '90'
-    rank: '5'
-  Round_54:
-    Pool: Pool_3
-    matchLength: '90'
-    rank: '1'
-  Round_55:
-    Pool: Pool_3
-    matchLength: '90'
-    rank: '2'
-  Round_56:
-    Pool: Pool_3
-    matchLength: '90'
-    rank: '3'
-  Round_57:
-    Pool: Pool_4
-    matchLength: '90'
-    rank: '1'
-  Round_58:
-    Pool: Pool_4
-    matchLength: '90'
-    rank: '2'
-  Round_59:
-    Pool: Pool_4
-    matchLength: '90'
-    rank: '3'
-  Round_60:
-    Pool: Pool_7
-    matchLength: '90'
-    rank: '1'
-  Round_61:
-    Pool: Pool_7
-    matchLength: '90'
-    rank: '2'
-  Round_62:
-    Pool: Pool_7
-    matchLength: '90'
-    rank: '3'
-  Round_63:
-    Pool: Pool_5
-    matchLength: '90'
-    rank: '1'
-  Round_64:
-    Pool: Pool_5
-    matchLength: '90'
-    rank: '2'
-  Round_65:
-    Pool: Pool_5
-    matchLength: '90'
-    rank: '3'
-  Round_66:
-    Pool: Pool_19
-    matchLength: '90'
-    rank: '1'
-  Round_67:
-    Pool: Pool_19
-    matchLength: '90'
-    rank: '2'
-  Round_68:
-    Pool: Pool_19
-    matchLength: '90'
-    rank: '3'
 RoundMatch:
+  RoundMatch_106:
+    Round: Round_6
+    scheduledTime: '1308402000'
+    Field: Field_1
+    matchName: 'Quarterfinals 1'
+    homeName: 'Team 1'
+    awayName: 'Team 8'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '1'
+    worstPossibleRank: '8'
+  RoundMatch_107:
+    Round: Round_6
+    scheduledTime: '1308402000'
+    Field: Field_2
+    matchName: 'Quarterfinals 2'
+    homeName: 'Team 5'
+    awayName: 'Team 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '1'
+    worstPossibleRank: '8'
+  RoundMatch_108:
+    Round: Round_6
+    scheduledTime: '1308402000'
+    Field: Field_3
+    matchName: 'Quarterfinals 3'
+    homeName: 'Team 6'
+    awayName: 'Team 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '1'
+    worstPossibleRank: '8'
+  RoundMatch_109:
+    Round: Round_6
+    scheduledTime: '1308402000'
+    Field: Field_4
+    matchName: 'Quarterfinals 4'
+    homeName: 'Team 7'
+    awayName: 'Team 2'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '1'
+    worstPossibleRank: '8'
+  RoundMatch_110:
+    Round: Round_7
+    scheduledTime: '1308412800'
+    Field: Field_5
+    matchName: 'Semifinals 1'
+    homeName: 'Winner Quarterfinals 1'
+    awayName: 'Winner Quarterfinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '1'
+    worstPossibleRank: '4'
+  RoundMatch_111:
+    Round: Round_7
+    scheduledTime: '1308412800'
+    Field: Field_6
+    matchName: 'Semifinals 2'
+    homeName: 'Winner Quarterfinals 3'
+    awayName: 'Winner Quarterfinals 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '1'
+    worstPossibleRank: '4'
+  RoundMatch_112:
+    Round: Round_7
+    scheduledTime: '1308412800'
+    Field: Field_7
+    matchName: 'Semifinals 3'
+    homeName: 'Loser Quarterfinals 1'
+    awayName: 'Loser Quarterfinals 2'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '5'
+    worstPossibleRank: '8'
+  RoundMatch_113:
+    Round: Round_7
+    scheduledTime: '1308412800'
+    Field: Field_8
+    matchName: 'Semifinals 4'
+    homeName: 'Loser Quarterfinals 3'
+    awayName: 'Loser Quarterfinals 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '5'
+    worstPossibleRank: '8'
+  RoundMatch_114:
+    Round: Round_8
+    scheduledTime: '1308488400'
+    Field: Field_9
+    matchName: 'Finals 1'
+    homeName: 'Winner Semifinals 1'
+    awayName: 'Winner Semifinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '1'
+    worstPossibleRank: '2'
+  RoundMatch_115:
+    Round: Round_8
+    scheduledTime: '1308472200'
+    Field: Field_10
+    matchName: 'Finals 2'
+    homeName: 'Loser Semifinals 2'
+    awayName: 'Loser Semifinals 1'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '3'
+    worstPossibleRank: '4'
+  RoundMatch_116:
+    Round: Round_8
+    scheduledTime: '1308472200'
+    Field: Field_11
+    matchName: 'Finals 3'
+    homeName: 'Winner Semifinals 3'
+    awayName: 'Winner Semifinals 4'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '5'
+    worstPossibleRank: '6'
+  RoundMatch_117:
+    Round: Round_8
+    scheduledTime: '1308472200'
+    Field: Field_12
+    matchName: 'Finals 4'
+    homeName: 'Loser Semifinals 4'
+    awayName: 'Loser Semifinals 3'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '7'
+    worstPossibleRank: '8'
+  RoundMatch_118:
+    Round: Round_9
+    scheduledTime: '1308402000'
+    Field: Field_1
+    matchName: 'Quarterfinals 1'
+    homeName: 'Team 1'
+    awayName: 'Team 8'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '9'
+    worstPossibleRank: '16'
+  RoundMatch_119:
+    Round: Round_9
+    scheduledTime: '1308402000'
+    Field: Field_2
+    matchName: 'Quarterfinals 2'
+    homeName: 'Team 5'
+    awayName: 'Team 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '9'
+    worstPossibleRank: '16'
+  RoundMatch_120:
+    Round: Round_9
+    scheduledTime: '1308402000'
+    Field: Field_3
+    matchName: 'Quarterfinals 3'
+    homeName: 'Team 6'
+    awayName: 'Team 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '9'
+    worstPossibleRank: '16'
+  RoundMatch_121:
+    Round: Round_9
+    scheduledTime: '1308402000'
+    Field: Field_4
+    matchName: 'Quarterfinals 4'
+    homeName: 'Team 7'
+    awayName: 'Team 2'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '9'
+    worstPossibleRank: '16'
+  RoundMatch_122:
+    Round: Round_10
+    scheduledTime: '1308412800'
+    Field: Field_5
+    matchName: 'Semifinals 1'
+    homeName: 'Winner Quarterfinals 1'
+    awayName: 'Winner Quarterfinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '9'
+    worstPossibleRank: '12'
+  RoundMatch_123:
+    Round: Round_10
+    scheduledTime: '1308412800'
+    Field: Field_6
+    matchName: 'Semifinals 2'
+    homeName: 'Winner Quarterfinals 3'
+    awayName: 'Winner Quarterfinals 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '9'
+    worstPossibleRank: '12'
+  RoundMatch_124:
+    Round: Round_10
+    scheduledTime: '1308412800'
+    Field: Field_7
+    matchName: 'Semifinals 3'
+    homeName: 'Loser Quarterfinals 1'
+    awayName: 'Loser Quarterfinals 2'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '13'
+    worstPossibleRank: '16'
+  RoundMatch_125:
+    Round: Round_10
+    scheduledTime: '1308412800'
+    Field: Field_8
+    matchName: 'Semifinals 4'
+    homeName: 'Loser Quarterfinals 3'
+    awayName: 'Loser Quarterfinals 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '13'
+    worstPossibleRank: '16'
+  RoundMatch_126:
+    Round: Round_11
+    scheduledTime: '1308472200'
+    Field: Field_9
+    matchName: 'Finals 1'
+    homeName: 'Winner Semifinals 1'
+    awayName: 'Winner Semifinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '9'
+    worstPossibleRank: '10'
+  RoundMatch_127:
+    Round: Round_11
+    scheduledTime: '1308472200'
+    Field: Field_10
+    matchName: 'Finals 2'
+    homeName: 'Loser Semifinals 2'
+    awayName: 'Loser Semifinals 1'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '11'
+    worstPossibleRank: '12'
+  RoundMatch_128:
+    Round: Round_11
+    scheduledTime: '1308472200'
+    Field: Field_11
+    matchName: 'Finals 3'
+    homeName: 'Winner Semifinals 3'
+    awayName: 'Winner Semifinals 4'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '13'
+    worstPossibleRank: '14'
+  RoundMatch_129:
+    Round: Round_11
+    scheduledTime: '1308472200'
+    Field: Field_12
+    matchName: 'Finals 4'
+    homeName: 'Loser Semifinals 4'
+    awayName: 'Loser Semifinals 3'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '15'
+    worstPossibleRank: '16'
+  RoundMatch_130:
+    Round: Round_12
+    scheduledTime: '1308402000'
+    Field: Field_1
+    matchName: 'Quarterfinals 1'
+    homeName: 'Team 1'
+    awayName: 'Team 8'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '17'
+    worstPossibleRank: '24'
+  RoundMatch_131:
+    Round: Round_12
+    scheduledTime: '1308402000'
+    Field: Field_2
+    matchName: 'Quarterfinals 2'
+    homeName: 'Team 5'
+    awayName: 'Team 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '17'
+    worstPossibleRank: '24'
+  RoundMatch_132:
+    Round: Round_12
+    scheduledTime: '1308402000'
+    Field: Field_3
+    matchName: 'Quarterfinals 3'
+    homeName: 'Team 6'
+    awayName: 'Team 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '17'
+    worstPossibleRank: '24'
+  RoundMatch_133:
+    Round: Round_12
+    scheduledTime: '1308402000'
+    Field: Field_4
+    matchName: 'Quarterfinals 4'
+    homeName: 'Team 7'
+    awayName: 'Team 2'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '17'
+    worstPossibleRank: '24'
+  RoundMatch_134:
+    Round: Round_13
+    scheduledTime: '1308412800'
+    Field: Field_5
+    matchName: 'Semifinals 1'
+    homeName: 'Winner Quarterfinals 1'
+    awayName: 'Winner Quarterfinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '17'
+    worstPossibleRank: '20'
+  RoundMatch_135:
+    Round: Round_13
+    scheduledTime: '1308412800'
+    Field: Field_6
+    matchName: 'Semifinals 2'
+    homeName: 'Winner Quarterfinals 3'
+    awayName: 'Winner Quarterfinals 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '17'
+    worstPossibleRank: '20'
+  RoundMatch_136:
+    Round: Round_13
+    scheduledTime: '1308412800'
+    Field: Field_7
+    matchName: 'Semifinals 3'
+    homeName: 'Loser Quarterfinals 1'
+    awayName: 'Loser Quarterfinals 2'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '21'
+    worstPossibleRank: '24'
+  RoundMatch_137:
+    Round: Round_13
+    scheduledTime: '1308412800'
+    Field: Field_8
+    matchName: 'Semifinals 4'
+    homeName: 'Loser Quarterfinals 3'
+    awayName: 'Loser Quarterfinals 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '21'
+    worstPossibleRank: '24'
+  RoundMatch_138:
+    Round: Round_14
+    scheduledTime: '1308472200'
+    Field: Field_9
+    matchName: 'Finals 1'
+    homeName: 'Winner Semifinals 1'
+    awayName: 'Winner Semifinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '17'
+    worstPossibleRank: '18'
+  RoundMatch_139:
+    Round: Round_14
+    scheduledTime: '1308472200'
+    Field: Field_10
+    matchName: 'Finals 2'
+    homeName: 'Loser Semifinals 2'
+    awayName: 'Loser Semifinals 1'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '19'
+    worstPossibleRank: '20'
+  RoundMatch_140:
+    Round: Round_14
+    scheduledTime: '1308472200'
+    Field: Field_11
+    matchName: 'Finals 3'
+    homeName: 'Winner Semifinals 3'
+    awayName: 'Winner Semifinals 4'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '21'
+    worstPossibleRank: '22'
+  RoundMatch_141:
+    Round: Round_14
+    scheduledTime: '1308472200'
+    Field: Field_12
+    matchName: 'Finals 4'
+    homeName: 'Loser Semifinals 4'
+    awayName: 'Loser Semifinals 3'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '23'
+    worstPossibleRank: '24'
+  RoundMatch_142:
+    Round: Round_15
+    scheduledTime: '1308402000'
+    Field: Field_1
+    matchName: 'Quarterfinals 1'
+    homeName: 'Team 1'
+    awayName: 'Team 8'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '25'
+    worstPossibleRank: '32'
+  RoundMatch_143:
+    Round: Round_15
+    scheduledTime: '1308402000'
+    Field: Field_2
+    matchName: 'Quarterfinals 2'
+    homeName: 'Team 5'
+    awayName: 'Team 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '25'
+    worstPossibleRank: '32'
+  RoundMatch_144:
+    Round: Round_15
+    scheduledTime: '1308402000'
+    Field: Field_3
+    matchName: 'Quarterfinals 3'
+    homeName: 'Team 6'
+    awayName: 'Team 3'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '25'
+    worstPossibleRank: '32'
+  RoundMatch_145:
+    Round: Round_15
+    scheduledTime: '1308402000'
+    Field: Field_4
+    matchName: 'Quarterfinals 4'
+    homeName: 'Team 7'
+    awayName: 'Team 2'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '25'
+    worstPossibleRank: '32'
+  RoundMatch_146:
+    Round: Round_16
+    scheduledTime: '1308412800'
+    Field: Field_5
+    matchName: 'Semifinals 1'
+    homeName: 'Winner Quarterfinals 1'
+    awayName: 'Winner Quarterfinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '25'
+    worstPossibleRank: '28'
+  RoundMatch_147:
+    Round: Round_16
+    scheduledTime: '1308412800'
+    Field: Field_6
+    matchName: 'Semifinals 2'
+    homeName: 'Winner Quarterfinals 3'
+    awayName: 'Winner Quarterfinals 4'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '25'
+    worstPossibleRank: '28'
+  RoundMatch_148:
+    Round: Round_16
+    scheduledTime: '1308412800'
+    Field: Field_7
+    matchName: 'Semifinals 3'
+    homeName: 'Loser Quarterfinals 1'
+    awayName: 'Loser Quarterfinals 2'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '29'
+    worstPossibleRank: '32'
+  RoundMatch_149:
+    Round: Round_16
+    scheduledTime: '1308412800'
+    Field: Field_8
+    matchName: 'Semifinals 4'
+    homeName: 'Loser Quarterfinals 3'
+    awayName: 'Loser Quarterfinals 4'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '29'
+    worstPossibleRank: '32'
+  RoundMatch_150:
+    Round: Round_17
+    scheduledTime: '1308472200'
+    Field: Field_9
+    matchName: 'Finals 1'
+    homeName: 'Winner Semifinals 1'
+    awayName: 'Winner Semifinals 2'
+    rank: '1'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '25'
+    worstPossibleRank: '26'
+  RoundMatch_151:
+    Round: Round_17
+    scheduledTime: '1308472200'
+    Field: Field_10
+    matchName: 'Finals 2'
+    homeName: 'Loser Semifinals 2'
+    awayName: 'Loser Semifinals 1'
+    rank: '2'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '27'
+    worstPossibleRank: '28'
+  RoundMatch_152:
+    Round: Round_17
+    scheduledTime: '1308472200'
+    Field: Field_11
+    matchName: 'Finals 3'
+    homeName: 'Winner Semifinals 3'
+    awayName: 'Winner Semifinals 4'
+    rank: '3'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '29'
+    worstPossibleRank: '30'
+  RoundMatch_153:
+    Round: Round_17
+    scheduledTime: '1308472200'
+    Field: Field_12
+    matchName: 'Finals 4'
+    homeName: 'Loser Semifinals 4'
+    awayName: 'Loser Semifinals 3'
+    rank: '4'
+    homeScore: null
+    awayScore: null
+    homeSpirit: null
+    awaySpirit: null
+    scoreSubmitTime: null
+    spiritSubmitTime: null
+    bestPossibleRank: '31'
+    worstPossibleRank: '32'
   RoundMatch_169:
     Round: Round_21
     scheduledTime: '1308297600'
@@ -4843,2694 +5579,6 @@ RoundMatch:
     spiritSubmitTime: null
     bestPossibleRank: '13'
     worstPossibleRank: '13'
-  RoundMatch_337:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_1
-    matchName: 'Match rank 1'
-    homeName: 'Seed 1'
-    awayName: 'Seed 21.5'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_338:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_2
-    matchName: 'Match rank 2'
-    homeName: 'Seed 2'
-    awayName: 'Seed 22.5'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_339:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_3
-    matchName: 'Match rank 3'
-    homeName: 'Seed 3'
-    awayName: 'Seed 23.5'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_340:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_4
-    matchName: 'Match rank 4'
-    homeName: 'Seed 4'
-    awayName: 'Seed 24.5'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_341:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_5
-    matchName: 'Match rank 5'
-    homeName: 'Seed 5'
-    awayName: 'Seed 25.5'
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_342:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_6
-    matchName: 'Match rank 6'
-    homeName: 'Seed 6'
-    awayName: 'Seed 26.5'
-    rank: '6'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_343:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_7
-    matchName: 'Match rank 7'
-    homeName: 'Seed 7'
-    awayName: 'Seed 27.5'
-    rank: '7'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_344:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_8
-    matchName: 'Match rank 8'
-    homeName: 'Seed 8'
-    awayName: 'Seed 28.5'
-    rank: '8'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_345:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_9
-    matchName: 'Match rank 9'
-    homeName: 'Seed 9'
-    awayName: 'Seed 29.5'
-    rank: '9'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_346:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_10
-    matchName: 'Match rank 10'
-    homeName: 'Seed 10'
-    awayName: 'Seed 30.5'
-    rank: '10'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_347:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_11
-    matchName: 'Match rank 11'
-    homeName: 'Seed 11'
-    awayName: 'Seed 31.5'
-    rank: '11'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_348:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_12
-    matchName: 'Match rank 12'
-    homeName: 'Seed 12'
-    awayName: 'Seed 32.5'
-    rank: '12'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_349:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_13
-    matchName: 'Match rank 13'
-    homeName: 'Seed 13'
-    awayName: 'Seed 33.5'
-    rank: '13'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_350:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_14
-    matchName: 'Match rank 14'
-    homeName: 'Seed 14'
-    awayName: 'Seed 34.5'
-    rank: '14'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_351:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_15
-    matchName: 'Match rank 15'
-    homeName: 'Seed 15'
-    awayName: 'Seed 35.5'
-    rank: '15'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_352:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_16
-    matchName: 'Match rank 16'
-    homeName: 'Seed 16'
-    awayName: 'Seed 36.5'
-    rank: '16'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_353:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_17
-    matchName: 'Match rank 17'
-    homeName: 'Seed 17'
-    awayName: 'Seed 37.5'
-    rank: '17'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_354:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_18
-    matchName: 'Match rank 18'
-    homeName: 'Seed 18'
-    awayName: 'Seed 38.5'
-    rank: '18'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_355:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_19
-    matchName: 'Match rank 19'
-    homeName: 'Seed 19'
-    awayName: 'Seed 39.5'
-    rank: '19'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_356:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_20
-    matchName: 'Match rank 20'
-    homeName: 'Seed 20'
-    awayName: 'Seed 40.5'
-    rank: '20'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_357:
-    Round: Round_49
-    scheduledTime: '1308302100'
-    Field: Field_21
-    matchName: 'Match rank 21'
-    homeName: 'Seed 21'
-    awayName: 'Seed 41.5'
-    rank: '21'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_358:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_1
-    matchName: 'Match rank 1'
-    homeName: 'Round 1 aprx rank 1'
-    awayName: 'Round 1 aprx rank 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_359:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_2
-    matchName: 'Match rank 2'
-    homeName: 'Round 1 aprx rank 3'
-    awayName: 'Round 1 aprx rank 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_360:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_3
-    matchName: 'Match rank 3'
-    homeName: 'Round 1 aprx rank 5'
-    awayName: 'Round 1 aprx rank 6'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_361:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_4
-    matchName: 'Match rank 4'
-    homeName: 'Round 1 aprx rank 7'
-    awayName: 'Round 1 aprx rank 8'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_362:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_5
-    matchName: 'Match rank 5'
-    homeName: 'Round 1 aprx rank 9'
-    awayName: 'Round 1 aprx rank 10'
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_363:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_6
-    matchName: 'Match rank 6'
-    homeName: 'Round 1 aprx rank 11'
-    awayName: 'Round 1 aprx rank 12'
-    rank: '6'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_364:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_7
-    matchName: 'Match rank 7'
-    homeName: 'Round 1 aprx rank 13'
-    awayName: 'Round 1 aprx rank 14'
-    rank: '7'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_365:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_8
-    matchName: 'Match rank 8'
-    homeName: 'Round 1 aprx rank 15'
-    awayName: 'Round 1 aprx rank 16'
-    rank: '8'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_366:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_9
-    matchName: 'Match rank 9'
-    homeName: 'Round 1 aprx rank 17'
-    awayName: 'Round 1 aprx rank 18'
-    rank: '9'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_367:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_10
-    matchName: 'Match rank 10'
-    homeName: 'Round 1 aprx rank 19'
-    awayName: 'Round 1 aprx rank 20'
-    rank: '10'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_368:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_11
-    matchName: 'Match rank 11'
-    homeName: 'Round 1 aprx rank 21'
-    awayName: 'Round 1 aprx rank 22'
-    rank: '11'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_369:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_12
-    matchName: 'Match rank 12'
-    homeName: 'Round 1 aprx rank 23'
-    awayName: 'Round 1 aprx rank 24'
-    rank: '12'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_370:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_13
-    matchName: 'Match rank 13'
-    homeName: 'Round 1 aprx rank 25'
-    awayName: 'Round 1 aprx rank 26'
-    rank: '13'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_371:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_14
-    matchName: 'Match rank 14'
-    homeName: 'Round 1 aprx rank 27'
-    awayName: 'Round 1 aprx rank 28'
-    rank: '14'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_372:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_15
-    matchName: 'Match rank 15'
-    homeName: 'Round 1 aprx rank 29'
-    awayName: 'Round 1 aprx rank 30'
-    rank: '15'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_373:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_16
-    matchName: 'Match rank 16'
-    homeName: 'Round 1 aprx rank 31'
-    awayName: 'Round 1 aprx rank 32'
-    rank: '16'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_374:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_17
-    matchName: 'Match rank 17'
-    homeName: 'Round 1 aprx rank 33'
-    awayName: 'Round 1 aprx rank 34'
-    rank: '17'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_375:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_18
-    matchName: 'Match rank 18'
-    homeName: 'Round 1 aprx rank 35'
-    awayName: 'Round 1 aprx rank 36'
-    rank: '18'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_376:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_19
-    matchName: 'Match rank 19'
-    homeName: 'Round 1 aprx rank 37'
-    awayName: 'Round 1 aprx rank 38'
-    rank: '19'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_377:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_20
-    matchName: 'Match rank 20'
-    homeName: 'Round 1 aprx rank 39'
-    awayName: 'Round 1 aprx rank 40'
-    rank: '20'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_378:
-    Round: Round_50
-    scheduledTime: '1308312000'
-    Field: Field_21
-    matchName: 'Match rank 21'
-    homeName: 'Round 1 aprx rank 41'
-    awayName: 'Round 1 aprx rank 42'
-    rank: '21'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_379:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_1
-    matchName: 'Match rank 1'
-    homeName: 'Round 2 aprx rank 1'
-    awayName: 'Round 2 aprx rank 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_380:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_2
-    matchName: 'Match rank 2'
-    homeName: 'Round 2 aprx rank 3'
-    awayName: 'Round 2 aprx rank 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_381:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_3
-    matchName: 'Match rank 3'
-    homeName: 'Round 2 aprx rank 5'
-    awayName: 'Round 2 aprx rank 6'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_382:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_4
-    matchName: 'Match rank 4'
-    homeName: 'Round 2 aprx rank 7'
-    awayName: 'Round 2 aprx rank 8'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_383:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_5
-    matchName: 'Match rank 5'
-    homeName: 'Round 2 aprx rank 9'
-    awayName: 'Round 2 aprx rank 10'
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_384:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_6
-    matchName: 'Match rank 6'
-    homeName: 'Round 2 aprx rank 11'
-    awayName: 'Round 2 aprx rank 12'
-    rank: '6'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_385:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_7
-    matchName: 'Match rank 7'
-    homeName: 'Round 2 aprx rank 13'
-    awayName: 'Round 2 aprx rank 14'
-    rank: '7'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_386:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_8
-    matchName: 'Match rank 8'
-    homeName: 'Round 2 aprx rank 15'
-    awayName: 'Round 2 aprx rank 16'
-    rank: '8'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_387:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_9
-    matchName: 'Match rank 9'
-    homeName: 'Round 2 aprx rank 17'
-    awayName: 'Round 2 aprx rank 18'
-    rank: '9'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_388:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_10
-    matchName: 'Match rank 10'
-    homeName: 'Round 2 aprx rank 19'
-    awayName: 'Round 2 aprx rank 20'
-    rank: '10'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_389:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_11
-    matchName: 'Match rank 11'
-    homeName: 'Round 2 aprx rank 21'
-    awayName: 'Round 2 aprx rank 22'
-    rank: '11'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_390:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_12
-    matchName: 'Match rank 12'
-    homeName: 'Round 2 aprx rank 23'
-    awayName: 'Round 2 aprx rank 24'
-    rank: '12'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_391:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_13
-    matchName: 'Match rank 13'
-    homeName: 'Round 2 aprx rank 25'
-    awayName: 'Round 2 aprx rank 26'
-    rank: '13'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_392:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_14
-    matchName: 'Match rank 14'
-    homeName: 'Round 2 aprx rank 27'
-    awayName: 'Round 2 aprx rank 28'
-    rank: '14'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_393:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_15
-    matchName: 'Match rank 15'
-    homeName: 'Round 2 aprx rank 29'
-    awayName: 'Round 2 aprx rank 30'
-    rank: '15'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_394:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_16
-    matchName: 'Match rank 16'
-    homeName: 'Round 2 aprx rank 31'
-    awayName: 'Round 2 aprx rank 32'
-    rank: '16'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_395:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_17
-    matchName: 'Match rank 17'
-    homeName: 'Round 2 aprx rank 33'
-    awayName: 'Round 2 aprx rank 34'
-    rank: '17'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_396:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_18
-    matchName: 'Match rank 18'
-    homeName: 'Round 2 aprx rank 35'
-    awayName: 'Round 2 aprx rank 36'
-    rank: '18'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_397:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_19
-    matchName: 'Match rank 19'
-    homeName: 'Round 2 aprx rank 37'
-    awayName: 'Round 2 aprx rank 38'
-    rank: '19'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_398:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_20
-    matchName: 'Match rank 20'
-    homeName: 'Round 2 aprx rank 39'
-    awayName: 'Round 2 aprx rank 40'
-    rank: '20'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_399:
-    Round: Round_51
-    scheduledTime: '1308322800'
-    Field: Field_21
-    matchName: 'Match rank 21'
-    homeName: 'Round 2 aprx rank 41'
-    awayName: 'Round 2 aprx rank 42'
-    rank: '21'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_400:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_1
-    matchName: 'Match rank 1'
-    homeName: 'Round 3 aprx rank 1'
-    awayName: 'Round 3 aprx rank 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_401:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_2
-    matchName: 'Match rank 2'
-    homeName: 'Round 3 aprx rank 3'
-    awayName: 'Round 3 aprx rank 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_402:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_3
-    matchName: 'Match rank 3'
-    homeName: 'Round 3 aprx rank 5'
-    awayName: 'Round 3 aprx rank 6'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_403:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_4
-    matchName: 'Match rank 4'
-    homeName: 'Round 3 aprx rank 7'
-    awayName: 'Round 3 aprx rank 8'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_404:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_5
-    matchName: 'Match rank 5'
-    homeName: 'Round 3 aprx rank 9'
-    awayName: 'Round 3 aprx rank 10'
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_405:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_6
-    matchName: 'Match rank 6'
-    homeName: 'Round 3 aprx rank 11'
-    awayName: 'Round 3 aprx rank 12'
-    rank: '6'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_406:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_7
-    matchName: 'Match rank 7'
-    homeName: 'Round 3 aprx rank 13'
-    awayName: 'Round 3 aprx rank 14'
-    rank: '7'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_407:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_8
-    matchName: 'Match rank 8'
-    homeName: 'Round 3 aprx rank 15'
-    awayName: 'Round 3 aprx rank 16'
-    rank: '8'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_408:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_9
-    matchName: 'Match rank 9'
-    homeName: 'Round 3 aprx rank 17'
-    awayName: 'Round 3 aprx rank 18'
-    rank: '9'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_409:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_10
-    matchName: 'Match rank 10'
-    homeName: 'Round 3 aprx rank 19'
-    awayName: 'Round 3 aprx rank 20'
-    rank: '10'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_410:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_11
-    matchName: 'Match rank 11'
-    homeName: 'Round 3 aprx rank 21'
-    awayName: 'Round 3 aprx rank 22'
-    rank: '11'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_411:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_12
-    matchName: 'Match rank 12'
-    homeName: 'Round 3 aprx rank 23'
-    awayName: 'Round 3 aprx rank 24'
-    rank: '12'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_412:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_13
-    matchName: 'Match rank 13'
-    homeName: 'Round 3 aprx rank 25'
-    awayName: 'Round 3 aprx rank 26'
-    rank: '13'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_413:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_14
-    matchName: 'Match rank 14'
-    homeName: 'Round 3 aprx rank 27'
-    awayName: 'Round 3 aprx rank 28'
-    rank: '14'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_414:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_15
-    matchName: 'Match rank 15'
-    homeName: 'Round 3 aprx rank 29'
-    awayName: 'Round 3 aprx rank 30'
-    rank: '15'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_415:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_16
-    matchName: 'Match rank 16'
-    homeName: 'Round 3 aprx rank 31'
-    awayName: 'Round 3 aprx rank 32'
-    rank: '16'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_416:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_17
-    matchName: 'Match rank 17'
-    homeName: 'Round 3 aprx rank 33'
-    awayName: 'Round 3 aprx rank 34'
-    rank: '17'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_417:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_18
-    matchName: 'Match rank 18'
-    homeName: 'Round 3 aprx rank 35'
-    awayName: 'Round 3 aprx rank 36'
-    rank: '18'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_418:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_19
-    matchName: 'Match rank 19'
-    homeName: 'Round 3 aprx rank 37'
-    awayName: 'Round 3 aprx rank 38'
-    rank: '19'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_419:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_20
-    matchName: 'Match rank 20'
-    homeName: 'Round 3 aprx rank 39'
-    awayName: 'Round 3 aprx rank 40'
-    rank: '20'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_420:
-    Round: Round_52
-    scheduledTime: '1308380400'
-    Field: Field_21
-    matchName: 'Match rank 21'
-    homeName: 'Round 3 aprx rank 41'
-    awayName: 'Round 3 aprx rank 42'
-    rank: '21'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_421:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_1
-    matchName: 'Match rank 1'
-    homeName: 'Round 4 aprx rank 1'
-    awayName: 'Round 4 aprx rank 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_422:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_2
-    matchName: 'Match rank 2'
-    homeName: 'Round 4 aprx rank 3'
-    awayName: 'Round 4 aprx rank 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_423:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_3
-    matchName: 'Match rank 3'
-    homeName: 'Round 4 aprx rank 5'
-    awayName: 'Round 4 aprx rank 6'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_424:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_4
-    matchName: 'Match rank 4'
-    homeName: 'Round 4 aprx rank 7'
-    awayName: 'Round 4 aprx rank 8'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_425:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_5
-    matchName: 'Match rank 5'
-    homeName: 'Round 4 aprx rank 9'
-    awayName: 'Round 4 aprx rank 10'
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_426:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_6
-    matchName: 'Match rank 6'
-    homeName: 'Round 4 aprx rank 11'
-    awayName: 'Round 4 aprx rank 12'
-    rank: '6'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_427:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_7
-    matchName: 'Match rank 7'
-    homeName: 'Round 4 aprx rank 13'
-    awayName: 'Round 4 aprx rank 14'
-    rank: '7'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_428:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_8
-    matchName: 'Match rank 8'
-    homeName: 'Round 4 aprx rank 15'
-    awayName: 'Round 4 aprx rank 16'
-    rank: '8'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_429:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_9
-    matchName: 'Match rank 9'
-    homeName: 'Round 4 aprx rank 17'
-    awayName: 'Round 4 aprx rank 18'
-    rank: '9'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_430:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_10
-    matchName: 'Match rank 10'
-    homeName: 'Round 4 aprx rank 19'
-    awayName: 'Round 4 aprx rank 20'
-    rank: '10'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_431:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_11
-    matchName: 'Match rank 11'
-    homeName: 'Round 4 aprx rank 21'
-    awayName: 'Round 4 aprx rank 22'
-    rank: '11'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_432:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_12
-    matchName: 'Match rank 12'
-    homeName: 'Round 4 aprx rank 23'
-    awayName: 'Round 4 aprx rank 24'
-    rank: '12'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_433:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_13
-    matchName: 'Match rank 13'
-    homeName: 'Round 4 aprx rank 25'
-    awayName: 'Round 4 aprx rank 26'
-    rank: '13'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_434:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_14
-    matchName: 'Match rank 14'
-    homeName: 'Round 4 aprx rank 27'
-    awayName: 'Round 4 aprx rank 28'
-    rank: '14'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_435:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_15
-    matchName: 'Match rank 15'
-    homeName: 'Round 4 aprx rank 29'
-    awayName: 'Round 4 aprx rank 30'
-    rank: '15'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_436:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_16
-    matchName: 'Match rank 16'
-    homeName: 'Round 4 aprx rank 31'
-    awayName: 'Round 4 aprx rank 32'
-    rank: '16'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_437:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_17
-    matchName: 'Match rank 17'
-    homeName: 'Round 4 aprx rank 33'
-    awayName: 'Round 4 aprx rank 34'
-    rank: '17'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_438:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_18
-    matchName: 'Match rank 18'
-    homeName: 'Round 4 aprx rank 35'
-    awayName: 'Round 4 aprx rank 36'
-    rank: '18'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_439:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_19
-    matchName: 'Match rank 19'
-    homeName: 'Round 4 aprx rank 37'
-    awayName: 'Round 4 aprx rank 38'
-    rank: '19'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_440:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_20
-    matchName: 'Match rank 20'
-    homeName: 'Round 4 aprx rank 39'
-    awayName: 'Round 4 aprx rank 40'
-    rank: '20'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_441:
-    Round: Round_53
-    scheduledTime: '1308391200'
-    Field: Field_21
-    matchName: 'Match rank 21'
-    homeName: 'Round 4 aprx rank 41'
-    awayName: 'Round 4 aprx rank 42'
-    rank: '21'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: null
-    worstPossibleRank: null
-  RoundMatch_442:
-    Round: Round_54
-    scheduledTime: '1308402000'
-    Field: Field_1
-    matchName: 'Quarterfinals 1'
-    homeName: 'Team 1'
-    awayName: 'Team 8'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '1'
-    worstPossibleRank: '8'
-  RoundMatch_443:
-    Round: Round_54
-    scheduledTime: '1308402000'
-    Field: Field_2
-    matchName: 'Quarterfinals 2'
-    homeName: 'Team 5'
-    awayName: 'Team 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '1'
-    worstPossibleRank: '8'
-  RoundMatch_444:
-    Round: Round_54
-    scheduledTime: '1308402000'
-    Field: Field_3
-    matchName: 'Quarterfinals 3'
-    homeName: 'Team 6'
-    awayName: 'Team 3'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '1'
-    worstPossibleRank: '8'
-  RoundMatch_445:
-    Round: Round_54
-    scheduledTime: '1308402000'
-    Field: Field_4
-    matchName: 'Quarterfinals 4'
-    homeName: 'Team 7'
-    awayName: 'Team 2'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '1'
-    worstPossibleRank: '8'
-  RoundMatch_446:
-    Round: Round_55
-    scheduledTime: '1308412800'
-    Field: Field_5
-    matchName: 'Semifinals 1'
-    homeName: 'Winner Quarterfinals 1'
-    awayName: 'Winner Quarterfinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '1'
-    worstPossibleRank: '4'
-  RoundMatch_447:
-    Round: Round_55
-    scheduledTime: '1308412800'
-    Field: Field_6
-    matchName: 'Semifinals 2'
-    homeName: 'Winner Quarterfinals 3'
-    awayName: 'Winner Quarterfinals 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '1'
-    worstPossibleRank: '4'
-  RoundMatch_448:
-    Round: Round_55
-    scheduledTime: '1308412800'
-    Field: Field_7
-    matchName: 'Semifinals 3'
-    homeName: 'Loser Quarterfinals 1'
-    awayName: 'Loser Quarterfinals 2'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '5'
-    worstPossibleRank: '8'
-  RoundMatch_449:
-    Round: Round_55
-    scheduledTime: '1308412800'
-    Field: Field_8
-    matchName: 'Semifinals 4'
-    homeName: 'Loser Quarterfinals 3'
-    awayName: 'Loser Quarterfinals 4'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '5'
-    worstPossibleRank: '8'
-  RoundMatch_450:
-    Round: Round_56
-    scheduledTime: '1308488400'
-    Field: Field_9
-    matchName: 'Finals 1'
-    homeName: 'Winner Semifinals 1'
-    awayName: 'Winner Semifinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '1'
-    worstPossibleRank: '2'
-  RoundMatch_451:
-    Round: Round_56
-    scheduledTime: '1308472200'
-    Field: Field_10
-    matchName: 'Finals 2'
-    homeName: 'Loser Semifinals 2'
-    awayName: 'Loser Semifinals 1'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '3'
-    worstPossibleRank: '4'
-  RoundMatch_452:
-    Round: Round_56
-    scheduledTime: '1308472200'
-    Field: Field_11
-    matchName: 'Finals 3'
-    homeName: 'Winner Semifinals 3'
-    awayName: 'Winner Semifinals 4'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '5'
-    worstPossibleRank: '6'
-  RoundMatch_453:
-    Round: Round_56
-    scheduledTime: '1308472200'
-    Field: Field_12
-    matchName: 'Finals 4'
-    homeName: 'Loser Semifinals 4'
-    awayName: 'Loser Semifinals 3'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '7'
-    worstPossibleRank: '8'
-  RoundMatch_454:
-    Round: Round_57
-    scheduledTime: '1308402000'
-    Field: Field_1
-    matchName: 'Quarterfinals 1'
-    homeName: 'Team 1'
-    awayName: 'Team 8'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '9'
-    worstPossibleRank: '16'
-  RoundMatch_455:
-    Round: Round_57
-    scheduledTime: '1308402000'
-    Field: Field_2
-    matchName: 'Quarterfinals 2'
-    homeName: 'Team 5'
-    awayName: 'Team 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '9'
-    worstPossibleRank: '16'
-  RoundMatch_456:
-    Round: Round_57
-    scheduledTime: '1308402000'
-    Field: Field_3
-    matchName: 'Quarterfinals 3'
-    homeName: 'Team 6'
-    awayName: 'Team 3'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '9'
-    worstPossibleRank: '16'
-  RoundMatch_457:
-    Round: Round_57
-    scheduledTime: '1308402000'
-    Field: Field_4
-    matchName: 'Quarterfinals 4'
-    homeName: 'Team 7'
-    awayName: 'Team 2'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '9'
-    worstPossibleRank: '16'
-  RoundMatch_458:
-    Round: Round_58
-    scheduledTime: '1308412800'
-    Field: Field_5
-    matchName: 'Semifinals 1'
-    homeName: 'Winner Quarterfinals 1'
-    awayName: 'Winner Quarterfinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '9'
-    worstPossibleRank: '12'
-  RoundMatch_459:
-    Round: Round_58
-    scheduledTime: '1308412800'
-    Field: Field_6
-    matchName: 'Semifinals 2'
-    homeName: 'Winner Quarterfinals 3'
-    awayName: 'Winner Quarterfinals 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '9'
-    worstPossibleRank: '12'
-  RoundMatch_460:
-    Round: Round_58
-    scheduledTime: '1308412800'
-    Field: Field_7
-    matchName: 'Semifinals 3'
-    homeName: 'Loser Quarterfinals 1'
-    awayName: 'Loser Quarterfinals 2'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '13'
-    worstPossibleRank: '16'
-  RoundMatch_461:
-    Round: Round_58
-    scheduledTime: '1308412800'
-    Field: Field_8
-    matchName: 'Semifinals 4'
-    homeName: 'Loser Quarterfinals 3'
-    awayName: 'Loser Quarterfinals 4'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '13'
-    worstPossibleRank: '16'
-  RoundMatch_462:
-    Round: Round_59
-    scheduledTime: '1308472200'
-    Field: Field_9
-    matchName: 'Finals 1'
-    homeName: 'Winner Semifinals 1'
-    awayName: 'Winner Semifinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '9'
-    worstPossibleRank: '10'
-  RoundMatch_463:
-    Round: Round_59
-    scheduledTime: '1308472200'
-    Field: Field_10
-    matchName: 'Finals 2'
-    homeName: 'Loser Semifinals 2'
-    awayName: 'Loser Semifinals 1'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '11'
-    worstPossibleRank: '12'
-  RoundMatch_464:
-    Round: Round_59
-    scheduledTime: '1308472200'
-    Field: Field_11
-    matchName: 'Finals 3'
-    homeName: 'Winner Semifinals 3'
-    awayName: 'Winner Semifinals 4'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '13'
-    worstPossibleRank: '14'
-  RoundMatch_465:
-    Round: Round_59
-    scheduledTime: '1308472200'
-    Field: Field_12
-    matchName: 'Finals 4'
-    homeName: 'Loser Semifinals 4'
-    awayName: 'Loser Semifinals 3'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '15'
-    worstPossibleRank: '16'
-  RoundMatch_466:
-    Round: Round_60
-    scheduledTime: '1308402000'
-    Field: Field_1
-    matchName: 'Quarterfinals 1'
-    homeName: 'Team 1'
-    awayName: 'Team 8'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '17'
-    worstPossibleRank: '24'
-  RoundMatch_467:
-    Round: Round_60
-    scheduledTime: '1308402000'
-    Field: Field_2
-    matchName: 'Quarterfinals 2'
-    homeName: 'Team 5'
-    awayName: 'Team 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '17'
-    worstPossibleRank: '24'
-  RoundMatch_468:
-    Round: Round_60
-    scheduledTime: '1308402000'
-    Field: Field_3
-    matchName: 'Quarterfinals 3'
-    homeName: 'Team 6'
-    awayName: 'Team 3'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '17'
-    worstPossibleRank: '24'
-  RoundMatch_469:
-    Round: Round_60
-    scheduledTime: '1308402000'
-    Field: Field_4
-    matchName: 'Quarterfinals 4'
-    homeName: 'Team 7'
-    awayName: 'Team 2'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '17'
-    worstPossibleRank: '24'
-  RoundMatch_470:
-    Round: Round_61
-    scheduledTime: '1308412800'
-    Field: Field_5
-    matchName: 'Semifinals 1'
-    homeName: 'Winner Quarterfinals 1'
-    awayName: 'Winner Quarterfinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '17'
-    worstPossibleRank: '20'
-  RoundMatch_471:
-    Round: Round_61
-    scheduledTime: '1308412800'
-    Field: Field_6
-    matchName: 'Semifinals 2'
-    homeName: 'Winner Quarterfinals 3'
-    awayName: 'Winner Quarterfinals 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '17'
-    worstPossibleRank: '20'
-  RoundMatch_472:
-    Round: Round_61
-    scheduledTime: '1308412800'
-    Field: Field_7
-    matchName: 'Semifinals 3'
-    homeName: 'Loser Quarterfinals 1'
-    awayName: 'Loser Quarterfinals 2'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '21'
-    worstPossibleRank: '24'
-  RoundMatch_473:
-    Round: Round_61
-    scheduledTime: '1308412800'
-    Field: Field_8
-    matchName: 'Semifinals 4'
-    homeName: 'Loser Quarterfinals 3'
-    awayName: 'Loser Quarterfinals 4'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '21'
-    worstPossibleRank: '24'
-  RoundMatch_474:
-    Round: Round_62
-    scheduledTime: '1308472200'
-    Field: Field_9
-    matchName: 'Finals 1'
-    homeName: 'Winner Semifinals 1'
-    awayName: 'Winner Semifinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '17'
-    worstPossibleRank: '18'
-  RoundMatch_475:
-    Round: Round_62
-    scheduledTime: '1308472200'
-    Field: Field_10
-    matchName: 'Finals 2'
-    homeName: 'Loser Semifinals 2'
-    awayName: 'Loser Semifinals 1'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '19'
-    worstPossibleRank: '20'
-  RoundMatch_476:
-    Round: Round_62
-    scheduledTime: '1308472200'
-    Field: Field_11
-    matchName: 'Finals 3'
-    homeName: 'Winner Semifinals 3'
-    awayName: 'Winner Semifinals 4'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '21'
-    worstPossibleRank: '22'
-  RoundMatch_477:
-    Round: Round_62
-    scheduledTime: '1308472200'
-    Field: Field_12
-    matchName: 'Finals 4'
-    homeName: 'Loser Semifinals 4'
-    awayName: 'Loser Semifinals 3'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '23'
-    worstPossibleRank: '24'
-  RoundMatch_478:
-    Round: Round_63
-    scheduledTime: '1308402000'
-    Field: Field_1
-    matchName: 'Quarterfinals 1'
-    homeName: 'Team 1'
-    awayName: 'Team 8'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '25'
-    worstPossibleRank: '32'
-  RoundMatch_479:
-    Round: Round_63
-    scheduledTime: '1308402000'
-    Field: Field_2
-    matchName: 'Quarterfinals 2'
-    homeName: 'Team 5'
-    awayName: 'Team 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '25'
-    worstPossibleRank: '32'
-  RoundMatch_480:
-    Round: Round_63
-    scheduledTime: '1308402000'
-    Field: Field_3
-    matchName: 'Quarterfinals 3'
-    homeName: 'Team 6'
-    awayName: 'Team 3'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '25'
-    worstPossibleRank: '32'
-  RoundMatch_481:
-    Round: Round_63
-    scheduledTime: '1308402000'
-    Field: Field_4
-    matchName: 'Quarterfinals 4'
-    homeName: 'Team 7'
-    awayName: 'Team 2'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '25'
-    worstPossibleRank: '32'
-  RoundMatch_482:
-    Round: Round_64
-    scheduledTime: '1308412800'
-    Field: Field_5
-    matchName: 'Semifinals 1'
-    homeName: 'Winner Quarterfinals 1'
-    awayName: 'Winner Quarterfinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '25'
-    worstPossibleRank: '28'
-  RoundMatch_483:
-    Round: Round_64
-    scheduledTime: '1308412800'
-    Field: Field_6
-    matchName: 'Semifinals 2'
-    homeName: 'Winner Quarterfinals 3'
-    awayName: 'Winner Quarterfinals 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '25'
-    worstPossibleRank: '28'
-  RoundMatch_484:
-    Round: Round_64
-    scheduledTime: '1308412800'
-    Field: Field_7
-    matchName: 'Semifinals 3'
-    homeName: 'Loser Quarterfinals 1'
-    awayName: 'Loser Quarterfinals 2'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '29'
-    worstPossibleRank: '32'
-  RoundMatch_485:
-    Round: Round_64
-    scheduledTime: '1308412800'
-    Field: Field_8
-    matchName: 'Semifinals 4'
-    homeName: 'Loser Quarterfinals 3'
-    awayName: 'Loser Quarterfinals 4'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '29'
-    worstPossibleRank: '32'
-  RoundMatch_486:
-    Round: Round_65
-    scheduledTime: '1308472200'
-    Field: Field_9
-    matchName: 'Finals 1'
-    homeName: 'Winner Semifinals 1'
-    awayName: 'Winner Semifinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '25'
-    worstPossibleRank: '26'
-  RoundMatch_487:
-    Round: Round_65
-    scheduledTime: '1308472200'
-    Field: Field_10
-    matchName: 'Finals 2'
-    homeName: 'Loser Semifinals 2'
-    awayName: 'Loser Semifinals 1'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '27'
-    worstPossibleRank: '28'
-  RoundMatch_488:
-    Round: Round_65
-    scheduledTime: '1308472200'
-    Field: Field_11
-    matchName: 'Finals 3'
-    homeName: 'Winner Semifinals 3'
-    awayName: 'Winner Semifinals 4'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '29'
-    worstPossibleRank: '30'
-  RoundMatch_489:
-    Round: Round_65
-    scheduledTime: '1308472200'
-    Field: Field_12
-    matchName: 'Finals 4'
-    homeName: 'Loser Semifinals 4'
-    awayName: 'Loser Semifinals 3'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '31'
-    worstPossibleRank: '32'
-  RoundMatch_490:
-    Round: Round_66
-    scheduledTime: '1308402000'
-    Field: Field_1
-    matchName: 'Quarterfinals 1'
-    homeName: 'Team 1'
-    awayName: 'Team 8'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '33'
-    worstPossibleRank: '41'
-  RoundMatch_491:
-    Round: Round_66
-    scheduledTime: '1308402000'
-    Field: Field_2
-    matchName: 'Quarterfinals 2'
-    homeName: 'Team 5'
-    awayName: 'Team 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '33'
-    worstPossibleRank: '38'
-  RoundMatch_492:
-    Round: Round_66
-    scheduledTime: '1308402000'
-    Field: Field_3
-    matchName: 'Quarterfinals 3'
-    homeName: 'Team 6'
-    awayName: 'Team 3'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '33'
-    worstPossibleRank: '41'
-  RoundMatch_493:
-    Round: Round_66
-    scheduledTime: '1308402000'
-    Field: Field_4
-    matchName: 'Quarterfinals 4'
-    homeName: 'Team 7'
-    awayName: 'Team 2'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '33'
-    worstPossibleRank: '41'
-  RoundMatch_494:
-    Round: Round_66
-    scheduledTime: '1308402000'
-    Field: Field_5
-    matchName: 'Quarterfinals BYE match'
-    homeName: 'Team 9'
-    awayName: BYE
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '40'
-    worstPossibleRank: '41'
-  RoundMatch_495:
-    Round: Round_67
-    scheduledTime: '1308412800'
-    Field: Field_6
-    matchName: 'Semifinals 1'
-    homeName: 'Winner Quarterfinals 1'
-    awayName: 'Winner Quarterfinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '33'
-    worstPossibleRank: '36'
-  RoundMatch_496:
-    Round: Round_67
-    scheduledTime: '1308412800'
-    Field: Field_7
-    matchName: 'Semifinals 2'
-    homeName: 'Winner Quarterfinals 3'
-    awayName: 'Winner Quarterfinals 4'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '33'
-    worstPossibleRank: '36'
-  RoundMatch_497:
-    Round: Round_67
-    scheduledTime: '1308412800'
-    Field: Field_8
-    matchName: 'Semifinals 3'
-    homeName: 'Team 9'
-    awayName: 'Loser Quarterfinals 3'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '40'
-    worstPossibleRank: '41'
-  RoundMatch_498:
-    Round: Round_67
-    scheduledTime: '1308412800'
-    Field: Field_9
-    matchName: 'Semifinals 4'
-    homeName: 'Loser Quarterfinals 1'
-    awayName: 'Loser Quarterfinals 4'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '37'
-    worstPossibleRank: '41'
-  RoundMatch_499:
-    Round: Round_67
-    scheduledTime: '1308412800'
-    Field: Field_10
-    matchName: 'Semifinals BYE match'
-    homeName: 'Loser Quarterfinals 2'
-    awayName: BYE
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '37'
-    worstPossibleRank: '38'
-  RoundMatch_500:
-    Round: Round_68
-    scheduledTime: '1308472200'
-    Field: Field_11
-    matchName: 'Finals 1'
-    homeName: 'Winner Semifinals 1'
-    awayName: 'Winner Semifinals 2'
-    rank: '1'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '33'
-    worstPossibleRank: '34'
-  RoundMatch_501:
-    Round: Round_68
-    scheduledTime: '1308472200'
-    Field: Field_12
-    matchName: 'Finals 2'
-    homeName: 'Loser Semifinals 2'
-    awayName: 'Loser Semifinals 1'
-    rank: '2'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '35'
-    worstPossibleRank: '36'
-  RoundMatch_502:
-    Round: Round_68
-    scheduledTime: '1308472200'
-    Field: Field_13
-    matchName: 'Finals 3'
-    homeName: 'Loser Quarterfinals 2'
-    awayName: 'Winner Semifinals 4'
-    rank: '3'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '37'
-    worstPossibleRank: '39'
-  RoundMatch_503:
-    Round: Round_68
-    scheduledTime: '1308472200'
-    Field: Field_14
-    matchName: 'Finals 4'
-    homeName: 'Loser Semifinals 4'
-    awayName: 'Loser Semifinals 3'
-    rank: '4'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '40'
-    worstPossibleRank: '41'
-  RoundMatch_504:
-    Round: Round_68
-    scheduledTime: '1308472200'
-    Field: Field_15
-    matchName: 'Finals BYE match'
-    homeName: 'Winner Semifinals 3'
-    awayName: BYE
-    rank: '5'
-    homeScore: null
-    awayScore: null
-    homeSpirit: null
-    awaySpirit: null
-    scoreSubmitTime: null
-    spiritSubmitTime: null
-    bestPossibleRank: '38'
-    worstPossibleRank: '38'
 Stage:
   Stage_1:
     title: 'Registration stage'
