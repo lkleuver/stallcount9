@@ -73,10 +73,15 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		Doctrine_Core::createTablesFromModels($modelsPath);
 		
 		$file = dirname(__FILE__)."/../../../build/fixtures/Windmill2011.yml";
-		FB::log('file name '.$file);
+		
+		if(file_exists($file)) {
+			echo "whee ";
+		}
+		
+		echo 'file name '.$file;
 		
 		Doctrine_Core::debug(true);
-//		Doctrine_Core::loadModels($modelsPath);
+		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::loadData($file);
 		
 		//$this->relocate("/tournament/detail/1");
