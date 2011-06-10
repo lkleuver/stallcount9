@@ -67,6 +67,8 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 //		FB::log("deleting all data");
 		//deleting old models first (dangerous!)
 		
+		FB::group('re-initialize Windmill 2011 data');
+		FB::log('dropping Databases');
 		Doctrine_Core::dropDatabases();
 		Doctrine_Core::createDatabases();
 		//Doctrine_Core::generateModelsFromYaml(dirname(__FILE__).'/../../../build/schema/base.yml', $modelsPath, $options);
@@ -74,11 +76,12 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		
 		$file = dirname(__FILE__)."/../../../build/fixtures/Windmill2011.yml";
 		
-			
-
+		FB::log('loading Windmill 2011 fixtures');
 //		Doctrine_Core::loadData("app/build/fixtures/core.yml");
 		Doctrine_Core::loadData("app/build/fixtures/Windmill2011.yml");
 		
+		FB::groupEnd();
 		$this->relocate("/tournament/detail/1");
+		
 	}
 }
