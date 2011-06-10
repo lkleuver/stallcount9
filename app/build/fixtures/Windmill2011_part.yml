@@ -1,0 +1,1687 @@
+Tournament:
+  Tournament_1:
+    title: 'Windmill Windup 2011'
+    state: '1'
+    startDate: '1308261600'
+    endDate: '1308434400'
+Brackets:
+  Brackets_5_3_1_1:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_1_2:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '4'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_1_3:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '3'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_5_3_2_1:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_2_2:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '2'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_5_3_2_3:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '4'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_5_3_3_1:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_5_3_3_2:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '4'
+    away: '3'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_5_3_3_3:
+    nrteams: '5'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: null
+    winplace: '5'
+    loseplace: null
+  Brackets_8_3_1_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_1_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '8'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_2_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '6'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_8_3_3_1:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_8_3_3_2:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_8_3_3_3:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '6'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_8_3_3_4:
+    nrteams: '8'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '7'
+    away: '8'
+    winplace: '7'
+    loseplace: '8'
+  Brackets_9_3_1_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '5'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_1_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '5'
+    home: '9'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '4'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '3'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '9'
+    away: '6'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '8'
+    away: '7'
+    winplace: null
+    loseplace: null
+  Brackets_9_3_2_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '5'
+    home: '5'
+    away: null
+    winplace: null
+    loseplace: null
+  Brackets_9_3_3_1:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_9_3_3_2:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_9_3_3_3:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '5'
+    away: '7'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_9_3_3_4:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '8'
+    away: '9'
+    winplace: '7'
+    loseplace: '9'
+  Brackets_9_3_3_5:
+    nrteams: '9'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '5'
+    home: '6'
+    away: null
+    winplace: '8'
+    loseplace: null
+  Brackets_10_3_1_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '1'
+    home: '1'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '2'
+    home: '6'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '3'
+    home: '4'
+    away: '5'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '4'
+    home: '7'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_1_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '1'
+    matchnr: '5'
+    home: '9'
+    away: '10'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '1'
+    home: '1'
+    away: '3'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '2'
+    home: '4'
+    away: '2'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '3'
+    home: '6'
+    away: '8'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '4'
+    home: '5'
+    away: '10'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_2_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '2'
+    matchnr: '5'
+    home: '7'
+    away: '9'
+    winplace: null
+    loseplace: null
+  Brackets_10_3_3_1:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '1'
+    home: '1'
+    away: '2'
+    winplace: '1'
+    loseplace: '2'
+  Brackets_10_3_3_2:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '2'
+    home: '3'
+    away: '4'
+    winplace: '3'
+    loseplace: '4'
+  Brackets_10_3_3_3:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '3'
+    home: '6'
+    away: '5'
+    winplace: '5'
+    loseplace: '6'
+  Brackets_10_3_3_4:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '4'
+    home: '7'
+    away: '8'
+    winplace: '7'
+    loseplace: '8'
+  Brackets_10_3_3_5:
+    nrteams: '10'
+    nrrounds: '3'
+    round: '3'
+    matchnr: '5'
+    home: '9'
+    away: '10'
+    winplace: '9'
+    loseplace: '10'
+Division:
+  Division_1:
+    title: open
+    Tournament: Tournament_1
+  Division_2:
+    title: mixed
+    Tournament: Tournament_1
+  Division_3:
+    title: women
+    Tournament: Tournament_1
+Pool:
+  Pool_1:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_1
+    spots: '41'
+    rank: '1'
+  Pool_2:
+    title: Swissdraw
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_2
+    spots: '42'
+    rank: '1'
+  Pool_3:
+    title: 'Top Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '1'
+  Pool_4:
+    title: 'Upper Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '2'
+  Pool_5:
+    title: 'Middle Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '3'
+  Pool_6:
+    title: 'Lower Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '8'
+    rank: '4'
+  Pool_7:
+    title: Playout
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_3
+    spots: '9'
+    rank: '5'
+  Pool_8:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_4
+    spots: '27'
+    rank: '1'
+  Pool_9:
+    title: Swissdraw
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_5
+    spots: '28'
+    rank: '1'
+  Pool_10:
+    title: 'Top Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_6
+    spots: '8'
+    rank: '1'
+  Pool_11:
+    title: 'Middle Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_6
+    spots: '8'
+    rank: '2'
+  Pool_12:
+    title: 'Lower Playoff'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_6
+    spots: '8'
+    rank: '3'
+  Pool_13:
+    title: Playout
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_4
+    Stage: Stage_6
+    spots: '3'
+    rank: '4'
+  Pool_14:
+    title: 'Registration seeding'
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_1
+    Stage: Stage_7
+    spots: '13'
+    rank: '1'
+  Pool_15:
+    title: Swissdraw
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_2
+    Stage: Stage_8
+    spots: '14'
+    rank: '1'
+  Pool_16:
+    title: Playoff
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_9
+    spots: '8'
+    rank: '1'
+  Pool_17:
+    title: Playout
+    currentRound: '0'
+    PoolRuleset: PoolRuleset_3
+    Stage: Stage_9
+    spots: '5'
+    rank: '2'
+PoolMove:
+  PoolMove_2_1_1_1:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_2_1_2_2:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_2_1_3_3:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_2_1_4_4:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_2_1_5_5:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_2_1_6_6:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_2_1_7_7:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_2_1_8_8:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_2_1_9_9:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '9'
+    destinationSpot: '9'
+  PoolMove_2_1_10_10:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '10'
+    destinationSpot: '10'
+  PoolMove_2_1_11_11:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '11'
+    destinationSpot: '11'
+  PoolMove_2_1_12_12:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '12'
+    destinationSpot: '12'
+  PoolMove_2_1_13_13:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '13'
+    destinationSpot: '13'
+  PoolMove_2_1_14_14:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '14'
+    destinationSpot: '14'
+  PoolMove_2_1_15_15:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '15'
+    destinationSpot: '15'
+  PoolMove_2_1_16_16:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '16'
+    destinationSpot: '16'
+  PoolMove_2_1_17_17:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '17'
+    destinationSpot: '17'
+  PoolMove_2_1_18_18:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '18'
+    destinationSpot: '18'
+  PoolMove_2_1_19_19:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '19'
+    destinationSpot: '19'
+  PoolMove_2_1_20_20:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '20'
+    destinationSpot: '20'
+  PoolMove_2_1_21_21:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '21'
+    destinationSpot: '21'
+  PoolMove_2_1_22_22:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '22'
+    destinationSpot: '22'
+  PoolMove_2_1_23_23:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '23'
+    destinationSpot: '23'
+  PoolMove_2_1_24_24:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '24'
+    destinationSpot: '24'
+  PoolMove_2_1_25_25:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '25'
+    destinationSpot: '25'
+  PoolMove_2_1_26_26:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '26'
+    destinationSpot: '26'
+  PoolMove_2_1_27_27:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '27'
+    destinationSpot: '27'
+  PoolMove_2_1_28_28:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '28'
+    destinationSpot: '28'
+  PoolMove_2_1_29_29:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '29'
+    destinationSpot: '29'
+  PoolMove_2_1_30_30:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '30'
+    destinationSpot: '30'
+  PoolMove_2_1_31_31:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '31'
+    destinationSpot: '31'
+  PoolMove_2_1_32_32:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '32'
+    destinationSpot: '32'
+  PoolMove_2_1_33_33:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '33'
+    destinationSpot: '33'
+  PoolMove_2_1_34_34:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '34'
+    destinationSpot: '34'
+  PoolMove_2_1_35_35:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '35'
+    destinationSpot: '35'
+  PoolMove_2_1_36_36:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '36'
+    destinationSpot: '36'
+  PoolMove_2_1_37_37:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '37'
+    destinationSpot: '37'
+  PoolMove_2_1_38_38:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '38'
+    destinationSpot: '38'
+  PoolMove_2_1_39_39:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '39'
+    destinationSpot: '39'
+  PoolMove_2_1_40_40:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '40'
+    destinationSpot: '40'
+  PoolMove_2_1_41_41:
+    Pool: Pool_2
+    SourcePool: Pool_1
+    sourceSpot: '41'
+    destinationSpot: '41'
+  PoolMove_3_2_1_1:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_3_2_2_2:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_3_2_3_3:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_3_2_4_4:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_3_2_5_5:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_3_2_6_6:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_3_2_7_7:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_3_2_8_8:
+    Pool: Pool_3
+    SourcePool: Pool_2
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_4_2_9_1:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '9'
+    destinationSpot: '1'
+  PoolMove_4_2_10_2:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '10'
+    destinationSpot: '2'
+  PoolMove_4_2_11_3:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '11'
+    destinationSpot: '3'
+  PoolMove_4_2_12_4:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '12'
+    destinationSpot: '4'
+  PoolMove_4_2_13_5:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '13'
+    destinationSpot: '5'
+  PoolMove_4_2_14_6:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '14'
+    destinationSpot: '6'
+  PoolMove_4_2_15_7:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '15'
+    destinationSpot: '7'
+  PoolMove_4_2_16_8:
+    Pool: Pool_4
+    SourcePool: Pool_2
+    sourceSpot: '16'
+    destinationSpot: '8'
+  PoolMove_5_2_17_1:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '17'
+    destinationSpot: '1'
+  PoolMove_5_2_18_2:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '18'
+    destinationSpot: '2'
+  PoolMove_5_2_19_3:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '19'
+    destinationSpot: '3'
+  PoolMove_5_2_20_4:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '20'
+    destinationSpot: '4'
+  PoolMove_5_2_21_5:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '21'
+    destinationSpot: '5'
+  PoolMove_5_2_22_6:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '22'
+    destinationSpot: '6'
+  PoolMove_5_2_23_7:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '23'
+    destinationSpot: '7'
+  PoolMove_5_2_24_8:
+    Pool: Pool_5
+    SourcePool: Pool_2
+    sourceSpot: '24'
+    destinationSpot: '8'
+  PoolMove_6_2_25_1:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '25'
+    destinationSpot: '1'
+  PoolMove_6_2_26_2:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '26'
+    destinationSpot: '2'
+  PoolMove_6_2_27_3:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '27'
+    destinationSpot: '3'
+  PoolMove_6_2_28_4:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '28'
+    destinationSpot: '4'
+  PoolMove_6_2_29_5:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '29'
+    destinationSpot: '5'
+  PoolMove_6_2_30_6:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '30'
+    destinationSpot: '6'
+  PoolMove_6_2_31_7:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '31'
+    destinationSpot: '7'
+  PoolMove_6_2_32_8:
+    Pool: Pool_6
+    SourcePool: Pool_2
+    sourceSpot: '32'
+    destinationSpot: '8'
+  PoolMove_7_2_33_1:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '33'
+    destinationSpot: '1'
+  PoolMove_7_2_34_2:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '34'
+    destinationSpot: '2'
+  PoolMove_7_2_35_3:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '35'
+    destinationSpot: '3'
+  PoolMove_7_2_36_4:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '36'
+    destinationSpot: '4'
+  PoolMove_7_2_37_5:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '37'
+    destinationSpot: '5'
+  PoolMove_7_2_38_6:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '38'
+    destinationSpot: '6'
+  PoolMove_7_2_39_7:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '39'
+    destinationSpot: '7'
+  PoolMove_7_2_40_8:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '40'
+    destinationSpot: '8'
+  PoolMove_7_2_41_9:
+    Pool: Pool_7
+    SourcePool: Pool_2
+    sourceSpot: '41'
+    destinationSpot: '9'
+  PoolMove_9_8_1_1:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_9_8_2_2:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_9_8_3_3:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_9_8_4_4:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_9_8_5_5:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_9_8_6_6:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_9_8_7_7:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_9_8_8_8:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_9_8_9_9:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '9'
+    destinationSpot: '9'
+  PoolMove_9_8_10_10:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '10'
+    destinationSpot: '10'
+  PoolMove_9_8_11_11:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '11'
+    destinationSpot: '11'
+  PoolMove_9_8_12_12:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '12'
+    destinationSpot: '12'
+  PoolMove_9_8_13_13:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '13'
+    destinationSpot: '13'
+  PoolMove_9_8_14_14:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '14'
+    destinationSpot: '14'
+  PoolMove_9_8_15_15:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '15'
+    destinationSpot: '15'
+  PoolMove_9_8_16_16:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '16'
+    destinationSpot: '16'
+  PoolMove_9_8_17_17:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '17'
+    destinationSpot: '17'
+  PoolMove_9_8_18_18:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '18'
+    destinationSpot: '18'
+  PoolMove_9_8_19_19:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '19'
+    destinationSpot: '19'
+  PoolMove_9_8_20_20:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '20'
+    destinationSpot: '20'
+  PoolMove_9_8_21_21:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '21'
+    destinationSpot: '21'
+  PoolMove_9_8_22_22:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '22'
+    destinationSpot: '22'
+  PoolMove_9_8_23_23:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '23'
+    destinationSpot: '23'
+  PoolMove_9_8_24_24:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '24'
+    destinationSpot: '24'
+  PoolMove_9_8_25_25:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '25'
+    destinationSpot: '25'
+  PoolMove_9_8_26_26:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '26'
+    destinationSpot: '26'
+  PoolMove_9_8_27_27:
+    Pool: Pool_9
+    SourcePool: Pool_8
+    sourceSpot: '27'
+    destinationSpot: '27'
+  PoolMove_10_9_1_1:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_10_9_2_2:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_10_9_3_3:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_10_9_4_4:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_10_9_5_5:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_10_9_6_6:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_10_9_7_7:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_10_9_8_8:
+    Pool: Pool_10
+    SourcePool: Pool_9
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_11_9_9_1:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '9'
+    destinationSpot: '1'
+  PoolMove_11_9_10_2:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '10'
+    destinationSpot: '2'
+  PoolMove_11_9_11_3:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '11'
+    destinationSpot: '3'
+  PoolMove_11_9_12_4:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '12'
+    destinationSpot: '4'
+  PoolMove_11_9_13_5:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '13'
+    destinationSpot: '5'
+  PoolMove_11_9_14_6:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '14'
+    destinationSpot: '6'
+  PoolMove_11_9_15_7:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '15'
+    destinationSpot: '7'
+  PoolMove_11_9_16_8:
+    Pool: Pool_11
+    SourcePool: Pool_9
+    sourceSpot: '16'
+    destinationSpot: '8'
+  PoolMove_12_9_17_1:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '17'
+    destinationSpot: '1'
+  PoolMove_12_9_18_2:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '18'
+    destinationSpot: '2'
+  PoolMove_12_9_19_3:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '19'
+    destinationSpot: '3'
+  PoolMove_12_9_20_4:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '20'
+    destinationSpot: '4'
+  PoolMove_12_9_21_5:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '21'
+    destinationSpot: '5'
+  PoolMove_12_9_22_6:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '22'
+    destinationSpot: '6'
+  PoolMove_12_9_23_7:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '23'
+    destinationSpot: '7'
+  PoolMove_12_9_24_8:
+    Pool: Pool_12
+    SourcePool: Pool_9
+    sourceSpot: '24'
+    destinationSpot: '8'
+  PoolMove_13_9_25_1:
+    Pool: Pool_13
+    SourcePool: Pool_9
+    sourceSpot: '25'
+    destinationSpot: '1'
+  PoolMove_13_9_26_2:
+    Pool: Pool_13
+    SourcePool: Pool_9
+    sourceSpot: '26'
+    destinationSpot: '2'
+  PoolMove_13_9_27_3:
+    Pool: Pool_13
+    SourcePool: Pool_9
+    sourceSpot: '27'
+    destinationSpot: '3'
+  PoolMove_15_14_1_1:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_15_14_2_2:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_15_14_3_3:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_15_14_4_4:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_15_14_5_5:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_15_14_6_6:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_15_14_7_7:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_15_14_8_8:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_15_14_9_9:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '9'
+    destinationSpot: '9'
+  PoolMove_15_14_10_10:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '10'
+    destinationSpot: '10'
+  PoolMove_15_14_11_11:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '11'
+    destinationSpot: '11'
+  PoolMove_15_14_12_12:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '12'
+    destinationSpot: '12'
+  PoolMove_15_14_13_13:
+    Pool: Pool_15
+    SourcePool: Pool_14
+    sourceSpot: '13'
+    destinationSpot: '13'
+  PoolMove_16_15_1_1:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '1'
+    destinationSpot: '1'
+  PoolMove_16_15_2_2:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '2'
+    destinationSpot: '2'
+  PoolMove_16_15_3_3:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '3'
+    destinationSpot: '3'
+  PoolMove_16_15_4_4:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '4'
+    destinationSpot: '4'
+  PoolMove_16_15_5_5:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '5'
+    destinationSpot: '5'
+  PoolMove_16_15_6_6:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '6'
+    destinationSpot: '6'
+  PoolMove_16_15_7_7:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '7'
+    destinationSpot: '7'
+  PoolMove_16_15_8_8:
+    Pool: Pool_16
+    SourcePool: Pool_15
+    sourceSpot: '8'
+    destinationSpot: '8'
+  PoolMove_17_15_9_1:
+    Pool: Pool_17
+    SourcePool: Pool_15
+    sourceSpot: '9'
+    destinationSpot: '1'
+  PoolMove_17_15_10_2:
+    Pool: Pool_17
+    SourcePool: Pool_15
+    sourceSpot: '10'
+    destinationSpot: '2'
+  PoolMove_17_15_11_3:
+    Pool: Pool_17
+    SourcePool: Pool_15
+    sourceSpot: '11'
+    destinationSpot: '3'
+  PoolMove_17_15_12_4:
+    Pool: Pool_17
+    SourcePool: Pool_15
+    sourceSpot: '12'
+    destinationSpot: '4'
+  PoolMove_17_15_13_5:
+    Pool: Pool_17
+    SourcePool: Pool_15
+    sourceSpot: '13'
+    destinationSpot: '5'
+PoolRuleset:
+  PoolRuleset_1:
+    title: Setup
+    PoolStrategy: PoolStrategy_1
+    numberOfRounds: '0'
+    matchLength: '0'
+    qualificationCutoff: '0'
+    winningScore: null
+    byeScore: null
+    byeAgainst: null
+  PoolRuleset_2:
+    title: Swissdraw
+    PoolStrategy: PoolStrategy_2
+    numberOfRounds: '5'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: '12'
+    byeAgainst: '15'
+  PoolRuleset_3:
+    title: Bracket
+    PoolStrategy: PoolStrategy_3
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
+  PoolRuleset_4:
+    title: RoundRobin
+    PoolStrategy: PoolStrategy_4
+    numberOfRounds: '0'
+    matchLength: '90'
+    qualificationCutoff: '0'
+    winningScore: '15'
+    byeScore: null
+    byeAgainst: null
+PoolStrategy:
+  PoolStrategy_1:
+    title: ManualRanking
+    description: 'manually rank pool'
+  PoolStrategy_2:
+    title: Swissdraw
+    description: 'Swissdraw matchmaking according to victory points'
+  PoolStrategy_3:
+    title: Bracket
+    description: Bracket
+  PoolStrategy_4:
+    title: RoundRobin
+    description: RoundRobin
+Stage:
+  Stage_1:
+    title: 'Registration stage'
+    Division: Division_1
+    rank: '1'
+    locked: null
+    placement: null
+  Stage_2:
+    title: Swissdraw
+    Division: Division_1
+    rank: '2'
+    locked: null
+    placement: null
+  Stage_3:
+    title: Playoff
+    Division: Division_1
+    rank: '3'
+    locked: null
+    placement: null
+  Stage_4:
+    title: 'Registration stage'
+    Division: Division_2
+    rank: '1'
+    locked: null
+    placement: null
+  Stage_5:
+    title: Swissdraw
+    Division: Division_2
+    rank: '2'
+    locked: null
+    placement: null
+  Stage_6:
+    title: Playoff
+    Division: Division_2
+    rank: '3'
+    locked: null
+    placement: null
+  Stage_7:
+    title: 'Registration stage'
+    Division: Division_3
+    rank: '1'
+    locked: null
+    placement: null
+  Stage_8:
+    title: Swissdraw
+    Division: Division_3
+    rank: '2'
+    locked: null
+    placement: null
+  Stage_9:
+    title: Playoffs
+    Division: Division_3
+    rank: '3'
+    locked: null
+    placement: true
+Team:
+  Team_1:
+    name: Gentle
+    shortName: Gentle
+    email1: johanbommie@yahoo.com
+    email2: ''
+    contactName: korneel
+    city: Gent
+    country: Belgium
+    mobile1: '32486652562'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_2:
+    name: 'French National Master Team'
+    shortName: FranceMaster
+    email1: pierril9@yahoo.com
+    email2: jygoliard@yahoo.com
+    contactName: jano
+    city: 'ALL AROUND'
+    country: FRANCE
+    mobile1: '33685554475'
+    mobile2: '33650741660'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_3:
+    name: 'Rainbow Warriors'
+    shortName: 'Rainbow Warriors'
+    email1: thomas.kuypers@laposte.net
+    email2: thomas.kuypers@laposte.net
+    contactName: 'Thomas Kuypers'
+    city: Lille/Besan̤on/Clermont
+    country: France
+    mobile1: '33626820763'
+    mobile2: ''
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_4:
+    name: Carapedos
+    shortName: Carapedos
+    email1: db@davidbender.de
+    email2: hauck@ghost-o-one.de
+    contactName: Torsten
+    city: 'Wuppertal/ Dortmund'
+    country: Germany
+    mobile1: '491752015296'
+    mobile2: '491732716004'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+  Team_5:
+    name: KoBOld
+    shortName: KoBOld
+    email1: tim.oehr@gmail.com
+    email2: timoehr@uni-bremen.de
+    contactName: 'Tim Oehr'
+    city: 'Bremen, Oldenburg, Osnabrueck'
+    country: Germany
+    mobile1: '491777157468'
+    mobile2: '4915111667320'
+    mobile3: null
+    mobile4: null
+    mobile5: null
+    comment: ''
+    Division: Division_1
+    byeStatus: null
+VictoryPoints:
+  VictoryPoints_-15:
+    margin: '-15'
+    victorypoints: '0'
+  VictoryPoints_-14:
+    margin: '-14'
+    victorypoints: '1'
+  VictoryPoints_-13:
+    margin: '-13'
+    victorypoints: '2'
+  VictoryPoints_-12:
+    margin: '-12'
+    victorypoints: '3'
+  VictoryPoints_-11:
+    margin: '-11'
+    victorypoints: '4'
+  VictoryPoints_-10:
+    margin: '-10'
+    victorypoints: '5'
+  VictoryPoints_-9:
+    margin: '-9'
+    victorypoints: '6'
+  VictoryPoints_-8:
+    margin: '-8'
+    victorypoints: '7'
+  VictoryPoints_-7:
+    margin: '-7'
+    victorypoints: '8'
+  VictoryPoints_-6:
+    margin: '-6'
+    victorypoints: '9'
+  VictoryPoints_-5:
+    margin: '-5'
+    victorypoints: '10'
+  VictoryPoints_-4:
+    margin: '-4'
+    victorypoints: '11'
+  VictoryPoints_-3:
+    margin: '-3'
+    victorypoints: '12'
+  VictoryPoints_-2:
+    margin: '-2'
+    victorypoints: '13'
+  VictoryPoints_-1:
+    margin: '-1'
+    victorypoints: '14'
+  VictoryPoints_0:
+    margin: '0'
+    victorypoints: '15'
+  VictoryPoints_1:
+    margin: '1'
+    victorypoints: '16'
+  VictoryPoints_2:
+    margin: '2'
+    victorypoints: '17'
+  VictoryPoints_3:
+    margin: '3'
+    victorypoints: '18'
+  VictoryPoints_4:
+    margin: '4'
+    victorypoints: '19'
+  VictoryPoints_5:
+    margin: '5'
+    victorypoints: '20'
+  VictoryPoints_6:
+    margin: '6'
+    victorypoints: '21'
+  VictoryPoints_7:
+    margin: '7'
+    victorypoints: '22'
+  VictoryPoints_8:
+    margin: '8'
+    victorypoints: '23'
+  VictoryPoints_9:
+    margin: '9'
+    victorypoints: '24'
+  VictoryPoints_10:
+    margin: '10'
+    victorypoints: '25'
+  VictoryPoints_11:
+    margin: '11'
+    victorypoints: '25'
+  VictoryPoints_12:
+    margin: '12'
+    victorypoints: '25'
+  VictoryPoints_13:
+    margin: '13'
+    victorypoints: '25'
+  VictoryPoints_14:
+    margin: '14'
+    victorypoints: '25'
+  VictoryPoints_15:
+    margin: '15'
+    victorypoints: '25'

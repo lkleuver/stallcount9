@@ -7652,7 +7652,7 @@ Team:
     email1: tim.oehr@gmail.com
     email2: timoehr@uni-bremen.de
     contactName: 'Tim Oehr'
-    city: 'Bremen, Oldenburg, Osnabrueck'
+    city: 'Bremen, Oldenburg, OsnabrÃ_ck'
     country: Germany
     mobile1: '491777157468'
     mobile2: '4915111667320'
@@ -7907,7 +7907,7 @@ Team:
     shortName: Iznogood
     email1: ckriss9-izno@yahoo.fr
     email2: Francoiszoubir@yahoo.fr
-    contactName: Francois
+    contactName: FranÃ§ois
     city: 'Paris '
     country: France
     mobile1: '330698001248'
@@ -7951,8 +7951,8 @@ Team:
     Division: Division_1
     byeStatus: null
   Team_24:
-    name: Gummibaerchen
-    shortName: Gummibaerchen
+    name: Gummib√§rchen
+    shortName: GummibÃ_rchen
     email1: trainer@ultimate-karlsruhe.de
     email2: turniere@ultimate-karlsruhe.de
     contactName: 'Felix Mach'
@@ -8175,7 +8175,7 @@ Team:
     Division: Division_1
     byeStatus: null
   Team_38:
-    name: 'Les etoiles o'
+    name: 'Les √©toiles o'
     shortName: 'Les etoiles o'
     email1: sigibodson@yahoo.com
     email2: bodsonsigi@hotmail.com
