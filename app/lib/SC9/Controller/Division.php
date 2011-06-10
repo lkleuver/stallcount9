@@ -105,10 +105,10 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 						$team->country=$data[6];
 						$team->mobile1=$data[7];
 						$team->mobile2=$data[8];
-						$morenumbers=explode(",",$data[9]);
-						if (count($morenumbers) > 0) {							
-							FB::table('more mobile nrs ',$morenumbers);
-						}
+//						$morenumbers=explode(",",$data[9]);
+//						if (count($morenumbers) > 0) {							
+//							FB::table('more mobile nrs ',$morenumbers);
+//						}
 						$team->comment=$data[10];
 						$team->shortName=$data[14];				
 						$team->link('Division', array($this->post("divisionId")));

@@ -85,7 +85,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			echo "no teams in Pool yet. Perform move first!";
 			FB::error('no teams in Pool yet. Perform move first!');
 			FB::groupEnd();
-			exit;
+			return null;
 		}
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {

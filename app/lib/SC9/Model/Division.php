@@ -53,6 +53,7 @@ class Division extends BaseDivision {
 				$stage->schedule();
 			}
 		}
+		Windmill::assignFields($this);
 	}
 	
 	public function seedNextStage() {

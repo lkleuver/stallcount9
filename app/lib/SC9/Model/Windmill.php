@@ -2,6 +2,76 @@
 
 class Windmill {
 	// Windmill Windup 2011 fixtures
+	public static function assignFields($division) {
+		// assigns fields for Windmill 2011
+		FB::group('inserting Windmill Windup 2011 fields');
+		
+		$openFields = array(
+		array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20),
+		array(20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1),
+		array(11,12,13,14,15,16,17,18,19,20,1,2,3,4,5,6,7,8,9,10),
+		array(1,2,3,10,14,15,16,11,12,13,17,18,4,5,6,7,8,9,19,20),
+		array(1,11,12,18,19,2,3,13,14,15,16,17,4,5,6,7,8,9,10,20),
+		array(12,13,14,8,9,10,5,6,7,18,19,11,15,16,17,1,2,3,4,20),
+		array(1,2,7,15,8,9,17,18,19,20,10,13,14,11,12,3,4,5,6,16),
+		array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20)					
+		);
+		
+		$mixedFields = array(
+		array(1,2,3,10,11,12,13,14,15,16,17,18,19,20),
+		array(20,19,18,11,10,9,8,7,6,5,4,3,2,1),
+		array(5,4,3,2,1,20,19,18,17,9,6,7,8),
+		array(10,11,12,7,8,9,5,6,1,2,3,20,4),
+		array(1,2,3,4,5,12,13,14,15,16,17,18,19,20),
+		array(20,18,16,14,19,17,15,13,11,10,12,9,1,2),
+		array(1,2,3,4,5,7,14,15,16,17,18,19,20)
+		);
+		
+		// women division need 6 fields per time slot
+		$womenFields=array(
+		array(4,5,6,7,8,9), array(12,13,14,15,16,17), array(10,11,12,13,14,15,16),
+		array(1,2,3,4,5,6), array(14,15,16,17,18,19), array(6,7,8,9,10,11),
+		array(3,4,5,6,7,8), array(8,9,10,11,12,13) );
+		
+//				FB::group('assigning fields');
+//		$fields = Field::getList($this->Stage->Division->tournament_id);
+//		$fieldsAvailable = count($fields) > 0;
+//		$fieldIndex = 0;
+				
+//		foreach($this->Rounds as $round) {
+//			foreach($round->Matches as $match) {
+//				FB::log('match name '.$match->matchName.' pos '.strpos($match->matchName,"BYE Match"));
+//				if (strpos($match->matchName,"BYE Match") !== false) {
+//					FB::log('unlinking field of match '.$match->matchName);
+//					$match->field_id = null;
+//					$match->save();					
+//				} else {
+///					//link fields
+//					if($fieldsAvailable) {
+//						FB::log('assigning Field with id'.$fields[$fieldIndex]->id.' to match id '.$match->id);
+//						$match->link('Field', array($fields[$fieldIndex]->id));
+//						$match->save();
+//					}				
+//					$fieldIndex = $fieldIndex < count($fields) - 1 ? $fieldIndex + 1 : 0;
+//				}
+//			}
+//		}
+//		FB::groupEnd();
+		
+		
+		$roundNr=0;
+		foreach($division->Stages as $stage) {
+			foreach($stage->Pools as $pool) {
+				foreach($pool->Rounds as $round) {
+					foreach($round->Matches as $match) {
+						
+					}
+				}
+			}
+		}
+		
+		FB::groupEnd();
+	}
 	
 	public static function insertMatchTimes($pool) {
 		// insert playing times of Windmill 2011 schedule
