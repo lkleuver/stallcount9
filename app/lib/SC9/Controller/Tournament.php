@@ -72,7 +72,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 //		Doctrine_Core::generateModelsFromYaml(dirname(__FILE__).'/../../../build/schema/base.yml', $modelsPath, $options);
 		Doctrine_Core::createTablesFromModels($modelsPath);
 		
-		$file = dirname(__FILE__)."/../../../build/fixtures/Windmill2011.yml";
+	
 		
 			
 
