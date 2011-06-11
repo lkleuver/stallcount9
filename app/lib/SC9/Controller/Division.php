@@ -173,13 +173,15 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$stage = $division->getActiveStage();
 		$currentRound = $stage->getActiveRound();
 		
+		$roundName=(($stage->title == "Playoff") ? Brackets::getName($currentRound,3) : null);
+		
 		$rounds = array();
 		foreach($stage->Pools as $pool) {
 			$rounds[] = Round::getRoundByRank($pool->id, $currentRound);
 		}
 		
 		$template = $this->output->loadTemplate('division/active.html');
-		$template->display(array("division" => $division, "activeStage" => $stage, "currentRound" => $currentRound, "rounds" => $rounds));
+		$template->display(array("division" => $division, "activeStage" => $stage, "currentRound" => $currentRound, "rounds" => $rounds, "roundName" => $roundName));
 	}
 	
 	

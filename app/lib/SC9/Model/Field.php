@@ -12,7 +12,6 @@
  */
 class Field extends BaseField {
 	
-	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('Field f')
@@ -29,6 +28,12 @@ class Field extends BaseField {
 			    ->where('f.tournament_id = ?', $tournamentId)
 			    ->orderBy('f.rank ASC, f.title ASC');
 		return $q->execute();
+	}
+	
+	public static function getFieldNrFromTitle($fieldTitle) {
+		$pos=stripos($fieldTitle,'Field',0);
+		if ($pos === false) { return false; }
+		return (int)substr($fieldTitle, $pos+5,3);
 	}
 
 }
