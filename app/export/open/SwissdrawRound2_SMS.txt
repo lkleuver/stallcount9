@@ -1,0 +1,71 @@
+INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `round_name` , `message` , `length` ,`number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )
+VALUES (
+   NULL , '7' , 'open' , 'Swissdraw Round 2' , 'After a 12-4 win in round 1, you are now ranked 1st.In round 2,you\'ll play Hardfisch(ranked 2nd) on Field 20at 14:00' , '116' , '643254983' , '650634651' , '' , '' , '' , '1307800164' , '' , '' , ''
+), (
+   NULL , '6' , 'open' , 'Swissdraw Round 2' , 'After a 11-4 win in round 1, you are now ranked 2nd.In round 2,you\'ll play Tsunami(ranked 1st) on Field 20at 14:00' , '114' , '4915773964214' , '' , '' , '' , '' , '1307800164' , '' , '' , ''
+), (
+   NULL , '35' , 'open' , 'Swissdraw Round 2' , 'After a 15-9 win in round 1, you are now ranked 3rd.In round 2,you\'ll play Padova(ranked 3rd) on Field 19at 14:00' , '113' , '41764173505' , '41788795948' , '' , '' , '' , '1307800164' , '' , '' , ''
+), (
+   NULL , '33' , 'open' , 'Swissdraw Round 2' , 'After a 15-9 win in round 1, you are now ranked 3rd.In round 2,you\'ll play Freespeed(ranked 3rd) on Field 19at 14:00' , '116' , '393483609600' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '23' , 'open' , 'Swissdraw Round 2' , 'After a 14-8 win in round 1, you are now ranked 5th.In round 2,you\'ll play Flying Angels(ranked 6th) on Field 18at 14:00' , '120' , '491727058899' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '19' , 'open' , 'Swissdraw Round 2' , 'After a 12-7 win in round 1, you are now ranked 6th.In round 2,you\'ll play German Junior(ranked 5th) on Field 18at 14:00' , '120' , '41792066331' , '41787962969' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '37' , 'open' , 'Swissdraw Round 2' , 'After a 8-3 win in round 1, you are now ranked 7th.In round 2,you\'ll play Bologna(ranked 8th) on Field 17at 14:00' , '113' , '31614994428' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '17' , 'open' , 'Swissdraw Round 2' , 'After a 12-8 win in round 1, you are now ranked 8th.In round 2,you\'ll play Red Lights(ranked 7th) on Field 17at 14:00' , '117' , '393334064008' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '21' , 'open' , 'Swissdraw Round 2' , 'After a 15-12 win in round 1, you are now ranked 9th.In round 2,you\'ll play Flying Bisc(ranked 9th) on Field 11at 14:00' , '119' , '330698001248' , '330698001248' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '5' , 'open' , 'Swissdraw Round 2' , 'After a 11-9 win in round 1, you are now ranked 11th.In round 2,you\'ll play Xlr8rs(ranked 12th) on Field 15at 14:00' , '115' , '491777157468' , '4915111667320' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '8' , 'open' , 'Swissdraw Round 2' , 'After a 10-8 win in round 1, you are now ranked 12th.In round 2,you\'ll play KoBOld(ranked 11th) on Field 15at 14:00' , '115' , '32497056317' , '32476909449' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '20' , 'open' , 'Swissdraw Round 2' , 'After a 3-1 win in round 1, you are now ranked 13th.In round 2,you\'ll play Carapedos(ranked 13th) on Field 14at 14:00' , '117' , '34649172116' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '4' , 'open' , 'Swissdraw Round 2' , 'After a 3-1 win in round 1, you are now ranked 13th.In round 2,you\'ll play Spain(ranked 13th) on Field 14at 14:00' , '113' , '491752015296' , '491732716004' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '34' , 'open' , 'Swissdraw Round 2' , 'After a 13-12 win in round 1, you are now ranked 15th.In round 2,you\'ll play Sun(ranked 16th) on Field 13at 14:00' , '113' , '4916095063547' , '352621699507' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '30' , 'open' , 'Swissdraw Round 2' , 'After a 12-11 win in round 1, you are now ranked 16th.In round 2,you\'ll play deLux(ranked 15th) on Field 13at 14:00' , '115' , '33677090606' , '33607560464' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '31' , 'open' , 'Swissdraw Round 2' , 'After a 8-7 win in round 1, you are now ranked 17th.In round 2,you\'ll play Rainbow Warriors(ranked 18th) on Field 12at 14:00' , '124' , '33688435794' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '3' , 'open' , 'Swissdraw Round 2' , 'After a 15-15 tie in round 1, you are now ranked 18th.In round 2,you\'ll play Friselis(ranked 17th) on Field 12at 14:00' , '118' , '33626820763' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '11' , 'open' , 'Swissdraw Round 2' , 'After a 5-5 tie in round 1, you are now ranked 20th.In round 2,you\'ll play Russia(ranked 18th) on Field 16at 14:00' , '114' , '353863979041' , '353860859092' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '22' , 'open' , 'Swissdraw Round 2' , 'After a 5-5 tie in round 1, you are now ranked 20th.In round 2,you\'ll play 7Schwaben(ranked 20th) on Field 10at 14:00' , '117' , '353863989799' , '353857048535' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '1' , 'open' , 'Swissdraw Round 2' , 'After a 5-5 tie in round 1, you are now ranked 20th.In round 2,you\'ll play Cambo Cakes(ranked 24th) on Field 3at 14:00' , '118' , '32486652562' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '39' , 'open' , 'Swissdraw Round 2' , 'After a 0-0 tie in round 1, you are now ranked 24th.In round 2,you\'ll play Gentle(ranked 20th) on Field 3at 14:00' , '113' , '31643045677' , '31611000974' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '18' , 'open' , 'Swissdraw Round 2' , 'After a 0-0 tie in round 1, you are now ranked 24th.In round 2,you\'ll play Funatics(ranked 26th) on Field 8at 14:00' , '115' , '491739438483' , '' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '9' , 'open' , 'Swissdraw Round 2' , 'After a 11-12 loss in round 1, you are now ranked 27th.In round 2,you\'ll play MAM(ranked 28th) on Field 7at 14:00' , '113' , '32487178892' , '32495866466' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '10' , 'open' , 'Swissdraw Round 2' , 'After a 7-8 loss in round 1, you are now ranked 28th.In round 2,you\'ll play Mooncatchers(ranked 27th) on Field 7at 14:00' , '120' , '33601171070' , '33620698325' , '' , '' , '' , '1307800165' , '' , '' , ''
+), (
+   NULL , '24' , 'open' , 'Swissdraw Round 2' , 'After a 9-11 loss in round 1, you are now ranked 29th.In round 2,you\'ll play Soimii(ranked 30th) on Field 6at 14:00' , '115' , '4917682121421' , '4915159247750' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '28' , 'open' , 'Swissdraw Round 2' , 'After a 8-10 loss in round 1, you are now ranked 30th.In round 2,you\'ll play Gummibaerchen(ranked 29th) on Field 6at 14:00' , '122' , '40766772772' , '40745383562' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '27' , 'open' , 'Swissdraw Round 2' , 'After a 1-3 loss in round 1, you are now ranked 31st.In round 2,you\'ll play German Masters(ranked 31st) on Field 5at 14:00' , '122' , '877431088' , '447525475977' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '38' , 'open' , 'Swissdraw Round 2' , 'After a 8-12 loss in round 1, you are now ranked 35th.In round 2,you\'ll play Netherlands(ranked 36th) on Field 4at 14:00' , '120' , '32476782806' , '32497305258' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '16' , 'open' , 'Swissdraw Round 2' , 'After a 3-8 loss in round 1, you are now ranked 37th.In round 2,you\'ll play Silence(ranked 38th) on Field 9at 14:00' , '115' , '41763377106' , '41788032851' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '12' , 'open' , 'Swissdraw Round 2' , 'After a 9-15 loss in round 1, you are now ranked 38th.In round 2,you\'ll play Solebang(ranked 37th) on Field 9at 14:00' , '117' , '420777017243' , '420603751806' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '14' , 'open' , 'Swissdraw Round 2' , 'After a 9-15 loss in round 1, you are now ranked 38th.In round 2,you\'ll play FranceMaster(ranked 40th) on Field 2at 14:00' , '121' , '33625251426' , '33618086583' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '2' , 'open' , 'Swissdraw Round 2' , 'After a 8-14 loss in round 1, you are now ranked 40th.In round 2,you\'ll play Pissotte(ranked 38th) on Field 2at 14:00' , '117' , '33685554475' , '33650741660' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '25' , 'open' , 'Swissdraw Round 2' , 'After a 4-11 loss in round 1, you are now ranked 41st.In round 2,you\'ll play Denmark(ranked 42nd) on Field 1at 14:00' , '116' , '41794596728' , '41792430667' , '' , '' , '' , '1307800166' , '' , '' , ''
+), (
+   NULL , '15' , 'open' , 'Swissdraw Round 2' , 'After a 12-15 loss in round 1, you are now ranked 33rd.In round 2,you can take a break due to the odd number of teams.You\'ll score a 15-12 win' , '142' , '436505411902' , '436502443256' , '' , '' , '' , '1307800166' , '' , '' , ''
+);
+

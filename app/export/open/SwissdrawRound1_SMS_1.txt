@@ -1,0 +1,71 @@
+INSERT INTO `sms_2011` ( `id` , `team_id` , `division` , `round_name` , `message` , `length` ,`number1` , `number2` , `number3` , `number4` , `number5` , `createtime` , `submittime` , `delivertime` , `status` )
+VALUES (
+   NULL , '1' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play UL Ninjas on Field 1at 11:15' , '83' , '32486652562' , '' , '' , '' , '' , '1307799738' , '' , '' , ''
+), (
+   NULL , '22' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Gentle on Field 1at 11:15' , '80' , '353863989799' , '353857048535' , '' , '' , '' , '1307799738' , '' , '' , ''
+), (
+   NULL , '2' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play German Junior on Field 2at 11:15' , '87' , '33685554475' , '33650741660' , '' , '' , '' , '1307799738' , '' , '' , ''
+), (
+   NULL , '23' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play FranceMaster on Field 2at 11:15' , '86' , '491727058899' , '' , '' , '' , '' , '1307799738' , '' , '' , ''
+), (
+   NULL , '5' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Gummibaerchen on Field 3at 11:15' , '87' , '491777157468' , '4915111667320' , '' , '' , '' , '1307799738' , '' , '' , ''
+), (
+   NULL , '24' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play KoBOld on Field 3at 11:15' , '80' , '4917682121421' , '4915159247750' , '' , '' , '' , '1307799738' , '' , '' , ''
+), (
+   NULL , '6' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Panthers on Field 4at 11:15' , '82' , '4915773964214' , '' , '' , '' , '' , '1307799738' , '' , '' , ''
+), (
+   NULL , '25' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Hardfisch on Field 4at 11:15' , '83' , '41794596728' , '41792430667' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '3' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Russia on Field 5at 11:15' , '80' , '33626820763' , '' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '4' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Broccoli on Field 6at 11:15' , '82' , '491752015296' , '491732716004' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '27' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Carapedos on Field 6at 11:15' , '83' , '877431088' , '447525475977' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '8' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Soimii on Field 7at 11:15' , '80' , '32497056317' , '32476909449' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '28' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Xlr8rs on Field 7at 11:15' , '80' , '40766772772' , '40745383562' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '7' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Denmark on Field 8at 11:15' , '81' , '643254983' , '650634651' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '9' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Sun on Field 9at 11:15' , '77' , '32487178892' , '32495866466' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '30' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Mooncatchers on Field 9at 11:15' , '86' , '33677090606' , '33607560464' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '10' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Friselis on Field 10at 11:15' , '83' , '33601171070' , '33620698325' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '31' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play MAM on Field 10at 11:15' , '78' , '33688435794' , '' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '11' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play 7Schwaben on Field 11at 11:15' , '84' , '353863979041' , '353860859092' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '12' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Padova on Field 12at 11:15' , '81' , '420777017243' , '420603751806' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '33' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Silence on Field 12at 11:15' , '82' , '393483609600' , '' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '34' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Funatics on Field 13at 11:15' , '83' , '4916095063547' , '352621699507' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '14' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Freespeed on Field 14at 11:15' , '84' , '33625251426' , '33618086583' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '35' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Pissotte on Field 14at 11:15' , '83' , '41764173505' , '41788795948' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '15' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Flying Bisc on Field 15at 11:15' , '86' , '436505411902' , '436502443256' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '16' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Red Lights on Field 16at 11:15' , '85' , '41763377106' , '41788032851' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '37' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Solebang on Field 16at 11:15' , '83' , '31614994428' , '' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '17' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Les etoiles o on Field 17at 11:15' , '88' , '393334064008' , '' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '38' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Bologna on Field 17at 11:15' , '82' , '32476782806' , '32497305258' , '' , '' , '' , '1307799739' , '' , '' , ''
+), (
+   NULL , '18' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Cambo Cakes on Field 18at 11:15' , '86' , '491739438483' , '' , '' , '' , '' , '1307799740' , '' , '' , ''
+), (
+   NULL , '39' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play M.U.C. on Field 18at 11:15' , '81' , '31643045677' , '31611000974' , '' , '' , '' , '1307799740' , '' , '' , ''
+), (
+   NULL , '19' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play Netherlands on Field 19at 11:15' , '86' , '41792066331' , '41787962969' , '' , '' , '' , '1307799740' , '' , '' , ''
+), (
+   NULL , '20' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you\'ll play German Masters on Field 20at 11:15' , '89' , '34649172116' , '' , '' , '' , '' , '1307799740' , '' , '' , ''
+), (
+   NULL , '21' , 'open' , 'Swissdraw Round 1' , 'Welcome to Windmill Windup 2011!In round 1,you can take a break due to the odd number of teams.You\'ll score a 15-12 win' , '119' , '330698001248' , '330698001248' , '' , '' , '' , '1307799740' , '' , '' , ''
+);
+
