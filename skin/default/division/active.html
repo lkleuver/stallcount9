@@ -17,10 +17,12 @@
 		
 		{% for round in rounds %}
 			<h4>{{round.Pool.title}} {% if round.Pool.currentRound > currentRound %} (finished) {%endif%}</h4>
-			<a class="action" href="?n=/round/computeMatchups/{{round.id}}">Create Matchups for this round</a>
-			{% if round.allTeamsFilledIn() == true %} &nbsp&nbsp&nbsp&nbsp; <a class="action" href="?n=/round/announce/{{round.id}}">Announce this round (upload SMS and matchups)</a>
-			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <a class="action" href="?n=/round/randomScore/{{round.id}}">Fill this round up with random scores</a>{% endif %}
-			{% if round.allResultsFilledIn() == true %}<br><a class="action" href="?n=/round/finish/{{round.id}}">Finish this round (upload results and ranking, increase current round)</a>{% endif %}					
+			{% if currentRound == round.Pool.currentRound %}
+				<a class="action" href="?n=/round/computeMatchups/{{round.id}}">Create Matchups for this round</a>
+				{% if round.allTeamsFilledIn() == true %} &nbsp&nbsp&nbsp&nbsp; <a class="action" href="?n=/round/announce/{{round.id}}">Announce this round (upload SMS and matchups)</a>
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp; <a class="action" href="?n=/round/randomScore/{{round.id}}">Fill this round up with random scores</a>{% endif %}
+				{% if round.allResultsFilledIn() == true %}<br><a class="action" href="?n=/round/finish/{{round.id}}">Finish this round (upload results and ranking, increase current round)</a>{% endif %}
+			{% endif %}					
 			<br><br>
 			
 			<table>

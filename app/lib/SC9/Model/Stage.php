@@ -125,7 +125,46 @@ class Stage extends BaseStage{
 		return $result;
 	}
 	
+	public function finalSMS() {
+		// works only if this is a placement state
+		assert($this->placement);
+		// creates SMS for teams that have finished the tournament
+		foreach($this->Pools as $pool) {
+			if ($pool->isFinished()) {
+				foreach($pool->PoolTeams as $poolTeam) {
+					$this->createPlacementSMSForTeam($pool->Rounds[count($pool->Rounds)-1],$poolTeam->rank+$pool->offsetRank(),$poolTeam->Team);
+				}
+			}
+		}		
+	}
 
+	private function createPlacementSMSForTeam($lastRound,$rank,$team) {
+		
+		// After a 15-2 loss in the final game, you finish Windmill 2010 in place 1. Congratulations!
+        // Please hand in today's spirit scores and see you next year!
+				
+		// After a 13-12 win in the exciting final, you are the champion of Windmill 2010. Congratulations!"
+		// After a 11-18 loss in the final, you are vice-champion of Windmill 2010. Congratulations!"
+		
+		// check if the next game is "tomorrow"
+
+		$text = "After a ";
+		$text .= Round::getResultInRound($lastRound,$team->id);
+		$text .= ' in the final game, you finish Windmill 2011 in place '.$rank.'.';
+		$text .= "Congratulations!Please hand in today's spirit scores and see you next year!";
+	
+		FB::group('sms for team '.$team->name.':');
+		FB::log($text);
+		$sms = New SMS();
+		$sms->message = $text;
+		$sms->createTime=time();
+		$sms->link('Team', array($team->id));
+		//$sms->link('Round',array($round->id));	
+		$sms->save();
+			
+		FB::groupEnd();
+	}
+	
 	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()

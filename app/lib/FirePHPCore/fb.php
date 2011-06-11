@@ -161,6 +161,9 @@ class FB
      */
     public static function group($Name, $Options=null)
     {
+    	$log = Logger::getLogger('sc9');
+		$log->debug("*** GROUP *** ".$Name);  
+    	
         $instance = FirePHP::getInstance(true);
         return $instance->group($Name, $Options);
     }
@@ -173,7 +176,10 @@ class FB
      */
     public static function groupEnd()
     {
-        return self::send(null, null, FirePHP::GROUP_END);
+    	$log = Logger::getLogger('sc9');
+		$log->debug("*** end GROUP ***");  
+
+		return self::send(null, null, FirePHP::GROUP_END);
     }
 
     /**
@@ -187,6 +193,8 @@ class FB
      */
     public static function log($Object, $Label=null)
     {
+    	$log = Logger::getLogger('sc9');
+		$log->debug($Object);  
         return self::send($Object, $Label, FirePHP::LOG);
     } 
 
@@ -201,6 +209,8 @@ class FB
      */
     public static function info($Object, $Label=null)
     {
+    	$log = Logger::getLogger('sc9');
+		$log->info($Object); 
         return self::send($Object, $Label, FirePHP::INFO);
     } 
 
@@ -215,6 +225,8 @@ class FB
      */
     public static function warn($Object, $Label=null)
     {
+    	$log = Logger::getLogger('sc9');
+		$log->warn($Object); 
         return self::send($Object, $Label, FirePHP::WARN);
     } 
 
@@ -229,6 +241,8 @@ class FB
      */
     public static function error($Object, $Label=null)
     {
+    	$log = Logger::getLogger('sc9');
+		$log->error($Object); 
         return self::send($Object, $Label, FirePHP::ERROR);
     } 
 
@@ -270,6 +284,9 @@ class FB
      */
     public static function table($Label, $Table)
     {
+    	$log = Logger::getLogger('sc9');
+		$log->debug($Table);  
+    	
         return self::send($Table, $Label, FirePHP::TABLE);
     } 
 

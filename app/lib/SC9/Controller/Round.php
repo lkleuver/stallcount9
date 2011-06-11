@@ -30,6 +30,9 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		$round->createSMS();		
 		Export::exportSMSToMySQL($roundId);
 		echo "exported SMS of this round to SQL file<br>";
+		$log = Logger::getLogger('myLogger');
+		$log->info('exported SMS of this round to SQL file');    	
+		
 		Export::exportRoundMatchupsToMySQL($roundId);
 		echo "exported Matchups of this round to SQL file<br>";
 		
@@ -45,9 +48,11 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		Export::exportRoundResultsToMySQL($roundId);
 		echo "exported results of this round to SQL file<br>";
 		
-		if ($round->Pool->PoolRuleset->title != "Bracket") {
-			Export::exportStandingsAfterRoundToMySQL($roundId);
-			echo "exported standings after this round to SQL file<br>";
+		if ($round->Pool->PoolRuleset->title != "Bracket" || ($round->Pool->Stage->placement && count($round->Pool->Rounds)==$round->rank) ) { 
+			// if it's either not a playoff round
+			// or the last playoff round of a placement pool
+			echo "exported standings of this round to SQL file<br>";			
+			Export::exportStandingsAfterRoundToMySQL($roundId);			
 		}
 		
 		$round->Pool->currentRound++;

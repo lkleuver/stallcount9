@@ -354,7 +354,7 @@ class Pool extends BasePool {
 	}
 	
 	public function isFinished() {
-		return $this->currentRound >= $this->getNumberOfRounds();
+		return $this->currentRound > $this->getNumberOfRounds();
 	}
 	
 	public function getNumberOfRounds() {

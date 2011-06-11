@@ -24,7 +24,7 @@ class SMS extends BaseSMS
 	    return $num.'th';
 	}
   
-	  public static function mysql_escape_mimic($inp) {
+	public static function mysql_escape_mimic($inp) {
 	    if(is_array($inp))
 	        return array_map(__METHOD__, $inp);
 	

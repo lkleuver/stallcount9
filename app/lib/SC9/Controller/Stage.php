@@ -161,6 +161,11 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$stage->delete();
 		$this->relocate("/division/detail/".$divisionId);
 	}
+	
+	public function finalSMSAction() {
+		$stage = Doctrine_Core::getTable("Stage")->find($this->stageId);
+		$stage->finalSMS();
+	}
 		
 	private function handleFormSubmit($stage) {
 		if($this->post("stageSubmit") != "") {

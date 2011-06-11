@@ -28,6 +28,7 @@
 		{% if stage.title != "Registration stage" %}
 			<a class="button button-blue" href="?n=/pool/create&stageId={{stage.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}"><span class="add">Add pool</span></a>
 			<a class="button button-red" href="?n=/stage/moves/{{stage.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}"><span class="move">Edit moves</span></a>
+			{% if stage.placement %} <a class="button button-red" href="?n=/stage/finalSMS/{{stage.id}}"><span class="move">Final SMS</span></a> {% endif %}
 		{% endif %}
 	</div>
 	<p>
