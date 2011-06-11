@@ -66,9 +66,14 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 	
 	public function setscoreAction() {
 		$match = RoundMatch::getById($this->request("matchId"));
-		$match->homeScore = $this->request("homeScore");
-		$match->awayScore = $this->request("awayScore");
-		$match->save();
+		if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {		
+			$match->homeScore = $this->request("homeScore");
+			$match->awayScore = $this->request("awayScore");
+			$match->save();
+		} else {
+			FB::error('either home or away team of this match is not set, it should not be edited');
+			die('either home or away team of this match is not set, it should not be edited');			
+		}
 		
 		if($this->isAjax()) {
 			$o = new stdClass();
@@ -81,14 +86,19 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 	
 	private function handleFormSubmit($match) {
 		if($this->post("matchSubmit") != "") {
-			$match->homeScore = $this->post("homeScore") != "" ? $this->post("homeScore") : null;
-			$match->awayScore = $this->post("awayScore") != "" ? $this->post("awayScore") : null;
-			$match->homeSpirit = $this->post('homeSpirit');
-			$match->awaySpirit = $this->post('awaySpirit');
-			$match->field_id = $this->post("fieldId") != "0" ? $this->post("fieldId") : null;
-			$match->setScheduledTimeByFormat($this->post("scheduledTimeHour"));
-			
-			$match->save();
+			if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+				$match->homeScore = $this->post("homeScore") != "" ? $this->post("homeScore") : null;
+				$match->awayScore = $this->post("awayScore") != "" ? $this->post("awayScore") : null;
+				$match->homeSpirit = $this->post('homeSpirit');
+				$match->awaySpirit = $this->post('awaySpirit');
+				$match->field_id = $this->post("fieldId") != "0" ? $this->post("fieldId") : null;
+				$match->setScheduledTimeByFormat($this->post("scheduledTimeHour"));
+				
+				$match->save();
+			} else {
+				FB::error('either home or away team of this match is not set, it should not be edited');
+				die('either home or away team of this match is not set, it should not be edited');
+			}
 			return true;
 		}
 		return false;

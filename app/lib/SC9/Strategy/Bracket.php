@@ -292,26 +292,53 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);
 			$standings=$this->standingsAfterRound($pool, $round->rank-1);
 		} else {
+			$sourcePool = $pool->SourceMoves[0]->SourcePool;
+			FB::log('source pool is '.$sourcePool->title);
+			// TODO: assuming all teams come from the same source pool. checking this here. 
 			foreach($pool->SourceMoves as $move) {
-				FB::table('move',$move);
+				if ($move->SourcePool->id != $sourcePool->id) {
+					FB::error('not all teams have the same source pools '.$move->SourcePool->title.' and '.$sourcePool->title);					
+				}
 			}
-			exit;
-			$previousRound=$pool->SourcePool->Rounds[count($pool->SourcePool->Rounds)];
-			$standings=false;
+			// get last round of sourcePool
+			$previousRound=$sourcePool->Rounds[count($sourcePool->Rounds)-1];
+			$standings=$sourcePool->getStrategy()->standingsAfterRound($sourcePool,count($sourcePool->Rounds));
 		}
 		
 		// go through all matches of $round
 		foreach($round->Matches as $match) {
-			$this->createSMSForTeam($previousRound, $round, $standings, $match->HomeTeam, $match->AwayTeam, $match);
-			$this->createSMSForTeam($previousRound, $round, $standings, $match->AwayTeam, $match->HomeTeam, $match);			
+			if ($match->HomeTeam->id !== null) {
+				$this->createSMSForTeam($previousRound, $round, $standings, $match->HomeTeam, $match->AwayTeam, $match);
+			}
+			if ($match->AwayTeam->id !== null) {
+				$this->createSMSForTeam($previousRound, $round, $standings, $match->AwayTeam, $match->HomeTeam, $match);
+			}			
 		}
+		
 		
 	}
 	
 	private function createSMSForTeam($previousRound,$round,$standings,$team,$opponent_team,$match) {
-		// After a 15-2 loss in round 1, you are now ranked 12th. In round 2,
-        // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
 
+		// After a 15-10 win in round 5, your final rank after Swissdraw is 25th. You will thus play for rank 1 to 8.
+		// In the quarter finals, you'll play CamboCakes (ranked 5th) on Field 10. Pls handin today's spirit scores.
+
+		// After a 15-2 loss in the quarter finals, you'll play the semi finals against
+        // "Ultimate Kaese" (Swiss-ranked 13th) on Field 1 at 12:30.
+		
+		// After a 15-2 loss in the semi finals, 
+        // you'll play for 9th against "Ultimate Kaese" (Swiss-ranked 13th) on Field 1 at 12:30.
+        // or: you finish Windmill 2011 in place 18.
+		
+		// After a 15-2 loss in the final game, you finish Windmill 2010 in place 1. Congratulations!
+        // Please hand in today's spirit scores and see you next year!
+				
+		// After a 13-12 win in the exciting final, you are the champion of Windmill 2010. Congratulations!"
+		// After a 11-18 loss in the final, you are vice-champion of Windmill 2010. Congratulations!"
+
+		$nrRounds=$this->calculateNumberOfRounds(count($round->Pool->PoolTeams));
+		FB::log('nr of Rounds '.$nrRounds);
+		
 		// check if the next game is "tomorrow"
 		$previousGameTime=Round::getPlayingTimeInRound($round, $team->id);
 		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
@@ -322,30 +349,33 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			$tomorrow = false;
 		}
 		
-		if ($round->rank > 1) {
-			$text = "After a ";
-			$text .= Round::getResultInRound($previousRound,$team->id);
-			$text .= ' in round '.$previousRound->rank.', you are now ranked ';
+		$text = "After a ";
+		$text .= Round::getResultInRound($previousRound,$team->id);
+		
+		if ($previousRound->Pool->PoolRuleset->title == "Swissdraw") {
+			$text .= ' in round '.$previousRound->rank.', your final rank after Swissdraw is ';
 			$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id)).".";
+			$text .= "You will thus play for rank ".$match->bestPossibleRank." to ".$match->worstPossibleRank.".";
+			$text .= 'In the '.Brackets::getName($round->rank,$nrRounds);
 		} else {
-			$text = "Welcome to Windmill Windup 2011!";
+			$text .= ' in the '.Brackets::getName($previousRound->rank,$nrRounds);
 		}
-		$text .= 'In round '.$round->rank;
-		if ($opponent_team->byeStatus == 1) {
+		
+		if (is_null($opponent_team->id)) {
 			// TODO: fill in the actual forfeit score from the pool
-			$text .=  ",you can take a break due to the odd number of teams.You'll score a 15-12 win";
+			$text .=  ",you can take a break due to the odd number of teams.";
 		} else {
 			$text .= ",you'll play ";
-			$text .= $opponent_team->name;
-			if ($round->rank>1) {
-				$text .= "(ranked ";
-				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)).")";
-			}
+			$text .= $opponent_team->shortName;
+//			if ($round->rank>1) {
+//				$text .= "(ranked ";
+//				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)).")";
+//			}
 			$text .= " on Field ".$match->field_id;
 			if ($tomorrow) {
 				$text .= 'tomorrow ';
 			}
-			$text .= 'at '.$match->scheduledTime;
+			$text .= ' at '.$match->timeOnly();
 		}
 		if ($tomorrow) {
 			$text .= ".Please hand in today's spirit scores!";
@@ -366,10 +396,15 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 	
 	private function getRankInStanding($standing,$team_id) {
 		// returns rank of team with id $team_id in $standing
+		// adjusted if there is a BYE team ranked before
 		// returns false if $team_id is not found
+		$offset = 0;
 		foreach($standing as $team) {
+			if ($team['byeStatus']==1) {
+				$offset=1;
+			}
 			if ($team['team_id']==$team_id) {
-				return $team['rank'];
+				return $team['rank']-$offset;
 			}
 		}
 		return false;

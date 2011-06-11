@@ -87,6 +87,15 @@ class RoundMatch extends BaseRoundMatch{
 		return $hourString .":".$minuteString;
 	}
 
+	public function timeOnly() {
+		$timeParse=getdate($this->scheduledTime);		
+		$hours = $timeParse['hours'];
+		$minutes = $timeParse['minutes'];
+		
+		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
+		return $hours.":".$minuteString;		
+	} 
+	
 	public function timeFormat() {
 		if ($this->scheduledTime === null) {
 			return "unknown";

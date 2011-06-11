@@ -13,7 +13,7 @@
 	
 	
 	<div class="section">
-		<h3>Round {{currentRound}}</h3>
+		<h3>Round {{currentRound}} {% if roundName %} - {{roundName}}{% endif %}</h3>
 		
 		{% for round in rounds %}
 			<h4>{{round.Pool.title}} {% if round.Pool.currentRound > currentRound %} (finished) {%endif%}</h4>

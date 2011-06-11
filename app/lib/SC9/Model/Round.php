@@ -15,12 +15,15 @@ class Round extends BaseRound {
 	public function allTeamsFilledIn() {
 		// returns true if all teams of all matches of this round are filled in
 		// i.e. the matchups have been created
+		FB::log('checking if round with id '.$this->id.' has all teams filled in');
 		foreach($this->Matches as $match) {
 			if (is_null($match->home_team_id) && is_null($match->away_team_id)) {
-				// in brackets with odd number of teams, it is allowed that one of the two teams is not set 
+				// in brackets with odd number of teams, it is allowed that one of the two teams is not set
+				FB::log('no'); 
 				return false;
 			}
 		}		
+		FB::log('yes');
 		return true;		
 	}
 	
@@ -102,16 +105,22 @@ class Round extends BaseRound {
 		$scored=0;
 		$received=0;
 		$matchfound=false;
+		$bye = false;
 		foreach($round->Matches as $match) {
-			if ($match->HomeTeam->id == $team_id) {
+			if ($match->home_team_id == $team_id && !is_null($match->away_team_id)) {
 				$scored=$match->homeScore;
 				$received=$match->awayScore;
-				$matchfound=true;				
-			} elseif ($match->AwayTeam->id == $team_id) {
+				$matchfound=true;	
+				break;			
+			} elseif ($match->away_team_id == $team_id && !is_null($match->home_team_id)) {
 				$scored=$match->awayScore;
 				$received=$match->homeScore;
-				$matchfound=true;								
-			}						
+				$matchfound=true;
+				break;								
+			} elseif ($match->home_team_id == $team_id || $match->away_team_id == $team_id ) {
+				$bye=true;
+				break;
+			}
 		}
 		if ($scored > $received) {
 			return $scored.'-'.$received.' win';
@@ -119,6 +128,8 @@ class Round extends BaseRound {
 			return $scored.'-'.$received.' loss';
 		} elseif ($scored == $received && $matchfound == true) {
 			return $scored.'-'.$received.' tie';
+		} elseif ($bye === true) { // team had a BYE  (" a break ")
+			return 'break';
 		} elseif ($matchfound === false) { // assumes
 			FB::error('no match found in round with id '.$round->id.' where team with id '.$team_id.' played!');
 		} else {
@@ -172,6 +183,7 @@ class Round extends BaseRound {
 		$q = Doctrine_Query::create()
 			    ->from('Round r')
 			    ->leftJoin('r.Matches m')
+			    ->leftJoin('r.SMSs s')
 			    ->where('r.id = "'.$roundId.'"')
 			    ->orderBy('m.rank ASC');
 		return $q->fetchOne();

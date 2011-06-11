@@ -48,7 +48,7 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 	public function saveAction() {
 		$modelsPath = dirname(__FILE__).'/../Model';
 		$s = time() . "";
-		$filename=dirname(__FILE__).'/../../../build/fixtures/SaveFromSite'.$s.'.yml';
+		$filename='app/build/fixtures/SaveFromSite'.$s.'.yml';
 		
 		echo "saving all tournament data to ".$filename;
 		FB::log("saving all tournament data to ".$filename);
@@ -56,6 +56,11 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		Doctrine_Core::debug(true);
 		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::dumpData($filename);
+	}
+	
+	public function windmill2011CheckAction() {
+		echo "Do you really want to delete all data and reset the initial configuration of Windmill 2011?<br><br>";
+		echo '<a href="?n=/tournament/windmill2011">DO IT!</a>';		
 	}
 	
 	public function windmill2011Action() {

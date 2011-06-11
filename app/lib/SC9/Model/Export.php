@@ -11,12 +11,12 @@ class Export {
 			trigger_error('$task should be specified when exporting!');			
 		}
 		
-		$directoryname=dirname(__FILE__) . '/../../../export/'.$round->Pool->Stage->Division->title;
+		$directoryname='app/export/'.$round->Pool->Stage->Division->title;
 		if (!file_exists($directoryname) ){
 			mkdir($directoryname);
 		}
 		
-		$filename = dirname(__FILE__) . '/../../../export/'.$round->Pool->Stage->Division->title.'/'.$round->Pool->title.'Round'.$round->rank.'_'.$task.'.txt';
+		$filename = 'app/export/'.$round->Pool->Stage->Division->title.'/'.$round->Pool->title.'Round'.$round->rank.'_'.$task.'.txt';
 		FB::log('creating file handle for task '.$task.' for round with id '.$round->id.' to '.$filename);
 		
 		$t=1;
@@ -107,6 +107,9 @@ class Export {
 		foreach($round->Matches as $match) {
 			$sql = "INSERT INTO score_2011 SET round = '".$round->rank."', division = '".$round->Pool->Stage->Division->title."'";
 			$sql .= ", team_home = '".SMS::mysql_escape_mimic($match->HomeTeam->name)."', team_away = '".SMS::mysql_escape_mimic($match->AwayTeam->name)."'";
+			if ($match->bestPossibleRank !== null) {
+				$sql .= ", top_rank ='".$match->bestPossibleRank."', lowest_rank = '".$match->worstPossibleRank."'";
+			}
 			if ($match->Field !== null) {
 				$sql .= ", field = '".Field::getFieldNrFromTitle($match->Field->title)."'";
 			}

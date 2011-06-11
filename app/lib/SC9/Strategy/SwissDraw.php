@@ -414,7 +414,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			if ($tomorrow) {
 				$text .= 'tomorrow ';
 			}
-			$text .= 'at '.$match->scheduledTime;
+			$text .= 'at '.$match->timeOnly();
 		}
 		if ($tomorrow) {
 			$text .= ".Please hand in today's spirit scores!";

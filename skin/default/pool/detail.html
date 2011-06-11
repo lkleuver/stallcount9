@@ -97,8 +97,12 @@
 						</td>
 						<td class="team"><a href="{{match.home_team_id}}">{% if match.home_team_id==0 and not match.away_team_id==0%}BYE{% elseif match.home_team_id %}{{match.HomeTeam.name}}{% else %}{{match.homeName}}{% endif %}</a></td>
 						<td class="team"><a href="{{match.away_team_id}}">{% if match.away_team_id==0 and not match.home_team_id==0%}BYE{% elseif match.away_team_id %}{{match.AwayTeam.name}}{% else %}{{match.awayName}}{% endif %}</a></td>
-						<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>
-						<td class="time"><input class="sc9-time-input" id="sc9-time-input-{{match.id}}" value="{{match.timeFormat()}}" /> <span class="data">{{match.scheduledTime}}</span></td>
+						{% if round.rank == pool.currentRound %}
+							<td><input class="sc9-score-input" id="sc9-score-input-{{match.id}}" value="{{match.homeScore}} - {{match.awayScore}}" /></td>
+						{% else %}
+							<td class="result">{{match.homeScore}} - {{match.awayScore}}</td>
+						{% endif %}
+						<td class="time">{{match.timeFormat()}}</td>
 						<td class="op"><a href="?n=/match/edit/{{match.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}&poolId={{poolId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a></td>
 					</tr>
 				{% endfor %}
