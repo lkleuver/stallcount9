@@ -127,7 +127,7 @@ class Export {
 		return null;
 	}
 	
-	private static function getAbbreviationForRound($round) {
+	public static function getAbbreviationForRound($round) {
 //		If roundNum <= lastRound Then ' Swiss-draw
 //	        GetAbbreviationForRound = CStr(roundNum)
 //	    ElseIf roundNum = lastRound + 1 Then
