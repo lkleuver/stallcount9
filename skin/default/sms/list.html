@@ -23,8 +23,8 @@
 			</tr>
 			{% for sms in SMSs %}
 			<tr>
-				<td>{#<a href="?n=/team/details/{{sms.Team.id}}">{{sms.Team.id}}</a>#}</td>
-				<td>{#{{sms.Round.Pool.title}} {{sms.Round.rank}}#}</td>
+				<td><a href="?n=/team/details/{{sms.Team.id}}">{{sms.Team.name}}</a></td>
+				<td>{{sms.Round.Pool.title}} {{sms.Round.rank}}</td>
 				<td>{{sms.message}}</td>
 				<td>{{sms.message|length}}</td>				
 				<td class="op"><a href="?n=/sms/detail/{{message.id}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="detail" title="detail" /></a></td>

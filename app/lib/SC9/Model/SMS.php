@@ -16,6 +16,8 @@ class SMS extends BaseSMS
 		$q = Doctrine_Query::create()
 			    ->from('SMS s')
 			    ->leftJoin('s.Team t')
+			    ->leftJoin('s.Round r')
+			    ->leftJoin('r.Pool p')
 			    ->where('s.tournament_id = ?', $tournamentId)
 			    ->orderBy('s.createTime ASC');
 	 	FB::log($q->getSqlQuery());
