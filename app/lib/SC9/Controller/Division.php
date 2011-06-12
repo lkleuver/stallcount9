@@ -184,5 +184,37 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$template->display(array("division" => $division, "activeStage" => $stage, "currentRound" => $currentRound, "rounds" => $rounds, "roundName" => $roundName));
 	}
 	
+	public function excelAction() {
+		$division = Division::getById($this->divisionId);
+		
+		$resultsDB=array();
+		foreach($division->Stages as $stage) {
+			foreach($stage->Pools as $pool) {
+				foreach($pool->Rounds as $round) {
+					if ($round->allTeamsFilledIn()) {
+						foreach($round->Matches as $match) {
+//							$resultsDB[]=Export::getAbbreviationForRound($round)."\t".$match->HomeTeam->name."\t".$match->homeScore."\t". 
+//								$match->AwayTeam->name."\t".$match->awayScore."\t".Field::getFieldNrFromTitle($match->Field->title)."\n";
+							$resultsDB[]=array(Export::getAbbreviationForRound($round),$match->HomeTeam->name,$match->homeScore, 
+								$match->AwayTeam->name,$match->awayScore,Field::getFieldNrFromTitle($match->Field->title));
+						}
+					}
+				}
+			}
+		}
+		
+		$standingsDB=array();
+		$swissPool=$division->Stages[1]->Pools[0];
+		assert($swissPool->title == "Swissdraw");
+		for($i=1 ; $i <= 5 ; $i++) {
+			$standings=$swissPool->getStrategy()->standingsAfterRound($swissPool,$i);
+			$standingsDB[]=$standings;
+		}
+				
+		
+		$template =$this->output->loadTemplate('division/excel.html');
+		$template->display(array("division" => $division, "resultsDB" => $resultsDB, "standingsDB" => $standingsDB));
+	} 
+	
 	
 }

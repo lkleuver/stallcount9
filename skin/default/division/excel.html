@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+ 
+{% block title %}Stallcount9 - Export Data to Excel{% endblock %}
+{% block pagetitle "Export Data to Excel" %}
+
+
+{% block content %}
+	
+	<div class="section">
+ 		<h3>Exporting ResultsDB data of {{ division.title }} Division</h3>
+  		<table>
+			<tr>
+				<th>Round</th>
+				<th>Team1</th>
+				<th>Score1</th>
+				<th>Team2</th>
+				<th>Score2</th>
+				<th>Field</th>
+			</tr>
+
+			{% for record in resultsDB %}
+	  		<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
+	  			{% for item in record %}
+			  	<td>
+			  		{{item}}
+			  	</td>
+			  	{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>			  	
+	</div>
+	
+	{% for standings in standingsDB %}
+	<div class="section">
+ 		<h3>Standings data of {{ division.title }} Division after Round {{loop.index}}</h3>  
+  		<table>
+			<tr>
+				<th>Team</th>
+				<th>VP</th>
+				<th>margin</th>
+				<th>scored</th>
+				<th>opp_vp</th>
+			</tr>
+
+			{% for record in standings %}
+	  		<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
+			  	<td>{{record.name}}</td>
+			  	<td>{{record.vp}}</td>
+			  	<td>{{record.margin}}</td>
+			  	<td>{{record.scored}}</td>
+			  	<td>{{record.opp_vp}}</td>
+			</tr>
+			{% endfor %}
+		</table>			  	
+	</div>
+	{% endfor %}
+  
+  
+  
+{% endblock %}

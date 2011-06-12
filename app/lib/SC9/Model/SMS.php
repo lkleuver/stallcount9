@@ -12,6 +12,16 @@
  */
 class SMS extends BaseSMS
 {
+	public static function getList($tournamentId) {
+		$q = Doctrine_Query::create()
+			    ->from('SMS s')
+			    ->leftJoin('s.Team t')
+			    ->where('s.tournament_id = ?', $tournamentId)
+			    ->orderBy('s.createTime ASC');
+	 	FB::log($q->getSqlQuery());
+		return $q->execute();
+	}
+	
 	public static function addOrdinalNumberSuffix($num) {
 	    if (!in_array(($num % 100),array(11,12,13))){
 	      switch ($num % 10) {
@@ -24,7 +34,7 @@ class SMS extends BaseSMS
 	    return $num.'th';
 	}
   
-	  public static function mysql_escape_mimic($inp) {
+	public static function mysql_escape_mimic($inp) {
 	    if(is_array($inp))
 	        return array_map(__METHOD__, $inp);
 	

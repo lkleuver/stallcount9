@@ -14,6 +14,7 @@
   				<th>Name</th>
   				<th>State</th>
   				<th>Active scoring</th>
+  				<th>Excel export</th>
   				<th class="op">Operations</th>
   			</tr>
 	  	{% for division in tournament.Divisions %}
@@ -28,6 +29,10 @@
 			  	
 			  	<td>
 			  		<a href="?n=/division/active/{{division.id}}&tournamentId={{tournamentId}}">Tournament master</a>
+			  	</td>
+
+			  	<td>
+			  		<a href="?n=/division/excel/{{division.id}}&tournamentId={{tournamentId}}">Excel export</a>
 			  	</td>
 			  	
 			  	<td class="op">

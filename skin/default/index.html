@@ -65,6 +65,7 @@
 		
 		<ul class="tabs">
 			{% block tabs %}
+				<li{% if section == 'sms'%} class="active"{% endif %}><a href="?n=/sms/list&tournamentId={{tournamentId}}">SMS</a></li>
 				<li{% if section == 'volunteers'%} class="active"{% endif %}><a href="#">Volunteers</a></li>
 				<li{% if section == 'field'%} class="active"{% endif %}><a href="?n=/field/list&tournamentId={{tournamentId}}">Fields</a></li>
 				<li{% if section == 'tournament'%} class="active"{% endif %}><a href="index.php?n=/tournament/detail/{{tournamentId}}">Tournament</a></li>

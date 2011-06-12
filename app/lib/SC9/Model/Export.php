@@ -44,7 +44,7 @@ class Export {
 		foreach($round->Matches as $match) {
 			$sql = "UPDATE score_2011 SET score_home = '".$match->homeScore."', score_away = '".$match->awayScore."'";
 			$sql .= " WHERE team_home = '".SMS::mysql_escape_mimic($match->HomeTeam->name)."' && team_away = '".SMS::mysql_escape_mimic($match->AwayTeam->name)."'";			
-			$sql .= " && division = '".$round->Pool->Stage->Division->title."' && round = '".$round->rank."';\n";
+			$sql .= " && division = '".$round->Pool->Stage->Division->title."' && round = '".Export::getAbbreviationForRound($round)."';\n";
 			fwrite($fh,$sql);			
 		}
 		
@@ -70,20 +70,25 @@ class Export {
 		$fh=Export::fileHandleFromRound($round,"Standings");
 		$standings = $round->Pool->getStrategy()->standingsAfterRound($round->Pool, $round->rank); 
 		
-		if ($round->Pool->PoolRuleset->title == "Swissdraw") {
-			foreach($standings as $team) {
-				$sql = "UPDATE INTO standing_2011 SET round = '".$round->rank."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+		foreach($standings as $team) {
+			if ($round->Pool->PoolRuleset->title == "Swissdraw") {
+				
+				$sql = "UPDATE INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
 				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', VP = '".SMS::mysql_escape_mimic($team['vp'])."'";
 				$sql .= ", opp_vp = '".SMS::mysql_escape_mimic($team['opp_vp'])."', margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
 				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank']).";'\n";
 				fwrite($fh,$sql);			
-			}
-		} elseif ($round->Pool->PoolRuleset->title == "RoundRobin") {
-				$sql = "UPDATE INTO standing_2011 SET round = '".$round->rank."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+			} elseif ($round->Pool->PoolRuleset->title == "RoundRobin") {
+				$sql = "UPDATE INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
 				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', points = '".SMS::mysql_escape_mimic($team['points'])."'";
 				$sql .= ", margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
 				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank']).";'\n";
 				fwrite($fh,$sql);						
+			} elseif ($round->Pool->PoolRuleset->title == "Bracket") {
+				$sql = "UPDATE INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', rank = '".SMS::mysql_escape_mimic($team['rank']).";'\n";
+				fwrite($fh,$sql);						
+			}
 		}
 		
 		fclose($fh);
@@ -105,7 +110,7 @@ class Export {
 //		header("content-type: text/plain");
 		
 		foreach($round->Matches as $match) {
-			$sql = "INSERT INTO score_2011 SET round = '".$round->rank."', division = '".$round->Pool->Stage->Division->title."'";
+			$sql = "INSERT INTO score_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".$round->Pool->Stage->Division->title."'";
 			$sql .= ", team_home = '".SMS::mysql_escape_mimic($match->HomeTeam->name)."', team_away = '".SMS::mysql_escape_mimic($match->AwayTeam->name)."'";
 			if ($match->bestPossibleRank !== null) {
 				$sql .= ", top_rank ='".$match->bestPossibleRank."', lowest_rank = '".$match->worstPossibleRank."'";
@@ -120,6 +125,30 @@ class Export {
 		fclose($fh);
 		FB::groupEnd();
 		return null;
+	}
+	
+	public static function getAbbreviationForRound($round) {
+//		If roundNum <= lastRound Then ' Swiss-draw
+//	        GetAbbreviationForRound = CStr(roundNum)
+//	    ElseIf roundNum = lastRound + 1 Then
+//	        GetAbbreviationForRound = "QF"
+//	    ElseIf roundNum = lastRound + 2 Then
+//	        GetAbbreviationForRound = "SF"
+//	    ElseIf roundNum = lastRound + 3 Then
+//	        GetAbbreviationForRound = "F"
+//	    ElseIf roundNum = lastRound + 4 Then
+//	        GetAbbreviationForRound = "BigF"
+//	    End If
+		if ($round->Pool->Stage->title == "Swissdraw") {
+			return $round->rank;
+		} elseif ($round->Pool->Stage->title == "Playoff") {
+			$abbrv = ($round->rank==1 ? 'QF' : ($round->rank==2 ? 'SF' : ($round->rank==3 ? 'F' : 'P'.$round->rank) ) );
+			return $abbrv; 
+		} else {
+			FB::error('unclear how to name RoundRobin rounds');
+			return 'RR'.$round->rank;
+		}
+		
 	}
 	
 	public static function exportSMSToMySQL($roundId) {
@@ -142,7 +171,7 @@ class Export {
 				$value = "(\n   NULL , ";
 				$value .= "'".SMS::mysql_escape_mimic($sms->Team->id)."' , ";
 				$value .= "'".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."' , ";
-				$value .= "'".SMS::mysql_escape_mimic($round->Pool->title.' Round '.$round->rank)."' , ";
+				$value .= "'".SMS::mysql_escape_mimic($round->Pool->title.' Round '.Export::getAbbreviationForRound($round))."' , ";
 				$value .= "'".SMS::mysql_escape_mimic($sms->message)."' , ";
 				$value .= "'".SMS::mysql_escape_mimic(strlen($sms->message))."' , ";
 				$value .= "'".SMS::mysql_escape_mimic($sms->Team->mobile1)."' , ";

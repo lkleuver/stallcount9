@@ -13,6 +13,7 @@
  * @property Doctrine_Collection $Divisions
  * @property Doctrine_Collection $Teams
  * @property Doctrine_Collection $Fields
+ * @property Doctrine_Collection $SMSs
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -63,6 +64,10 @@ abstract class BaseTournament extends Doctrine_Record
              'foreign' => 'tournament_id'));
 
         $this->hasMany('Field as Fields', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('SMS as SMSs', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
     }

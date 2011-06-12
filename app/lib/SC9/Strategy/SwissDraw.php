@@ -360,6 +360,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		$text='';
 		
 		FB::log('roundId '.$roundId.' and rank '.$round->rank.' round->id '.$round->id);
+
 		
 		if ($round->rank > 1) {
 			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);

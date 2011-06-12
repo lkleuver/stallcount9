@@ -101,7 +101,8 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			// make sure we are not trying to retrieve results that are not there
 			// i.e. only take into account rounds where all teams are filled in
 			$actualRoundNr=0;
-			while ($pool->Rounds[$actualRoundNr]->allTeamsFilledIn()) {
+			
+			while ($actualRoundNr < $nrRounds && $pool->Rounds[$actualRoundNr]->allTeamsFilledIn()) {
 				$actualRoundNr++;
 			}
 			if ($actualRoundNr < $roundnr) {
@@ -117,7 +118,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 					$standings[$poolteam->team_id]['losses'] = 0;
 				}				
 				
-				foreach($curRound->Matches as $match) {
+				foreach($curRound->Matches as $match) {					
 					if ($match->home_team_id === null) {
 						// BYE - awayTeam:
 						// just check if we need to adjust the final rank
@@ -131,12 +132,14 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 						// just check if we need to adjust the final rank
 						$matchup=Brackets::getMatchup($nrTeams, $nrRounds, $i+1, $match->rank);
 						if (!is_null($matchup['winplace'])) {
+							FB::log('adjusting final place of the team that had a BYE');
 							$standings[$match->home_team_id]['rank']=$matchup['winplace'];
 						}						
 												
 					}else { 
 						// regular game:
-					
+						if ((is_null($match->homeScore) || is_null($match->awayScore))) { continue; }
+						
 						// update home team stats
 						$standings[$match->home_team_id]['games']++;					
 						$standings[$match->home_team_id]['spirit'] += $match->homeSpirit;				
@@ -166,7 +169,11 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 						$smaller=min($matchup['home'],$matchup['away']);
 						$bigger=max($matchup['home'],$matchup['away']);
 						if ($smaller != $smallerrank || $bigger != $largerrank) {
-							die('we are not looking up the right matchup');
+							FB::table('standings before dying',$standings);
+							echo $nrTeams, $nrRounds, $i+1, $match->rank;							
+							echo "smaller ".$smaller." bigger ".$bigger."<br>";
+							echo "smallerrank ".$smallerrank." biggerrank ".$largerrank."<br>";							
+							trigger_error('we are not looking up the right matchup');
 						}
 						
 						if ($standings[$match->home_team_id]['wins'] < $standings[$match->away_team_id]['wins']) {
@@ -283,11 +290,12 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 //		$pool->save();
 		
 	}
+	
 	public function createSMS($pool,$roundId) {
 		// generates SMS for round with id $roundId		
 		$round=Round::getRoundById($roundId);
 		FB::log('creating SMS for roundId '.$roundId.' and rank '.$round->rank.' round->id '.$round->id);
-				
+						
 		if ($round->rank > 1) {
 			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);
 			$standings=$this->standingsAfterRound($pool, $round->rank-1);
@@ -338,7 +346,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 
 		$nrRounds=$this->calculateNumberOfRounds(count($round->Pool->PoolTeams));
 		FB::log('nr of Rounds '.$nrRounds);
-		
+				
 		// check if the next game is "tomorrow"
 		$previousGameTime=Round::getPlayingTimeInRound($round, $team->id);
 		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
@@ -362,11 +370,15 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		}
 		
 		if (is_null($opponent_team->id)) {
-			// TODO: fill in the actual forfeit score from the pool
-			$text .=  ",you can take a break due to the odd number of teams.";
+			if ($round->rank < $nrRounds) {
+				$text .=  ",you can take a break due to the odd number of teams.";
+			} else {
+				$text .= ",you finish Windmill 2011 on rank ".$match->bestPossibleRank;
+			}
 		} else {
 			$text .= ",you'll play ";
 			$text .= $opponent_team->shortName;
+			$text .= "for rank ".$match->bestPossibleRank;
 //			if ($round->rank>1) {
 //				$text .= "(ranked ";
 //				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)).")";

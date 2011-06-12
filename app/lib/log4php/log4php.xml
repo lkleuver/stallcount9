@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log4php:configuration xmlns:log4php="http://logging.apache.org/log4php/">
+    <appender name="myHtmlAppender" class="LoggerAppenderFile">      
+    	<layout class="LoggerLayoutHtml" />
+        <param name="file" value="app/export/myLog.html" />       
+    </appender>
+    <appender name="myAppender" class="LoggerAppenderFile">      
+    	<layout class="LoggerLayoutPattern">
+    		<param name="conversionPattern" value="%d{d-m-Y H:i:s.u} %c %-5p %m%n" />
+    	</layout>
+        <param name="file" value="app/export/myLog.log" />       
+    </appender>
+    <root>
+        <level value="TRACE" />                                  
+        <appender_ref ref="myHtmlAppender" />                        
+        <appender_ref ref="myAppender" />                        
+    </root>
+</log4php:configuration>

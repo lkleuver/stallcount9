@@ -1,14 +1,20 @@
 <?php
 
 require_once(dirname(__FILE__) . '/lib/SC9/Doctrine.php');
+
+// use log4php
+require_once(dirname(__FILE__) .'/lib/log4php/Logger.php');
+Logger::configure('app/lib/log4php/log4php.xml');
+
 // using FirePHP
 require_once(dirname(__FILE__) .'/lib/FirePHPCore/FirePHP.class.php');
 require_once(dirname(__FILE__) .'/lib/FirePHPCore/fb.php');
-
 ob_start();
 
 // turn logging off in a live site!
+FB::setOptions(array('maxArrayDepth'=>2));
 //$firephp->setEnabled(false);
+
 
 function getmicrotime(){ 
 	list($usec, $sec) = explode(" ",microtime()); 
