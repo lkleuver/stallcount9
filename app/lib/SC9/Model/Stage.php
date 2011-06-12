@@ -159,6 +159,7 @@ class Stage extends BaseStage{
 		$sms->message = $text;
 		$sms->createTime=time();
 		$sms->link('Team', array($team->id));
+		$sms->link('Tournament',array($lastRound->Pool->Stage->Division->tournament_id));
 		//$sms->link('Round',array($round->id));	
 		$sms->save();
 			
