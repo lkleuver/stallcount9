@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+ 
+{% block title %}New SMS{% endblock %}
+{% block pagetitle %} Create New SMS{% endblock %}
+
+
+{% block content %}
+	<div class="section">
+		<h3>Create new SMS</h3>
+	  
+	  
+	  	<form method="post" action="?n=/sms/create/" name="sms-field-create">
+	  		{% include "sms/form.html" %}
+	  		
+	  		
+			<button name="smssubmit" value="1">add</button>
+	  	</form>
+	</div>  
+  
+  
+  
+{% endblock %}

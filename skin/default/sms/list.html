@@ -4,8 +4,13 @@
 {% block pagetitle "SMS list" %}
 
 {% block content %}
+
+	<div class="section"> <h3>Actions</h3>
+		<a class="button" href="?n=/sms/create&tournamentId={{tournamentId}}"><span class="add">New SMS</span></a>
+	</div>
 	
 	<div class="section">
+
 		<h3>SMS List</h3>
 			
 		<table>
@@ -16,15 +21,17 @@
 				<th>Length</th>
 				<th class="op">Operations</th>
 			</tr>
-			{% for message in SMSs %}
+			{% for sms in SMSs %}
 			<tr>
-				<td><a href="?n=/team/details/{{message.team_id}}">{{message.team.name}}</a></td>
+				<td>{#<a href="?n=/team/details/{{sms.Team.id}}">{{sms.Team.id}}</a>#}</td>
+				<td>{#{{sms.Round.Pool.title}} {{sms.Round.rank}}#}</td>
+				<td>{{sms.message}}</td>
+				<td>{{sms.message|length}}</td>				
 				<td class="op"><a href="?n=/sms/detail/{{message.id}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="detail" title="detail" /></a></td>
 			</tr>		
 			{% endfor %}	
 		</table>
 	
-		<a class="button" href="?n=/field/create&tournamentId={{tournamentId}}"><span class="add">Add field</span></a>
 	</div>
     
   
