@@ -1,9 +1,15 @@
   	<input type="hidden" name="tournamentId" value="{{sms.tournament_id}}" />	
 	<ul class="formlist">
-  		<li>
+		<li>
   			<label>Recipient</label>
-  			<input type="text" name="Team" value="{{ sms.Team }}" />
+  			<select name="teamId">
+  				<option value="0">everybody</option>
+  				{% for team in teams %}
+					<option value="{{team.id}}" {% if team.id == sms.team_id %} selected="selected"{% endif %}>{{team.name}} ({{team.Division.title}})</option>  				
+  				{% endfor %}
+  			</select>
   		</li>
+	
   		<li>
   			<label>Message</label>
   			<input type="text" name="smsMessage" value="{{ sms.message }}" />

@@ -29,6 +29,7 @@ class Tournament extends BaseTournament {
 		$q = Doctrine_Query::create()
 			    ->from('Tournament t')
 			    ->leftJoin('t.Divisions d')
+			    ->leftJoin('d.Teams')
 			    ->where('t.id = ?', $id);
 		$tournament = $q->fetchOne();
 		return $tournament;
