@@ -284,8 +284,8 @@ class FB
      */
     public static function table($Label, $Table)
     {
-    	$log = Logger::getLogger('sc9');
-		$log->debug($Table);  
+//    	$log = Logger::getLogger('sc9');
+//		$log->debug($Table);  
     	
         return self::send($Table, $Label, FirePHP::TABLE);
     } 
