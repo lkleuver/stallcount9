@@ -13,7 +13,7 @@ ob_start();
 
 // turn logging off in a live site!
 FB::setOptions(array('maxArrayDepth'=>2));
-//$firephp->setEnabled(false);
+FB::setEnabled(false);
 
 
 function getmicrotime(){ 
