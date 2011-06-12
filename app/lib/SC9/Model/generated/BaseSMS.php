@@ -8,12 +8,14 @@
  * @property integer $id
  * @property integer $team_id
  * @property integer $round_id
+ * @property integer $tournament_id
  * @property string $message
  * @property integer $status
  * @property integer $createTime
  * @property integer $submitTime
  * @property integer $sentTime
  * @property integer $receivedTime
+ * @property Tournament $Tournament
  * @property Team $Team
  * @property Round $Round
  * 
@@ -38,6 +40,10 @@ abstract class BaseSMS extends Doctrine_Record
              'length' => '4',
              ));
         $this->hasColumn('round_id', 'integer', 4, array(
+             'type' => 'integer',
+             'length' => '4',
+             ));
+        $this->hasColumn('tournament_id', 'integer', 4, array(
              'type' => 'integer',
              'length' => '4',
              ));
@@ -73,6 +79,11 @@ abstract class BaseSMS extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Tournament', array(
+             'local' => 'tournament_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE'));
+
         $this->hasOne('Team', array(
              'local' => 'team_id',
              'foreign' => 'id',
