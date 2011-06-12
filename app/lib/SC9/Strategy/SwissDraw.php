@@ -429,6 +429,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 		$sms->createTime=time();
 		$sms->link('Team', array($team->id));
 		$sms->link('Round',array($round->id));	
+		$sms->link('Tournament',array($round->Pool->Stage->Division->tournament_id));
 		$sms->save();
 			
 		FB::groupEnd();
