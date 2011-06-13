@@ -32,9 +32,7 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		
 		$round->createSMS();		
 		Export::exportSMSToMySQL($roundId);
-		echo "exported SMS of this round to SQL file<br>";
-		$log = Logger::getLogger('myLogger');
-		$log->info('exported SMS of this round to SQL file');    	
+		FB::log('exported SMS of this round to SQL file');    	
 		
 		Export::exportRoundMatchupsToMySQL($roundId);
 //		echo "exported Matchups of this round to SQL file<br>";
