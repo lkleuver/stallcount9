@@ -1,20 +1,114 @@
 {% extends "index.html" %}
  
-{% block title %}Stallcount9 - Crunching tigers{% endblock %}
-
+{% block title %}{{team.name}}{% endblock %}
+{% block pagetitle %} Team Details {{team.name}} {% endblock %}
 {% block content %}
-	<h1>{{team.name}}</h1>
-  	<a href="?n=/division/detail/1">back to division</a>
-  	<br /><br />
-  	<h2>Schedule</h2>
-  	<p>Lorem ipsum</p>
 
-	<h2>Results</h2>
-  	<p>Lorem ipsum</p>
 
-	<h2>Team members</h2>
-  	<p>Lorem ipsum</p>	
 
+	<div class="section">
+		<h3>Details</h3>
+		<ul class="detail-list">
+			<li>
+				<label>Name</label>
+				<p>{{team.name}}</p>
+			</li>
+			
+			<li>
+				<label>Short Name</label>
+				<p>{{team.shortName}}</p>
+			</li>
+			
+			<li>
+				<label>Email</label>
+				<p><a href="mailto:{{team.email1}}">{{team.email1}}</a><br /> <a href="mailto:{{team.email2}}">{{team.email2}}</a></p>
+			</li>
+			
+			<li>
+				<label>Contact Name</label>
+				<p>{{team.contactName}}</p>
+			</li>
+			
+			<li>
+				<label>City</label>
+				<p>{{team.city}}</p>
+			</li>
+			
+			<li>
+				<label>Country</label>
+				<p>{{team.country}}</p>
+			</li>
+		
+			<li>
+				<label>Mobile</label>
+				<p>
+					{{team.mobile1}}<br />
+					{{team.mobile2}}<br />
+					{{team.mobile3}}<br />
+					{{team.mobile4}}<br />
+					{{team.mobile5}}<br />  
+				</p>
+			</li>
+			
+			<li>
+				<label>Comments</label>
+				<p>{{team.comment}}</p>
+			</li>
+			
+		</ul>
+		
+	</div>
+
+
+	<div class="section">
+		<h3>Home Matches</h3>
+		<table>
+			<tr>
+				<th>Field</th>
+				<th>Time</th>
+				<th>Home Team</th>
+				<th>Away Team</th>
+				<th>Result</th>
+			</tr>
+		{% for match in team.HomeMatches %}
+			<tr>
+				<td>{{match.Field.title}}</td>
+				<td>{{match.timeOnly()}}</td>
+				<td>{{match.homeName}}</td>
+				<td>{{match.awayName}}</td>
+				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
+			</tr>
+		{% endfor %}
+			
+		</table>
+		
+	</div>
+	
+	
+	<div class="section">
+		<h3>Away Matches</h3>
+		<table>
+			<tr>
+				<th>Field</th>
+				<th>Time</th>
+				<th>Home Team</th>
+				<th>Away Team</th>
+				<th>Result</th>
+			</tr>
+		{% for match in team.AwayMatches %}
+			<tr>
+				<td>{{match.Field.title}}</td>
+				<td>{{match.timeOnly()}}</td>
+				<td>{{match.homeName}}</td>
+				<td>{{match.awayName}}</td>
+				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
+			</tr>
+		{% endfor %}
+			
+		</table>
+		
+	</div>
   
   
 {% endblock %}
+

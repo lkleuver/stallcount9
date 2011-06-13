@@ -283,6 +283,30 @@
 		color: #7DC351;
 	}
 	
+	
+	
+	
+/* DETAIL LIST -=-=-=-=-=-=-=-= */
+	ul.detail-list { }
+	ul.detail-list li {
+		overflow: hidden;
+		border-bottom: 1px solid #D2D2D2;
+		margin-bottom: 10px;
+	}
+	ul.detail-list li label {
+		width: 200px;
+		float: left;
+	}
+	
+	ul.detail-list li p {
+		width: 400px;
+		float: left;
+	}
+	
+	
+	
+	
+	
 /* :::::::::::::::: OLD OLD OLD OLD OLD OLD OLD OLD ::::::::::::::::::::::::::::::::::::: */
 
 /* GLOBAL :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: */

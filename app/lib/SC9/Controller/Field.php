@@ -10,7 +10,6 @@ class SC9_Controller_Field extends SC9_Controller_Core {
 		$this->fieldId = count($params) > 0 ? $params[0] : "";
 	}
 	
-	
 	public function listAction() {
 		$fields = Field::getList($this->get("tournamentId"));
 
@@ -18,6 +17,13 @@ class SC9_Controller_Field extends SC9_Controller_Core {
 		$template->display(array("fields" => $fields, "tournamentId" => $this->get("tournamentId")));
 	}
 	
+	public function detailsAction() {
+		
+		$field = Field::getById($this->fieldId);
+		
+		$template = $this->output->loadTemplate('field/detail.html');
+		$template->display(array("field" => $field));
+	}
 	
 	public function editAction() {
 		$field = Field::getById($this->fieldId);

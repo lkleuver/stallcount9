@@ -80,8 +80,8 @@ class SC9_Controller_Print extends SC9_Controller_Core {
 			$standings[] = $pool->standingsAfterRound($roundRank); 
 		}
 
-		$pdf = new FPDF_fpdf("P", "mm", "A3");
-		$pdf->SetMargins(20,20,20);
+		$pdf = new FPDF_fpdf("L", "mm", "A3");
+		$pdf->SetMargins(10,10,10);
 		$pdf->AddPage();
 		
 		//HEADER
@@ -93,12 +93,14 @@ class SC9_Controller_Print extends SC9_Controller_Core {
 		$pdf->SetTextColor(89, 178, 239);
 		
 		//TABLE
-		//the widths of the columns  field time hometeam awayteam, in mm  
-		//total: 297 - 20 - 20 = 257
-		$w = array(40, 217);
-		$cellHeight = 12;
+		// A3 = 297 × 420
+		// margin = 10x10
+		// space: 400
+		  
+		$w = array(30, 130, 30, 30, 30, 30, 30, 30, 30, 30);
+		$cellHeight = 10;
 		//table header
-		$header = array("Rank", "Team");
+		$header = array("#", "Team", "Games", "VP", "OVP", "Points", "Margin", "GF", "Wins", "Losses");
 		
 		foreach($standings as $standing) {
 			for($i = 0; $i <count($header); $i++) {
@@ -108,15 +110,25 @@ class SC9_Controller_Print extends SC9_Controller_Core {
     		
     		$fill = false;
     		$pdf->SetFillColor(224,235,255);
+    		$pdf->SetFont('Helvetica','B',14);
     		foreach($standing as $team) {
-    			$pdf->SetFont('Helvetica','B',16);
+    			
+    			$team["points"] = "";
+    			$team["wins"] = "";
+    			$team["losses"] = "";
+    			
     			$pdf->Cell($w[0], $cellHeight, " " .$team["rank"], "LR", 0, "L", $fill);
 				$pdf->Cell($w[1], $cellHeight, "   ".$team["name"], "LR", 0, "L", $fill);
-
-				/*$pdf->SetFont('Helvetica','',12);
-				$pdf->Cell($w[2], $cellHeight, $match->getHomeName(), "LR", 0, "L", $fill);
-				$pdf->Cell($w[3], $cellHeight, $match->getAwayName(), "LR", 0, "L", $fill);
-				*/
+				$pdf->Cell($w[2], $cellHeight, "   ".$team["games"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[3], $cellHeight, "   ".$team["vp"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[4], $cellHeight, "   ".$team["opp_vp"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[5], $cellHeight, "   ".$team["points"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[6], $cellHeight, "   ".$team["margin"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[7], $cellHeight, "   ".$team["scored"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[8], $cellHeight, "   ".$team["wins"], "LR", 0, "L", $fill);
+				$pdf->Cell($w[9], $cellHeight, "   ".$team["losses"], "LR", 0, "L", $fill);
+				
+				
 				$fill = !$fill;
 				
 				$pdf->Ln();

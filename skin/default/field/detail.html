@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+ 
+{% block title %}{{field.title}}{% endblock %}
+{% block pagetitle %} Field details {{field.title}} {% endblock %}
+{% block content %}
+
+
+
+	<div class="section">
+		<h3>Details</h3>
+		
+		<ul class="detail-list">
+			<li>
+				<label>Name</label>
+				<p>{{field.title}}</p>
+			</li>
+			<li>
+				<label>Comments</label>
+				<p>{{field.comments}} </p>
+			</li>
+		</ul>
+	</div>
+
+
+	<div class="section">
+		<h3>Matches</h3>
+		<table>
+			<tr>
+				<th>Time</th>
+				<th>Home Team</th>
+				<th>Away Team</th>
+				<th>Result</th>
+			</tr>
+		{% for match in field.Matches %}
+			<tr>
+				<td>{{match.timeFormat()}}</td>
+				<td>{{match.homeName}}</td>
+				<td>{{match.awayName}}</td>
+				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
+			</tr>
+		{% endfor %}
+			
+		</table>
+		
+	</div>
+	
+	
+	
+  
+  
+{% endblock %}
+

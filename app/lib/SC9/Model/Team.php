@@ -32,4 +32,21 @@ class Team extends BaseTeam {
 		return $teams;
 	}
 
+	
+	public static function getExtendedTeamById($id) {
+
+		$q = Doctrine_Query::create()
+			    ->from('Team t')
+			    ->leftJoin('t.HomeMatches hm')
+			    ->leftJoin('t.AwayMatches am')
+			    ->leftJoin('hm.Field hf')
+			    ->leftJoin('am.Field af')
+			    ->where('t.id = ?', $id)
+			    ->orderBy('hm.scheduledTime ASC, am.scheduledTime ASC');
+		$team = $q->fetchOne();
+		
+		
+		return $team;
+	}
+	
 }
