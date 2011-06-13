@@ -22,7 +22,10 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 	public function matchupsAction() {
 		$stage = Stage::getById($this->stageId);
 		
-		$this -> relocate("/stage/detail/".$this->stageId);
+		$this -> relocate("/stage/detail/".$this->stageId.
+			"&tournamentId=".$stage->Division->tournament_id.
+			"&divisionId=".$stage->division_id );
+		
 	}
 	
 	public function performmovesAction() {
@@ -37,7 +40,9 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 //			echo $e;
 //			exit;
 //		}
-		$this -> relocate("/stage/detail/".$this->stageId);
+		$this -> relocate("/stage/detail/".$this->stageId.
+			"&tournamentId=".$stage->Division->tournament_id.
+			"&divisionId=".$stage->division_id );
 	}
 
 	public function obviousmovesAction() {
@@ -79,7 +84,9 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 			}
 		}
 		
-		$this -> relocate("/stage/moves/".$this->stageId);
+		$this -> relocate("/stage/moves/".$this->stageId.
+			"&tournamentId=".$stage->Division->tournament_id.
+			"&divisionId=".$stage->division_id );
 	}
 	
 	public function movesAction() {
@@ -116,7 +123,9 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 			$o = new stdClass();
 			$this->ajaxResponse($o);
 		}else{
-			$this->relocate("/stage/moves/".$this->stageId);
+			$this->relocate("/stage/moves/".$this->stageId.
+				"&tournamentId=".$stage->Division->tournament_id.
+				"&divisionId=".$stage->division_id );
 		}
 		
 	}
@@ -144,7 +153,8 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 			$stage->rank = $division->getNextRank();			
 			$stage->save();
 			
-			$this->relocate("/division/detail/".$division->id);
+			$this->relocate("/division/detail/".$division->id.
+				"&tournamentId=".$division->tournament_id );
 		}
 		
 		$template = $this->output->loadTemplate('stage/create.html');
@@ -159,7 +169,8 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 			$pool->delete();
 		}
 		$stage->delete();
-		$this->relocate("/division/detail/".$divisionId);
+		$this->relocate("/division/detail/".$divisionId.
+				"&tournamentId=".$division->tournament_id );
 	}
 	
 	public function finalSMSAction() {

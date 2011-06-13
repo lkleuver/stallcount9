@@ -24,7 +24,10 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 		$match = RoundMatch::getById($this->matchId);
 		
 		if($this->handleFormSubmit($match)) {
-			$this->relocate("/pool/detail/".$match->Round->pool_id."&tournamentId=".$this->request("tournamentId")."&divisionId=".$this->request("divisionId")."&stageId=".$this->request("stageId"));	
+			$this->relocate("/pool/detail/".$match->Round->pool_id.
+				"&tournamentId=".$this->request("tournamentId").
+				"&divisionId=".$this->request("divisionId").
+				"&stageId=".$this->request("stageId"));	
 		}
 		
 		$template = $this->output->loadTemplate('match/edit.html');		
@@ -46,7 +49,10 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 			$o = new stdClass();
 			$this->ajaxResponse($o);
 		}else{
-			$this->relocate("/pool/detail/".$match1->Round->pool_id);
+			$this->relocate("/pool/detail/".$match1->Round->pool_id.
+				"&tournamentId=".$this->request("tournamentId").
+				"&divisionId=".$this->request("divisionId").
+				"&stageId=".$this->request("stageId"));	
 		}
 	}
 	
@@ -60,7 +66,10 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 			$o->matchId = $match->id;
 			$this->ajaxResponse($o);
 		}else{
-			$this->relocate("/pool/detail/".$match->Round->pool_id);
+			$this->relocate("/pool/detail/".$match->Round->pool_id.
+				"&tournamentId=".$this->request("tournamentId").
+				"&divisionId=".$this->request("divisionId").
+				"&stageId=".$this->request("stageId"));	
 		}
 	}
 	
@@ -80,8 +89,10 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 			$o->matchId = $match->id;
 			$this->ajaxResponse($o);
 		}else{
-			$this->relocate("/pool/detail/".$match->Round->pool_id);
-		}
+			$this->relocate("/pool/detail/".$match->Round->pool_id.
+				"&tournamentId=".$this->request("tournamentId").
+				"&divisionId=".$this->request("divisionId").
+				"&stageId=".$this->request("stageId"));			}
 	}
 	
 	private function handleFormSubmit($match) {

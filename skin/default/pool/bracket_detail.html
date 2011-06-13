@@ -67,7 +67,7 @@
 			<div class="round">
 				{{round.rank}}				
 				{% if round.rank == pool.currentRound %}
-					<a class="action" href="?n=/round/computeMatchups/{{round.id}}">Create Matchups for this round</a>					
+					<a class="action" href="?n=/round/createMatchups/{{round.id}}">Create Matchups for this round</a>					
 					{% if round.allTeamsFilledIn() == true %} <br> <a class="action" href="?n=/round/announce/{{round.id}}">Announce this round (upload SMS and matchups)</a>
 					<br><a class="action" href="?n=/round/randomScore/{{round.id}}">Fill this round up with random scores</a>{% endif %}
 					{% if round.allResultsFilledIn() == true %}<br><a class="action" href="?n=/round/finish/{{round.id}}">Finish this round (upload results and ranking, increase current round)</a>{% endif %}					

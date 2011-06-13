@@ -229,6 +229,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		$curRound = $pool->Rounds[$curRoundNr-1];
 		
 		$nrTeams=count($pool->PoolTeams);
+		FB::log('nr of teams '.$nrTeams);
 		$nrRounds=$this->calculateNumberOfRounds($nrTeams);
 		
 		// delete matchups and results of current round and all following rounds of the pool
@@ -252,6 +253,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		// get standings up to currentRound
 		$standings = $this->StandingsAfterRound($pool, $curRoundNr-1);
 		
+		FB::log('asking for '.$nrTeams.$nrRounds);
 		// fill in matchups
 		if (Brackets::getMatchup($nrTeams, $nrRounds, 1, 1) != false)  { 
 			// we know what to do

@@ -92,9 +92,15 @@ class Pool extends BasePool {
 	 */
 	public function performMoves() {
 		FB::group('performing moves in pool '.$this->id);
+		FB::log('first delete all teams in this pool');
+		$this->PoolTeams->delete();
+//		foreach($this->PoolTeams as $poolTeam) {
+////			$poolTeam->delete();
+//		}
+		
 		foreach($this->SourceMoves as $move) {
 			$poolTeam = new PoolTeam();
-			$poolTeam->pool_id = $this->id;
+			$poolTeam->link('Pool', array($this->id));
 			$poolTeam->seed = $move->destinationSpot;
 			$poolTeam->rank = $move->destinationSpot; // set rank=seed to begin with
 			$poolTeam->team_id = $move->SourcePool->getTeamIdByRank($move->sourceSpot);
@@ -103,11 +109,17 @@ class Pool extends BasePool {
 				throw new Exception('missing team_id, the move probably did not exist');
 			}
 			$poolTeam->save();
-			
+			$this->PoolTeams->add($poolTeam);
 		}
+		
+		
+		FB::log('number of PoolTeams: '.count($this->PoolTeams));
 		$this->currentRound = 1;
 		$this->save();
 		FB::groupEnd();
+		
+		FB::log('computing matchups of first round of pool '.$this->id);
+		$this->getStrategy()->createMatchups($this);
 	}
 		
 	public function getTeamIdByRank($rank) {

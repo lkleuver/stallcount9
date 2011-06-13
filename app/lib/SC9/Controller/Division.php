@@ -14,13 +14,14 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$division = Division::getById($this->divisionId);
 		$division->schedule();
 		
-		echo 'if no error is displayed, games have been successfully scheduled (see FireBug for debug info)<br>';
+		FB::log('if no error is displayed, games have been successfully scheduled (see FireBug for debug info)');
 		
-		echo "<br>";
-		echo "<a href='index.php?n=/division/detail/".$this->divisionId."'>back to division</a>";
-		
-		exit;
-		$this->relocate("/division/detail/".$this->divisionId);
+//		echo "<br>";
+//		echo "<a href='index.php?n=/division/detail/".$this->divisionId."'>back to division</a>";
+//		
+//		exit;
+		$this->relocate("/division/detail/".$this->divisionId.
+			"&tournamentId=".$division->Tournament->id);
 	}
 
 	public function detailAction() {
@@ -122,11 +123,12 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 			
 			FB::log('divisionId '.$this->post("divisionId"));
 			
-			echo "data imported, see FirePHP for info";
-			echo "<br>";
-			echo "<a href='index.php?n=/division/detail/".$this->post("divisionId")."'>back to division</a>";
-			exit;
-//			$this->relocate("/division/detail/".$this->post("divisionId"));
+//			echo "data imported, see FirePHP for info";
+//			echo "<br>";
+//			echo "<a href='index.php?n=/division/detail/".$this->post("divisionId")."'>back to division</a>";
+//			exit;
+			$this->relocate("/division/detail/".$this->post("divisionId").
+					"&tournamentId=".$division->Tournament->id);			
 		}
 		
 		$template = $this->output->loadTemplate('division/import.html');

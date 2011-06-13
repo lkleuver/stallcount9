@@ -73,20 +73,20 @@ class Export {
 		foreach($standings as $team) {
 			if ($round->Pool->PoolRuleset->title == "Swissdraw") {
 				
-				$sql = "UPDATE INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+				$sql = "INSERT INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
 				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', VP = '".SMS::mysql_escape_mimic($team['vp'])."'";
 				$sql .= ", opp_vp = '".SMS::mysql_escape_mimic($team['opp_vp'])."', margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
-				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank']).";'\n";
+				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."';\n";
 				fwrite($fh,$sql);			
 			} elseif ($round->Pool->PoolRuleset->title == "RoundRobin") {
-				$sql = "UPDATE INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+				$sql = "INSERT INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
 				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', points = '".SMS::mysql_escape_mimic($team['points'])."'";
 				$sql .= ", margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
-				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank']).";'\n";
+				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."';\n";
 				fwrite($fh,$sql);						
 			} elseif ($round->Pool->PoolRuleset->title == "Bracket") {
-				$sql = "UPDATE INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
-				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', rank = '".SMS::mysql_escape_mimic($team['rank']).";'\n";
+				$sql = "INSERT INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."';\n";
 				fwrite($fh,$sql);						
 			}
 		}
