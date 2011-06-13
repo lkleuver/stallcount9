@@ -13,6 +13,7 @@ var PoolManager = function() {
 	function init() {
 		_selectedMatches = new Array();
 		$("#pool-switch-fields").click(clickSwitchFields);
+		$("#pool-switch-fields-cancel").click(clickCancelOptions);
 		$("tr.match td.field").click(clickMatch);
 		
 		$("input.sc9-time-input").click(clickTimeInput);
@@ -20,6 +21,7 @@ var PoolManager = function() {
 		
 		$("input.sc9-score-input").click(clickScoreInput);
 		$("input.sc9-score-input").blur(blurScoreInput);
+		$("a.sc9-score-clear").click(clearScoreInput);
 	}
 
 	
@@ -58,6 +60,10 @@ var PoolManager = function() {
 		$("#sc9-match-options").fadeOut();
 	}
 	
+	function clickCancelOptions() {
+		hideOptions();
+		return false;
+	}
 	
 	function clickSwitchFields() {
 		var id1 = _selectedMatches[0].split("-")[3];
@@ -201,9 +207,25 @@ var PoolManager = function() {
 		}
 	}
 	
+	function clearScoreInput() {
+		var a = $(this);
+		var matchId = a.attr("id").split("-")[3];
+		
+		$.getJSON("?n=/match/setscore/", {"matchId": matchId, "homeScore": 0, "awayScore" : 0}, onSaveScore);
+		return false;
+	}
+	
 	function onSaveScore(o) {
 		if(o.error != "1") {
-			$("#sc9-match-row-"+o.matchId).addClass("finished");
+			if(o.reset) {
+				$("#sc9-hometeam-row-"+o.matchId).removeClass("winner");
+				$("#sc9-awayteam-row-"+o.matchId).removeClass("winner");
+				$("#sc9-match-row-"+o.matchId).removeClass("finished");
+				$("#sc9-score-input-"+o.matchId).val("-");
+			}else{
+				$("#sc9-match-row-"+o.matchId).addClass("finished");
+			}
+			
 		}else{
 			alert(o.message);
 		}

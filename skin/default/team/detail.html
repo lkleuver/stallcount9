@@ -74,8 +74,8 @@
 			<tr>
 				<td>{{match.Field.title}}</td>
 				<td>{{match.timeOnly()}}</td>
-				<td>{{match.homeName}}</td>
-				<td>{{match.awayName}}</td>
+				<td>{{match.getHomeName()}}</td>
+				<td>{{match.getAwayName()}}</td>
 				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
 			</tr>
 		{% endfor %}
@@ -99,8 +99,8 @@
 			<tr>
 				<td>{{match.Field.title}}</td>
 				<td>{{match.timeOnly()}}</td>
-				<td>{{match.homeName}}</td>
-				<td>{{match.awayName}}</td>
+				<td>{{match.getHomeName()}}</td>
+				<td>{{match.getAwayName()}}</td>
 				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
 			</tr>
 		{% endfor %}
