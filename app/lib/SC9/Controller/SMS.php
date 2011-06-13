@@ -42,7 +42,6 @@ class SC9_Controller_SMS extends SC9_Controller_Core {
 		}
 		
 		if($this->handleFormSubmit($sms,$teams)) {
-			exit;
 			$this->relocate("/sms/list/&tournamentId=".$this->post("tournamentId"));
 		}
 		
@@ -92,9 +91,9 @@ class SC9_Controller_SMS extends SC9_Controller_Core {
 		return false;
 	}
 	
-	public function removeAction() {
-		$tournament = Doctrine_Core::getTable("Tournament")->find($this->tournamentId);
-		$tournament->delete();
-		$this->relocate("/home/index");
-	}
+//	public function removeAction() {
+//		$tournament = Doctrine_Core::getTable("Tournament")->find($this->tournamentId);
+//		$tournament->delete();
+//		$this->relocate("/home/index");
+//	}
 }

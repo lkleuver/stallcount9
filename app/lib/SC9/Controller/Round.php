@@ -17,8 +17,11 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		$round=Round::getRoundById($roundId);
 		
 		$round->randomScoreFill();	
-		echo "filled in random resulst for round ".$roundId;		
-//		$this->relocate("/pool/detail/".$round->Pool->id."&tournamentId=".$round->Pool->Stage->Division->Tournament->id."&divisionId=".$round->Pool->Stage->Division->id."&stageId=".$round->Pool->Stage->id);
+		FB::log("filled in random results for round ".$roundId);		
+//		$this->relocate("/pool/detail/".$round->Pool->id.
+//			"&tournamentId=".$round->Pool->Stage->Division->Tournament->id.
+//			"&divisionId=".$round->Pool->Stage->Division->id.
+//			"&stageId=".$round->Pool->Stage->id);
 	}
 		
 	
@@ -34,10 +37,16 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		$log->info('exported SMS of this round to SQL file');    	
 		
 		Export::exportRoundMatchupsToMySQL($roundId);
-		echo "exported Matchups of this round to SQL file<br>";
+//		echo "exported Matchups of this round to SQL file<br>";
+//		
+//		exit;
+		$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
+				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
 		
-		exit;
-		$this->relocate("/stage/detail/".$stageId);
+//		$this->relocate("/stage/detail/".$stageId.
+//			"&tournamentId=".$round->Pool->Stage->Division->Tournament->id.
+//			"&divisionId=".$round->Pool->Stage->Division->id.
+//			"&stageId=".$round->Pool->Stage->id);
 	}
 
 	public function finishAction() {				
@@ -58,26 +67,41 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		$round->Pool->currentRound++;
 		$round->Pool->save();
 		
-		echo "<br>";
-		echo "<a href='index.php?n=/pool/detail/".$round->Pool->id."&tournamentId=".$round->Pool->Stage->Division->tournament_id."&divisionId=".$round->Pool->Stage->Division->id."&stageId=".$round->Pool->Stage->id."'>back to pool</a>";
+		$nextRound = Round::getRoundByRank($round->pool_id, $round->Pool->currentRound);
 		
-		exit;
-		$this->relocate("/stage/detail/".$stageId);
+		if ($nextRound === false ) { // there is no next round
+			$this->relocate("/stage/detail/".$round->Pool->Stage->id.
+				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id.
+				"&divisionId=".$round->Pool->Stage->Division->id.
+				"&stageId=".$round->Pool->Stage->id);
+		} else {
+			// create matchups for next round
+			$nextRound->createMatchups();
+			$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
+					"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
+			
+		}
 	}
 	
-	public function computeMatchupsAction() {
+	public function createMatchupsAction() {
 		$roundId=$this->request('roundId');
 		$round=Round::getRoundById($roundId);
 		
 		$round->createMatchups();
 		
-		echo "matchup computed, see FireBug output for debug info.";
+//		echo "matchup computed, see FireBug output for debug info.";
+//		
+//		echo "<br>";
+//		echo "<a href='index.php?n=/pool/detail/".$round->Pool->id."&tournamentId=".$round->Pool->Stage->Division->Tournament->id."&divisionId=".$round->Pool->Stage->Division->id."&stageId=".$round->Pool->Stage->id."'>back to pool</a>";		
+
+		$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
+		"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
 		
-		echo "<br>";
-		echo "<a href='index.php?n=/pool/detail/".$round->Pool->id."&tournamentId=".$round->Pool->Stage->Division->Tournament->id."&divisionId=".$round->Pool->Stage->Division->id."&stageId=".$round->Pool->Stage->id."'>back to pool</a>";		
+//		$this->relocate("/pool/detail/".$round->Pool->id.
+//			"&tournamentId=".$round->Pool->Stage->Division->Tournament->id.
+//			"&divisionId=".$round->Pool->Stage->Division->id.
+//			"&stageId=".$round->Pool->Stage->id);
 				
-		//$this->relocate("/pool/detail/".$this->poolId);
-		
 	}
 	
 }

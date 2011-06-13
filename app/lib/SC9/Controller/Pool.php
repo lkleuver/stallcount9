@@ -21,7 +21,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 			$standingsRound = $pool->currentRound;
 		}		
 		
-		$standings = $pool->standingsAfterRound($standingsRound); 
+		$standings = $pool->getStrategy()->standingsAfterRound($pool,$standingsRound); 
 		
 		$template = null;
 		switch($pool->getStrategy()->getName()) {
@@ -155,7 +155,9 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$pool->swapPoolRankWith(($pool->rank)+1);
 		$stageId = $pool->Stage->id;
 		
-		$this->relocate("/stage/detail/".$stageId);
+		$this->relocate("/stage/detail/".$stageId.
+			"&tournamentId=".$pool->Stage->Division->tournament_id.
+			"&divisionId=".$pool->Stage->division_id );
 	}
 	
 	public function moveupAction() {				
@@ -163,7 +165,10 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		$pool->swapPoolRankWith(($pool->rank)-1);
 		$stageId = $pool->Stage->id;
 		
-		$this->relocate("/stage/detail/".$stageId);
+		$this->relocate("/stage/detail/".$stageId.
+			"&tournamentId=".$pool->Stage->Division->tournament_id.
+			"&divisionId=".$pool->Stage->division_id );
+		
 	}
 	
 	
@@ -180,6 +185,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 			$this->ajaxResponse($o);
 		}else{
 			$this->relocate("/pool/detail/".$poolId);
+			
 		}
 		
 	}
