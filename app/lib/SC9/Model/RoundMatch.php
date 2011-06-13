@@ -55,6 +55,10 @@ class RoundMatch extends BaseRoundMatch{
 		return false;
 	}
 	
+	public function printResult() {
+		return $this->homeScore . " - ". $this->awayScore;
+	}
+	
 	public function getFieldName() {
 		if($this->Field != null) {
 			return $this->Field->title;

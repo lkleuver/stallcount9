@@ -82,4 +82,14 @@ class SC9_Controller_Field extends SC9_Controller_Core {
 		$tournament->delete();
 		$this->relocate("/home/index");
 	}
+	
+	
+	
+	public function scheduleAction() {
+		$fields = Field::getList($this->get("tournamentId"));
+
+		$template = $this->output->loadTemplate('field/schedule.html');
+		$template->display(array("fields" => $fields, "tournamentId" => $this->get("tournamentId")));
+	}
+	
 }
