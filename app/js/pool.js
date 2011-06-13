@@ -169,7 +169,8 @@ var PoolManager = function() {
 		var inp = $(this);
 		var matchId = inp.attr("id").split("-")[3];
 		
-		if(inp.val() == "") {
+		
+		if(inp.val() == "" || inp.val() == "-" || inp.val() == " - ") {
 			inp.val(_lastScoreValue);
 		}else{
 			var s1 = inp.val().replace(" ", "");
