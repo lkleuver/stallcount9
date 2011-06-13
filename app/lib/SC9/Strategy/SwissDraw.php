@@ -106,7 +106,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			for ($i=0; $i<$roundnr; $i++) { // go through all rounds up to $roundnr
 				$curRound = $pool->Rounds[$i];
 				foreach($curRound->Matches as $match) {
-					if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+					if (!is_null($match->home_team_id) && !is_null($match->away_team_id) && !is_null($match->awayScore) && !is_null($match->homeScore)) {
 						// update home team stats
 						$standings[$match->home_team_id]['games']++;					
 						$standings[$match->home_team_id]['vp'] += VictoryPoints::getByMargin($match->homeScore - $match->awayScore);
@@ -415,7 +415,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			if ($tomorrow) {
 				$text .= 'tomorrow ';
 			}
-			$text .= 'at '.$match->timeOnly();
+			$text .= ' at '.$match->timeOnly();
 		}
 		if ($tomorrow) {
 			$text .= ".Please hand in today's spirit scores!";

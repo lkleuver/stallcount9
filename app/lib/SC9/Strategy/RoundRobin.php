@@ -180,7 +180,7 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 				foreach($curRound->Matches as $match) {
 					
 //					if ($match->scoreSubmitTime != null && $match->home_team_id != null & $match->away_team_id != null) {
-					if ($match->home_team_id != null & $match->away_team_id != null) {
+					if ($match->home_team_id != null && $match->away_team_id != null && !is_null($match->awayScore) && !is_null($match->homeScore)) {
 						// update home team stats
 						$standings[$match->home_team_id]['games']++;					
 						$standings[$match->home_team_id]['margin'] += $match->homeScore - $match->awayScore;
