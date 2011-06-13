@@ -75,9 +75,13 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 	
 	public function setscoreAction() {
 		$match = RoundMatch::getById($this->request("matchId"));
-		if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {		
+		if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
 			$match->homeScore = $this->request("homeScore");
 			$match->awayScore = $this->request("awayScore");
+			if($match->homeScore == 0 && $match->awayScore == 0) {
+				$match->homeScore = null;
+				$match->awayScore = null;
+			}
 			$match->save();
 		} else {
 			FB::error('either home or away team of this match is not set, it should not be edited');
@@ -87,12 +91,16 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 		if($this->isAjax()) {
 			$o = new stdClass();
 			$o->matchId = $match->id;
+			if($match->homeScore == null) {
+				$o->reset = true;
+			}
 			$this->ajaxResponse($o);
 		}else{
 			$this->relocate("/pool/detail/".$match->Round->pool_id.
 				"&tournamentId=".$this->request("tournamentId").
 				"&divisionId=".$this->request("divisionId").
-				"&stageId=".$this->request("stageId"));			}
+				"&stageId=".$this->request("stageId"));			
+		}
 	}
 	
 	private function handleFormSubmit($match) {
@@ -103,7 +111,7 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 				$match->homeSpirit = $this->post('homeSpirit');
 				$match->awaySpirit = $this->post('awaySpirit');
 				$match->field_id = $this->post("fieldId") != "0" ? $this->post("fieldId") : null;
-				$match->setScheduledTimeByFormat($this->post("scheduledTimeHour"));
+				//	 $match->setScheduledTimeByFormat($this->post("scheduledTimeHour"));
 				
 				$match->save();
 			} else {

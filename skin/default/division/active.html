@@ -39,7 +39,10 @@
 					<td>{{match.timeFormat()}}</td>
 					<td id="sc9-hometeam-row-{{match.id}}" class="hometeam{% if match.homeWon() %} winner{%endif%}">{{match.getHomeName()}}</td>
 					<td id="sc9-awayteam-row-{{match.id}}" class="awayteam{% if match.awayWon() %} winner{%endif%}">{{match.getAwayName()}}</td>
-					<td><input class="sc9-score-input" id="sc9-score-input-{{match.id}}" value="{{match.homeScore}} - {{match.awayScore}}" /></td>
+					<td>
+						<input class="sc9-score-input" id="sc9-score-input-{{match.id}}" value="{{match.homeScore}} - {{match.awayScore}}" /> &nbsp;
+						<a class="sc9-score-clear" href="#" id="sc9-score-clear-{{match.id}}"><img src="skin/default/assets/img/icons/badge-square-minus-16.png" alt="clear score" title="clear score" /></a>
+					</td>
 				</tr>
 			{% endfor %}
 			
@@ -64,6 +67,7 @@
 
 	<div id="sc9-match-options" class="optionsbox">
 		<a class="button button-blue" id="pool-switch-fields" href="#"><span class="switch">Switch fields</span></a>
+		<a class="button button-red" id="pool-switch-fields-cancel" href="#"><span class="cancel">Cancel<span></a>
 	</div>
 
 {% endblock %}
