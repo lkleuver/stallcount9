@@ -52,6 +52,8 @@
 	
 	<div class="section">
 		<h3>Round operations</h3>
+		<a class="button button-grey" href="?n=/round/announce/&stageId={{ activeStage.id }}&roundRank={{currentRound}}"><span class="move">Announce</span></a>
+		<a class="button button-blue" href="?n=/print/results&stageId={{ activeStage.id }}&roundRank={{currentRound}}" target="_blank"><span class="print">Print Results</span></a>
 		<a class="button button-blue" href="?n=/print/schedule&stageId={{ activeStage.id }}&roundRank={{currentRound}}" target="_blank"><span class="print">Print schedule</span></a>
 		<a class="button button-blue" href="?n=/print/standings&stageId={{ activeStage.id }}&roundRank={{currentRound}}"><span class="print">Print standings</span></a>
 		<a class="button button-red" href="?n=/pool/finishRound/{{pool.id}}&roundId={{round.id}}"><span class="proceed">Finish round</span></a>

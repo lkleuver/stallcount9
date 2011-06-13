@@ -41,6 +41,9 @@ class Team extends BaseTeam {
 			    ->leftJoin('t.AwayMatches am')
 			    ->leftJoin('hm.Field hf')
 			    ->leftJoin('am.Field af')
+			    ->leftJoin('t.SMSs sms')
+			    ->leftJoin('sms.Round sr')
+			    ->leftJoin('sr.Pool srp')
 			    ->where('t.id = ?', $id)
 			    ->orderBy('hm.scheduledTime ASC, am.scheduledTime ASC');
 		$team = $q->fetchOne();

@@ -108,6 +108,33 @@
 		</table>
 		
 	</div>
+	
+	<div class="section">
+		<h3>SMS</h3>
+		
+		<table>
+			<tr>
+				<th>Team</th>
+				<th>Round</th>
+				<th>Message</th>
+				<th>Length</th>
+				<th class="op">Operations</th>
+			</tr>
+			{% for sms in team.SMSs %}
+			<tr>
+				<td><a href="?n=/team/details/{{sms.Team.id}}">{{sms.Team.name}}</a></td>
+				{% if sms.round_id is defined %}
+					<td>{{sms.Round.Pool.title}} {{sms.Round.rank}}</td>
+				{% else %}
+					<td></td>
+				{% endif %}
+				<td>{{sms.message}}</td>
+				<td>{{sms.message|length}}</td>				
+				<td class="op"><a href="?n=/sms/detail/{{sms.id}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="detail" title="detail" /></a></td>
+			</tr>		
+			{% endfor %}	
+		</table>
+	</div>
   
   
 {% endblock %}
