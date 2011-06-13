@@ -37,7 +37,7 @@ class SC9_Output_ResultsPDF extends FPDF_fpdf{
 	public function Header() {
 		$this->SetFont('Helvetica','B',28);
 		$this->SetTextColor(128, 128 ,128);
-		$this->Cell(300,30,$this->divisionName.' - MATCHUPS FOR ROUND '.$this->roundRank, 0, 0, 'L');
+		$this->Cell(300,30,$this->divisionName.' - RESULTS FOR ROUND '.$this->roundRank, 0, 0, 'L');
 
 		
 		$this->Ln();
