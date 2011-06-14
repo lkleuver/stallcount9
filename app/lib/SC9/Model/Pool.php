@@ -93,13 +93,13 @@ class Pool extends BasePool {
 	public function performMoves() {
 		FB::group('performing moves in pool '.$this->id);
 		FB::log('first delete all teams in this pool');
-//		$this->PoolTeams->delete();
-		foreach($this->PoolTeams as $poolTeam) {
-			// delete all but the BYE team
-			if ($poolTeam->Team->byeStatus == 0) {
-				$poolTeam->delete();
-			}
-		}
+		$this->PoolTeams->delete();
+//		foreach($this->PoolTeams as $poolTeam) {
+//			// delete all but the BYE team
+//			if ($poolTeam->Team->byeStatus == 0) {
+//				$poolTeam->delete();
+//			}
+//		}
 		
 		foreach($this->SourceMoves as $move) {
 			$poolTeam = new PoolTeam();
@@ -217,7 +217,6 @@ class Pool extends BasePool {
 		$poolTeams = $q->execute();
 		
 		FB::log('poolTeams: count '.count($poolTeams));
-		FB::table('poolTeams ',$poolTeams);
 
 		if (count($poolTeams) < $rank || $poolTeams[$rank-1]->rank > $rank) { 
 			return false;
