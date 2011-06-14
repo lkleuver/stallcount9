@@ -56,6 +56,10 @@ class SC9_Controller_Tournament extends SC9_Controller_Core {
 		Doctrine_Core::debug(true);
 		Doctrine_Core::loadModels($modelsPath);
 		Doctrine_Core::dumpData($filename);
+		
+		echo "<br><br>done!";
+		FB::log('done!');
+		
 	}
 	
 	public function windmill2011CheckAction() {

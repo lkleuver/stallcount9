@@ -88,10 +88,12 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		if ($this->post("poolUpdate") != "") {
 			$pool->title = $this->post("poolTitle");
 			if ($pool->spots != $this->post("poolSpots")) {
+				echo "changing of number of spots not supported yet.";
 				FB::error('changing of number of spots not supported yet.');
 				die;
 			}
 			if ($pool->PoolRuleset->id != $this->post("poolRulesetId")) {
+				echo "changing of ruleset not supported yet.";
 				FB::error('changing of ruleset not supported yet.');
 				die;
 			}

@@ -78,35 +78,35 @@ class Windmill {
 		$roundNr=0;
 		foreach($division->Stages as $stage) {
 			foreach($stage->Pools as $pool) {
-				if ($pool->PoolRuleset->title != "RoundRobin") {
-					foreach($pool->Rounds as $round) {
-						FB::group('fields of round '.$round->rank.' of pool '.$pool->title);
-						foreach($round->Matches as $match) {
-							if (strpos($match->matchName,"BYE Match") !== false) {
-								FB::log('unlinking field of match '.$match->matchName);
-								$match->field_id = null;
-								$match->save();					
-							} else {
-								//link fields
-								if($fieldsAvailable) {
-									$matchInfo=Windmill::getRoundNrMatchNr($match);
-									FB::log('matchInfo of match '.$match->id.':	 roundNr: '.$matchInfo['roundNr'].', matchNr: '.$matchInfo['matchNr']);
-									if ($division->title == 'open') {
-										$fieldNr=$openFields[$matchInfo['roundNr']][$matchInfo['matchNr']];
-									} elseif($division->title == 'mixed') {
-										$fieldNr=$mixedFields[$matchInfo['roundNr']][$matchInfo['matchNr']];
-									} elseif($division->title == 'women') {
-										$fieldNr=$womenFields[$matchInfo['roundNr']][$matchInfo['matchNr']];
-									}
-									FB::log('assigning '.$fields[$fieldNr-1]->title.' to match id '.$match->id);
-									$match->link('Field', array($fields[$fieldNr-1]->id));
-									$match->save();
-								}				
-							}						
-						}
-						FB::groupEnd();
+//				if ($pool->PoolRuleset->title != "RoundRobin") {
+				foreach($pool->Rounds as $round) {
+					FB::group('fields of round '.$round->rank.' of pool '.$pool->title.' of type '.$pool->PoolRuleset->title);
+					foreach($round->Matches as $match) {
+						if (strpos($match->matchName,"BYE Match") !== false) {
+							FB::log('unlinking field of match '.$match->matchName);
+							$match->field_id = null;
+							$match->save();					
+						} else {
+							//link fields
+							if($fieldsAvailable) {
+								$matchInfo=Windmill::getRoundNrMatchNr($match);
+								FB::log('matchInfo of match '.$match->id.':	 roundNr: '.$matchInfo['roundNr'].', matchNr: '.$matchInfo['matchNr']);
+								if ($division->title == 'open') {
+									$fieldNr=$openFields[$matchInfo['roundNr']][$matchInfo['matchNr']];
+								} elseif($division->title == 'mixed') {
+									$fieldNr=$mixedFields[$matchInfo['roundNr']][$matchInfo['matchNr']];
+								} elseif($division->title == 'women') {
+									$fieldNr=$womenFields[$matchInfo['roundNr']][$matchInfo['matchNr']];
+								}
+								FB::log('assigning '.$fields[$fieldNr-1]->title.' to match id '.$match->id);
+								$match->link('Field', array($fields[$fieldNr-1]->id));
+								$match->save();
+							}				
+						}						
 					}
+					FB::groupEnd();
 				}
+//				}
 			}
 		}
 		
@@ -238,7 +238,7 @@ class Windmill {
         if ($pool->PoolRuleset->title == "Swissdraw") {
         	$roundNr=0;        	
         	foreach($pool->Rounds as $round) {
-        		FB::log('inserting playing times for matches in round '.$round->rank.' of pool '.$pool->title);
+        		FB::log('inserting playing times for matches in round '.$round->rank.' of pool '.$pool->title.' of type '.$pool->PoolRuleset->title);
         		foreach($round->Matches as $match) {
         			$match->scheduledTime=($pool->Stage->Division->title == "open" ? $openSwiss[$roundNr] : $mixedSwiss[$roundNr]);    			
         		}
@@ -248,7 +248,7 @@ class Windmill {
         } elseif ($pool->PoolRuleset->title == "Bracket") {
         	$roundNr=0;
         	foreach($pool->Rounds as $round) {
-        		FB::log('inserting playing times for matches in round '.$round->rank.' of pool '.$pool->title);
+        		FB::log('inserting playing times for matches in round '.$round->rank.' of pool '.$pool->title.' of type '.$pool->PoolRuleset->title);
         		foreach($round->Matches as $match) {
         			$match->scheduledTime=($pool->Stage->Division->title == "open" ? $openPlayoff[$roundNr] : $mixedPlayoff[$roundNr]);
         		}
@@ -272,8 +272,16 @@ class Windmill {
         		} 
         		$pool->save();
         	}
-        } else {
-        	FB::error('pool with id '.$pool->id.' is probably round robin, do not know playing times...');
+        } elseif ($pool->PoolRuleset->title == "RoundRobin") {
+        	$roundNr=0;
+        	foreach($pool->Rounds as $round) {
+        		FB::log('inserting playing times for matches in round '.$round->rank.' of pool '.$pool->title.' of type '.$pool->PoolRuleset->title);
+        		foreach($round->Matches as $match) {
+        			$match->scheduledTime=($pool->Stage->Division->title == "open" ? $openPlayoff[$roundNr] : $mixedPlayoff[$roundNr]);
+        		}
+        		$round->save();
+        		$roundNr++;        			        		
+        	}
         }
         
         FB::groupEnd();

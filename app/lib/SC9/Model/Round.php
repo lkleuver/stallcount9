@@ -12,6 +12,92 @@
  */
 class Round extends BaseRound {
 
+	public function finish() {
+		// finishing a round means:
+		// 0. checking if the filled in results make sense
+		// 1. export round results to MySQL 
+		// 2. print round results
+		//   if not Bracket  or  last round of playoffs
+		// 3. print standings after this round
+		// 4. export standings to MysQL
+		
+		// always:
+		// 5. increase current round
+		// if there is a next round
+		// 6. compute those matchups, return true
+		// if there is no next round, return false
+			
+		
+		$errorCode=$this->allResultsCorrect();
+		FB::log('error code '.$errorCode);
+		if ($errorCode < 0) {
+			echo "In Round ".$this->id." , ".$this->Pool->title." Round ".$this->rank."<br>";
+		}
+		switch ($errorCode) {
+			case 2:
+				FB::warn('some score higher than 15');
+				break;
+		    case (-1):
+		        FB::warn("not all teams filled in");
+		        die('not all teams filled in');
+		        break;
+		    case (-2):
+		        FB::warn("not all required results filled in");
+		        die('not all required results filled in');
+		        break;
+		    case (-3):
+		        FB::warn("some score out of range 0..30");
+		        die('some score out of range 0..30');
+		        break;
+		    case (-4):
+		        FB::warn("BYE team score not the default");
+		        die('BYE team score not the default');
+		        break;
+		    case (-5):
+		        FB::warn("score filled in where there should be no score due to a BYE");
+		        die('score filled in where there should be no score due to a BYE');
+		        break;
+		}
+		
+		
+		Export::exportRoundResultsToMySQL($this->id);
+		FB::log("exported results of this round to SQL file");
+		
+		if ($this->Pool->PoolRuleset->title != "Bracket" || ($this->Pool->Stage->placement && count($this->Pool->Rounds)==$this->rank) ) { 
+			// if it's either not a playoff round
+			// or the last playoff round of a placement pool
+			FB::log("exported standings of this round to SQL file");			
+			Export::exportStandingsAfterRoundToMySQL($this->id);			
+		}
+		
+		$this->Pool->currentRound++;
+		$this->Pool->save();
+		
+		$nextRound = Round::getRoundByRank($this->pool_id, $this->Pool->currentRound);
+		
+		if ($nextRound !== false ) { // there is no next round
+			// create matchups for next round
+			$nextRound->createMatchups();
+			return true;
+		} else {
+			return false;
+		}		
+	}
+	
+	public function announce() {
+		// announcing a round means:
+		// 1. create and send SMS to teams 
+		// 2. export matchups to MySQL
+		// 3. print schedule
+		
+		$this->createSMS();		
+		Export::exportSMSToMySQL($this->id);
+		FB::log('exported SMS of this round to SQL file');    	
+		
+		Export::exportRoundMatchupsToMySQL($this->id);
+		
+		// TODO: printing goes here!
+	}
 	public function allTeamsFilledIn() {
 		// returns true if all teams of all matches of this round are filled in
 		// i.e. the matchups have been created
@@ -26,6 +112,69 @@ class Round extends BaseRound {
 		FB::log('yes');
 		return true;		
 	}
+	
+	public function allResultsCorrect() {
+		// possible error codes returned:
+		//  2 warning: some scores out of range 0..15
+		//  1 all results correct
+		// -1 not all teams filled in
+		// -2 not all required results filled in
+		// -3 some score out of range 0..30
+		// -4 BYE team score not the default
+		// -5 score filled in where there should be no score due to a BYE
+		
+		$errorCode=1;
+		// first checks if all Teams of this round have been filled in
+		if (!$this->allTeamsFilledIn()) {
+			return -1;
+		}
+		// returns true if all results of all matches of this round are filled in
+		foreach($this->Matches as $match) {
+			// only check matches where both away and home teams are filled in
+			if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+				if (is_null($match->homeScore) || is_null($match->awayScore) ) {
+					return -2;
+				} else {
+					// scores should be between 0 and 30
+					if ($match->homeScore < 0 || $match->homeScore > 30 || $match->awayScore < 0 || $match->awayScore > 30) {
+						FB::warn('home or away score of match '.$match->HomeTeam->name.'-'.$match->AwayTeam->name.' is not between 0 and 30');
+						return -3;
+					}
+					if ($match->homeScore > 15 || $match->awayScore > 15) {
+						FB::warn('home or away score of match '.$match->HomeTeam->name.'-'.$match->AwayTeam->name.' higher than 15');
+						$errorCode=2;
+					}
+					
+					
+					// if one of the teams is the BYE Team (from Swissdraw), the standard result has to be filled in
+					if ($match->HomeTeam->byeStatus == 1) {
+						// TODO: fill in the actual forfeit score from the pool
+						if ($match->homeScore != 12 || $match->awayScore != 15) { 
+							FB::warn('BYE team score incorrect');
+							return -4; 
+						}
+					}elseif ($match->AwayTeam->byeStatus == 1) {
+						if ($match->awayScore != 12 || $match->homeScore != 15) { 
+							FB::warn('BYE team score incorrect');
+							return -4; 
+						}
+					}
+				}
+				
+			} elseif (is_null($match->home_team_id) || is_null($match->away_team_id) ) {
+				// that's a BYE team in the playoffs or Round Robin
+				// hence, no score should be entered\
+				if (!is_null($match->homeScore) || !is_null($match->awayScore) ) {
+					return -5;
+				}
+			} else {
+				FB::error('this case should have been cought by $this->allTeamsFilledIn()');
+				die ('this case should have been cought by $this->allTeamsFilledIn()');
+			}
+		}		
+		return $errorCode;
+	}
+	
 	
 	public function allResultsFilledIn() {
 		// first checks if all Teams of this round have been filled in

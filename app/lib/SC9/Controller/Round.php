@@ -28,16 +28,24 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 	public function announceAction() {				
 //		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
 		$roundId=$this->request('roundId');
-		$round=Round::getRoundById($roundId);
+		if ($roundId == "") {
+			$stageId=$this->request('stageId');
+			$roundRank=$this->request('roundRank');
+			if (is_null($stageId) || is_null($roundRank) ) {
+				FB::error('illegal call of round/announce, please provide correct parameters');
+				die('illegal call of round/announce, please provide correct parameters');
+			}
+			// go through all rounds of $stageId with $roundRank and announce them
+			$stage=Stage::getById($stageId);
+			foreach($stage->Pools as $pool) {
+				$round=Round::getRoundByRank($pool->id, $roundRank);
+				$round->announce();
+			}
+		} else { // call with simple RoundId, then just announce that round
+			$round=Round::getRoundById($roundId);
+			$round->announce();
+		}
 		
-		$round->createSMS();		
-		Export::exportSMSToMySQL($roundId);
-		FB::log('exported SMS of this round to SQL file');    	
-		
-		Export::exportRoundMatchupsToMySQL($roundId);
-//		echo "exported Matchups of this round to SQL file<br>";
-//		
-//		exit;
 		$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
 				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
 		
@@ -48,37 +56,36 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 	}
 
 	public function finishAction() {				
-//		$pool = Doctrine_Core::getTable("Pool")->find($this->poolId);
 		$roundId=$this->request('roundId');
-		$round=Round::getRoundById($roundId);
+		if ($roundId == "") {
+			$stageId=$this->request('stageId');
+			$roundRank=$this->request('roundRank');
+			if (is_null($stageId) || is_null($roundRank) ) {
+				FB::error('illegal call of round/announce, please provide correct parameters');
+				die('illegal call of round/announce, please provide correct parameters');
+			}
+			// go through all rounds of $stageId with $roundRank and announce them
+			$stage=Stage::getById($stageId);
+			foreach($stage->Pools as $pool) {
+				$round=Round::getRoundByRank($pool->id, $roundRank);
+				$round->finish();
+			}
+			$this->relocate("/division/active/".$stage->Division->id.
+				"&tournamentId=".$stage->Division->Tournament->id);
 			
-		Export::exportRoundResultsToMySQL($roundId);
-		echo "exported results of this round to SQL file<br>";
-		
-		if ($round->Pool->PoolRuleset->title != "Bracket" || ($round->Pool->Stage->placement && count($round->Pool->Rounds)==$round->rank) ) { 
-			// if it's either not a playoff round
-			// or the last playoff round of a placement pool
-			echo "exported standings of this round to SQL file<br>";			
-			Export::exportStandingsAfterRoundToMySQL($roundId);			
+		} else { // call with simple RoundId, then just announce that round
+			$round=Round::getRoundById($roundId);
+			if ($round->finish()) { // there is a next round
+				$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
+						"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);				
+			} else { // there is no next round
+				$this->relocate("/stage/detail/".$round->Pool->Stage->id.
+					"&tournamentId=".$round->Pool->Stage->Division->Tournament->id.
+					"&divisionId=".$round->Pool->Stage->Division->id.
+					"&stageId=".$round->Pool->Stage->id);				
+			}
 		}
 		
-		$round->Pool->currentRound++;
-		$round->Pool->save();
-		
-		$nextRound = Round::getRoundByRank($round->pool_id, $round->Pool->currentRound);
-		
-		if ($nextRound === false ) { // there is no next round
-			$this->relocate("/stage/detail/".$round->Pool->Stage->id.
-				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id.
-				"&divisionId=".$round->Pool->Stage->Division->id.
-				"&stageId=".$round->Pool->Stage->id);
-		} else {
-			// create matchups for next round
-			$nextRound->createMatchups();
-			$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
-					"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
-			
-		}
 	}
 	
 	public function createMatchupsAction() {
