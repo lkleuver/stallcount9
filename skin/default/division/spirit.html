@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+ 
+{% block title %}Stallcount9 - {{division.title}}{% endblock %}
+{% block pagetitle %}Spirit scores of {{division.title}}{% endblock %}
+
+{% block content %}
+	
+	<div class="section">	
+		<h3>Spirit</h3>
+		<table>
+			<tr>
+				<th>Rank</th>
+				<th>Team name</th>
+				<th>Spirit average</th>
+				<th># received</th>
+				<th># given</th>
+			</tr>
+			{% for team in spiritStandings %}
+			<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
+				<td>{{loop.index}}</td>
+				<td><a href="?n=/team/detail/{{team.team_id}}&tournamentId={{division.tournament_id}}&divisionId={{divisionId}}">{{team.name}}</a></td>
+				<td>{{team.spiritaverage}}</td>
+				<td>{{team.received}}</td>
+				<td>{{team.given}}</td>
+			</tr>
+			{% endfor %}
+ 		</table>
+ 		
+ 		<a href="?n=/division/detail/{{divisionId}}&tournamentId={{division.tournament_id}}">back to division</a>
+  		
+	</div>
+{% endblock %}

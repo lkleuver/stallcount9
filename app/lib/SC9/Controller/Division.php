@@ -224,5 +224,15 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$template->display(array("division" => $division, "resultsDB" => $resultsDB, "standingsDB" => $standingsDB));
 	} 
 	
+	public function spiritAction() {
+		$division = Division::getById($this->divisionId);
+		
+		$spiritStandings=$division->spiritStandings();
+		
+		$template = $this->output->loadTemplate('division/spirit.html');
+		$template->display(array("division" => $division ,"spiritStandings" => $spiritStandings));
+	}
+	
+	
 	
 }
