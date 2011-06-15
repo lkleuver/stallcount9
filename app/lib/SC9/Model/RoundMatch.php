@@ -97,6 +97,8 @@ class RoundMatch extends BaseRoundMatch{
 		$minutes = $timeParse['minutes'];
 		
 		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
+		
+		// TODO: use date() instead
 		return $hours.":".$minuteString;		
 	} 
 	
@@ -113,6 +115,7 @@ class RoundMatch extends BaseRoundMatch{
 		$hourString = $hours < 10 ? "0".$hours : $hours . "";
 		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
 		
+		// TODO: use date() instead!
 		return substr($timeParse['weekday'],0,3)." ".$hourString.":".$minuteString;
 	}
 	

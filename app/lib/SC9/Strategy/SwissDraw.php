@@ -718,7 +718,11 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 						if ($a['spirit'] != $b['spirit']) {
 							return ($a['spirit'] > $b['spirit']) ? -1 : 1;
 						} else {
-							return 0;
+							if ($a['seed'] != $b['seed']) {
+								return ($a['seed'] < $b['seed']) ? -1 : 1;
+							} else {
+								return 0;
+							}
 						}
 					}
 				}
