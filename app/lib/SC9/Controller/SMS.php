@@ -75,6 +75,7 @@ class SC9_Controller_SMS extends SC9_Controller_Core {
 				$sms->link('Tournament', array($this->post("tournamentId")));
 				$sms->createTime=time();
 				$sms->save();
+				Export::exportSMSToMySQL($sms);
 			} else {  // send SMS to all teams
 				foreach($teams as $team) {
 					FB::log('creating SMS for team '.$team->name);
@@ -84,8 +85,10 @@ class SC9_Controller_SMS extends SC9_Controller_Core {
 					$sms->link('Tournament', array($this->post("tournamentId")));
 					$sms->createTime=time();
 					$sms->save();
+					Export::exportSMSToMySQL($sms);	
 				}				
 			}
+
 			return true;
 		}
 		return false;

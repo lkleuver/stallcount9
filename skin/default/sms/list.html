@@ -16,6 +16,7 @@
 		<table>
 			<tr>
 				<th>Team</th>
+				<th>Time</th>
 				<th>Round</th>
 				<th>Message</th>
 				<th>Length</th>
@@ -23,7 +24,8 @@
 			</tr>
 			{% for sms in SMSs %}
 			<tr>
-				<td><a href="?n=/team/details/{{sms.Team.id}}">{{sms.Team.name}}</a></td>
+				<td><a href="?n=/team/detail/{{sms.Team.id}}&divisionId={{sms.Team.Division.id}}&tournamentId={{tournamentId}}">{{sms.Team.name}}</a></td>
+				<td>{{sms.createTimeNice()}}</td>
 				{% if sms.round_id is defined %}
 					<td>{{sms.Round.Pool.title}} {{sms.Round.rank}}</td>
 				{% else %}

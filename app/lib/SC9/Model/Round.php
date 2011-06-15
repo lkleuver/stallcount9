@@ -91,7 +91,7 @@ class Round extends BaseRound {
 		// 3. print schedule
 		
 		$this->createSMS();		
-		Export::exportSMSToMySQL($this->id);
+		Export::exportSMSToMySQLByRound($this->id);
 		FB::log('exported SMS of this round to SQL file');    	
 		
 		Export::exportRoundMatchupsToMySQL($this->id);

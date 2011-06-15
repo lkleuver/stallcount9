@@ -12,6 +12,37 @@
  */
 class SMS extends BaseSMS
 {
+	public function createTimeNice() {
+		if ($this->createTime === null) {
+			return "unknown";
+		}
+		
+		$timeParse=getdate($this->createTime);		
+		
+		$hours = $timeParse['hours'];
+		$minutes = $timeParse['minutes'];
+		$seconds = $timeParse['seconds'];
+		
+		$hourString = $hours < 10 ? "0".$hours : $hours . "";
+		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
+		$secondString = $seconds < 10 ? "0".$seconds : $seconds . "";
+		
+//		return substr($timeParse['weekday'],0,3)." ".$hourString.":".$minuteString.":".$secondString;
+
+		return date("D H:i:s",$this->createTime);
+	}
+	
+	
+	public static function getById($smsId) {
+		$q = Doctrine_Query::create()
+			    ->from('SMS s')
+			    ->leftJoin('s.Team t')
+			    ->leftJoin('t.Division d')
+			    ->where('s.id = ?', $smsId);
+	 	FB::log($q->getSqlQuery());
+		return $q->execute();
+	}
+	
 	public static function getList($tournamentId) {
 		$q = Doctrine_Query::create()
 			    ->from('SMS s')
@@ -20,7 +51,7 @@ class SMS extends BaseSMS
 			    ->leftJoin('r.Pool p')
 			    ->where('s.tournament_id = ?', $tournamentId)
 			    ->orderBy('s.createTime ASC');
-	 	FB::log($q->getSqlQuery());
+//	 	FB::log($q->getSqlQuery());
 		return $q->execute();
 	}
 	
