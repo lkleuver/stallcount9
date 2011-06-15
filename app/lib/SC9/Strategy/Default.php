@@ -26,6 +26,7 @@ class SC9_Strategy_Default implements SC9_Strategy_Interface {
 	}
 	
 	public function standingsAfterRound($pool, $roundNr) {
+		$standings=array();
 		foreach($pool->PoolTeams as $poolteam) {
 			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
 		}		

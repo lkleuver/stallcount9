@@ -161,6 +161,9 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 				
 		FB::group('compute RoundRobin standings of pool '.$pool->id.' after round '.$roundnr);
 		
+		if (count($pool->PoolTeams)==0) {
+			return null;
+		}
 		// initialize standings arrays
 		foreach($pool->PoolTeams as $poolteam) {
 			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'games' => 0, 'points' => 0, 'margin' => 0, 'scored' => 0, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);

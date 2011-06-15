@@ -93,13 +93,26 @@ class Pool extends BasePool {
 	public function performMoves() {
 		FB::group('performing moves in pool '.$this->id);
 		FB::log('first delete all teams in this pool');
+//		$this->PoolTeams->delete();
+
+		// TODO: do something more clever here to delete all poolteams but the bye team
+		$byeTeamId=0;
+		foreach($this->PoolTeams as $poolTeam) {
+			// save the id of the BYE team
+			if ($poolTeam->Team->byeStatus == 1) {
+				$byeTeamId=$poolTeam->team_id;
+			}
+		}
 		$this->PoolTeams->delete();
-//		foreach($this->PoolTeams as $poolTeam) {
-//			// delete all but the BYE team
-//			if ($poolTeam->Team->byeStatus == 0) {
-//				$poolTeam->delete();
-//			}
-//		}
+		if ($byeTeamId > 0) { // reconstruct the BYE team
+			$poolTeam = new PoolTeam();
+			$poolTeam->team_id = $byeTeamId;
+			$poolTeam->pool_id = $this->id;
+			$poolTeam->rank = $this->spots;
+			$poolTeam->seed = $this->spots;
+			$poolTeam->save();
+		}
+		
 		
 		foreach($this->SourceMoves as $move) {
 			$poolTeam = new PoolTeam();

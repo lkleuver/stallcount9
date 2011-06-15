@@ -2,6 +2,43 @@
 
 class Windmill {
 	// Windmill Windup 2011 fixtures
+	
+	public static function getWomenTimeSlots() {
+		// returns an array of possible time slots for women's division
+		$womenTimeSlots=array( mktime(10, 00, 0, 6, 17, 2011), mktime(12, 30, 0, 6, 17, 2011),  
+			mktime(15, 30, 0, 6, 17, 2011), mktime(18, 30, 0, 6, 17, 2011), mktime(10, 30, 0, 6, 18, 2011), mktime(13, 30, 0, 6, 18, 2011),
+			mktime(16, 30, 0, 6, 18, 2011), mktime(9, 00, 0, 6, 19, 2011),  
+			mktime(12, 00, 0, 6, 19, 2011), mktime(13, 00, 0, 6, 19, 2011));
+
+		$timeslots = array();
+		foreach($womenTimeSlots as $timeslot) {
+			$timeslots[] = array("scheduledTime"=>$timeslot,"timeFormat"=>date('D H:i',$timeslot));
+		}
+	
+		return $timeslots;
+		
+	}
+	
+	public static function getWomenFieldsByRound($roundNr) {
+		// returns an array of possible time slots for women's division
+		FB::log('looking for womens fields for round '.$roundNr);
+		
+		$womenFields=array(
+		array(3,5,7,12,14,15), array(4,5,6,7,8,9), array(12,13,14,15,16,17), array(3,4),
+		array(10,11,12,14,15,17), array(1,2,3,4,5,6), array(5,6,7,8,9,10),
+		array(3,4,5,9,16,17), array(4,5,6,8,9), array(3,10) );
+		
+		$fields = array();
+		foreach($womenFields[$roundNr-1] as $fieldNr) {
+			$fieldId=Field::getFieldIdByNr($fieldNr);
+			$fields[] = array("id"=>$fieldId,"title"=>'Field '.$fieldNr);
+		}
+	
+		return $fields;
+		
+	}
+	
+	
 	public static function assignFields($division) {
 		// assigns fields for Windmill 2011
 		FB::group('inserting Windmill Windup 2011 fields');

@@ -1,0 +1,49 @@
+	<input type="hidden" name="poolId" value="{{pool.id}}" />
+	<ul class="formlist">
+
+		<table>
+			<tr>
+				<th>#</th>
+				<th>Time</th>
+				<th>Field</th>
+				<th>Home</th>
+				<th>Away</th>
+			</tr>
+
+			{% for match in round.Matches %}
+			<tr>
+				<td>{{match.rank}}</td>
+		  		
+		  		<td><select name="time{{match.rank}}">
+  				{% for timeslot in timeslots %}
+					<option value="{{timeslot.scheduledTime}}" {% if match.scheduledTime == timeslot.scheduledTime %} selected="selected"{% endif %}>{{timeslot.timeFormat}}</option>  				
+  				{% endfor %}
+	  			</select></td>		  		
+				
+				<td class="field"><select name="field{{match.rank}}">
+				<option value="0">empty</option>
+  				{% for field in fields %}
+					<option value="{{field.id}}" {% if match.field_id == field.id %} selected="selected"{% endif %}>{{field.title}}</option>  				
+  				{% endfor %}
+	  			</select></td>
+	  			
+		  		<td class="hometeam"><select name="hometeam{{match.rank}}">
+				<option value="0"></option>
+  				{% for poolteam in pool.PoolTeams %}
+					<option value="{{poolteam.Team.id}}" {% if match.home_team_id == poolteam.Team.id %} selected="selected"{% endif %}>{{poolteam.Team.name}}</option>  				
+  				{% endfor %}
+	  			</select></td>
+		  		
+		  		<td class="awayteam"><select name="awayteam{{match.rank}}">
+				<option value="0"></option>
+  				{% for poolteam in pool.PoolTeams %}
+					<option value="{{poolteam.Team.id}}" {% if match.away_team_id == poolteam.Team.id %} selected="selected"{% endif %}>{{poolteam.Team.name}}</option>  				
+  				{% endfor %}
+	  			</select></td>
+	  			
+		  	</tr>	
+	  		{% endfor %}
+	  		
+	  	</table>
+  	</ul>
+  

@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+ 
+{% block title %}{{stage.title}}{% endblock %}
+{% block pagetitle %}{{stage.title}}{% if stage.placement %} (placement stage){% endif %}{% endblock %}
+
+{% block content %}
+
+	<div class="section">	
+		<h3>Pools</h3>
+		<table>
+			<tr>
+				<th>Pool name</th>
+				<th class="op">Operations</th>
+			</tr>
+			{% for pool in stage.Pools %}
+				<tr>
+					<td><a href="?n=/pool/detail/{{pool.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}">{{pool.title}}</a>  {% if pool.isFinished() %}(finished){% endif %} ({{pool.spots}})</td>
+					<td class="op"> 
+						{% if not loop.first %}<a href="?n=/pool/moveup/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}">up</a>{% endif %} 
+						{% if not loop.last  %}<a href="?n=/pool/movedown/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}">down</a>{% endif %}			
+						<a href="?n=/pool/edit/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/page-forum-16.png" alt="details" /></a> 
+						<a href="?n=/pool/remove/{{pool.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}&stageId={{stageId}}"><img src="skin/default/assets/img/icons/cross-16.png" alt="delete" /></a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		
+		{% if stage.title != "Registration stage" %}
+			<a class="button button-blue" href="?n=/pool/create&stageId={{stage.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}"><span class="add">Add pool</span></a>
+			<a class="button button-red" href="?n=/stage/moves/{{stage.id}}&tournamentId={{stage.Division.tournament_id}}&divisionId={{stage.division_id}}"><span class="move">Edit moves</span></a>
+			{% if stage.placement %} <a class="button button-red" href="?n=/stage/finalSMS/{{stage.id}}"><span class="move">Final SMS</span></a> {% endif %}
+		{% endif %}
+	</div>
+	<p>
+		
+	</p>
+
+	<p>
+		<a href="?n=/division/detail/{{stage.Division.id}}&tournamentId={{stage.Division.tournament_id}}">back to division</a>
+	</p>
+  
+{% endblock %}

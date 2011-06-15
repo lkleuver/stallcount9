@@ -12,6 +12,19 @@
  */
 class Field extends BaseField {
 	
+	public static function getFieldIdByNr($fieldNr) {
+		// returns the field id of the field called "Field $fieldNr"
+		$q = Doctrine_Query::create()
+				->select('f.id')
+			    ->from('Field f')
+			    ->where('f.title = "Field '.$fieldNr.'"');
+		FB::log('retrieving field id from nr '.$fieldNr.' using query '.$q->getSqlQuery());
+		$fieldId = $q->fetchOne();
+		FB::log('got fieldId '.$fieldId['id']);
+		
+		return $fieldId['id'];		
+	}
+	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('Field f')

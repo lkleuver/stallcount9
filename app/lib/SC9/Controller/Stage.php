@@ -96,7 +96,7 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 			}
 		}
 		
-		exit;
+//		exit;
 		$this -> relocate("/stage/moves/".$this->stageId.
 			"&tournamentId=".$stage->Division->tournament_id.
 			"&divisionId=".$stage->division_id );

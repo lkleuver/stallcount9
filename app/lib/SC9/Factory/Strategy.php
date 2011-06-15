@@ -12,7 +12,9 @@ class SC9_Factory_Strategy {
 			case "Bracket": 
 				return new SC9_Strategy_Bracket();
 			case "RoundRobin":
-				return new SC9_Strategy_RoundRobin();				
+				return new SC9_Strategy_RoundRobin();
+			case "FlexPool":
+				return new SC9_Strategy_FlexPool();								
 			default:
 				return new SC9_Strategy_Default();
 		}

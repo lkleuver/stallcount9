@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+ 
+{% block title %}Edit Moves{% endblock %}
+{% block header %}
+	<script type="text/javascript" src="app/js/jquery.js"></script>
+	<script type="text/javascript" src="app/js/moves.js"></script>
+{% endblock %}
+{% block content %}
+	<h1>{{stage.Division.title}} - {{stage.title}} - Moves</h1>
+	
+	<span class="hidden" id="stageId">{{stage.id}}</span>
+	
+	<div style="width: 420px; overflow: hidden; float: left; margin-right: 52px;" id="sourceMoves">
+		<h2>Seed stage</h2>
+		
+		{% for pool in seedStage.Pools %}
+			<h3>{{ pool.title}} {{pool.id}}</h3>
+			<ul class="moves">
+				{% for spot in pool.getSpots() %}
+					{# TODO: make the bold face hack nicer for teams that had a BYE previously #} 
+					<li id="pool-{{pool.id}}-{{spot.rank}}">{% if spot.byeCount > 0 %}<b>{% endif %}{{ spot.rank }} - {{ spot.title }} {{spot.destinationMove.pool_id}} {{spot.destinationMove.destinationSpot}}{% if spot.byeCount > 0 %}</b>{% endif %}</li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</div>
+	
+	
+	<div style="width: 420px; overflow: hidden; float: left;" id="destinationMoves">
+		<h2>Destination</h2>
+		
+		{% for pool in stage.Pools %}
+			<h3>{{ pool.title}} {{pool.id}}</h3>
+			<ul class="moves">
+				{% for spot in pool.getSpots(true) %}
+					<li id="pool-{{pool.id}}-{{spot.rank}}">{% if spot.byeCount > 0 %}<b>{% endif %}{{ spot.rank }} - {{ spot.title }} {{spot.sourceMove.source_pool_id}} {{spot.sourceMove.sourceSpot}}{% if spot.byeCount > 0 %}</b>{% endif %}</li>
+				{% endfor %}
+			</ul>
+			
+		{% endfor %}
+	</div>
+	
+	<p>
+		<a href="?n=/stage/obviousmoves/{{ stage.id }}">Prepare 'obvious' moves</a>
+	</p>	
+	
+	<p>
+		<a href="?n=/stage/performmoves/{{ stage.id }}">Perform moves</a>
+	</p>
+	
+{#	<p>
+		<a href="?n=/stage/clearDestinationPools/{{ stage.id }}">Clear destination pools</a>
+	</p>	#}
+	
+	<p>
+		<a href="?n=/stage/detail/{{ stage.id }}">Back to stage</a>
+	</p>
+	  
+{% endblock %}
