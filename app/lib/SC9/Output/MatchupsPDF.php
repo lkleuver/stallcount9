@@ -44,6 +44,11 @@ class SC9_Output_MatchupsPDF extends FPDF_fpdf{
 		$this->tableHeader();
 	}
 	
+	public function Footer() {
+		$this->SetFillColor(0,0,0);
+		$this->Cell(array_sum($this->_w), 7, "", 1,0,'C', true);
+	}
+	
 	
 	public function tableHeader() {
 		$w = $this->_w;
@@ -64,7 +69,7 @@ class SC9_Output_MatchupsPDF extends FPDF_fpdf{
 		
 		$cellHeight = 10;
 		
-	
+		$i = 0;
 		foreach($this->rounds as $round) {
     		
     		$fill = false;
@@ -82,8 +87,11 @@ class SC9_Output_MatchupsPDF extends FPDF_fpdf{
 				$fill = !$fill;
 				$this->Ln();
     		}
+			if($i < count($this->rounds) - 1) {    		
+	    		$this->Ln();
+			}
     		
-    		$this->Ln();
+    		$i++;
 		}
     	
 	}
