@@ -193,6 +193,7 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 			$round->announce();
 		}
 		
+		$this->relocate("/round/announcedone");
 		exit;
 		$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
 				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
@@ -201,6 +202,11 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 //			"&tournamentId=".$round->Pool->Stage->Division->Tournament->id.
 //			"&divisionId=".$round->Pool->Stage->Division->id.
 //			"&stageId=".$round->Pool->Stage->id);
+	}
+	
+	public function announcedoneAction() {
+		$template = $this->output->loadTemplate('round/announcedone.html');
+		$template->display(array());
 	}
 
 	public function finishAction() {				
