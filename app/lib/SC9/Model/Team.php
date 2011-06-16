@@ -19,18 +19,17 @@ class Team extends BaseTeam {
 		foreach($this->HomeMatches as $match) $result[] = $match;
 		
 		foreach($this->AwayMatches as $match) {
-			for($i = 0; $i < count($result); $i++) {
-				$found = false;
-				if($match->scheduledTime <= $result[$i]->scheduledTime) {
-					array_splice($result, $i, $match);
-					$found = true;
-					continue;
-				}
-			}
-			if(!$found) {
-				$result[] = $match;
-			}
+			$result[] = $match;
 		}
+		
+		
+		usort($result, function($a, $b) {
+			if($a->scheduledTime == $b->scheduledTime) {
+				return 0;
+			}
+			return $a->scheduledTime < $b->scheduledTime ? -1 : 1;
+		});
+		
 		return $result;
 	}
 	
