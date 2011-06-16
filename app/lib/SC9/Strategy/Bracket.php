@@ -371,7 +371,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 			$text .= ' in the '.Brackets::getName($previousRound->rank,$nrRounds);
 		}
 		
-		if (is_null($opponent_team->id)) {
+		if (is_null($opponent_team)) {
 			if ($round->rank < $nrRounds) {
 				$text .=  ",you can take a break due to the odd number of teams.";
 			} else {
