@@ -27,7 +27,7 @@ class Round extends BaseRound {
 		// 6. compute those matchups, return true
 		// if there is no next round, return false
 			
-		
+		// 0. checking if the filled in results make sense
 		$errorCode=$this->allResultsCorrect();
 		FB::log('error code '.$errorCode);
 		if ($errorCode < 0) {
@@ -59,24 +59,38 @@ class Round extends BaseRound {
 		        break;
 		}
 		
-		
+		// 1. export round results to MySQL 		
 		Export::exportRoundResultsToMySQL($this->id);
 		FB::log("exported results of this round to SQL file");
+
+		// 2. print round results
+		$rounds[]=$this;
+		$pdf = new SC9_Output_ResultsPDF($rounds, $this->rank, $this->Pool->Stage->Division->title);
+		$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/results_round_'.$this->rank.'.pdf','F');
 		
+		//   if not Bracket  or  last round of playoffs
+		// 3. export standings after this round		
 		if ($this->Pool->PoolRuleset->title != "Bracket" || ($this->Pool->Stage->placement && count($this->Pool->Rounds)==$this->rank) ) { 
 			// if it's either not a playoff round
 			// or the last playoff round of a placement pool
 			FB::log("exported standings of this round to SQL file");			
-			Export::exportStandingsAfterRoundToMySQL($this->id);			
+			Export::exportStandingsAfterRoundToMySQL($this->id);
+
+			$standings[] = $this->Pool->getStrategy()->standingsAfterRound($this->Pool, $this->rank); 			
+			$pdf = new SC9_Output_StandingsPDF($standings, $this->rank, $this->Pool->Stage->Division->title);
+			$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/standings_after_round_'.$this->rank.'.pdf','F');
+			
 		}
 		
+		// 5. increase current round
 		$this->Pool->currentRound++;
 		$this->Pool->save();
+
 		
 		$nextRound = Round::getRoundByRank($this->pool_id, $this->Pool->currentRound);
-		
+
 		if ($nextRound !== false ) { // there is no next round
-			// create matchups for next round
+			// 6. compute matchups for next round, return true		
 			$nextRound->createMatchups();
 			return true;
 		} else {
@@ -91,12 +105,16 @@ class Round extends BaseRound {
 		// 3. print schedule
 		
 		$this->createSMS();		
+		
 		Export::exportSMSToMySQLByRound($this->id);
 		FB::log('exported SMS of this round to SQL file');    	
 		
 		Export::exportRoundMatchupsToMySQL($this->id);
 		
-		// TODO: printing goes here!
+		$rounds[]=$this;
+		$pdf = new SC9_Output_MatchupsPDF($rounds, $this->rank, $this->Pool->Stage->Division->title);
+		$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/schedule_round_'.$this->rank.'.pdf','F');
+		
 	}
 	public function allTeamsFilledIn() {
 		// returns true if all teams of all matches of this round are filled in

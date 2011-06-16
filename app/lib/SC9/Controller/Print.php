@@ -26,7 +26,7 @@ class SC9_Controller_Print extends SC9_Controller_Core {
 
 		$pdf = new SC9_Output_MatchupsPDF($rounds, $roundRank, $stage->Division->title);
 		
-		$pdf->Output();
+		$pdf->Output($stage->Division->title.'_schedule_round_'.$roundRank,'I');
 	}
 	
 	public function resultsAction() {
@@ -43,7 +43,7 @@ class SC9_Controller_Print extends SC9_Controller_Core {
 
 		$pdf = new SC9_Output_ResultsPDF($rounds, $roundRank, $stage->Division->title);
 		
-		$pdf->Output();
+		$pdf->Output($stage->Division->title.'_results_round_'.$roundRank,'I');
 	}
 	
 	public function standingsAction() {
@@ -56,7 +56,7 @@ class SC9_Controller_Print extends SC9_Controller_Core {
 		}
 
 		$pdf = new SC9_Output_StandingsPDF($standings, $roundRank, $stage->Division->title);
-		$pdf->Output();
+		$pdf->Output($stage->Division->title.'_standings_after_round_'.$roundRank,'I');
 		
 		//$pdf->Output("standings_after_round_".$roundRank.".pdf", "D");
 		exit;

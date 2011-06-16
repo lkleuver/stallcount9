@@ -193,7 +193,6 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 			$round->announce();
 		}
 		
-		exit;
 		$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
 				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
 		
