@@ -48,10 +48,10 @@ class SC9_Strategy_FlexPool implements SC9_Strategy_Interface {
 		
 		// go through all matches of $round
 		foreach($round->Matches as $match) {
-			if ($match->HomeTeam->id !== null) {
+			if ($match->home_team_id !== null) {
 				$this->createSMSForTeam($round, $match->HomeTeam, $match->AwayTeam, $match);
 			}
-			if ($match->AwayTeam->id !== null) {
+			if ($match->away_team_id !== null) {
 				$this->createSMSForTeam($round, $match->AwayTeam, $match->HomeTeam, $match);
 			}			
 		}

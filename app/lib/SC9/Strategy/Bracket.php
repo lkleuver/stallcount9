@@ -317,10 +317,10 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		
 		// go through all matches of $round
 		foreach($round->Matches as $match) {
-			if ($match->HomeTeam->id !== null) {
+			if ($match->home_team_id !== null) {
 				$this->createSMSForTeam($previousRound, $round, $standings, $match->HomeTeam, $match->AwayTeam, $match);
 			}
-			if ($match->AwayTeam->id !== null) {
+			if ($match->away_team_id !== null) {
 				$this->createSMSForTeam($previousRound, $round, $standings, $match->AwayTeam, $match->HomeTeam, $match);
 			}			
 		}
