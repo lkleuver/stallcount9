@@ -88,14 +88,17 @@ class Round extends BaseRound {
 
 		
 		$nextRound = Round::getRoundByRank($this->pool_id, $this->Pool->currentRound);
-
+		
 		if ($nextRound !== false ) { // there is no next round
 			// 6. compute matchups for next round, return true		
 			$nextRound->createMatchups();
+			Stallcount9::backup();
 			return true;
 		} else {
+			Stallcount9::backup();
 			return false;
-		}		
+		}
+		
 	}
 	
 	public function announce() {
@@ -114,6 +117,9 @@ class Round extends BaseRound {
 		$rounds[]=$this;
 		$pdf = new SC9_Output_MatchupsPDF($rounds, $this->rank, $this->Pool->Stage->Division->title);
 		$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/schedule_round_'.$this->rank.'.pdf','F');
+		
+		Stallcount9::backup();
+		
 		
 	}
 	public function allTeamsFilledIn() {
