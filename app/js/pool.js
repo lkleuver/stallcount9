@@ -61,7 +61,7 @@ var PoolManager = function() {
 	}
 	
 	function clickCancelOptions() {
-		hideOptions();
+		reset();
 		return false;
 	}
 	
