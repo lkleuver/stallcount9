@@ -68,6 +68,9 @@ class SMS extends BaseSMS
 	}
   
 	public static function mysql_escape_mimic($inp) {
+		if (is_null($inp)) {
+			return '';
+		}
 	    if(is_array($inp))
 	        return array_map(__METHOD__, $inp);
 	
