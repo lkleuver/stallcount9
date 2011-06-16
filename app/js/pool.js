@@ -22,6 +22,11 @@ var PoolManager = function() {
 		$("input.sc9-score-input").click(clickScoreInput);
 		$("input.sc9-score-input").blur(blurScoreInput);
 		$("a.sc9-score-clear").click(clearScoreInput);
+		
+		$("#sc9-button-finish").click(function() {
+			$('body').append('<div class="visor">&nbsp;</div>');
+			scrollTo(0,0);
+		});
 	}
 
 	

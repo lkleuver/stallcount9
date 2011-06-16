@@ -68,13 +68,13 @@ class SC9_Output_ResultsPDF extends FPDF_fpdf{
 		
 		$cellHeight = 10;
 		
-	
+    		$i = 0;	
 		foreach($this->rounds as $round) {
     		
     		$fill = false;
     		$this->SetFillColor(234, 234, 234);
     		
-    		
+
     		foreach($round->Matches as $match) {
     			$this->SetFont('Helvetica','',16);
     			$this->Cell($w[0], $cellHeight, " " .$match->getFieldName(), "LR", 0, "L", $fill);
@@ -92,8 +92,11 @@ class SC9_Output_ResultsPDF extends FPDF_fpdf{
 				$fill = !$fill;
 				$this->Ln();
     		}
+			if($i < count($this->rounds) - 1) {    		
+	    		$this->Ln();
+			}
     		
-    		$this->Ln();
+    		$i++;
 		}
     	
 	}
