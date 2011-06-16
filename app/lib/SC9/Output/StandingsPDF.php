@@ -47,6 +47,10 @@ class SC9_Output_StandingsPDF extends FPDF_fpdf{
 		$this->tableHeader();
 	}
 	
+	public function Footer() {
+		$this->SetFillColor(0,0,0);
+		$this->Cell(array_sum($this->_w), 7, "", 1,0,'C', true);
+	}
 	
 	public function tableHeader() {
 		$w = $this->_w;
