@@ -193,6 +193,7 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 			$round->announce();
 		}
 		
+		exit;
 		$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
 				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
 		
@@ -223,6 +224,7 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		} else { // call with simple RoundId, then just announce that round
 			$round=Round::getRoundById($roundId);
 			if ($round->finish()) { // there is a next round
+				exit;
 				$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
 						"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);				
 			} else { // there is no next round

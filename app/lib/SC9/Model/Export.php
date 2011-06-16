@@ -37,22 +37,44 @@ class Export {
 	}
 	
 	private static function executeSQL($sql) {
-		$liveUpdates = false;
+		$liveUpdates = true;
 		
 		if ($liveUpdates) {
-			// executes the sql command on the live server
-			$link = mysql_connect('crunchultimate.netfirmsmysql.com', 'sc9', 'sc94effer!');
-			if (!$link) {
-				die('connection to MySQL server failed');
-			}
-			if (!mysql_select_db(d60593311)) {
-				die('database d60593311 could not been selected');
-			}
+			$secret = "bananana";
+			FB::log('executing '.$sql);			
+			$url = "http://www.windmillwindup.com/2011/proxy.php";
+			$body = "s=".urlencode($sql)."&sr=".md5($sql.$secret);
+
+			$c = curl_init($url);
+			curl_setopt($c, CURLOPT_POST, true);
+			curl_setopt($c, CURLOPT_POSTFIELDS, $body);
+			curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 			
-			$result = mysql_query($sql);
-			if (!$result) {
-			    die('Invalid query: ' . mysql_error());
-			}
+			$page = curl_exec($c);
+			curl_close($c);
+			
+			FB::log('result '.$page);
+			
+			
+			//			$request = "http://www.windmillwindup.com/2011/proxy.php?s=".urlencode($sql)."&sr=".md5($sql.$secret);			 
+//
+//			
+//			$result = file_get_contents($request);
+//			FB::log('result '.$result);
+			
+//			// executes the sql command on the live server
+//			$link = mysql_connect('mysql.netfirms.com:3306', 'u70659041', '637e9e');
+//			if (!$link) {
+//				die('connection to MySQL server failed');
+//			}
+//			if (!mysql_select_db('d60593311')) {
+//				die('database d60593311 could not been selected');
+//			}
+//			
+//			$result = mysql_query($sql);
+//			if (!$result) {
+//			    die('Invalid query: ' . mysql_error());
+//			}
 		}
 	}
 	
