@@ -174,9 +174,12 @@ class Export {
 		} elseif ($round->Pool->Stage->title == "Playoff") {
 			$abbrv = ($round->rank==1 ? 'QF' : ($round->rank==2 ? 'SF' : ($round->rank==3 ? 'F' : 'P'.$round->rank) ) );
 			return $abbrv; 
+		} elseif  ($round->Pool->Stage->title == "RoundRobin") {
+			return 'RR'.$round->rank;			
+		} elseif  ($round->Pool->PoolRuleset->title == "FlexPool") {
+			return 'WR'.$round->rank;
 		} else {
-			FB::error('unclear how to name RoundRobin rounds');
-			return 'RR'.$round->rank;
+			return $round->rank;
 		}
 		
 	}

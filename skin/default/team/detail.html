@@ -72,7 +72,7 @@
 			</tr>
 		{% for match in team.HomeMatches %}
 			<tr>
-				<td>{{match.Field.title}}</td>
+				<td>{{match.getFieldName()}}</td>
 				<td>{{match.timeOnly()}}</td>
 				<td>{{match.getHomeName()}}</td>
 				<td>{{match.getAwayName()}}</td>
@@ -97,7 +97,7 @@
 			</tr>
 		{% for match in team.AwayMatches %}
 			<tr>
-				<td>{{match.Field.title}}</td>
+				<td>{{match.getFieldName()}}</td>
 				<td>{{match.timeOnly()}}</td>
 				<td>{{match.getHomeName()}}</td>
 				<td>{{match.getAwayName()}}</td>

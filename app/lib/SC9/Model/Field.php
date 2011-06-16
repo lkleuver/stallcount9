@@ -18,9 +18,9 @@ class Field extends BaseField {
 				->select('f.id')
 			    ->from('Field f')
 			    ->where('f.title = "Field '.$fieldNr.'"');
-		FB::log('retrieving field id from nr '.$fieldNr.' using query '.$q->getSqlQuery());
+//		FB::log('retrieving field id from nr '.$fieldNr.' using query '.$q->getSqlQuery());
 		$fieldId = $q->fetchOne();
-		FB::log('got fieldId '.$fieldId['id']);
+//		FB::log('got fieldId '.$fieldId['id']);
 		
 		return $fieldId['id'];		
 	}

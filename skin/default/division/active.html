@@ -17,6 +17,9 @@
 		
 		{% for round in rounds %}
 			<h4>{{round.Pool.title}} {% if round.Pool.currentRound > currentRound %} (finished) {%endif%}</h4>
+			{% if round.Pool.PoolRuleset.title == "FlexPool" %}
+				<a href="?n=/round/edit/{{round.id}}&tournamentId={{tournamentId}}&divisionId={{divisionId}}&stageId={{stageId}}&poolId={{poolId}}">edit this round</a>
+			{% endif %} 			
 			{% if currentRound == round.Pool.currentRound %}
 				<a class="action" href="?n=/round/createMatchups/{{round.id}}">Create Matchups for this round</a>
 				{% if round.allTeamsFilledIn() == true %} &nbsp&nbsp&nbsp&nbsp; <a class="action" href="?n=/round/announce/{{round.id}}">Announce this round (upload SMS and matchups)</a>

@@ -37,21 +37,8 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 			$round->Matches->add($match);
 		} 
 			
-		if($this->post("roundSubmit") != "") {
-			foreach($round->Matches as $match) {				
-				$match->home_team_id=$this->post('hometeam'.$match->rank);
-				$match->away_team_id=$this->post('awayteam'.$match->rank);
-				if ($match->home_team_id == 0 ) { $match->home_team_id = null; }
-				if ($match->away_team_id == 0 ) { $match->away_team_id = null; }
-				if ($match->home_team_id == null && $match->away_team_id == null) {
-					FB::warn('both teams are null');
-				}
-				$match->field_id=$this->post('field'.$match->rank);
-				if ($match->field_id == 0 ) { $match->field_id = null; }
-				$match->scheduledTime=$this->post('time'.$match->rank);
-				$match->save();
-			}		
-			
+		if($this->handleFormSubmit($round)) {
+			// if true, then a round was submitted			
 			$round->link('Pool',array($poolId));
 			$round->save();			
 			$pool->Rounds->add($round);
@@ -92,20 +79,7 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 		$timeslots= Windmill::getWomenTimeSlots();
 		$fields=Windmill::getWomenFieldsByRound($round->rank);
 		
-		if($this->post("roundSubmit") != "") {
-			foreach($round->Matches as $match) {
-				$match->home_team_id=$this->post('hometeam'.$match->rank);
-				if ($match->home_team_id == 0 ) { $match->home_team_id = null; }
-				$match->away_team_id=$this->post('awayteam'.$match->rank);
-				if ($match->away_team_id == 0 ) { $match->away_team_id = null; }
-				$match->field_id=$this->post('field'.$match->rank);
-				if ($match->field_id == 0 ) { $match->field_id = null; }
-				$match->scheduledTime=$this->post('time'.$match->rank);
-				$match->save();
-			}		
-			
-			$round->save();
-			
+		if($this->handleFormSubmit($round)) {
 			$this->relocate("/pool/detail/".$poolId.
 				"&divisionId=".$pool->Stage->Division->id.
 				"&stageId=".$pool->Stage->id.
@@ -122,6 +96,66 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 			"timeslots" => $timeslots, "fields" => $fields));
 		
 	}
+	
+	private function handleFormSubmit($round) {
+	
+		if($this->post("roundSubmit") != "") {
+			// initialize counter array
+			$teamcount=array();
+			foreach($round->Pool->PoolTeams as $poolTeam) {
+				$teamcount[$poolTeam->team_id]=0;
+			}
+			$fieldcount=array();
+			foreach($round->Matches as $match) {
+				$match->home_team_id=$this->post('hometeam'.$match->rank);
+				if ($match->home_team_id == 0 ) { $match->home_team_id = null; } else { $teamcount[$match->home_team_id]++; }
+				$match->away_team_id=$this->post('awayteam'.$match->rank);
+				if ($match->away_team_id == 0 ) { $match->away_team_id = null; } else { $teamcount[$match->away_team_id]++; }
+				$match->field_id=$this->post('field'.$match->rank);
+				if ($match->field_id == 0 ) { 
+					$match->field_id = null; 
+					// this should only happen if either the home or away team is not set
+					if (!is_null($match->home_team_id) && !is_null($match->away_team_id)) {
+						die('field should only be empty if one of the two teams is unassigned (BYE)');
+					}
+				} else {
+					// TODO: do this nicer!
+					$increased=false;
+					foreach($fieldcount as $field_id => $count) { 
+						if ($field_id == $match->field_id) { 
+							$fieldcount[$match->field_id]++;
+							$increased=true; 
+						}
+					}
+					if (!$increased) {
+						$fieldcount[$match->field_id] = 1;
+					}
+					
+				}
+				$match->scheduledTime=$this->post('time'.$match->rank);
+				$match->save();
+			}		
+			
+			foreach($teamcount as $team_id => $count) {
+				if ($count > 1) {
+					$team=Team::getExtendedTeamById($team_id);
+					die('team '.$team->name.' was assigned '.$count.' matches. Please correct');
+				}
+			}
+			foreach($fieldcount as $field_id => $count) {
+				if ($count > 1) {
+					$field=Field::getById($field_id);
+					die('field '.$field->title.' was assigned '.$count.' matches. Please correct');
+				}
+			}
+			
+			$round->save();
+			return true;
+		}
+		
+		return false;
+	}
+	
 	
 	
 	public function randomScoreAction() {				
@@ -159,6 +193,7 @@ class SC9_Controller_Round extends SC9_Controller_Core {
 			$round->announce();
 		}
 		
+		exit;
 		$this->relocate("/division/active/".$round->Pool->Stage->Division->id.
 				"&tournamentId=".$round->Pool->Stage->Division->Tournament->id);
 		

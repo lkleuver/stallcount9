@@ -251,39 +251,13 @@ class Round extends BaseRound {
 		// goes through matches in $round and checks for the match that $team_id played
 		// it returns  e.g. "8-15 loss"  or "12-9 win"  or  "5-5 tie"
 		FB::log('looking for team with id '.$team_id.' in round with id '.$round->id);
-		$scored=0;
-		$received=0;
-		$matchfound=false;
-		$bye = false;
+
 		foreach($round->Matches as $match) {
-			if ($match->home_team_id == $team_id && !is_null($match->away_team_id)) {
-				$scored=$match->homeScore;
-				$received=$match->awayScore;
-				$matchfound=true;	
-				break;			
-			} elseif ($match->away_team_id == $team_id && !is_null($match->home_team_id)) {
-				$scored=$match->awayScore;
-				$received=$match->homeScore;
-				$matchfound=true;
-				break;								
-			} elseif ($match->home_team_id == $team_id || $match->away_team_id == $team_id ) {
-				$bye=true;
-				break;
+			if ($match->home_team_id == $team_id || $match->away_team_id == $team_id) {
+				return $match->resultString($team_id);
 			}
 		}
-		if ($scored > $received) {
-			return $scored.'-'.$received.' win';
-		} elseif ($scored < $received) {
-			return $scored.'-'.$received.' loss';
-		} elseif ($scored == $received && $matchfound == true) {
-			return $scored.'-'.$received.' tie';
-		} elseif ($bye === true) { // team had a BYE  (" a break ")
-			return 'break';
-		} elseif ($matchfound === false) { // assumes
-			FB::error('no match found in round with id '.$round->id.' where team with id '.$team_id.' played!');
-		} else {
-			die('hae?');
-		}
+		return false;
 	}
 	
 	
@@ -314,6 +288,7 @@ class Round extends BaseRound {
 		$q = Doctrine_Query::create()
 			    ->from('Round r')
 			    ->leftJoin('r.Pool p')
+			    ->leftJoin('p.PoolRuleset pr')
 			    ->leftJoin('r.Matches m')
 			    ->leftJoin('m.Field f')
 			    ->leftJoin('m.HomeTeam ht')
