@@ -210,8 +210,11 @@ class Brackets extends BaseBrackets
 				return "Last16";
 			case 4:
 				return "Last32";
+			case -1:
+				return "finished";
 			default:
-				die('unknown playoff name');
+				trigger_error('unknown playoff name');
+				die;
 		}
 	}
 	
