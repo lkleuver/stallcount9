@@ -72,7 +72,7 @@
 			</tr>
 		{% for match in team.HomeMatches %}
 			<tr>
-				<td>{{match.Field.title}}</td>
+				<td>{{match.getFieldName()}}</td>
 				<td>{{match.timeOnly()}}</td>
 				<td>{{match.getHomeName()}}</td>
 				<td>{{match.getAwayName()}}</td>
@@ -97,7 +97,7 @@
 			</tr>
 		{% for match in team.AwayMatches %}
 			<tr>
-				<td>{{match.Field.title}}</td>
+				<td>{{match.getFieldName()}}</td>
 				<td>{{match.timeOnly()}}</td>
 				<td>{{match.getHomeName()}}</td>
 				<td>{{match.getAwayName()}}</td>
@@ -115,6 +115,7 @@
 		<table>
 			<tr>
 				<th>Team</th>
+				<th>Time</th>
 				<th>Round</th>
 				<th>Message</th>
 				<th>Length</th>
@@ -123,6 +124,7 @@
 			{% for sms in team.SMSs %}
 			<tr>
 				<td><a href="?n=/team/details/{{sms.Team.id}}">{{sms.Team.name}}</a></td>
+				<td>{{sms.createTimeNice()}}</td>
 				{% if sms.round_id is defined %}
 					<td>{{sms.Round.Pool.title}} {{sms.Round.rank}}</td>
 				{% else %}

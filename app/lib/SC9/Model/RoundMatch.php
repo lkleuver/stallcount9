@@ -12,6 +12,65 @@
  */
 class RoundMatch extends BaseRoundMatch{
 	
+	public function resultString($team_id) {
+		// returns "15-8 win" , "2-3 loss", "9-9 tie", "break", or an error
+		
+		$scored=0;
+		$received=0;
+		$matchfound=false;
+		if ($this->home_team_id == $team_id && !is_null($this->away_team_id)) {
+			$scored=$this->homeScore;
+			$received=$this->awayScore;
+			$matchfound=true;	
+		} elseif ($this->away_team_id == $team_id && !is_null($this->home_team_id)) {
+			$scored=$this->awayScore;
+			$received=$this->homeScore;
+			$matchfound=true;
+		} elseif ($this->home_team_id == $team_id || $this->away_team_id == $team_id ) {
+			$bye=true;
+		} else {
+			die('team with id '.$team_id.' did not play in match with id '.$this->id);
+		}
+
+		if ($scored > $received) {
+			return $scored.'-'.$received.' win';
+		} elseif ($scored < $received) {
+			return $scored.'-'.$received.' loss';
+		} elseif ($scored == $received && $matchfound == true) {
+			return $scored.'-'.$received.' tie';
+		} elseif ($bye === true) { // team had a BYE  (" a break ")
+			return 'break';
+		} else {
+			die('hae?');
+		}
+		
+	}
+	
+	public function getPreviousMatch($team) {
+		// returns the match where $team played and 
+		// whose time slot was last before the time slot of $this match
+		
+		FB::log('trying to find the previous match of team '.$team->name);
+		$previousTime=0;
+		$previousMatch=false;
+		foreach($team->HomeMatches as $homeMatch) {
+			if ($homeMatch->scheduledTime > $previousTime && $homeMatch->scheduledTime < $this->scheduledTime) {
+				$previousMatch=$homeMatch;
+				$previousTime=$homeMatch->scheduledTime;
+			}
+		} 
+		foreach($team->AwayMatches as $awayMatch) {
+			if ($awayMatch->scheduledTime > $previousTime && $awayMatch->scheduledTime < $this->scheduledTime) {
+				$previousMatch=$awayMatch;
+				$previousTime=$awayMatch->scheduledTime;
+			}
+		} 
+		
+		FB::log('found match '.$previousMatch->HomeTeam->name.'-'.$previousMatch->AwayTeam->name);
+		
+		return $previousMatch;
+	}
+	
 	public static function getById($id) {
 		$q = Doctrine_Query::create()
 			    ->from('RoundMatch m')
@@ -97,6 +156,8 @@ class RoundMatch extends BaseRoundMatch{
 		$minutes = $timeParse['minutes'];
 		
 		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
+		
+		// TODO: use date() instead
 		return $hours.":".$minuteString;		
 	} 
 	
@@ -113,6 +174,7 @@ class RoundMatch extends BaseRoundMatch{
 		$hourString = $hours < 10 ? "0".$hours : $hours . "";
 		$minuteString = $minutes < 10 ? "0".$minutes : $minutes . "";
 		
+		// TODO: use date() instead!
 		return substr($timeParse['weekday'],0,3)." ".$hourString.":".$minuteString;
 	}
 	

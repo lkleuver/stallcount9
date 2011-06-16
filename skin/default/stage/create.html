@@ -1,9 +1,9 @@
 {% extends "index.html" %}
  
-{% block title %}New stage for Open Division{% endblock %}
+{% block title %}New stage for {{division.title}} Division{% endblock %}
 
 {% block content %}
-	<h1>New stage for {{division.title}}</h1>
+	<h1>New stage for {{division.title}} Division</h1>
   
   	
   	<form method="post" action="?n=/stage/create" name="form-stage-create">

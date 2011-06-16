@@ -9,6 +9,12 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$this->divisionId = isset($_REQUEST["divisionId"]) ? $_REQUEST["divisionId"] : "";
 	}
 	
+	public function scheduleCheckAction() {
+		echo "do you really want to erase all match results and re-schedule all games?<br>";
+		echo "(teams that have already been moved will be preserved)<br>";
+		echo "<br><a href='?n=/division/schedule/".$this->divisionId."&tournamentId=".$this->request('tournamentId')."'>DO IT!</a>";
+	}
+	
 
 	public function scheduleAction() {
 		$division = Division::getById($this->divisionId);
@@ -217,6 +223,16 @@ class SC9_Controller_Division extends SC9_Controller_Core {
 		$template =$this->output->loadTemplate('division/excel.html');
 		$template->display(array("division" => $division, "resultsDB" => $resultsDB, "standingsDB" => $standingsDB));
 	} 
+	
+	public function spiritAction() {
+		$division = Division::getById($this->divisionId);
+		
+		$spiritStandings=$division->spiritStandings();
+		
+		$template = $this->output->loadTemplate('division/spirit.html');
+		$template->display(array("division" => $division ,"spiritStandings" => $spiritStandings));
+	}
+	
 	
 	
 }

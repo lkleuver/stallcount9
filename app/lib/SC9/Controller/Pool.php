@@ -28,6 +28,9 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 			case "Bracket":
 				$template = $this->output->loadTemplate("pool/bracket_detail.html");
 				break;
+			case "FlexPool":
+				$template = $this->output->loadTemplate("pool/flex_detail.html");
+				break;
 			case "Default":
 				$template = $this->output->loadTemplate("pool/manual_detail.html");
 				break;
@@ -39,7 +42,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		//echo count($pool->PoolTeams);
 		//exit;
 		
-		$template->display(array("pool" => $pool, "standings" => $standings, "standingsRound" => $standingsRound));
+		$template->display(array("pool" => $pool, "standings" => $standings, "standingsRound" => $standingsRound,"currentRound" => $pool->currentRound));
 	}
 	
 	public function createAction() {
@@ -88,10 +91,12 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		if ($this->post("poolUpdate") != "") {
 			$pool->title = $this->post("poolTitle");
 			if ($pool->spots != $this->post("poolSpots")) {
+				echo "changing of number of spots not supported yet.";
 				FB::error('changing of number of spots not supported yet.');
 				die;
 			}
 			if ($pool->PoolRuleset->id != $this->post("poolRulesetId")) {
+				echo "changing of ruleset not supported yet.";
 				FB::error('changing of ruleset not supported yet.');
 				die;
 			}

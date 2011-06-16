@@ -44,6 +44,18 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 			"&tournamentId=".$stage->Division->tournament_id.
 			"&divisionId=".$stage->division_id );
 	}
+	
+	public function clearDestinationPoolsAction() {
+		
+//		foreach($stage->Pools as $destinationPool) {
+//			foreach($destinationPool->getSpots(true) as $destinationSpot) {
+//				if ($destinationSpot->title == "empty") {
+//					$destSpotList[]=array('spot' => $destinationSpot->rank, 'destPoolId' => $destinationPool->id);
+//				}
+//			}
+//		}				
+		
+	}
 
 	public function obviousmovesAction() {
 		$stage = Stage::getById($this->stageId);
@@ -54,12 +66,12 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 		$destSpotList=array();
 		foreach($stage->Pools as $destinationPool) {
 			foreach($destinationPool->getSpots(true) as $destinationSpot) {
-				if ($destinationSpot->title == "empty") {
+//				if ($destinationSpot->title == "empty") {
 					$destSpotList[]=array('spot' => $destinationSpot->rank, 'destPoolId' => $destinationPool->id);
-				}
+//				}
 			}
 		}				
-		FB::table('destSpotList',$destSpotList);
+		FB::log('# in destSpotList'.count($destSpotList));
 		
 		// go through source pools and link them to destination pools one by one
 		$destCounter=0;
@@ -84,6 +96,7 @@ class SC9_Controller_Stage extends SC9_Controller_Core {
 			}
 		}
 		
+//		exit;
 		$this -> relocate("/stage/moves/".$this->stageId.
 			"&tournamentId=".$stage->Division->tournament_id.
 			"&divisionId=".$stage->division_id );

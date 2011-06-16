@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+ 
+{% block title %}Edit Field {{field.title}}{% endblock %}
+{% block pagetitle %} Edit Field {{field.title}} {% endblock %}
+
+{% block content %}
+
+	<div class="section">
+		<h3>Edit Field</h3>
+  
+  	
+	  	<form method="post" action="?n=/field/edit/{{field.id}}" name="form-field-edit">
+	  		{% include "field/form.html" %}
+	
+			<button name="fieldsubmit" value="1">update</button>
+	  	</form>
+  	</div>
+  	
+  
+  
+  
+{% endblock %}

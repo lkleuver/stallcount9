@@ -56,6 +56,65 @@ class Division extends BaseDivision {
 		Windmill::assignFields($this);
 	}
 	
+	public function spiritStandings() {
+		// computes the current spirit standings
+		FB::group('compute spirit standings of division '.$this->title);
+		
+		// compute spirit standings
+		foreach($this->Teams as $team) {
+			if ($team->byeStatus == 0) {
+				$spirit = array('team_id' => $team->id, 'name' => $team->name, 'games' => 0, 'spiritaverage' => 0, 'spiritsum' => 0, 'received' => 0, 'given' => 0);
+				foreach($team->HomeMatches as $match) {
+					$spirit['games']++;
+					$spirit['spiritsum'] += $match->homeSpirit;
+					$spirit['received']++;
+					if (!is_null($match->awaySpirit)) {
+						$spirit['given']++;
+					}
+				}
+				foreach($team->AwayMatches as $match) {
+					$spirit['games']++;
+					$spirit['spiritsum'] += $match->awaySpirit;
+					$spirit['received']++;
+					if (!is_null($match->homeSpirit)) {
+						$spirit['given']++;
+					}
+				}
+				
+				if ($spirit['received'] > 0) {
+					$spirit['spiritaverage'] = $spirit['spiritsum'] / $spirit['received'] ;
+				}
+				$standings[]=$spirit;
+			}
+		}
+		
+		usort($standings, array($this,'compareTeamsSpirit'));
+			
+		return $standings;
+		
+	}
+	
+	private function compareTeamsSpirit($a, $b) {
+		//sort according to 
+		// 1. spirit average
+		// 2. # given
+		// 3. # received
+		
+		if ($a['spiritaverage'] != $b['spiritaverage']) {
+			return ($a['spiritaverage'] > $b['spiritaverage']) ? -1 : 1;
+		} else {
+			if ($a['given'] != $b['given']) {
+				return ($a['given'] > $b['given']) ? -1 : 1;
+			} else {
+				if ($a['received'] != $b['received']) {
+					return ($a['received'] > $b['received']) ? -1 : 1;
+				} else {
+					return 0;
+				}
+			}
+		}		
+	}	
+	
 	public function seedNextStage() {
 		$lastFinishedStage = null;
 		foreach($this->Stages as $stage) {

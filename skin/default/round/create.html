@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+ 
+{% block title %}New Round {{round.rank}} for {{pool.title}} in {{division.title}} Division{% endblock %}
+
+{% block content %}
+	<h1>New Round {{round.rank}} for {{pool.title}} in {{division.title}} Division</h1>
+  
+  	
+  	<form method="post" action="?n=/round/create" name="form-round-create">
+  		{% include "round/form.html" %}
+  		
+  		
+		<button name="roundSubmit" value="1">add</button>
+		<button name="cancel" value="1">cancel</button>
+		
+  	</form>
+  
+  	
+  
+  
+  
+{% endblock %}
