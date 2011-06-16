@@ -15,8 +15,9 @@ class SC9_Controller_Team extends SC9_Controller_Core {
 	public function detailAction() {
 		$team = Team::getExtendedTeamById($this->teamId);
 		
+		
 		$template = $this->output->loadTemplate('team/detail.html');
-		$template->display(array("team" => $team));
+		$template->display(array("team" => $team, "matches" => $team->joinedMatches()));
 	}
 	
 	public function createAction() {

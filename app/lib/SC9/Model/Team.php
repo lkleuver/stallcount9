@@ -11,6 +11,29 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class Team extends BaseTeam {
+	
+	
+	
+	public function joinedMatches() {
+		$result = array();
+		foreach($this->HomeMatches as $match) $result[] = $match;
+		
+		foreach($this->AwayMatches as $match) {
+			for($i = 0; $i < count($result); $i++) {
+				$found = false;
+				if($match->scheduledTime <= $result[$i]->scheduledTime) {
+					array_splice($result, $i, $match);
+					$found = true;
+					continue;
+				}
+			}
+			if(!$found) {
+				$result[] = $match;
+			}
+		}
+		return $result;
+	}
+	
 	public static function teamNameExists($divisionId, $teamName) {
 		// checks if a team with name $teamName exists in $divisionId
 		FB::group('checking if '.$teamName.' exists in division '.$divisionId);

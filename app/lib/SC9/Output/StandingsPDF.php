@@ -29,7 +29,7 @@ class SC9_Output_StandingsPDF extends FPDF_fpdf{
 		$this->SetMargins(10,10,10);
 		$this->AddPage();
 		
-		
+		 
 		
 		
 		$this->table();

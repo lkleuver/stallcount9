@@ -2,6 +2,12 @@
  
 {% block title %}{{team.name}}{% endblock %}
 {% block pagetitle %} Team Details {{team.name}} {% endblock %}
+
+{% block header %}
+	<script type="text/javascript" src="app/js/jquery.js"></script>
+	<script type="text/javascript" src="app/js/team.js"></script>
+{% endblock %}
+
 {% block content %}
 
 
@@ -61,7 +67,7 @@
 
 
 	<div class="section">
-		<h3>Home Matches</h3>
+		<h3>Matches</h3>
 		<table>
 			<tr>
 				<th>Field</th>
@@ -69,14 +75,25 @@
 				<th>Home Team</th>
 				<th>Away Team</th>
 				<th>Result</th>
+				<th>{{team.name}} gives Spirit</th>
 			</tr>
-		{% for match in team.HomeMatches %}
+		{% for match in matches %}
 			<tr>
 				<td>{{match.getFieldName()}}</td>
 				<td>{{match.timeOnly()}}</td>
 				<td>{{match.getHomeName()}}</td>
 				<td>{{match.getAwayName()}}</td>
 				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
+				<td>
+					{% if match.home_team_id != team.id %}
+						<input class="sc9-input-spirit" id="sc9-input-spirit-home-{{match.id}}" name="sc9-input-spirit-{{match.id}}" value="{{match.homeSpirit}}" />
+						({{match.HomeTeam.name}})
+					{% else %}
+						<input class="sc9-input-spirit" id="sc9-input-spirit-away-{{match.id}}" name="sc9-input-spirit-{{match.id}}" value="{{match.awaySpirit}}" />
+						({{match.AwayTeam.name}})
+					{% endif %}
+					
+				</td>
 			</tr>
 		{% endfor %}
 			
@@ -85,29 +102,6 @@
 	</div>
 	
 	
-	<div class="section">
-		<h3>Away Matches</h3>
-		<table>
-			<tr>
-				<th>Field</th>
-				<th>Time</th>
-				<th>Home Team</th>
-				<th>Away Team</th>
-				<th>Result</th>
-			</tr>
-		{% for match in team.AwayMatches %}
-			<tr>
-				<td>{{match.getFieldName()}}</td>
-				<td>{{match.timeOnly()}}</td>
-				<td>{{match.getHomeName()}}</td>
-				<td>{{match.getAwayName()}}</td>
-				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
-			</tr>
-		{% endfor %}
-			
-		</table>
-		
-	</div>
 	
 	<div class="section">
 		<h3>SMS</h3>

@@ -72,6 +72,25 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 				"&stageId=".$this->request("stageId"));	
 		}
 	}
+
+	public function setspiritAction() {
+		$match = RoundMatch::getById($this->request("matchId"));
+		if($this->request("side") == "home") {
+			$match->homeSpirit = $this->request("spirit");
+		}else{
+			$match->awaySpirit = $this->request("spirit");
+		}
+		$match->save();
+		
+		if($this->isAjax()) {
+			$o = new stdClass();
+			$o->matchId = $match->id;
+			$this->ajaxResponse($o);
+		}else{
+		}
+	}
+	
+	
 	
 	public function setscoreAction() {
 		$match = RoundMatch::getById($this->request("matchId"));
