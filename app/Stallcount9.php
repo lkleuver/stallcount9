@@ -131,7 +131,7 @@ class Stallcount9 {
     }
 	
     public static function backup() {
-    	$name = date("Y-m-d-h:i:s", time());
+    	$name = date("Y-m-d-H:i:s", time());
 		system('mysqldump -u les -pbla stallcount9 >app/export/dump/'.$name.'.sql');
     }
 	
