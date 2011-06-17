@@ -34,9 +34,9 @@
 		{% for match in field.Matches %}
 			<tr>
 				<td>{{match.timeFormat()}}</td>
-				<td>{{match.homeName}}</td>
-				<td>{{match.awayName}}</td>
-				<td>{{match.homeScore}} -- {{match.awayScore}}</td>
+				<td>{{match.getHomeName()}}</td>
+				<td>{{match.getAwayName()}}</td>
+				<td>{{match.homeScore}} - {{match.awayScore}}</td>
 			</tr>
 		{% endfor %}
 			
