@@ -44,7 +44,7 @@
 		{% for team in standings %}
 			<tr{% if loop.index is even %} class="odd" {% endif %}>
 				<td class="rank">{{team.rank}}</td>
-				<td class="team"><a href="{{team.team_id}}">{{team.name}}</a></td>
+				<td class="team"><a href="?n=/team/detail/{{team.team_id}}">{{team.name}}</a></td>
 				<td class="nrgames">{{team.games}}</td>
 				<td class="vp">{{team.vp}}</td>
 				<td class="opp_vp">{{team.opp_vp}}</td>
@@ -81,7 +81,7 @@
 							{% if match.home_team_id==0 and not match.away_team_id==0%}
 								BYE
 							{% elseif match.home_team_id %}
-								{{match.HomeTeam.name}}
+								<td class="team"><a href="?n=/team/detail/{{match.home_team_id}}">{{match.HomeTeam.name}}</a></td>
 							{% else %}
 								{{match.homeName}}
 							{% endif %}
@@ -91,7 +91,7 @@
 							{% if match.away_team_id==0 and not match.home_team_id==0%}
 								BYE
 							{% elseif match.away_team_id %}
-								{{match.AwayTeam.name}}
+								<td class="team"><a href="?n=/team/detail/{{match.away_team_id}}">{{match.AwayTeam.name}}</a></td>
 							{% else %}
 								{{match.awayName}}
 							{% endif %}

@@ -65,17 +65,25 @@ class Division extends BaseDivision {
 			if ($team->byeStatus == 0) {
 				$spirit = array('team_id' => $team->id, 'name' => $team->name, 'games' => 0, 'spiritaverage' => 0, 'spiritsum' => 0, 'received' => 0, 'given' => 0);
 				foreach($team->HomeMatches as $match) {
-					$spirit['games']++;
-					$spirit['spiritsum'] += $match->homeSpirit;
-					$spirit['received']++;
+					if (!is_null($match->homeScore) && !is_null($match->awayScore) ) {
+						$spirit['games']++;
+					}
+					if (!is_null($match->homeSpirit)) {
+						$spirit['spiritsum'] += $match->homeSpirit;
+						$spirit['received']++;
+					}
 					if (!is_null($match->awaySpirit)) {
 						$spirit['given']++;
 					}
 				}
 				foreach($team->AwayMatches as $match) {
-					$spirit['games']++;
-					$spirit['spiritsum'] += $match->awaySpirit;
-					$spirit['received']++;
+					if (!is_null($match->homeScore) && !is_null($match->awayScore) ) {
+						$spirit['games']++;
+					}
+					if (!is_null($match->awaySpirit)) {
+						$spirit['spiritsum'] += $match->awaySpirit;
+						$spirit['received']++;
+					}
 					if (!is_null($match->homeSpirit)) {
 						$spirit['given']++;
 					}

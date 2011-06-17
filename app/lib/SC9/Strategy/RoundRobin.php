@@ -240,7 +240,120 @@ class SC9_Strategy_Roundrobin implements SC9_Strategy_Interface {
 	}
 	
 	public function createSMS($pool,$roundId) {
-		return null;
+		// generates SMS for round with id $roundId		
+		$round=Round::getRoundById($roundId);
+		
+		FB::log('SMS in RoundRobin for roundId '.$roundId.' and rank '.$round->rank);
+		
+//		if ($round->rank > 1) {
+//			$previousRound=Round::getRoundByRank($round->pool_id, $round->rank-1);
+//		} else {
+//			$previousRound=false;
+//			$standings=false;
+//		}
+		
+		// go through all matches of $round
+		foreach($round->Matches as $match) {
+			if ($match->home_team_id !== null) {
+				$this->createSMSForTeam($round, $match->HomeTeam, $match->AwayTeam, $match);
+			}
+			if ($match->away_team_id !== null) {
+				$this->createSMSForTeam($round, $match->AwayTeam, $match->HomeTeam, $match);
+			}			
+		}
+	}
+	
+	private function createSMSForTeam($round,$team,$opponent_team,$match) {
+
+		// After a 15-10 win in round 5, your final rank after Swissdraw is 25th. You will thus play for rank 1 to 8.
+		// In the quarter finals, you'll play CamboCakes (ranked 5th) on Field 10. Pls handin today's spirit scores.
+
+		// After a 15-2 loss in the quarter finals, you'll play the semi finals against
+        // "Ultimate Kaese" (Swiss-ranked 13th) on Field 1 at 12:30.
+		
+		// After a 15-2 loss in the semi finals, 
+        // you'll play for 9th against "Ultimate Kaese" (Swiss-ranked 13th) on Field 1 at 12:30.
+        // or: you finish Windmill 2011 in place 18.
+		
+		// After a 15-2 loss in the final game, you finish Windmill 2010 in place 1. Congratulations!
+        // Please hand in today's spirit scores and see you next year!
+				
+		// After a 13-12 win in the exciting final, you are the champion of Windmill 2010. Congratulations!"
+		// After a 11-18 loss in the final, you are vice-champion of Windmill 2010. Congratulations!"
+
+		$nrRounds=$this->calculateNumberOfRounds(count($round->Pool->PoolTeams));
+		FB::log('nr of Rounds '.$nrRounds);
+				
+		$previousMatch=$match->getPreviousMatch($team);
+		
+		if ($previousMatch !== false) {
+			// retrieve previous match of $team
+			
+			// check if the next game is "tomorrow"
+			$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousMatch->scheduledTime));
+			$thisGameTimeComponents = date_parse(date("Y-m-d H:i", $match->scheduledTime));
+			$tomorrow = ($previousGameTimeComponents['day'] != $thisGameTimeComponents['day']);
+			
+			$text = "After a ";
+			$text .= $previousMatch->resultString($team->id);
+			if ($previousMatch->Round->Pool->PoolRuleset->title == "Swissdraw") {
+				$sourcePool=$previousMatch->Round->Pool;
+				$standings=$sourcePool->getStrategy()->standingsAfterRound($sourcePool,count($sourcePool->Rounds));
+				$text .= ' in round '.$previousMatch->Round->rank.', your final rank after Swissdraw is ';
+				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$team->id)).".";
+				$text .= "You will play a RoundRobin for rank ".$match->bestPossibleRank." to ".$match->worstPossibleRank.".";
+				$text .= 'In round '.$round->rank;
+			} else {
+				$test .= 'in round '.$previousMatch->Round->rank;
+			}
+		} else {
+			$text = "Welcome to Windmill Windup 2011!In round 1 of round robin,";
+		}	
+		
+		
+		if (is_null($opponent_team)) {
+			$text .=  ",you can take a break due to the odd number of teams."; 
+		} else {
+			$text .= ",you'll play ";
+			$text .= $opponent_team->shortName;
+			$text .= " on Field ".$match->field_id;
+			if ($tomorrow) {
+				$text .= ' tomorrow ';
+			}
+			$text .= ' at '.$match->timeOnly();
+		}
+		if ($tomorrow) {
+			$text .= ".Please hand in today's spirit scores!";
+		}			
+		
+
+		FB::group('sms for team '.$team->name.':');
+		FB::log($text);
+		$sms = New SMS();
+		$sms->message = $text;
+		$sms->createTime=time();
+		$sms->link('Team', array($team->id));
+		$sms->link('Round',array($round->id));	
+		$sms->link('Tournament',array($round->Pool->Stage->Division->tournament_id));
+		$sms->save();
+			
+		FB::groupEnd();
+	}
+	
+	private function getRankInStanding($standing,$team_id) {
+		// returns rank of team with id $team_id in $standing
+		// adjusted if there is a BYE team ranked before
+		// returns false if $team_id is not found
+		$offset = 0;
+		foreach($standing as $team) {
+			if ($team['byeStatus']==1) {
+				$offset=1;
+			}
+			if ($team['team_id']==$team_id) {
+				return $team['rank']-$offset;
+			}
+		}
+		return false;
 	}
 	
 

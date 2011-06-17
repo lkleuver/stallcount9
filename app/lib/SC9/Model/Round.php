@@ -66,7 +66,7 @@ class Round extends BaseRound {
 		// 2. print round results
 		$rounds[]=$this;
 		$pdf = new SC9_Output_ResultsPDF($rounds, $this->rank, $this->Pool->Stage->Division->title);
-		$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/results_round_'.$this->rank.'.pdf','F');
+		$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/'.$this->Pool->title.'_results_round_'.$this->rank.'.pdf','F');
 		
 		//   if not Bracket  or  last round of playoffs
 		// 3. export standings after this round		
@@ -78,7 +78,7 @@ class Round extends BaseRound {
 
 			$standings[] = $this->Pool->getStrategy()->standingsAfterRound($this->Pool, $this->rank); 			
 			$pdf = new SC9_Output_StandingsPDF($standings, $this->rank, $this->Pool->Stage->Division->title);
-			$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/standings_after_round_'.$this->rank.'.pdf','F');
+			$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/'.$this->Pool->title.'_standings_after_round_'.$this->rank.'.pdf','F');
 			
 		}
 		
@@ -116,7 +116,7 @@ class Round extends BaseRound {
 		
 		$rounds[]=$this;
 		$pdf = new SC9_Output_MatchupsPDF($rounds, $this->rank, $this->Pool->Stage->Division->title);
-		$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/schedule_round_'.$this->rank.'.pdf','F');
+		$pdf->Output('app/export/'.$this->Pool->Stage->Division->title.'/'.$this->Pool->title.'_schedule_round_'.$this->rank.'.pdf','F');
 		
 		Stallcount9::backup();
 		

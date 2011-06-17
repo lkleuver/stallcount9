@@ -137,6 +137,7 @@ class RoundMatch extends BaseRoundMatch{
 		}
 		return $this->awayName;
 	}
+
 	
 	public function timeFormatOLD() {
 		$minutes = $this->scheduledTime;
