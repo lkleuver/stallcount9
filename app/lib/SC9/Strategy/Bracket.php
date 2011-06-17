@@ -350,7 +350,7 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		FB::log('nr of Rounds '.$nrRounds);
 				
 		// check if the next game is "tomorrow"
-		$previousGameTime=Round::getPlayingTimeInRound($round, $team->id);
+		$previousGameTime=Round::getPlayingTimeInRound($previousRound, $team->id);
 		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
 		$thisGameTimeComponents = date_parse(date("Y-m-d H:i", $match->scheduledTime));
 		if ($previousGameTimeComponents['day'] != $thisGameTimeComponents['day']) {

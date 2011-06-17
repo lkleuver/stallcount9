@@ -381,16 +381,19 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 	private function createSMSForTeam($previousRound,$round,$standings,$team,$opponent_team,$match) {
 		// After a 15-2 loss in round 1, you are now ranked 12th. In round 2,
         // you'll play "Ultimate Kaese" (ranked 13th) on Field 1 at 12:30.
-
+ 
 		// check if the next game is "tomorrow"
-		$previousGameTime=Round::getPlayingTimeInRound($round, $team->id);
+		$previousGameTime=Round::getPlayingTimeInRound($previousRound, $team->id);
 		$previousGameTimeComponents = date_parse(date("Y-m-d H:i", $previousGameTime));
 		$thisGameTimeComponents = date_parse(date("Y-m-d H:i", $match->scheduledTime));
+		FB::log('previous game day '.$previousGameTimeComponents['day']);
+		FB::log('this game day '.$thisGameTimeComponents['day']);
 		if ($previousGameTimeComponents['day'] != $thisGameTimeComponents['day']) {
 			$tomorrow = true;
 		} else {
 			$tomorrow = false;
 		}
+		FB::log('tomorrow is '.$tomorrow);
 		
 		if ($round->rank > 1) {
 			$text = "After a ";
@@ -413,7 +416,7 @@ class SC9_Strategy_SwissDraw implements SC9_Strategy_Interface {
 			}
 			$text .= " on Field ".$match->field_id;
 			if ($tomorrow) {
-				$text .= 'tomorrow ';
+				$text .= ' tomorrow ';
 			}
 			$text .= ' at '.$match->timeOnly();
 		}
