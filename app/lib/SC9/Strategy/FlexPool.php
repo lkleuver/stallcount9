@@ -82,7 +82,7 @@ class SC9_Strategy_FlexPool implements SC9_Strategy_Interface {
 		if (is_null($opponent_team->id)) {
 			$text .=  "due to the odd number of teams,you can take a break ";
 			if ($tomorrow) {
-				$text .= 'tomorrow ';
+				$text .= ' tomorrow ';
 			}
 			$text .= ' at '.$match->timeOnly();
 		} else {
@@ -90,7 +90,7 @@ class SC9_Strategy_FlexPool implements SC9_Strategy_Interface {
 			$text .= $opponent_team->shortName;
 			$text .= " on Field ".$match->field_id;
 			if ($tomorrow) {
-				$text .= 'tomorrow ';
+				$text .= ' tomorrow ';
 			}
 			$text .= ' at '.$match->timeOnly();
 		}
