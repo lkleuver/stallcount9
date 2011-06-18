@@ -380,7 +380,9 @@ class SC9_Strategy_Bracket implements SC9_Strategy_Interface {
 		} else {
 			$text .= ",you'll play ";
 			$text .= $opponent_team->shortName;
-			$text .= "for rank ".$match->bestPossibleRank;
+			if ($round->rank == 3) {  // TODO: this is Windmill 2011 only
+				$text .= "for rank ".$match->bestPossibleRank;
+			}
 //			if ($round->rank>1) {
 //				$text .= "(ranked ";
 //				$text .= SMS::addOrdinalNumberSuffix($this->getRankInStanding($standings,$opponent_team->id)).")";

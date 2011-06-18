@@ -25,7 +25,7 @@ class SC9_Controller_Pool extends SC9_Controller_Core {
 		
 		$template = null;
 		switch($pool->getStrategy()->getName()) {
-			case "Bracket":
+			case "Bracket_IGNORE":
 				$template = $this->output->loadTemplate("pool/bracket_detail.html");
 				break;
 			case "FlexPool":
