@@ -271,6 +271,9 @@
 		border: 1px solid #ECECEC;
 	}
 
+	input.saved { 
+		background-color: #C3FFA3;
+	}
 	
 /* ACTIVE TOURNAMENT MASTER ------------- */
 

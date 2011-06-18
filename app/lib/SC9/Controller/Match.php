@@ -75,16 +75,18 @@ class SC9_Controller_Match extends SC9_Controller_Core {
 
 	public function setspiritAction() {
 		$match = RoundMatch::getById($this->request("matchId"));
+		$spirit = $this->request("spirit") != "" ? $this->request("spirit") : null;
 		if($this->request("side") == "home") {
-			$match->homeSpirit = $this->request("spirit");
+			$match->homeSpirit = $spirit;
 		}else{
-			$match->awaySpirit = $this->request("spirit");
+			$match->awaySpirit = $spirit;
 		}
 		$match->save();
 		
 		if($this->isAjax()) {
 			$o = new stdClass();
 			$o->matchId = $match->id;
+			$o->side = $this->request("side");
 			$this->ajaxResponse($o);
 		}else{
 		}

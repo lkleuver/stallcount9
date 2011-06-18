@@ -27,16 +27,23 @@ var TeamManager = function() {
 		var matchId = inp.attr("id").split("-")[4];
 		
 		
+		
 		if(inp.val() == "") {
 			inp.val(_lastSpiritScoreValue);
 		}else{
-			$.getJSON("?n=/match/setspirit/", {"matchId": matchId, "side": side, "spirit": inp.val()}, onSaveSpirit);
+			var v = parseInt(inp.val());
+			if(v < 0 || v > 20) {
+				alert("Spirit must be between 0 and 20");
+				inp.val(_lastSpiritScoreValue);
+			}else{
+				$.getJSON("?n=/match/setspirit/", {"matchId": matchId, "side": side, "spirit": inp.val()}, onSaveSpirit);
+			}
 		}
 	}
 	
 	function onSaveSpirit(o) {
 		if(o.error != "1") {
-			
+			$("#sc9-input-spirit-"+o.side+"-"+o.matchId).addClass("saved");
 		}else{
 			alert(o.message);
 		}
