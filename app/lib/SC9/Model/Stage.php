@@ -147,9 +147,12 @@ class Stage extends BaseStage{
 		// After a 11-18 loss in the final, you are vice-champion of Windmill 2010. Congratulations!"
 		
 		// check if the next game is "tomorrow"
-
+		$resultString=Round::getResultInRound($lastRound,$team->id);
+		
+		if ($resultString == '') { return null; }
+		
 		$text = "After a ";
-		$text .= Round::getResultInRound($lastRound,$team->id);
+		$text .= $resultString;
 		$text .= ' in the final game, you finish Windmill 2011 in place '.$rank.'.';
 		$text .= "Congratulations!Please hand in all spirit scores now. See you next year!";
 	
@@ -162,6 +165,8 @@ class Stage extends BaseStage{
 		$sms->link('Tournament',array($lastRound->Pool->Stage->Division->tournament_id));
 		//$sms->link('Round',array($round->id));	
 		$sms->save();
+		Export::exportSMSToMySQL($sms);
+		
 			
 		FB::groupEnd();
 	}
