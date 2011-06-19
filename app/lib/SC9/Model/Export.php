@@ -37,7 +37,7 @@ class Export {
 	}
 	
 	private static function executeSQL($sql) {
-		$liveUpdates = true;
+		$liveUpdates = false;
 		
 		if ($liveUpdates) {
 			$secret = "bananana";
@@ -45,13 +45,13 @@ class Export {
 			$url = "http://www.windmillwindup.com/2011/proxy.php";
 			$body = "s=".urlencode($sql)."&sr=".md5($sql.$secret);
 
-			$c = curl_init($url);
-			curl_setopt($c, CURLOPT_POST, true);
-			curl_setopt($c, CURLOPT_POSTFIELDS, $body);
-			curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+//			$c = curl_init($url);
+//			curl_setopt($c, CURLOPT_POST, true);
+//			curl_setopt($c, CURLOPT_POSTFIELDS, $body);
+//			curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 			
-			$page = curl_exec($c);
-			curl_close($c);
+//			$page = curl_exec($c);
+//			curl_close($c);
 			
 			FB::log('result '.$page);
 			
@@ -136,7 +136,7 @@ class Export {
 				Export::executeSQL($sql);			
 			} elseif ($round->Pool->PoolRuleset->title == "Bracket") {
 				$sql = "INSERT INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
-				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."';\n";
+				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', rank = '".SMS::mysql_escape_mimic($team['rank']+$round->Pool->offsetRank())."';\n";
 				fwrite($fh,$sql);						
 				Export::executeSQL($sql);			
 			}
