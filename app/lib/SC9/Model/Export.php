@@ -129,12 +129,18 @@ class Export {
 				Export::executeSQL($sql);			
 			} elseif ($round->Pool->PoolRuleset->title == "RoundRobin") {
 				$sql = "INSERT INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
-				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', points = '".SMS::mysql_escape_mimic($team['points'])."'";
+//				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', points = '".SMS::mysql_escape_mimic($team['points'])."'";
+				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."'";
 				$sql .= ", margin = '".SMS::mysql_escape_mimic($team['margin'])."'";
-				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank'])."';\n";
+				$sql .= ", scored = '".SMS::mysql_escape_mimic($team['scored'])."', rank = '".SMS::mysql_escape_mimic($team['rank']+$round->Pool->offsetRank())."';\n";
 				fwrite($fh,$sql);						
 				Export::executeSQL($sql);			
 			} elseif ($round->Pool->PoolRuleset->title == "Bracket") {
+				$sql = "INSERT INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
+				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', rank = '".SMS::mysql_escape_mimic($team['rank']+$round->Pool->offsetRank())."';\n";
+				fwrite($fh,$sql);						
+				Export::executeSQL($sql);			
+			} elseif ($round->Pool->PoolRuleset->title == "FlexPool" && $round->rank == 10) {
 				$sql = "INSERT INTO standing_2011 SET round = '".Export::getAbbreviationForRound($round)."', division = '".SMS::mysql_escape_mimic($round->Pool->Stage->Division->title)."'";
 				$sql .= ", team = '".SMS::mysql_escape_mimic($team['name'])."', rank = '".SMS::mysql_escape_mimic($team['rank']+$round->Pool->offsetRank())."';\n";
 				fwrite($fh,$sql);						

@@ -30,6 +30,7 @@ class SC9_Strategy_FlexPool implements SC9_Strategy_Interface {
 		foreach($pool->PoolTeams as $poolteam) {
 			$standings[$poolteam->team_id] = array('team_id' => $poolteam->team_id, 'name' => $poolteam->Team->name, 'spirit' => 0, 'rank' => $poolteam->rank, 'seed' => $poolteam->seed);
 		}		
+		usort($standings, create_function('$a,$b','return $a[\'rank\']==$b[\'rank\']?0:($a[\'rank\']<$b[\'rank\']?-1:1);'));
 		return $standings;
 	}
 	
