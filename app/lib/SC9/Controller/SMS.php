@@ -10,6 +10,15 @@ class SC9_Controller_SMS extends SC9_Controller_Core {
 		$this->smsId = count($params) > 0 ? $params[0] : "";
 	}
 	
+	public function sendSpecialAction() {
+		$SMSs = SMS::getList($this->get("tournamentId"));
+		foreach($SMSs as $sms) {
+			if ($sms->id >= 840) {
+				Export::exportSMSToMySQL($sms);
+			}
+		}
+	}
+	
 	
 	public function listAction() {
 		$SMSs = SMS::getList($this->get("tournamentId"));
@@ -66,6 +75,7 @@ class SC9_Controller_SMS extends SC9_Controller_Core {
 //		}
 //		$this->relocate("/field/list/&tournamentId=".$this->request("tournamentId"));
 //	}
+
 	
 	private function handleFormSubmit($sms,$teams) {
 		if($this->post("smssubmit") != "") {
