@@ -29,6 +29,7 @@ class Round extends BaseRound {
 			
 		// 0. checking if the filled in results make sense
 		$errorCode=$this->allResultsCorrect();
+
 		FB::log('error code '.$errorCode);
 		if ($errorCode < 0) {
 			echo "In Round ".$this->id." , ".$this->Pool->title." Round ".$this->rank."<br>";

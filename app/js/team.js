@@ -31,6 +31,7 @@ var TeamManager = function() {
 		if(inp.val() == "") {
 			inp.val(_lastSpiritScoreValue);
 		}else{
+			
 			var v = parseInt(inp.val());
 			if(v < 0 || v > 20) {
 				alert("Spirit must be between 0 and 20");
