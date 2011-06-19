@@ -130,11 +130,11 @@ class Stage extends BaseStage{
 		assert($this->placement);
 		// creates SMS for teams that have finished the tournament
 		foreach($this->Pools as $pool) {
-			if ($pool->isFinished()) {
+//			if ($pool->isFinished()) {
 				foreach($pool->PoolTeams as $poolTeam) {
 					$this->createPlacementSMSForTeam($pool->Rounds[count($pool->Rounds)-1],$poolTeam->rank+$pool->offsetRank(),$poolTeam->Team);
 				}
-			}
+//			}
 		}		
 	}
 
@@ -151,7 +151,7 @@ class Stage extends BaseStage{
 		$text = "After a ";
 		$text .= Round::getResultInRound($lastRound,$team->id);
 		$text .= ' in the final game, you finish Windmill 2011 in place '.$rank.'.';
-		$text .= "Congratulations!Please hand in today's spirit scores and see you next year!";
+		$text .= "Congratulations!Please hand in all spirit scores now. See you next year!";
 	
 		FB::group('sms for team '.$team->name.':');
 		FB::log($text);

@@ -278,7 +278,9 @@ class Round extends BaseRound {
 
 		foreach($round->Matches as $match) {
 			if ($match->home_team_id == $team_id || $match->away_team_id == $team_id) {
-				return $match->resultString($team_id);
+				if (!is_null($match->homeScore) || !is_null($match->awayScore) ) {
+					return $match->resultString($team_id);
+				}
 			}
 		}
 		return false;
