@@ -87,10 +87,10 @@
 				<td>
 					{% if match.home_team_id != team.id %}
 						<input class="sc9-input-spirit" id="sc9-input-spirit-home-{{match.id}}" name="sc9-input-spirit-{{match.id}}" value="{{match.homeSpirit}}" />
-						({{match.HomeTeam.name}})
+						({{match.HomeTeam.name}}: {{match.awaySpirit}})
 					{% else %}
 						<input class="sc9-input-spirit" id="sc9-input-spirit-away-{{match.id}}" name="sc9-input-spirit-{{match.id}}" value="{{match.awaySpirit}}" />
-						({{match.AwayTeam.name}})
+						({{match.AwayTeam.name}}: {{match.homeSpirit}})
 					{% endif %}
 					
 				</td>
