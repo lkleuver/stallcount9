@@ -37,7 +37,7 @@ class Export {
 	}
 	
 	private static function executeSQL($sql) {
-		$liveUpdates = true;
+		$liveUpdates = false;
 		
 		if ($liveUpdates) {
 			$secret = "bananana";

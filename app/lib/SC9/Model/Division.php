@@ -57,40 +57,96 @@ class Division extends BaseDivision {
 	}
 	
 	public function spiritStandings() {
+		$preStandings=$this->spiritPreStandings();
+		FB::table('preStandings',$preStandings);
+		$spiritStandings=$this->spiritPreStandings($preStandings);
+		FB::table('spirit standings',$spiritStandings);
+		
+		$extendedSpirit = array();
+		// calculate generosity
+		foreach($spiritStandings as $team) {
+			$team['generosity'] = $team['givensum'] / $team['opp_spirit'] ;
+			$extendedSpirit[]=$team;
+		}
+		
+		$spiritStandings=$this->spiritPreStandings($extendedSpirit);
+		
+		return $spiritStandings;
+	}
+	
+	private function getSpiritByTeamId($spiritStandings,$team_id) {
+		foreach($spiritStandings as $team) {
+			if ($team['team_id'] == $team_id) {
+				return $team['spiritaverage'];
+			}
+		}
+	}
+	
+	private function getGenerosityByTeamId($extendedSpirit,$team_id) {
+		foreach($extendedSpirit as $team) {
+			if ($team['team_id'] == $team_id && array_key_exists('generosity', $team) ) {
+				return $team['generosity'];
+			}
+		}
+		return false;
+	}
+	
+	private function spiritPreStandings($spiritStandings=false) {
 		// computes the current spirit standings
 		FB::group('compute spirit standings of division '.$this->title);
 		
 		// compute spirit standings
 		foreach($this->Teams as $team) {
 			if ($team->byeStatus == 0) {
-				$spirit = array('team_id' => $team->id, 'name' => $team->name, 'games' => 0, 'spiritaverage' => 0, 'spiritsum' => 0, 'received' => 0, 'given' => 0);
+				$spirit = array('team_id' => $team->id, 'name' => $team->name, 'games' => 0, 'spiritaverage' => 0, 'spiritsum' => 0, 'opp_spirit'=>0, 'givenaverage'=>0, 'givensum'=>0, 'received' => 0, 'given' => 0);
+				$generosity = ($spiritStandings !== false ? $this->getGenerosityByTeamId($spiritStandings, $team->id) : false);
 				foreach($team->HomeMatches as $match) {
-					if (!is_null($match->homeScore) && !is_null($match->awayScore) ) {
+					if (!is_null($match->homeScore) && !is_null($match->awayScore) && $match->AwayTeam->byeStatus == 0 ) {
 						$spirit['games']++;
 					}
+					
+					// retrieve generosity of opponent team
+					$generosity_opp = ($spiritStandings !== false ? $this->getGenerosityByTeamId($spiritStandings, $match->away_team_id) : false);					
 					if (!is_null($match->homeSpirit)) {
-						$spirit['spiritsum'] += $match->homeSpirit;
+						$spirit['spiritsum'] += ($generosity === false ? $match->homeSpirit : $match->homeSpirit / $generosity_opp);
 						$spirit['received']++;
 					}
+					
 					if (!is_null($match->awaySpirit)) {
 						$spirit['given']++;
+						$spirit['givensum'] += ($generosity === false ? $match->awaySpirit : $match->awaySpirit / $generosity);
+						if ($spiritStandings !== false) {
+							$spirit['opp_spirit'] += $this->getSpiritByTeamId($spiritStandings,$match->away_team_id);
+						}
 					}
 				}
 				foreach($team->AwayMatches as $match) {
-					if (!is_null($match->homeScore) && !is_null($match->awayScore) ) {
+					if (!is_null($match->homeScore) && !is_null($match->awayScore) && $match->HomeTeam->byeStatus == 0 ) {
+						FB::log('bye STatus '.$match->HomeTeam->byeStatus);
 						$spirit['games']++;
 					}
+					
+					// retrieve generosity of opponent team
+					$generosity_opp = ($spiritStandings !== false ? $this->getGenerosityByTeamId($spiritStandings, $match->home_team_id) : false);					
+					
 					if (!is_null($match->awaySpirit)) {
-						$spirit['spiritsum'] += $match->awaySpirit;
+						$spirit['spiritsum'] += ($generosity_opp === false ? $match->awaySpirit : $match->awaySpirit / $generosity_opp);
 						$spirit['received']++;
 					}
 					if (!is_null($match->homeSpirit)) {
+						$spirit['givensum'] += ($generosity === false ? $match->homeSpirit : $match->homeSpirit / $generosity);
 						$spirit['given']++;
+						if ($spiritStandings !== false) {
+							$spirit['opp_spirit'] += $this->getSpiritByTeamId($spiritStandings,$match->home_team_id);
+						}						
 					}
 				}
 				
 				if ($spirit['received'] > 0) {
 					$spirit['spiritaverage'] = $spirit['spiritsum'] / $spirit['received'] ;
+				}
+				if ($spirit['given'] > 0) {
+					$spirit['givenaverage'] = $spirit['givensum'] / $spirit['given'] ;
 				}
 				$standings[]=$spirit;
 			}

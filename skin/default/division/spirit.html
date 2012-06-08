@@ -14,6 +14,9 @@
 				<th>Spirit average</th>
 				<th># received</th>
 				<th># given</th>
+				<th>games</th>
+				<th>avg given</th>
+				<th>opp_spirit</th>
 			</tr>
 			{% for team in spiritStandings %}
 			<tr{% if loop.index0 is odd %} class="odd"{% endif %}>
@@ -22,6 +25,9 @@
 				<td>{{team.spiritaverage}}</td>
 				<td>{{team.received}}</td>
 				<td>{{team.given}}</td>
+				<td>{{team.games}}</td>
+				<td>{{team.givenaverage}}</td>
+				<td>{{team.opp_spirit}}</td>
 			</tr>
 			{% endfor %}
  		</table>
